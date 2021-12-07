@@ -4,7 +4,6 @@ public class Manager {
 
     /**
      * Идентификатор Логин Пароль Фамилия Имя Отчество Должность
-     *
      */
     private long id;
     private String login;

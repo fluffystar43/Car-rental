@@ -9,73 +9,73 @@ public class CarInterior {
      * холодильника Наличие регистратора Объем багажника
      */
     private long id;
-    private long car_id;
-    private short color_id;
+    private long carId;
+    private short colorId;
     private Boolean conditioner;
-    private byte count_seats;
-    private Boolean child_seat;
+    private short countSeats;
+    private Boolean childSeat;
     private Boolean signalization;
-    private Boolean steering_wheel_adjustment;
-    private Boolean seat_adjustment;
-    private Boolean wireless_charging;
+    private Boolean steeringWheelAdjustment;
+    private Boolean seatAdjustment;
+    private Boolean wirelessCharging;
     private Boolean fridge;
     private Boolean registrar;
-    private short trunk_volume;
+    private short trunkVolume;
 
     public CarInterior() {
     }
 
-    public CarInterior(long car_id,
-            short color_id,
+    public CarInterior(long carId,
+            short colorId,
             Boolean conditioner,
-            byte count_seats,
-            Boolean child_seat,
+            short countSeats,
+            Boolean childSeat,
             Boolean signalization,
-            Boolean steering_wheel_adjustment,
-            Boolean seat_adjustment,
-            Boolean wireless_charging,
+            Boolean steeringWheelAdjustment,
+            Boolean seatAdjustment,
+            Boolean wirelessCharging,
             Boolean fridge,
             Boolean registrar,
-            short trunk_volume) {
-        this.car_id = car_id;
-        this.color_id = color_id;
+            short trunkVolume) {
+        this.carId = carId;
+        this.colorId = colorId;
         this.conditioner = conditioner;
-        this.count_seats = count_seats;
-        this.child_seat = child_seat;
+        this.countSeats = countSeats;
+        this.childSeat = childSeat;
         this.signalization = signalization;
-        this.steering_wheel_adjustment = steering_wheel_adjustment;
-        this.seat_adjustment = seat_adjustment;
-        this.wireless_charging = wireless_charging;
+        this.steeringWheelAdjustment = steeringWheelAdjustment;
+        this.seatAdjustment = seatAdjustment;
+        this.wirelessCharging = wirelessCharging;
         this.fridge = fridge;
         this.registrar = registrar;
-        this.trunk_volume = trunk_volume;
+        this.trunkVolume = trunkVolume;
     }
 
     public CarInterior(long id,
-            long car_id,
-            short color_id,
+            long carId,
+            short colorId,
             Boolean conditioner,
-            byte count_seats,
-            Boolean child_seat,
+            short countSeats,
+            Boolean childSeat,
             Boolean signalization,
-            Boolean steering_wheel_adjustment,
-            Boolean seat_adjustment,
-            Boolean wireless_charging,
+            Boolean steeringWheelAdjustment,
+            Boolean seatAdjustment,
+            Boolean wirelessCharging,
             Boolean fridge,
             Boolean registrar,
-            short trunk_volume) {
-        this(car_id,
-                color_id,
+            short trunkVolume) {
+        this(carId,
+                colorId,
                 conditioner,
-                count_seats,
-                child_seat,
+                countSeats,
+                childSeat,
                 signalization,
-                steering_wheel_adjustment,
-                seat_adjustment,
-                wireless_charging,
+                steeringWheelAdjustment,
+                seatAdjustment,
+                wirelessCharging,
                 fridge,
                 registrar,
-                trunk_volume);
+                trunkVolume);
         this.id = id;
     }
 
@@ -87,20 +87,20 @@ public class CarInterior {
         this.id = id;
     }
 
-    public long getCar_id() {
-        return car_id;
+    public long getCarId() {
+        return carId;
     }
 
-    public void setCar_id(long car_id) {
-        this.car_id = car_id;
+    public void setCarId(long carId) {
+        this.carId = carId;
     }
 
-    public short getColor_id() {
-        return color_id;
+    public short getColorId() {
+        return colorId;
     }
 
-    public void setColor_id(short color_id) {
-        this.color_id = color_id;
+    public void setColorId(short colorId) {
+        this.colorId = colorId;
     }
 
     public Boolean getConditioner() {
@@ -111,20 +111,20 @@ public class CarInterior {
         this.conditioner = conditioner;
     }
 
-    public byte getCount_seats() {
-        return count_seats;
+    public short getCountSeats() {
+        return countSeats;
     }
 
-    public void setCount_seats(byte count_seats) {
-        this.count_seats = count_seats;
+    public void setCountSeats(short countSeats) {
+        this.countSeats = countSeats;
     }
 
-    public Boolean getChild_seat() {
-        return child_seat;
+    public Boolean getChildSeat() {
+        return childSeat;
     }
 
-    public void setChild_seat(Boolean child_seat) {
-        this.child_seat = child_seat;
+    public void setChildSeat(Boolean childSeat) {
+        this.childSeat = childSeat;
     }
 
     public Boolean getSignalization() {
@@ -135,28 +135,28 @@ public class CarInterior {
         this.signalization = signalization;
     }
 
-    public Boolean getSteering_wheel_adjustment() {
-        return steering_wheel_adjustment;
+    public Boolean getSteeringWheelAdjustment() {
+        return steeringWheelAdjustment;
     }
 
-    public void setSteering_wheel_adjustment(Boolean steering_wheel_adjustment) {
-        this.steering_wheel_adjustment = steering_wheel_adjustment;
+    public void setSteeringWheelAdjustment(Boolean steeringWheelAdjustment) {
+        this.steeringWheelAdjustment = steeringWheelAdjustment;
     }
 
-    public Boolean getSeat_adjustment() {
-        return seat_adjustment;
+    public Boolean getSeatAdjustment() {
+        return seatAdjustment;
     }
 
-    public void setSeat_adjustment(Boolean seat_adjustment) {
-        this.seat_adjustment = seat_adjustment;
+    public void setSeatAdjustment(Boolean seatAdjustment) {
+        this.seatAdjustment = seatAdjustment;
     }
 
-    public Boolean getWireless_charging() {
-        return wireless_charging;
+    public Boolean getWirelessCharging() {
+        return wirelessCharging;
     }
 
-    public void setWireless_charging(Boolean wireless_charging) {
-        this.wireless_charging = wireless_charging;
+    public void setWirelessCharging(Boolean wirelessCharging) {
+        this.wirelessCharging = wirelessCharging;
     }
 
     public Boolean getFridge() {
@@ -175,11 +175,11 @@ public class CarInterior {
         this.registrar = registrar;
     }
 
-    public short getTrunk_volume() {
-        return trunk_volume;
+    public short getTrunkVolume() {
+        return trunkVolume;
     }
 
-    public void setTrunk_volume(short trunk_volume) {
-        this.trunk_volume = trunk_volume;
+    public void setTrunkVolume(short trunkVolume) {
+        this.trunkVolume = trunkVolume;
     }
 }
