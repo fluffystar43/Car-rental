@@ -1,33 +1,30 @@
 package types;
 
 public class CarExterior {
+
     /**
-     * Индентификатор
-     * Автомобиль
-     * Цвет
-     * Количество дверей
-     * Радиус колес
+     * Индентификатор Автомобиль Цвет Количество дверей Радиус колес
      */
     private long id;
-    private long car_id;
-    private short color_id;
-    private byte count_doors;
-    private byte radius_weel;
+    private long carId;
+    private short colorId;
+    private short countDoors;
+    private short radiusWeel;
 
     public CarExterior() {
     }
 
-    public CarExterior(long car_id, short color_id, byte count_doors, 
-            byte radius_weel) {
-        this.car_id = car_id;
-        this.color_id = color_id;
-        this.count_doors = count_doors;
-        this.radius_weel = radius_weel;
+    public CarExterior(long carId, short colorId, short countDoors,
+            short radiusWeel) {
+        this.carId = carId;
+        this.colorId = colorId;
+        this.countDoors = countDoors;
+        this.radiusWeel = radiusWeel;
     }
-    
-    public CarExterior(long id, long car_id, short color_id, byte count_doors, 
-            byte radius_weel) {
-        this(car_id, color_id, count_doors, radius_weel);
+
+    public CarExterior(long id, long carId, short colorId, short countDoors,
+            short radiusWeel) {
+        this(carId, colorId, countDoors, radiusWeel);
         this.id = id;
     }
 
@@ -39,36 +36,35 @@ public class CarExterior {
         this.id = id;
     }
 
-    public long getCar_id() {
-        return car_id;
+    public long getCarId() {
+        return carId;
     }
 
-    public void setCar_id(long car_id) {
-        this.car_id = car_id;
+    public void setCarId(long carId) {
+        this.carId = carId;
     }
 
-    public short getColor_id() {
-        return color_id;
+    public short getColorId() {
+        return colorId;
     }
 
-    public void setColor_id(short color_id) {
-        this.color_id = color_id;
-    }
-    
-    public byte getCount_doors() {
-        return count_doors;
+    public void setColorId(short colorId) {
+        this.colorId = colorId;
     }
 
-    public void setCount_doors(byte count_doors) {
-        this.count_doors = count_doors;
+    public short getCountDoors() {
+        return countDoors;
     }
 
-    public byte getRadius_weel() {
-        return radius_weel;
+    public void setCountDoors(short countDoors) {
+        this.countDoors = countDoors;
     }
 
-    public void setRadius_weel(byte radius_weel) {
-        this.radius_weel = radius_weel;
+    public short getRadiusWeel() {
+        return radiusWeel;
     }
-    
+
+    public void setRadiusWeel(short radiusWeel) {
+        this.radiusWeel = radiusWeel;
+    }
 }
