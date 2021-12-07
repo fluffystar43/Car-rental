@@ -1,21 +1,21 @@
 package types;
 
-public class GearBox {
-
+public class Fuel {
+    
     /**
      * Идентификатор Название
      */
     private short id;
     private String name;
 
-    public GearBox() {
+    public Fuel() {
     }
 
-    public GearBox(String name) {
+    public Fuel(String name) {
         this.name = name;
     }
 
-    public GearBox(byte id, String name) {
+    public Fuel(short id, String name) {
         this(name);
         this.id = id;
     }
@@ -34,6 +34,5 @@ public class GearBox {
 
     public void setName(String name) {
         this.name = name;
-    }
-
+    }    
 }

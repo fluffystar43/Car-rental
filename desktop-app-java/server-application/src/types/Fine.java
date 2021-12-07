@@ -6,23 +6,23 @@ public class Fine {
      * Идентификатор Клиент Автомобиль Описание Оплачен/Не оплачен
      */
     private long id;
-    private long client_id;
-    private long car_id;
+    private long clientId;
+    private long carId;
     private String description;
-    private Boolean is_paid;
+    private Boolean isPaid;
 
     public Fine() {
     }
 
-    public Fine(long client_id, long car_id, String description, Boolean is_paid) {
-        this.client_id = client_id;
-        this.car_id = car_id;
+    public Fine(long clientId, long carId, String description, Boolean isPaid) {
+        this.clientId = clientId;
+        this.carId = carId;
         this.description = description;
-        this.is_paid = is_paid;
+        this.isPaid = isPaid;
     }
 
-    public Fine(long id, long client_id, long car_id, String description, Boolean is_paid) {
-        this(client_id, car_id, description, is_paid);
+    public Fine(long id, long clientId, long carId, String description, Boolean isPaid) {
+        this(clientId, carId, description, isPaid);
         this.id = id;
     }
 
@@ -34,20 +34,20 @@ public class Fine {
         this.id = id;
     }
 
-    public long getClient_id() {
-        return client_id;
+    public long getClientId() {
+        return clientId;
     }
 
-    public void setClient_id(long client_id) {
-        this.client_id = client_id;
+    public void setClientId(long clientId) {
+        this.clientId = clientId;
     }
 
-    public long getCar_id() {
-        return car_id;
+    public long getCarId() {
+        return carId;
     }
 
-    public void setCar_id(long car_id) {
-        this.car_id = car_id;
+    public void setCarId(long carId) {
+        this.carId = carId;
     }
 
     public String getDescription() {
@@ -58,14 +58,11 @@ public class Fine {
         this.description = description;
     }
 
-    public Boolean getIs_paid() {
-        return is_paid;
+    public Boolean getIsPaid() {
+        return isPaid;
     }
 
-    public void setIs_paid(Boolean is_paid) {
-        this.is_paid = is_paid;
+    public void setIsPaid(Boolean isPaid) {
+        this.isPaid = isPaid;
     }
-    
-    
-
 }

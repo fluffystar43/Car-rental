@@ -1,6 +1,6 @@
 package types;
 
-public class GearBox {
+public class Color {
 
     /**
      * Идентификатор Название
@@ -8,14 +8,14 @@ public class GearBox {
     private short id;
     private String name;
 
-    public GearBox() {
+    public Color() {
     }
 
-    public GearBox(String name) {
+    public Color(String name) {
         this.name = name;
     }
 
-    public GearBox(byte id, String name) {
+    public Color(short id, String name) {
         this(name);
         this.id = id;
     }
@@ -35,5 +35,4 @@ public class GearBox {
     public void setName(String name) {
         this.name = name;
     }
-
 }

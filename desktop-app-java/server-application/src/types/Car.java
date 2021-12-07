@@ -7,68 +7,68 @@ public class Car {
      * Топливо Цена аренды Привод Кузов Год выпуска Удален
      */
     private long id;
-    private short brand_id;
-    private int model_id;
-    private byte car_class_id;
-    private byte power_streering_id;
-    private short engine_power;
-    private byte fuel_id;
-    private int rental_price;
-    private byte drive_id;
-    private byte body_id;
-    private short year_manufacture;
-    private Boolean is_deleted;
+    private short brandId;
+    private int modelId;
+    private short carClassId;
+    private short powerStreeringId;
+    private short enginePower;
+    private short fuelId;
+    private int rentalPrice;
+    private short driveId;
+    private short bodyId;
+    private short yearManufacture;
+    private Boolean isDeleted;
 
     public Car() {
-        this.is_deleted = false;
+        this.isDeleted = false;
     }
 
-    public Car(short brand_id,
-            int model_id,
-            byte car_class_id,
-            byte power_streering_id,
-            short engine_power,
-            byte fuel_id,
-            int rental_price,
-            byte drive_id,
-            byte body_id,
-            short year_manufacture) {
-        this.brand_id = brand_id;
-        this.model_id = model_id;
-        this.car_class_id = car_class_id;
-        this.power_streering_id = power_streering_id;
-        this.engine_power = engine_power;
-        this.fuel_id = fuel_id;
-        this.rental_price = rental_price;
-        this.drive_id = drive_id;
-        this.body_id = body_id;
-        this.year_manufacture = year_manufacture;
-        this.is_deleted = false;
+    public Car(short brandId,
+            int modelId,
+            byte carClassId,
+            byte powerStreeringId,
+            short enginePower,
+            byte fuelId,
+            int rentalPrice,
+            byte driveId,
+            byte bodyId,
+            short yearManufacture) {
+        this.brandId = brandId;
+        this.modelId = modelId;
+        this.carClassId = carClassId;
+        this.powerStreeringId = powerStreeringId;
+        this.enginePower = enginePower;
+        this.fuelId = fuelId;
+        this.rentalPrice = rentalPrice;
+        this.driveId = driveId;
+        this.bodyId = bodyId;
+        this.yearManufacture = yearManufacture;
+        this.isDeleted = false;
     }
 
     public Car(long id,
-            short brand_id,
-            int model_id,
-            byte car_class_id,
-            byte power_streering_id,
-            short engine_power,
-            byte fuel_id,
-            int rental_price,
-            byte drive_id,
-            byte body_id,
-            short year_manufacture) {
-        this(brand_id,
-                model_id,
-                car_class_id,
-                power_streering_id,
-                engine_power,
-                fuel_id,
-                rental_price,
-                drive_id,
-                body_id,
-                year_manufacture);
+            short brandId,
+            int modelId,
+            byte carClassId,
+            byte powerStreeringId,
+            short enginePower,
+            byte fuelId,
+            int rentalPrice,
+            byte driveId,
+            byte bodyId,
+            short yearManufacture) {
+        this(brandId,
+                modelId,
+                carClassId,
+                powerStreeringId,
+                enginePower,
+                fuelId,
+                rentalPrice,
+                driveId,
+                bodyId,
+                yearManufacture);
         this.id = id;
-        this.is_deleted = false;
+        this.isDeleted = false;
     }
 
     public long getId() {
@@ -79,92 +79,91 @@ public class Car {
         this.id = id;
     }
 
-    public short getBrand_id() {
-        return brand_id;
+    public short getBrandId() {
+        return brandId;
     }
 
-    public void setBrand_id(short brand_id) {
-        this.brand_id = brand_id;
+    public void setBrandId(short brandId) {
+        this.brandId = brandId;
     }
 
-    public int getModel_id() {
-        return model_id;
+    public int getModelId() {
+        return modelId;
     }
 
-    public void setModel_id(int model_id) {
-        this.model_id = model_id;
+    public void setModelId(int modelId) {
+        this.modelId = modelId;
     }
 
-    public byte getCar_class_id() {
-        return car_class_id;
+    public short getCarClassId() {
+        return carClassId;
     }
 
-    public void setCar_class_id(byte car_class_id) {
-        this.car_class_id = car_class_id;
+    public void setCarClassId(short carClassId) {
+        this.carClassId = carClassId;
     }
 
-    public byte getPower_streering_id() {
-        return power_streering_id;
+    public short getPowerStreeringId() {
+        return powerStreeringId;
     }
 
-    public void setPower_streering_id(byte power_streering_id) {
-        this.power_streering_id = power_streering_id;
+    public void setPowerStreeringId(short powerStreeringId) {
+        this.powerStreeringId = powerStreeringId;
     }
 
-    public short getEngine_power() {
-        return engine_power;
+    public short getEnginePower() {
+        return enginePower;
     }
 
-    public void setEngine_power(short engine_power) {
-        this.engine_power = engine_power;
+    public void setEnginePower(short enginePower) {
+        this.enginePower = enginePower;
     }
 
-    public byte getFuel_id() {
-        return fuel_id;
+    public short getFuelId() {
+        return fuelId;
     }
 
-    public void setFuel_id(byte fuel_id) {
-        this.fuel_id = fuel_id;
+    public void setFuelId(short fuelId) {
+        this.fuelId = fuelId;
     }
 
-    public int getRental_price() {
-        return rental_price;
+    public int getRentalPrice() {
+        return rentalPrice;
     }
 
-    public void setRental_price(int rental_price) {
-        this.rental_price = rental_price;
+    public void setRentalPrice(int rentalPrice) {
+        this.rentalPrice = rentalPrice;
     }
 
-    public byte getDrive_id() {
-        return drive_id;
+    public short getDriveId() {
+        return driveId;
     }
 
-    public void setDrive_id(byte drive_id) {
-        this.drive_id = drive_id;
+    public void setDriveId(short driveId) {
+        this.driveId = driveId;
     }
 
-    public byte getBody_id() {
-        return body_id;
+    public short getBodyId() {
+        return bodyId;
     }
 
-    public void setBody_id(byte body_id) {
-        this.body_id = body_id;
+    public void setBodyId(short bodyId) {
+        this.bodyId = bodyId;
     }
 
-    public short getYear_manufacture() {
-        return year_manufacture;
+    public short getYearManufacture() {
+        return yearManufacture;
     }
 
-    public void setYear_manufacture(short year_manufacture) {
-        this.year_manufacture = year_manufacture;
+    public void setYearManufacture(short yearManufacture) {
+        this.yearManufacture = yearManufacture;
     }
 
-    public Boolean getIs_deleted() {
-        return is_deleted;
+    public Boolean getIsDeleted() {
+        return isDeleted;
     }
 
-    public void setIs_deleted(Boolean is_deleted) {
-        this.is_deleted = is_deleted;
+    public void setIsDeleted(Boolean isDeleted) {
+        this.isDeleted = isDeleted;
     }
-
 }

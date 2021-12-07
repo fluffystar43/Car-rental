@@ -5,7 +5,7 @@ public class GearBox {
     /**
      * Идентификатор Название
      */
-    private byte id;
+    private short id;
     private String name;
 
     public GearBox() {
@@ -20,11 +20,11 @@ public class GearBox {
         this.id = id;
     }
 
-    public byte getId() {
+    public short getId() {
         return id;
     }
 
-    public void setId(byte id) {
+    public void setId(short id) {
         this.id = id;
     }
 
