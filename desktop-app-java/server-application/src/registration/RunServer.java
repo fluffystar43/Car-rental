@@ -21,10 +21,10 @@ public class RunServer {
             CarOperationImpl car = new CarOperationImpl(connection);
             
             // Создаем реестр
-            Registry registry = LocateRegistry.createRegistry(5555);
+            Registry registry = LocateRegistry.createRegistry(1198);
             
             // Регистрация классов
-            registry.bind("Car", car);
+            registry.bind("сarImp", car);
             
             System.out.println("Сервер запущен.");
         } catch (AlreadyBoundException | RemoteException e) {

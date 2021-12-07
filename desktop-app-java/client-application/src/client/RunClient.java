@@ -1,6 +1,11 @@
 package client;
 
+import java.net.MalformedURLException;
 import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.util.List;
+import operation.CarOperation;
 import types.Car;
 
 public class RunClient {
@@ -8,14 +13,29 @@ public class RunClient {
     public static void main(String[] args) {
         try {
             /**
-             * вызывается метод lookup класса Naming для получения удаленной ссылки 
-             * на удаленный объект Car с заданным URL.  
-            */
-            Car car = (Car) Naming.lookup("//localhost:5555/Car");
+             * вызывается метод lookup класса Naming для получения удаленной
+             * ссылки на удаленный объект Car с заданным URL.
+             */
+            CarOperation car = (CarOperation) Naming.lookup("//localhost:1198/сarImp");
+            doVivod(car.getListOfCars());
 
-            System.out.println("Поместить метод сервера");
-        } catch (Exception e) {
-            System.out.println("Message Client exception: " + e);
+            System.out.println("Завершено");
+        } catch (MalformedURLException | NotBoundException | RemoteException e) {
+            System.out.println("Message Client exception: " + e.getMessage());
         }
     }
+
+    public static void doVivod(List<Car> listCars) {
+        int i = 0;
+        System.out.println("#\tБренд\tМодель\tКласс\tУдален");
+        for (Car car : listCars) {
+            System.out.println(++i + "\t" + car.getBrandId() + "  \t"
+                    + car.getModelId() + "\t"
+                    + car.getCarClassId() + " \t"
+                    + car.getIsDeleted());
+        }
+        System.out.println();
+        System.out.println();
+    }
+
 }

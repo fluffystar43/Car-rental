@@ -25,13 +25,13 @@ public class Car {
 
     public Car(short brandId,
             int modelId,
-            byte carClassId,
-            byte powerStreeringId,
+            short carClassId,
+            short powerStreeringId,
             short enginePower,
-            byte fuelId,
+            short fuelId,
             int rentalPrice,
-            byte driveId,
-            byte bodyId,
+            short driveId,
+            short bodyId,
             short yearManufacture) {
         this.brandId = brandId;
         this.modelId = modelId;
@@ -49,13 +49,13 @@ public class Car {
     public Car(long id,
             short brandId,
             int modelId,
-            byte carClassId,
-            byte powerStreeringId,
+            short carClassId,
+            short powerStreeringId,
             short enginePower,
-            byte fuelId,
+            short fuelId,
             int rentalPrice,
-            byte driveId,
-            byte bodyId,
+            short driveId,
+            short bodyId,
             short yearManufacture) {
         this(brandId,
                 modelId,
