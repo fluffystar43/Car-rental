@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1
+namespace client_application
 {
     public partial class formAddCar : Form
     {
