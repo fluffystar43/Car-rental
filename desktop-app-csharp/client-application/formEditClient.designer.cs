@@ -1,5 +1,5 @@
 ﻿
-namespace WindowsFormsApp1
+namespace client_application
 {
     partial class formEditClient
     {
