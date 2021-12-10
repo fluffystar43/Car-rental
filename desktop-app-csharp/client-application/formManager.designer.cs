@@ -67,11 +67,6 @@ namespace client_application
             this.buttonUpdateListNotInRent = new System.Windows.Forms.Button();
             this.buttonAddOrder = new System.Windows.Forms.Button();
             this.dataGridViewListCarsNotInRent = new System.Windows.Forms.DataGridView();
-            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnClassCar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTransmisson = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageCarsInRent = new System.Windows.Forms.TabPage();
             this.labelListCarsInRent = new System.Windows.Forms.Label();
             this.labelSelectCriterionRentedCarsSecond = new System.Windows.Forms.Label();
@@ -103,6 +98,9 @@ namespace client_application
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControlMain = new System.Windows.Forms.TabControl();
+            this.columnBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnModel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnGearBox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClient)).BeginInit();
             this.tabPageOrders.SuspendLayout();
@@ -491,11 +489,9 @@ namespace client_application
             this.dataGridViewListCarsNotInRent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewListCarsNotInRent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewListCarsNotInRent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnName,
-            this.ColumnBrand,
-            this.ColumnClassCar,
-            this.ColumnTransmisson,
-            this.ColumnColor});
+            this.columnBrand,
+            this.columnModel,
+            this.columnGearBox});
             this.dataGridViewListCarsNotInRent.Location = new System.Drawing.Point(10, 139);
             this.dataGridViewListCarsNotInRent.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewListCarsNotInRent.Name = "dataGridViewListCarsNotInRent";
@@ -518,41 +514,6 @@ namespace client_application
             this.dataGridViewListCarsNotInRent.TabIndex = 0;
             this.dataGridViewListCarsNotInRent.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewListCarsNotInRent_CellClick);
             this.dataGridViewListCarsNotInRent.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewListCarsNotInRent_CellLeave);
-            // 
-            // ColumnName
-            // 
-            this.ColumnName.HeaderText = "Название";
-            this.ColumnName.MinimumWidth = 6;
-            this.ColumnName.Name = "ColumnName";
-            this.ColumnName.ReadOnly = true;
-            // 
-            // ColumnBrand
-            // 
-            this.ColumnBrand.HeaderText = "Бренд";
-            this.ColumnBrand.MinimumWidth = 6;
-            this.ColumnBrand.Name = "ColumnBrand";
-            this.ColumnBrand.ReadOnly = true;
-            // 
-            // ColumnClassCar
-            // 
-            this.ColumnClassCar.HeaderText = "Класс";
-            this.ColumnClassCar.MinimumWidth = 6;
-            this.ColumnClassCar.Name = "ColumnClassCar";
-            this.ColumnClassCar.ReadOnly = true;
-            // 
-            // ColumnTransmisson
-            // 
-            this.ColumnTransmisson.HeaderText = "Коробка передач";
-            this.ColumnTransmisson.MinimumWidth = 6;
-            this.ColumnTransmisson.Name = "ColumnTransmisson";
-            this.ColumnTransmisson.ReadOnly = true;
-            // 
-            // ColumnColor
-            // 
-            this.ColumnColor.HeaderText = "Цвет";
-            this.ColumnColor.MinimumWidth = 6;
-            this.ColumnColor.Name = "ColumnColor";
-            this.ColumnColor.ReadOnly = true;
             // 
             // tabPageCarsInRent
             // 
@@ -890,6 +851,27 @@ namespace client_application
             this.tabControlMain.TabIndex = 1;
             this.tabControlMain.SelectedIndexChanged += new System.EventHandler(this.tabControlMain_SelectedIndexChanged);
             // 
+            // columnBrand
+            // 
+            this.columnBrand.HeaderText = "Бренд";
+            this.columnBrand.MinimumWidth = 6;
+            this.columnBrand.Name = "columnBrand";
+            this.columnBrand.ReadOnly = true;
+            // 
+            // columnModel
+            // 
+            this.columnModel.HeaderText = "Модель";
+            this.columnModel.MinimumWidth = 6;
+            this.columnModel.Name = "columnModel";
+            this.columnModel.ReadOnly = true;
+            // 
+            // columnGearBox
+            // 
+            this.columnGearBox.HeaderText = "Коробка передач";
+            this.columnGearBox.MinimumWidth = 6;
+            this.columnGearBox.Name = "columnGearBox";
+            this.columnGearBox.ReadOnly = true;
+            // 
             // formManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -958,11 +940,6 @@ namespace client_application
         private System.Windows.Forms.Button buttonListCarsAdd;
         private System.Windows.Forms.DataGridView dataGridViewListCars;
         private System.Windows.Forms.TabControl tabControlMain;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnBrand;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnClassCar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTransmisson;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnColor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -997,5 +974,8 @@ namespace client_application
         private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
         private System.Windows.Forms.Label labelAvailableListCars;
         private System.Windows.Forms.Label labelListCarsInRent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnBrand;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnModel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnGearBox;
     }
 }
