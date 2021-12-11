@@ -37,7 +37,8 @@ public class CarOperationImpl extends UnicastRemoteObject implements CarOperatio
                         result.getInt("rental_price"),
                         result.getShort("drive_id"),
                         result.getShort("body_id"),
-                        result.getShort("year_manufacture")
+                        result.getShort("year_manufacture"),
+                        result.getString("VIN")
                 ));
             }
             System.out.println("Получен список автомобилей");
