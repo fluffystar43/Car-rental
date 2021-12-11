@@ -18,6 +18,7 @@ public class Car {
     private short bodyId;
     private short yearManufacture;
     private Boolean isDeleted;
+    private String VIN;
 
     public Car() {
         this.isDeleted = false;
@@ -32,7 +33,8 @@ public class Car {
             int rentalPrice,
             short driveId,
             short bodyId,
-            short yearManufacture) {
+            short yearManufacture,
+            String VIN) {
         this.brandId = brandId;
         this.modelId = modelId;
         this.carClassId = carClassId;
@@ -43,6 +45,7 @@ public class Car {
         this.driveId = driveId;
         this.bodyId = bodyId;
         this.yearManufacture = yearManufacture;
+        this.VIN = VIN;
         this.isDeleted = false;
     }
 
@@ -56,7 +59,8 @@ public class Car {
             int rentalPrice,
             short driveId,
             short bodyId,
-            short yearManufacture) {
+            short yearManufacture,
+            String VIN) {
         this(brandId,
                 modelId,
                 carClassId,
@@ -66,7 +70,7 @@ public class Car {
                 rentalPrice,
                 driveId,
                 bodyId,
-                yearManufacture);
+                yearManufacture, VIN);
         this.id = id;
         this.isDeleted = false;
     }
