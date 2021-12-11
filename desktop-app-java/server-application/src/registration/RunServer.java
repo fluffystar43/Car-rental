@@ -7,6 +7,8 @@ import java.rmi.registry.Registry;
 import java.sql.Connection;
 import operation.CarOperationImpl;
 import operation.JDBCConnection;
+import javax.xml.ws.Endpoint;
+import service.endpoint.ClientService;
 
 public class RunServer {
 
@@ -25,6 +27,10 @@ public class RunServer {
             
             // Регистрация классов
             registry.bind("сarImp", car);
+            
+            // SOAP
+            Endpoint.publish("http://localhost:8080/ws01/ClientService", 
+                    new ClientService(connection));
             
             System.out.println("Сервер запущен.");
         } catch (AlreadyBoundException | RemoteException e) {

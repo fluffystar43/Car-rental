@@ -7,6 +7,7 @@ public class Client {
     /**
      * Идентификатор Логин Пароль Фамилия Имя Отчество Дата рождения Номер
      * телефона Паспортные данные Водительское удостоверение Электронная почта
+     * Заблокирован
      */
     private long id;
     private String login;
@@ -19,8 +20,10 @@ public class Client {
     private String passportData;
     private String driversLicense;
     private String email;
+    private Boolean isBlocked;
 
     public Client() {
+        this.isBlocked = false;
     }
 
     public Client(String login,
@@ -32,7 +35,8 @@ public class Client {
             String phoneNumber,
             String passportData,
             String driversLicense,
-            String email) {
+            String email,
+            Boolean isBlocked) {
         this.login = login;
         this.hashPassword = hashPassword;
         this.secondName = secondName;
@@ -43,6 +47,7 @@ public class Client {
         this.passportData = passportData;
         this.driversLicense = driversLicense;
         this.email = email;
+        this.isBlocked = isBlocked;
     }
 
     public Client(long id,
@@ -55,7 +60,8 @@ public class Client {
             String phoneNumber,
             String passportData,
             String driversLicense,
-            String email) {
+            String email,
+            Boolean isBlocked) {
         this(login,
                 hashPassword,
                 secondName,
@@ -65,7 +71,8 @@ public class Client {
                 phoneNumber,
                 passportData,
                 driversLicense,
-                email);
+                email,
+                isBlocked);
         this.id = id;
     }
 
@@ -155,5 +162,13 @@ public class Client {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Boolean getIsBlocked() {
+        return isBlocked;
+    }
+
+    public void setIsBlocked(Boolean isBlocked) {
+        this.isBlocked = isBlocked;
     }
 }
