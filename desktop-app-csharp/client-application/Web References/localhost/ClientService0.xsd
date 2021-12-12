@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://types/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="client">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dateBirthday" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="driversLicense" type="xs:string" />
+      <xs:element minOccurs="0" name="email" type="xs:string" />
+      <xs:element minOccurs="0" name="firstName" type="xs:string" />
+      <xs:element minOccurs="0" name="hashPassword" type="xs:string" />
+      <xs:element name="id" type="xs:long" />
+      <xs:element minOccurs="0" name="isBlocked" type="xs:boolean" />
+      <xs:element minOccurs="0" name="login" type="xs:string" />
+      <xs:element minOccurs="0" name="middleName" type="xs:string" />
+      <xs:element minOccurs="0" name="passportData" type="xs:string" />
+      <xs:element minOccurs="0" name="phoneNumber" type="xs:string" />
+      <xs:element minOccurs="0" name="secondName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

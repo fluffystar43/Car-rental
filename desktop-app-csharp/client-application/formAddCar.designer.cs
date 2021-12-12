@@ -66,7 +66,6 @@ namespace client_application
             this.comboBoxTransmission.Name = "comboBoxTransmission";
             this.comboBoxTransmission.Size = new System.Drawing.Size(271, 24);
             this.comboBoxTransmission.TabIndex = 66;
-            this.comboBoxTransmission.Click += new System.EventHandler(this.comboBoxTransmission_Click);
             // 
             // buttonCancel
             // 
@@ -88,7 +87,6 @@ namespace client_application
             this.buttonAddCar.TabIndex = 64;
             this.buttonAddCar.Text = "Добавить";
             this.buttonAddCar.UseVisualStyleBackColor = true;
-            this.buttonAddCar.Click += new System.EventHandler(this.buttonAddCar_Click);
             // 
             // comboBoxColor
             // 

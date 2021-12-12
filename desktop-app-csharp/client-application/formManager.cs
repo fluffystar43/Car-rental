@@ -5,8 +5,8 @@ namespace client_application
 {
     public partial class formManager : Form
     {
+        // old
         String attribut;
-        String connectionString = "database=rentcarsdb;server=localhost;port=5432;uid=postgres;password=pass;";
         public static String nameForUpdate = String.Empty;
         public static String nameForOrder = String.Empty;
         public static int rowIndex;
@@ -17,6 +17,11 @@ namespace client_application
         public static int rowIndexClient;
         public static int rowIndexRentCar;
         public static String idForUpdateRentCar = String.Empty;
+
+        // new
+        localhost.ClientServiceService service = new localhost.ClientServiceService();
+        localhost.client[] arrayClients;
+
         public formManager()
         {
             InitializeComponent();
@@ -52,95 +57,96 @@ namespace client_application
         }
 
 
+
         // Общие функции
 
         /// <summary>
         /// Заполнение DataGridView данными
         /// </summary>
-        private void DataGridViewAddCells(DataGridView dataGridView, NpgsqlDataReader reader, String[] parameters, Label labelInfo)
-        {
-            int rowNum = 0;
-            if (dataGridView.RowCount != 0)
-                dataGridView.RowCount = 0;
-            while (reader.Read())
-            {
-                dataGridView.RowCount++;
-                for (int i = 0; i < parameters.Length; i++)
-                {
-                    dataGridView.Rows[rowNum].Cells[i].Value = reader[parameters[i]].ToString();
-                }
-                if (labelInfo != null)
-                {
-                    labelInfo.Text = "Количество машин в таблице: " + dataGridView.Rows.Count.ToString();
-                }
-                rowNum++;
-            }
-            dataGridView.ClearSelection();
-        }
+        //private void DataGridViewAddCells(DataGridView dataGridView, NpgsqlDataReader reader, String[] parameters, Label labelInfo)
+        //{
+        //    int rowNum = 0;
+        //    if (dataGridView.RowCount != 0)
+        //        dataGridView.RowCount = 0;
+        //    while (reader.Read())
+        //    {
+        //        dataGridView.RowCount++;
+        //        for (int i = 0; i < parameters.Length; i++)
+        //        {
+        //            dataGridView.Rows[rowNum].Cells[i].Value = reader[parameters[i]].ToString();
+        //        }
+        //        if (labelInfo != null)
+        //        {
+        //            labelInfo.Text = "Количество машин в таблице: " + dataGridView.Rows.Count.ToString();
+        //        }
+        //        rowNum++;
+        //    }
+        //    dataGridView.ClearSelection();
+        //}
 
         /// <summary>
         /// Заполнение ComboBox данными
         /// </summary>
-        private void ComboBoxAddItems(ComboBox combo, String read, NpgsqlDataReader reader)
-        {
-            while (reader.Read())
-            {
-                if (!combo.Items.Contains(reader[read].ToString()))
-                    combo.Items.Add(reader[read].ToString());
-            }
-        }
+        //private void ComboBoxAddItems(ComboBox combo, String read, NpgsqlDataReader reader)
+        //{
+        //    while (reader.Read())
+        //    {
+        //        if (!combo.Items.Contains(reader[read].ToString()))
+        //            combo.Items.Add(reader[read].ToString());
+        //    }
+        //}
 
         /// <summary>
         /// Загрузка данных
         /// </summary>
         private void LoadData(String strSQL, DataGridView dataGridView, ComboBox comboBoxFirst, Label labelInfo)
         {
-            using (NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString))
-            {
-                try
-                {
-                    npgSqlConnection.Open();
-                    NpgsqlCommand cmd = new NpgsqlCommand(strSQL, npgSqlConnection);
-                    using (NpgsqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        DataGridViewAddCells(dataGridView, reader, new String[] { "name", "brand", "classcar", "transmission", "color" }, labelInfo);
-                    }
+            //using (NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString))
+            //{
+            //    try
+            //    {
+            //        npgSqlConnection.Open();
+            //        NpgsqlCommand cmd = new NpgsqlCommand(strSQL, npgSqlConnection);
+            //        using (NpgsqlDataReader reader = cmd.ExecuteReader())
+            //        {
+            //            DataGridViewAddCells(dataGridView, reader, new String[] { "name", "brand", "classcar", "transmission", "color" }, labelInfo);
+            //        }
 
-                    if (comboBoxFirst.Items.Count == 0)
-                    {
-                        for (int i = 0; i < dataGridView.Columns.Count; i++)
-                        {
-                            comboBoxFirst.Items.Add(dataGridView.Columns[i].HeaderText);
-                        }
-                    }
-                    npgSqlConnection.Close();
-                }
-                catch (NpgsqlException ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
+            //        if (comboBoxFirst.Items.Count == 0)
+            //        {
+            //            for (int i = 0; i < dataGridView.Columns.Count; i++)
+            //            {
+            //                comboBoxFirst.Items.Add(dataGridView.Columns[i].HeaderText);
+            //            }
+            //        }
+            //        npgSqlConnection.Close();
+            //    }
+            //    catch (NpgsqlException ex)
+            //    {
+            //        MessageBox.Show(ex.Message);
+            //    }
+            //}
         }
 
         private void DataLoad(String strSQL, DataGridView dataGridView, String[] column, Label labelInfo)
         {
-            using (NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString))
-            {
-                try
-                {
-                    npgSqlConnection.Open();
-                    NpgsqlCommand cmd = new NpgsqlCommand(strSQL, npgSqlConnection);
-                    using (NpgsqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        DataGridViewAddCells(dataGridView, reader, column, labelInfo);
-                    }
-                    npgSqlConnection.Close();
-                }
-                catch (NpgsqlException ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
+            //using (NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString))
+            //{
+            //    try
+            //    {
+            //        npgSqlConnection.Open();
+            //        NpgsqlCommand cmd = new NpgsqlCommand(strSQL, npgSqlConnection);
+            //        using (NpgsqlDataReader reader = cmd.ExecuteReader())
+            //        {
+            //            DataGridViewAddCells(dataGridView, reader, column, labelInfo);
+            //        }
+            //        npgSqlConnection.Close();
+            //    }
+            //    catch (NpgsqlException ex)
+            //    {
+            //        MessageBox.Show(ex.Message);
+            //    }
+            //}
         }
 
         /// <summary>
@@ -170,66 +176,66 @@ namespace client_application
 
         private void comboBoxAvailableCarsFirst_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (comboBoxAvailableCarsFirst.SelectedItem != null)
-            {
-                comboBoxAvailableCarsSecond.Items.Clear();
-                LoadData("SELECT * FROM car WHERE rented = false and deleted = false", dataGridViewListCarsNotInRent, comboBoxAvailableCarsFirst, labelAvailableListCars);
+            //if (comboBoxAvailableCarsFirst.SelectedItem != null)
+            //{
+            //    comboBoxAvailableCarsSecond.Items.Clear();
+            //    LoadData("SELECT * FROM car WHERE rented = false and deleted = false", dataGridViewListCarsNotInRent, comboBoxAvailableCarsFirst, labelAvailableListCars);
 
-                using (NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString))
-                {
-                    npgSqlConnection.Open();
-                    String strSQL = "SELECT * FROM car WHERE rented = false";
-                    NpgsqlCommand cmd = new NpgsqlCommand(strSQL, npgSqlConnection);
-                    using (NpgsqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        attribut = null;
-                        if (comboBoxAvailableCarsFirst.SelectedItem.ToString() == "Название")
-                        {
-                            ComboBoxAddItems(comboBoxAvailableCarsSecond, "name", reader);
-                            attribut = "name";
-                        }
-                        else if (comboBoxAvailableCarsFirst.SelectedItem.ToString() == "Бренд")
-                        {
-                            ComboBoxAddItems(comboBoxAvailableCarsSecond, "brand", reader);
-                            attribut = "brand";
-                        }
-                        else if (comboBoxAvailableCarsFirst.SelectedItem.ToString() == "Класс")
-                        {
-                            ComboBoxAddItems(comboBoxAvailableCarsSecond, "classcar", reader);
-                            attribut = "classcar";
-                        }
-                        else if (comboBoxAvailableCarsFirst.SelectedItem.ToString() == "Коробка передач")
-                        {
-                            ComboBoxAddItems(comboBoxAvailableCarsSecond, "transmission", reader);
-                            attribut = "transmission";
-                        }
-                        else if (comboBoxAvailableCarsFirst.SelectedItem.ToString() == "Цвет")
-                        {
-                            ComboBoxAddItems(comboBoxAvailableCarsSecond, "color", reader);
-                            attribut = "color";
-                        }
-                    }
-                    npgSqlConnection.Close();
-                }
-                labelSelectCriterionAvailableCarsSecond.Visible = true;
-                comboBoxAvailableCarsSecond.Visible = true;
-            }
+            //    using (NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString))
+            //    {
+            //        npgSqlConnection.Open();
+            //        String strSQL = "SELECT * FROM car WHERE rented = false";
+            //        NpgsqlCommand cmd = new NpgsqlCommand(strSQL, npgSqlConnection);
+            //        using (NpgsqlDataReader reader = cmd.ExecuteReader())
+            //        {
+            //            attribut = null;
+            //            if (comboBoxAvailableCarsFirst.SelectedItem.ToString() == "Название")
+            //            {
+            //                ComboBoxAddItems(comboBoxAvailableCarsSecond, "name", reader);
+            //                attribut = "name";
+            //            }
+            //            else if (comboBoxAvailableCarsFirst.SelectedItem.ToString() == "Бренд")
+            //            {
+            //                ComboBoxAddItems(comboBoxAvailableCarsSecond, "brand", reader);
+            //                attribut = "brand";
+            //            }
+            //            else if (comboBoxAvailableCarsFirst.SelectedItem.ToString() == "Класс")
+            //            {
+            //                ComboBoxAddItems(comboBoxAvailableCarsSecond, "classcar", reader);
+            //                attribut = "classcar";
+            //            }
+            //            else if (comboBoxAvailableCarsFirst.SelectedItem.ToString() == "Коробка передач")
+            //            {
+            //                ComboBoxAddItems(comboBoxAvailableCarsSecond, "transmission", reader);
+            //                attribut = "transmission";
+            //            }
+            //            else if (comboBoxAvailableCarsFirst.SelectedItem.ToString() == "Цвет")
+            //            {
+            //                ComboBoxAddItems(comboBoxAvailableCarsSecond, "color", reader);
+            //                attribut = "color";
+            //            }
+            //        }
+            //        npgSqlConnection.Close();
+            //    }
+            //    labelSelectCriterionAvailableCarsSecond.Visible = true;
+            //    comboBoxAvailableCarsSecond.Visible = true;
+            //}
         }
 
         private void comboBoxAvailableCarsSecond_SelectedValueChanged(object sender, EventArgs e)
         {
-            using (NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString))
-            {
-                npgSqlConnection.Open();
-                String strSQL = "SELECT * FROM car WHERE " + attribut + " LIKE '" + comboBoxAvailableCarsSecond.SelectedItem.ToString() + "' AND rented = false";
-                NpgsqlCommand cmd = new NpgsqlCommand(strSQL, npgSqlConnection);
-                using (NpgsqlDataReader reader = cmd.ExecuteReader())
-                {
-                    DataGridViewAddCells(dataGridViewListCarsNotInRent, reader, new String[] { "name", "brand", "classcar", "transmission", "color" }, labelAvailableListCars);
-                }
-                dataGridViewListCarsNotInRent.ClearSelection();
-                npgSqlConnection.Close();
-            }
+            //using (NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString))
+            //{
+            //    npgSqlConnection.Open();
+            //    String strSQL = "SELECT * FROM car WHERE " + attribut + " LIKE '" + comboBoxAvailableCarsSecond.SelectedItem.ToString() + "' AND rented = false";
+            //    NpgsqlCommand cmd = new NpgsqlCommand(strSQL, npgSqlConnection);
+            //    using (NpgsqlDataReader reader = cmd.ExecuteReader())
+            //    {
+            //        DataGridViewAddCells(dataGridViewListCarsNotInRent, reader, new String[] { "name", "brand", "classcar", "transmission", "color" }, labelAvailableListCars);
+            //    }
+            //    dataGridViewListCarsNotInRent.ClearSelection();
+            //    npgSqlConnection.Close();
+            //}
         }
 
         private void buttonUpdateListNotInRent_Click(object sender, EventArgs e)
@@ -248,13 +254,13 @@ namespace client_application
 
         private void tabPageCarsInRent_Enter(object sender, EventArgs e)
         {
-            LoadData("SELECT * FROM car  WHERE rented = true AND deleted = false", dataGridViewListCarsInRent, comboBoxRentedCarsFirst, labelListCarsInRent);
-            dataGridViewListCarsInRent.ClearSelection();
+            //LoadData("SELECT * FROM car  WHERE rented = true AND deleted = false", dataGridViewListCarsInRent, comboBoxRentedCarsFirst, labelListCarsInRent);
+            //dataGridViewListCarsInRent.ClearSelection();
         }
 
         private void tabPageCarsInRent_Leave(object sender, EventArgs e)
         {
-            dataGridViewListCarsInRent.Rows.Clear();
+            //dataGridViewListCarsInRent.Rows.Clear();
             comboBoxRentedCarsFirst.SelectedItem = null;
             labelSelectCriterionRentedCarsSecond.Visible = false;
             comboBoxRentedCarsSecond.Visible = false;
@@ -269,73 +275,73 @@ namespace client_application
 
         private void comboBoxRentedCarsFirst_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (comboBoxRentedCarsFirst.SelectedItem != null)
-            {
-                comboBoxRentedCarsSecond.Items.Clear();
-                LoadData("SELECT * FROM car WHERE rented = true AND deleted = false", dataGridViewListCarsInRent, comboBoxRentedCarsFirst, labelListCarsInRent);
-                using (NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString))
-                {
-                    npgSqlConnection.Open();
-                    String strSQL = "SELECT * FROM car WHERE rented = true AND deleted = false";
-                    NpgsqlCommand cmd = new NpgsqlCommand(strSQL, npgSqlConnection);
-                    using (NpgsqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        attribut = null;
-                        if (comboBoxRentedCarsFirst.SelectedItem.ToString() == "Название")
-                        {
-                            ComboBoxAddItems(comboBoxRentedCarsSecond, "name", reader);
-                            attribut = "name";
-                        }
-                        else if (comboBoxRentedCarsFirst.SelectedItem.ToString() == "Бренд")
-                        {
-                            ComboBoxAddItems(comboBoxRentedCarsSecond, "brand", reader);
-                            attribut = "brand";
-                        }
-                        else if (comboBoxRentedCarsFirst.SelectedItem.ToString() == "Класс")
-                        {
-                            ComboBoxAddItems(comboBoxRentedCarsSecond, "classcar", reader);
-                            attribut = "classcar";
-                        }
-                        else if (comboBoxRentedCarsFirst.SelectedItem.ToString() == "Коробка передач")
-                        {
-                            ComboBoxAddItems(comboBoxRentedCarsSecond, "transmission", reader);
-                            attribut = "transmission";
-                        }
-                        else if (comboBoxRentedCarsFirst.SelectedItem.ToString() == "Цвет")
-                        {
-                            ComboBoxAddItems(comboBoxRentedCarsSecond, "color", reader);
-                            attribut = "color";
-                        }
-                    }
-                    npgSqlConnection.Close();
-                }
-                labelSelectCriterionRentedCarsSecond.Visible = true;
-                comboBoxRentedCarsSecond.Visible = true;
-            }
+            //if (comboBoxRentedCarsFirst.SelectedItem != null)
+            //{
+            //    comboBoxRentedCarsSecond.Items.Clear();
+            //    LoadData("SELECT * FROM car WHERE rented = true AND deleted = false", dataGridViewListCarsInRent, comboBoxRentedCarsFirst, labelListCarsInRent);
+            //    using (NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString))
+            //    {
+            //        npgSqlConnection.Open();
+            //        String strSQL = "SELECT * FROM car WHERE rented = true AND deleted = false";
+            //        NpgsqlCommand cmd = new NpgsqlCommand(strSQL, npgSqlConnection);
+            //        using (NpgsqlDataReader reader = cmd.ExecuteReader())
+            //        {
+            //            attribut = null;
+            //            if (comboBoxRentedCarsFirst.SelectedItem.ToString() == "Название")
+            //            {
+            //                ComboBoxAddItems(comboBoxRentedCarsSecond, "name", reader);
+            //                attribut = "name";
+            //            }
+            //            else if (comboBoxRentedCarsFirst.SelectedItem.ToString() == "Бренд")
+            //            {
+            //                ComboBoxAddItems(comboBoxRentedCarsSecond, "brand", reader);
+            //                attribut = "brand";
+            //            }
+            //            else if (comboBoxRentedCarsFirst.SelectedItem.ToString() == "Класс")
+            //            {
+            //                ComboBoxAddItems(comboBoxRentedCarsSecond, "classcar", reader);
+            //                attribut = "classcar";
+            //            }
+            //            else if (comboBoxRentedCarsFirst.SelectedItem.ToString() == "Коробка передач")
+            //            {
+            //                ComboBoxAddItems(comboBoxRentedCarsSecond, "transmission", reader);
+            //                attribut = "transmission";
+            //            }
+            //            else if (comboBoxRentedCarsFirst.SelectedItem.ToString() == "Цвет")
+            //            {
+            //                ComboBoxAddItems(comboBoxRentedCarsSecond, "color", reader);
+            //                attribut = "color";
+            //            }
+            //        }
+            //        npgSqlConnection.Close();
+            //    }
+            //    labelSelectCriterionRentedCarsSecond.Visible = true;
+            //    comboBoxRentedCarsSecond.Visible = true;
+            //}
         }
 
         private void comboBoxRentedCarsSecond_SelectedValueChanged(object sender, EventArgs e)
         {
-            using (NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString))
-            {
-                npgSqlConnection.Open();
-                String strSQL = "SELECT * FROM car WHERE " + attribut + " LIKE '" + comboBoxRentedCarsSecond.SelectedItem.ToString() + "' AND rented = true AND deleted = false";
-                NpgsqlCommand cmd = new NpgsqlCommand(strSQL, npgSqlConnection);
-                using (NpgsqlDataReader reader = cmd.ExecuteReader())
-                {
-                    DataGridViewAddCells(dataGridViewListCarsInRent, reader, new String[] { "name", "brand", "classcar", "transmission", "color" }, labelListCarsInRent);
-                }
-                npgSqlConnection.Close();
-            }
+            //using (NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString))
+            //{
+            //    npgSqlConnection.Open();
+            //    String strSQL = "SELECT * FROM car WHERE " + attribut + " LIKE '" + comboBoxRentedCarsSecond.SelectedItem.ToString() + "' AND rented = true AND deleted = false";
+            //    NpgsqlCommand cmd = new NpgsqlCommand(strSQL, npgSqlConnection);
+            //    using (NpgsqlDataReader reader = cmd.ExecuteReader())
+            //    {
+            //        DataGridViewAddCells(dataGridViewListCarsInRent, reader, new String[] { "name", "brand", "classcar", "transmission", "color" }, labelListCarsInRent);
+            //    }
+            //    npgSqlConnection.Close();
+            //}
         }
 
         private void buttonUpdateListCarsInRent_Click(object sender, EventArgs e)
         {
-            if (comboBoxRentedCarsSecond.SelectedItem != null)
-                comboBoxRentedCarsSecond_SelectedValueChanged(comboBoxRentedCarsSecond, null);
-            else
-                LoadData("SELECT * FROM car WHERE rented = true AND deleted = false", dataGridViewListCarsInRent, comboBoxRentedCarsFirst, labelListCarsInRent);
-            dataGridViewListCarsInRent.ClearSelection();
+            //if (comboBoxRentedCarsSecond.SelectedItem != null)
+            //    comboBoxRentedCarsSecond_SelectedValueChanged(comboBoxRentedCarsSecond, null);
+            //else
+            //    LoadData("SELECT * FROM car WHERE rented = true AND deleted = false", dataGridViewListCarsInRent, comboBoxRentedCarsFirst, labelListCarsInRent);
+            //dataGridViewListCarsInRent.ClearSelection();
         }
 
         /// <summary>
@@ -365,72 +371,72 @@ namespace client_application
 
         private void comboBoxListCarsFirst_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (comboBoxListCarsFirst.SelectedItem != null)
-            {
-                comboBoxListCarsSecond.Items.Clear();
-                LoadData("SELECT * FROM car WHERE deleted = false", dataGridViewListCars, comboBoxListCarsFirst, labelListCarsInfo);
-                using (NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString))
-                {
-                    npgSqlConnection.Open();
-                    String strSQL = "SELECT * FROM car WHERE deleted = false";
-                    NpgsqlCommand cmd = new NpgsqlCommand(strSQL, npgSqlConnection);
-                    using (NpgsqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        attribut = null;
-                        if (comboBoxListCarsFirst.SelectedItem.ToString() == "Название")
-                        {
-                            ComboBoxAddItems(comboBoxListCarsSecond, "name", reader);
-                            attribut = "name";
-                        }
-                        else if (comboBoxListCarsFirst.SelectedItem.ToString() == "Бренд")
-                        {
-                            ComboBoxAddItems(comboBoxListCarsSecond, "brand", reader);
-                            attribut = "brand";
-                        }
-                        else if (comboBoxListCarsFirst.SelectedItem.ToString() == "Класс")
-                        {
-                            ComboBoxAddItems(comboBoxListCarsSecond, "classcar", reader);
-                            attribut = "classcar";
-                        }
-                        else if (comboBoxListCarsFirst.SelectedItem.ToString() == "Коробка передач")
-                        {
-                            ComboBoxAddItems(comboBoxListCarsSecond, "transmission", reader);
-                            attribut = "transmission";
-                        }
-                        else if (comboBoxListCarsFirst.SelectedItem.ToString() == "Цвет")
-                        {
-                            ComboBoxAddItems(comboBoxListCarsSecond, "color", reader);
-                            attribut = "color";
-                        }
-                    }
-                    npgSqlConnection.Close();
-                }
-                labelSelectCriterionListCarsSecond.Visible = true;
-                comboBoxListCarsSecond.Visible = true;
-            }
+            //if (comboBoxListCarsFirst.SelectedItem != null)
+            //{
+            //    comboBoxListCarsSecond.Items.Clear();
+            //    LoadData("SELECT * FROM car WHERE deleted = false", dataGridViewListCars, comboBoxListCarsFirst, labelListCarsInfo);
+            //    using (NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString))
+            //    {
+            //        npgSqlConnection.Open();
+            //        String strSQL = "SELECT * FROM car WHERE deleted = false";
+            //        NpgsqlCommand cmd = new NpgsqlCommand(strSQL, npgSqlConnection);
+            //        using (NpgsqlDataReader reader = cmd.ExecuteReader())
+            //        {
+            //            attribut = null;
+            //            if (comboBoxListCarsFirst.SelectedItem.ToString() == "Название")
+            //            {
+            //                ComboBoxAddItems(comboBoxListCarsSecond, "name", reader);
+            //                attribut = "name";
+            //            }
+            //            else if (comboBoxListCarsFirst.SelectedItem.ToString() == "Бренд")
+            //            {
+            //                ComboBoxAddItems(comboBoxListCarsSecond, "brand", reader);
+            //                attribut = "brand";
+            //            }
+            //            else if (comboBoxListCarsFirst.SelectedItem.ToString() == "Класс")
+            //            {
+            //                ComboBoxAddItems(comboBoxListCarsSecond, "classcar", reader);
+            //                attribut = "classcar";
+            //            }
+            //            else if (comboBoxListCarsFirst.SelectedItem.ToString() == "Коробка передач")
+            //            {
+            //                ComboBoxAddItems(comboBoxListCarsSecond, "transmission", reader);
+            //                attribut = "transmission";
+            //            }
+            //            else if (comboBoxListCarsFirst.SelectedItem.ToString() == "Цвет")
+            //            {
+            //                ComboBoxAddItems(comboBoxListCarsSecond, "color", reader);
+            //                attribut = "color";
+            //            }
+            //        }
+            //        npgSqlConnection.Close();
+            //    }
+            //    labelSelectCriterionListCarsSecond.Visible = true;
+            //    comboBoxListCarsSecond.Visible = true;
+            //}
         }
         private void comboBoxListCarsSecond_SelectedValueChanged(object sender, EventArgs e)
         {
-            using (NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString))
-            {
-                npgSqlConnection.Open();
-                String strSQL = "SELECT * FROM car WHERE " + attribut + " LIKE '" + comboBoxListCarsSecond.SelectedItem.ToString() + "' AND deleted = false";
-                NpgsqlCommand cmd = new NpgsqlCommand(strSQL, npgSqlConnection);
-                using (NpgsqlDataReader reader = cmd.ExecuteReader())
-                {
-                    DataGridViewAddCells(dataGridViewListCars, reader, new String[] { "name", "brand", "classcar", "transmission", "color" }, labelListCarsInfo);
-                }
-                npgSqlConnection.Close();
-            }
+            //using (NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString))
+            //{
+            //    npgSqlConnection.Open();
+            //    String strSQL = "SELECT * FROM car WHERE " + attribut + " LIKE '" + comboBoxListCarsSecond.SelectedItem.ToString() + "' AND deleted = false";
+            //    NpgsqlCommand cmd = new NpgsqlCommand(strSQL, npgSqlConnection);
+            //    using (NpgsqlDataReader reader = cmd.ExecuteReader())
+            //    {
+            //        DataGridViewAddCells(dataGridViewListCars, reader, new String[] { "name", "brand", "classcar", "transmission", "color" }, labelListCarsInfo);
+            //    }
+            //    npgSqlConnection.Close();
+            //}
         }
 
         private void buttonListCarsUpdate_Click(object sender, EventArgs e)
         {
-            if (comboBoxListCarsSecond.SelectedItem != null)
-                comboBoxListCarsSecond_SelectedValueChanged(comboBoxListCarsSecond, null);
-            else
-                LoadData("SELECT * FROM car WHERE deleted = false", dataGridViewListCars, comboBoxListCarsFirst, null);
-            dataGridViewListCarsInRent.ClearSelection();
+            //if (comboBoxListCarsSecond.SelectedItem != null)
+            //    comboBoxListCarsSecond_SelectedValueChanged(comboBoxListCarsSecond, null);
+            //else
+            //    LoadData("SELECT * FROM car WHERE deleted = false", dataGridViewListCars, comboBoxListCarsFirst, null);
+            //dataGridViewListCarsInRent.ClearSelection();
         }
 
         private void buttonListCarsEdit_Click(object sender, EventArgs e)
@@ -451,32 +457,32 @@ namespace client_application
 
         private void buttonListCarsDel_Click(object sender, EventArgs e)
         {
-            if (rowIndex != -1)
-            {
-                using (NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString))
-                {
-                    try
-                    {
-                        string name = nameForUpdate;
-                        npgSqlConnection.Open();
-                        String strSQL = $"UPDATE car SET deleted=true WHERE name = '{name}'";
-                        NpgsqlCommand cmd = new NpgsqlCommand(strSQL, npgSqlConnection);
-                        if (cmd.ExecuteNonQuery() == 1)
-                        {
-                            String str = "SELECT * FROM car WHERE deleted = false ORDER BY idcar";
-                            DataGridView dataGrid = dataGridViewListCars;
-                            ComboBox comboBox = comboBoxListCarsFirst;
-                            LoadData(str, dataGrid, comboBox, labelListCarsInfo);
-                            MessageBox.Show($"Автомобиль {name} удалён!");
-                        }
-                        npgSqlConnection.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
-            }
+            //if (rowIndex != -1)
+            //{
+            //    using (NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString))
+            //    {
+            //        try
+            //        {
+            //            string name = nameForUpdate;
+            //            npgSqlConnection.Open();
+            //            String strSQL = $"UPDATE car SET deleted=true WHERE name = '{name}'";
+            //            NpgsqlCommand cmd = new NpgsqlCommand(strSQL, npgSqlConnection);
+            //            if (cmd.ExecuteNonQuery() == 1)
+            //            {
+            //                String str = "SELECT * FROM car WHERE deleted = false ORDER BY idcar";
+            //                DataGridView dataGrid = dataGridViewListCars;
+            //                ComboBox comboBox = comboBoxListCarsFirst;
+            //                LoadData(str, dataGrid, comboBox, labelListCarsInfo);
+            //                MessageBox.Show($"Автомобиль {name} удалён!");
+            //            }
+            //            npgSqlConnection.Close();
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            MessageBox.Show(ex.Message);
+            //        }
+            //    }
+            //}
         }
 
         private void buttonListCarsEdit_MouseEnter(object sender, EventArgs e)
@@ -528,9 +534,9 @@ namespace client_application
 
         private void formManager_Shown(object sender, EventArgs e)
         {
-            buttonUpdateListNotInRent_Click(buttonUpdateListNotInRent, null);
-            dataGridViewListCarsInRent.ClearSelection();
-            dataGridViewListCars.ClearSelection();
+            //buttonUpdateListNotInRent_Click(buttonUpdateListNotInRent, null);
+            //dataGridViewListCarsInRent.ClearSelection();
+            //dataGridViewListCars.ClearSelection();
         }
 
         private void dataGridViewListCars_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -544,20 +550,35 @@ namespace client_application
 
         private void buttonUpdateClient_Click(object sender, EventArgs e)
         {
-            buttonEditClient.Enabled = false;
-            buttonDeleteClient.Enabled = false;
-            String[] column = new String[] { "idclient", "familyname", "name", "patronymic", "passportdata", "driverslicense", "numberofphone" };
-            DataLoad("SELECT * FROM client WHERE blocked = false", dataGridViewClient, column, null);
+            arrayClients = service.getListOfClients();
+
+            dataGridViewClients.Rows.Clear();
+
+            foreach (localhost.client person in arrayClients)
+            {
+                object[] buffer = new object[8];
+                buffer[0] = person.secondName;
+                buffer[1] = person.firstName;
+                buffer[2] = person.middleName;
+                buffer[3] = person.dateBirthday.ToShortDateString();
+                buffer[4] = person.passportData;
+                buffer[5] = person.driversLicense;
+                buffer[6] = person.phoneNumber;
+                buffer[7] = person.email;
+
+                dataGridViewClients.Rows.Add(buffer);
+            }
+
         }
 
         private void dataGridViewClient_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             rowIndexClient = e.RowIndex;
-            var passportdata = dataGridViewClient.Rows[e.RowIndex].Cells[4].Value;
+            var passportdata = dataGridViewClients.Rows[e.RowIndex].Cells[4].Value;
             nameForUpdateClient = Convert.ToString(passportdata);
-            var familyname = dataGridViewClient.Rows[e.RowIndex].Cells[1].Value;
-            var name = dataGridViewClient.Rows[e.RowIndex].Cells[2].Value;
-            var patronymic = dataGridViewClient.Rows[e.RowIndex].Cells[3].Value;
+            var familyname = dataGridViewClients.Rows[e.RowIndex].Cells[1].Value;
+            var name = dataGridViewClients.Rows[e.RowIndex].Cells[2].Value;
+            var patronymic = dataGridViewClients.Rows[e.RowIndex].Cells[3].Value;
             familynameForOutput = Convert.ToString(familyname);
             nameForOutput = Convert.ToString(name);
             patronymicForOutput = Convert.ToString(patronymic);
@@ -567,36 +588,36 @@ namespace client_application
 
         private void buttonDeleteClient_Click(object sender, EventArgs e)
         {
-            if (rowIndexClient != -1)
-            {
-                using (NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString))
-                {
-                    try
-                    {
-                        string passportdata = nameForUpdateClient;
-                        npgSqlConnection.Open();
-                        String strSQL = $"UPDATE client SET blocked = true WHERE passportdata = '{passportdata}'";
-                        NpgsqlCommand cmd = new NpgsqlCommand(strSQL, npgSqlConnection);
-                        if (cmd.ExecuteNonQuery() == 1)
-                        {
-                            String str = "SELECT * FROM client WHERE blocked = false";
-                            DataGridView dataGrid = dataGridViewClient;
-                            String[] column = new String[] { "idclient", "familyname", "name", "patronymic", "passportdata", "driverslicense", "numberofphone" };
-                            DataLoad(str, dataGrid, column, null);
-                            MessageBox.Show($"Клиент {familynameForOutput} {nameForOutput} {patronymicForOutput} заблокирован!");
-                        }
-                        npgSqlConnection.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
-            }
+            //if (rowIndexClient != -1)
+            //{
+            //    using (NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString))
+            //    {
+            //        try
+            //        {
+            //            string passportdata = nameForUpdateClient;
+            //            npgSqlConnection.Open();
+            //            String strSQL = $"UPDATE client SET blocked = true WHERE passportdata = '{passportdata}'";
+            //            NpgsqlCommand cmd = new NpgsqlCommand(strSQL, npgSqlConnection);
+            //            if (cmd.ExecuteNonQuery() == 1)
+            //            {
+            //                String str = "SELECT * FROM client WHERE blocked = false";
+            //                DataGridView dataGrid = dataGridViewClient;
+            //                String[] column = new String[] { "idclient", "familyname", "name", "patronymic", "passportdata", "driverslicense", "numberofphone" };
+            //                DataLoad(str, dataGrid, column, null);
+            //                MessageBox.Show($"Клиент {familynameForOutput} {nameForOutput} {patronymicForOutput} заблокирован!");
+            //            }
+            //            npgSqlConnection.Close();
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            MessageBox.Show(ex.Message);
+            //        }
+            //    }
+            //}
         }
         private void buttonEditClient_Click(object sender, EventArgs e)
         {
-            formEditClient formEditClient = new formEditClient(nameForUpdateClient, rowIndexClient, dataGridViewClient);
+            formEditClient formEditClient = new formEditClient(nameForUpdateClient, rowIndexClient, dataGridViewClients);
             formEditClient.Show();
         }
 
@@ -614,37 +635,37 @@ namespace client_application
 
         private void buttonComplateOrder_Click(object sender, EventArgs e)
         {
-            if (rowIndexClient != -1)
-            {
-                using (NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString))
-                {
-                    try
-                    {
-                        string idrentcar = idForUpdateRentCar;
-                        npgSqlConnection.Open();
-                        String strSQL = $"UPDATE rentcar SET deleted = true WHERE idrentcar = '{idrentcar}'";
-                        NpgsqlCommand cmd = new NpgsqlCommand(strSQL, npgSqlConnection);
-                        if (cmd.ExecuteNonQuery() == 1)
-                        {
-                            String str = "SELECT rentcar.idrentcar, client.familyname, car.name, rentcar.cost, rentcar.dateofissue, rentcar.countdaysrent FROM rentcar, car, client WHERE car.idcar = rentcar.idcar AND client.idclient = rentcar.idclient AND rentcar.deleted = false";
-                            DataGridView dataGrid = dataGridViewRentCar;
-                            String[] column = new String[] { "idrentcar", "familyname", "name", "cost", "dateofissue", "countdaysrent" };
-                            DataLoad(str, dataGrid, column, null);
-                            npgSqlConnection.Close();
-                            npgSqlConnection.Open();
-                            strSQL = $"UPDATE car SET rented = false WHERE idcar IN (select idcar from rentcar where idrentcar = '{idrentcar}')";
-                            cmd = new NpgsqlCommand(strSQL, npgSqlConnection);
-                            if (cmd.ExecuteNonQuery() == 1)                            
-                                MessageBox.Show($"Заказ завершён!");
-                        }
-                        npgSqlConnection.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
-            }
+            //if (rowIndexClient != -1)
+            //{
+            //    using (NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString))
+            //    {
+            //        try
+            //        {
+            //            string idrentcar = idForUpdateRentCar;
+            //            npgSqlConnection.Open();
+            //            String strSQL = $"UPDATE rentcar SET deleted = true WHERE idrentcar = '{idrentcar}'";
+            //            NpgsqlCommand cmd = new NpgsqlCommand(strSQL, npgSqlConnection);
+            //            if (cmd.ExecuteNonQuery() == 1)
+            //            {
+            //                String str = "SELECT rentcar.idrentcar, client.familyname, car.name, rentcar.cost, rentcar.dateofissue, rentcar.countdaysrent FROM rentcar, car, client WHERE car.idcar = rentcar.idcar AND client.idclient = rentcar.idclient AND rentcar.deleted = false";
+            //                DataGridView dataGrid = dataGridViewRentCar;
+            //                String[] column = new String[] { "idrentcar", "familyname", "name", "cost", "dateofissue", "countdaysrent" };
+            //                DataLoad(str, dataGrid, column, null);
+            //                npgSqlConnection.Close();
+            //                npgSqlConnection.Open();
+            //                strSQL = $"UPDATE car SET rented = false WHERE idcar IN (select idcar from rentcar where idrentcar = '{idrentcar}')";
+            //                cmd = new NpgsqlCommand(strSQL, npgSqlConnection);
+            //                if (cmd.ExecuteNonQuery() == 1)
+            //                    MessageBox.Show($"Заказ завершён!");
+            //            }
+            //            npgSqlConnection.Close();
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            MessageBox.Show(ex.Message);
+            //        }
+            //    }
+            //}
         }
 
         private void dataGridViewRentCar_CellClick(object sender, DataGridViewCellEventArgs e)
