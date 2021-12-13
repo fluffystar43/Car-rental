@@ -78,7 +78,7 @@ namespace client_application
             this.labelCountDaysRent.Name = "labelCountDaysRent";
             this.labelCountDaysRent.Size = new System.Drawing.Size(175, 16);
             this.labelCountDaysRent.TabIndex = 68;
-            this.labelCountDaysRent.Text = "Колеиество дней аренды:";
+            this.labelCountDaysRent.Text = "Количество дней аренды:";
             // 
             // labelDateOfIssue
             // 
@@ -101,7 +101,7 @@ namespace client_application
             // dateTimePickerDateOfIssue
             // 
             this.dateTimePickerDateOfIssue.Location = new System.Drawing.Point(203, 49);
-            this.dateTimePickerDateOfIssue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePickerDateOfIssue.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePickerDateOfIssue.Name = "dateTimePickerDateOfIssue";
             this.dateTimePickerDateOfIssue.Size = new System.Drawing.Size(271, 22);
             this.dateTimePickerDateOfIssue.TabIndex = 74;
@@ -109,7 +109,7 @@ namespace client_application
             // numericUpDownCountDaysRent
             // 
             this.numericUpDownCountDaysRent.Location = new System.Drawing.Point(204, 81);
-            this.numericUpDownCountDaysRent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownCountDaysRent.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownCountDaysRent.Maximum = new decimal(new int[] {
             999,
             0,
@@ -133,7 +133,7 @@ namespace client_application
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(495, 169);
+            this.ClientSize = new System.Drawing.Size(510, 182);
             this.Controls.Add(this.numericUpDownCountDaysRent);
             this.Controls.Add(this.dateTimePickerDateOfIssue);
             this.Controls.Add(this.buttonCancel);
@@ -142,7 +142,7 @@ namespace client_application
             this.Controls.Add(this.labelCountDaysRent);
             this.Controls.Add(this.labelDateOfIssue);
             this.Controls.Add(this.labelCost);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "formEditRentCar";
             this.Text = "Изменение данных заказа";
             this.Load += new System.EventHandler(this.formEditRentCar_Load);
