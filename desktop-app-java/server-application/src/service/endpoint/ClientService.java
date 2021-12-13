@@ -17,7 +17,7 @@ public class ClientService implements ClientOperation {
     private static Connection connection;
 
     public ClientService(Connection connection) {
-        this.connection = connection;
+        ClientService.connection = connection;
     }
 
     @WebMethod()

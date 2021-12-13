@@ -28,7 +28,7 @@ public class RunServer {
             // Регистрация классов
             registry.bind("сarImp", car);
             
-            // SOAP
+            // SOAP API
             Endpoint.publish("http://localhost:8080/ws01/ClientService", 
                     new ClientService(connection));
             
