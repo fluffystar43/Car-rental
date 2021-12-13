@@ -241,7 +241,7 @@ public class Frame extends javax.swing.JFrame {
 
         jPanelRentedCars.setPreferredSize(new java.awt.Dimension(810, 100));
 
-        jButtonRentedCarsCloseOrder.setText("Оформить заказ");
+        jButtonRentedCarsCloseOrder.setText("Завершить заказ");
 
         jButtonRentedCarsUpdateTable.setText("Обновить список автомобилей");
 
@@ -335,8 +335,18 @@ public class Frame extends javax.swing.JFrame {
         jTabbedPaneAutopark.addTab("Автомобили в прокате", jPanelRentedCars);
 
         jButtonAddCar.setText("Добавить автомобиль");
+        jButtonAddCar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddCarActionPerformed(evt);
+            }
+        });
 
         jButtonDeleteCar.setText("Удалить автомобиль");
+        jButtonDeleteCar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteCarActionPerformed(evt);
+            }
+        });
 
         jLabelListCarsSearchСriteriaFirst.setText("Выберите критерий поиска:");
 
@@ -355,6 +365,11 @@ public class Frame extends javax.swing.JFrame {
         });
 
         jButtonEditDataCar.setText("Изменить данные автомобиля");
+        jButtonEditDataCar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditDataCarActionPerformed(evt);
+            }
+        });
 
         jTableAvailableCars2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -451,10 +466,25 @@ public class Frame extends javax.swing.JFrame {
         jTabbedPaneForm.addTab("Автопарк", jPanelAutopark);
 
         jButtonCloseOrder.setText("Завершить заказ");
+        jButtonCloseOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCloseOrderActionPerformed(evt);
+            }
+        });
 
         jButtonUpdateTableOrders.setText("Обновить данные");
+        jButtonUpdateTableOrders.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUpdateTableOrdersActionPerformed(evt);
+            }
+        });
 
         jButtonEditDataOrder.setText("Изменить данные заказа");
+        jButtonEditDataOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditDataOrderActionPerformed(evt);
+            }
+        });
 
         jTableOrders.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -546,6 +576,11 @@ public class Frame extends javax.swing.JFrame {
         jScrollPaneClients.setViewportView(jTableClients);
 
         jButtonEditDataClient.setText("Изменить данные клиента");
+        jButtonEditDataClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditDataClientActionPerformed(evt);
+            }
+        });
 
         jButtonUpdateTableClients.setText("Обновить данные");
         jButtonUpdateTableClients.addActionListener(new java.awt.event.ActionListener() {
@@ -555,6 +590,11 @@ public class Frame extends javax.swing.JFrame {
         });
 
         jButtonBlockClient.setText("Заблокировать клиента");
+        jButtonBlockClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBlockClientActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelClientsLayout = new javax.swing.GroupLayout(jPanelClients);
         jPanelClients.setLayout(jPanelClientsLayout);
@@ -651,6 +691,38 @@ public class Frame extends javax.swing.JFrame {
     private void jComboBoxSearchСriteriaSecondActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSearchСriteriaSecondActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxSearchСriteriaSecondActionPerformed
+
+    private void jButtonUpdateTableOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateTableOrdersActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonUpdateTableOrdersActionPerformed
+
+    private void jButtonCloseOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseOrderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonCloseOrderActionPerformed
+
+    private void jButtonEditDataOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditDataOrderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEditDataOrderActionPerformed
+
+    private void jButtonBlockClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBlockClientActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonBlockClientActionPerformed
+
+    private void jButtonEditDataClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditDataClientActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEditDataClientActionPerformed
+
+    private void jButtonAddCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddCarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAddCarActionPerformed
+
+    private void jButtonEditDataCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditDataCarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEditDataCarActionPerformed
+
+    private void jButtonDeleteCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteCarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonDeleteCarActionPerformed
     private void doVivod(List<Client> listClients) {
         doClearTable();
 
