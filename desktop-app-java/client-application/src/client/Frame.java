@@ -160,6 +160,12 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
+        jComboBoxAvailableCarsSearchСriteriaSecond.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxAvailableCarsSearchСriteriaSecondActionPerformed(evt);
+            }
+        });
+
         jTableAvailableCars.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -249,6 +255,12 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
+        jComboBoxRentedCarsSearchСriteriaSecond.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxRentedCarsSearchСriteriaSecondActionPerformed(evt);
+            }
+        });
+
         jTableAvailableCars1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -333,6 +345,12 @@ public class Frame extends javax.swing.JFrame {
         jComboBoxSearchСriteriaFirst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxSearchСriteriaFirstActionPerformed(evt);
+            }
+        });
+
+        jComboBoxSearchСriteriaSecond.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxSearchСriteriaSecondActionPerformed(evt);
             }
         });
 
@@ -621,6 +639,18 @@ public class Frame extends javax.swing.JFrame {
                     JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonUpdateTableClientsActionPerformed
+
+    private void jComboBoxAvailableCarsSearchСriteriaSecondActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAvailableCarsSearchСriteriaSecondActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxAvailableCarsSearchСriteriaSecondActionPerformed
+
+    private void jComboBoxRentedCarsSearchСriteriaSecondActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxRentedCarsSearchСriteriaSecondActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxRentedCarsSearchСriteriaSecondActionPerformed
+
+    private void jComboBoxSearchСriteriaSecondActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSearchСriteriaSecondActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxSearchСriteriaSecondActionPerformed
     private void doVivod(List<Client> listClients) {
         doClearTable();
 
