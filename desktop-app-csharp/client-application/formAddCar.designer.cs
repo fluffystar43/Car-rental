@@ -55,13 +55,13 @@ namespace client_application
             this.labelIDInfo.AutoSize = true;
             this.labelIDInfo.Location = new System.Drawing.Point(106, 289);
             this.labelIDInfo.Name = "labelIDInfo";
-            this.labelIDInfo.Size = new System.Drawing.Size(0, 17);
+            this.labelIDInfo.Size = new System.Drawing.Size(0, 16);
             this.labelIDInfo.TabIndex = 67;
             // 
             // comboBoxTransmission
             // 
             this.comboBoxTransmission.FormattingEnabled = true;
-            this.comboBoxTransmission.Location = new System.Drawing.Point(106, 175);
+            this.comboBoxTransmission.Location = new System.Drawing.Point(130, 167);
             this.comboBoxTransmission.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxTransmission.Name = "comboBoxTransmission";
             this.comboBoxTransmission.Size = new System.Drawing.Size(271, 24);
@@ -69,7 +69,7 @@ namespace client_application
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(256, 312);
+            this.buttonCancel.Location = new System.Drawing.Point(280, 304);
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(121, 33);
@@ -80,7 +80,7 @@ namespace client_application
             // 
             // buttonAddCar
             // 
-            this.buttonAddCar.Location = new System.Drawing.Point(106, 312);
+            this.buttonAddCar.Location = new System.Drawing.Point(130, 304);
             this.buttonAddCar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonAddCar.Name = "buttonAddCar";
             this.buttonAddCar.Size = new System.Drawing.Size(121, 33);
@@ -91,7 +91,7 @@ namespace client_application
             // comboBoxColor
             // 
             this.comboBoxColor.FormattingEnabled = true;
-            this.comboBoxColor.Location = new System.Drawing.Point(106, 211);
+            this.comboBoxColor.Location = new System.Drawing.Point(130, 203);
             this.comboBoxColor.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxColor.Name = "comboBoxColor";
             this.comboBoxColor.Size = new System.Drawing.Size(271, 24);
@@ -99,7 +99,7 @@ namespace client_application
             // 
             // textBoxClass
             // 
-            this.textBoxClass.Location = new System.Drawing.Point(106, 140);
+            this.textBoxClass.Location = new System.Drawing.Point(130, 132);
             this.textBoxClass.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxClass.Multiline = true;
             this.textBoxClass.Name = "textBoxClass";
@@ -108,7 +108,7 @@ namespace client_application
             // 
             // textBoxBrand
             // 
-            this.textBoxBrand.Location = new System.Drawing.Point(106, 105);
+            this.textBoxBrand.Location = new System.Drawing.Point(130, 97);
             this.textBoxBrand.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxBrand.Multiline = true;
             this.textBoxBrand.Name = "textBoxBrand";
@@ -117,7 +117,7 @@ namespace client_application
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(106, 68);
+            this.textBoxName.Location = new System.Drawing.Point(130, 60);
             this.textBoxName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxName.Multiline = true;
             this.textBoxName.Name = "textBoxName";
@@ -129,7 +129,7 @@ namespace client_application
             this.labelColor.AutoSize = true;
             this.labelColor.Location = new System.Drawing.Point(52, 211);
             this.labelColor.Name = "labelColor";
-            this.labelColor.Size = new System.Drawing.Size(45, 17);
+            this.labelColor.Size = new System.Drawing.Size(42, 16);
             this.labelColor.TabIndex = 59;
             this.labelColor.Text = "Цвет:";
             // 
@@ -138,34 +138,34 @@ namespace client_application
             this.labelTransmission.AutoSize = true;
             this.labelTransmission.Location = new System.Drawing.Point(3, 178);
             this.labelTransmission.Name = "labelTransmission";
-            this.labelTransmission.Size = new System.Drawing.Size(99, 17);
+            this.labelTransmission.Size = new System.Drawing.Size(124, 16);
             this.labelTransmission.TabIndex = 58;
-            this.labelTransmission.Text = "Трансмиссия:";
+            this.labelTransmission.Text = "Коробка передач:";
             // 
             // labelClass
             // 
             this.labelClass.AutoSize = true;
-            this.labelClass.Location = new System.Drawing.Point(47, 145);
+            this.labelClass.Location = new System.Drawing.Point(58, 145);
             this.labelClass.Name = "labelClass";
-            this.labelClass.Size = new System.Drawing.Size(51, 17);
+            this.labelClass.Size = new System.Drawing.Size(48, 16);
             this.labelClass.TabIndex = 57;
             this.labelClass.Text = "Класс:";
             // 
             // labelBrand
             // 
             this.labelBrand.AutoSize = true;
-            this.labelBrand.Location = new System.Drawing.Point(44, 108);
+            this.labelBrand.Location = new System.Drawing.Point(55, 110);
             this.labelBrand.Name = "labelBrand";
-            this.labelBrand.Size = new System.Drawing.Size(53, 17);
+            this.labelBrand.Size = new System.Drawing.Size(51, 16);
             this.labelBrand.TabIndex = 56;
             this.labelBrand.Text = "Бренд:";
             // 
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(19, 71);
+            this.labelName.Location = new System.Drawing.Point(44, 73);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(76, 17);
+            this.labelName.Size = new System.Drawing.Size(76, 16);
             this.labelName.TabIndex = 55;
             this.labelName.Text = "Название:";
             // 
@@ -174,13 +174,13 @@ namespace client_application
             this.labelVINnumber.AutoSize = true;
             this.labelVINnumber.Location = new System.Drawing.Point(21, 29);
             this.labelVINnumber.Name = "labelVINnumber";
-            this.labelVINnumber.Size = new System.Drawing.Size(79, 17);
+            this.labelVINnumber.Size = new System.Drawing.Size(76, 16);
             this.labelVINnumber.TabIndex = 69;
             this.labelVINnumber.Text = "VIN номер:";
             // 
             // textBoxVINnumber
             // 
-            this.textBoxVINnumber.Location = new System.Drawing.Point(106, 26);
+            this.textBoxVINnumber.Location = new System.Drawing.Point(130, 18);
             this.textBoxVINnumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxVINnumber.Multiline = true;
             this.textBoxVINnumber.Name = "textBoxVINnumber";
@@ -190,7 +190,7 @@ namespace client_application
             // comboBoxYearOfManufacture
             // 
             this.comboBoxYearOfManufacture.FormattingEnabled = true;
-            this.comboBoxYearOfManufacture.Location = new System.Drawing.Point(106, 240);
+            this.comboBoxYearOfManufacture.Location = new System.Drawing.Point(130, 232);
             this.comboBoxYearOfManufacture.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxYearOfManufacture.Name = "comboBoxYearOfManufacture";
             this.comboBoxYearOfManufacture.Size = new System.Drawing.Size(271, 24);
@@ -201,14 +201,14 @@ namespace client_application
             this.labelYearOfManufacture.AutoSize = true;
             this.labelYearOfManufacture.Location = new System.Drawing.Point(8, 240);
             this.labelYearOfManufacture.Name = "labelYearOfManufacture";
-            this.labelYearOfManufacture.Size = new System.Drawing.Size(94, 17);
+            this.labelYearOfManufacture.Size = new System.Drawing.Size(91, 16);
             this.labelYearOfManufacture.TabIndex = 71;
             this.labelYearOfManufacture.Text = "Год выпуска:";
             // 
             // comboBoxRate
             // 
             this.comboBoxRate.FormattingEnabled = true;
-            this.comboBoxRate.Location = new System.Drawing.Point(106, 272);
+            this.comboBoxRate.Location = new System.Drawing.Point(130, 264);
             this.comboBoxRate.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxRate.Name = "comboBoxRate";
             this.comboBoxRate.Size = new System.Drawing.Size(271, 24);
@@ -220,7 +220,7 @@ namespace client_application
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(41, 272);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 17);
+            this.label3.Size = new System.Drawing.Size(54, 16);
             this.label3.TabIndex = 73;
             this.label3.Text = "Тариф:";
             // 
@@ -229,7 +229,7 @@ namespace client_application
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(393, 363);
+            this.ClientSize = new System.Drawing.Size(466, 380);
             this.Controls.Add(this.comboBoxRate);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBoxYearOfManufacture);

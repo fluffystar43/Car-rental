@@ -54,6 +54,8 @@ namespace client_application
             this.textBoxResultCost = new System.Windows.Forms.TextBox();
             this.buttonAddOrder = new System.Windows.Forms.Button();
             this.buttonClose = new System.Windows.Forms.Button();
+            this.textBoxEmail = new System.Windows.Forms.TextBox();
+            this.labelEmail = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCountDays)).BeginInit();
             this.groupBoxAboutRent.SuspendLayout();
             this.groupBoxPersonalData.SuspendLayout();
@@ -65,7 +67,7 @@ namespace client_application
             this.labelNameCar.AutoSize = true;
             this.labelNameCar.Location = new System.Drawing.Point(79, 43);
             this.labelNameCar.Name = "labelNameCar";
-            this.labelNameCar.Size = new System.Drawing.Size(91, 17);
+            this.labelNameCar.Size = new System.Drawing.Size(90, 16);
             this.labelNameCar.TabIndex = 0;
             this.labelNameCar.Text = "Автомобиль:";
             // 
@@ -74,7 +76,7 @@ namespace client_application
             this.labelFamilyName.AutoSize = true;
             this.labelFamilyName.Location = new System.Drawing.Point(97, 50);
             this.labelFamilyName.Name = "labelFamilyName";
-            this.labelFamilyName.Size = new System.Drawing.Size(74, 17);
+            this.labelFamilyName.Size = new System.Drawing.Size(69, 16);
             this.labelFamilyName.TabIndex = 1;
             this.labelFamilyName.Text = "Фамилия:";
             // 
@@ -83,7 +85,7 @@ namespace client_application
             this.labelName.AutoSize = true;
             this.labelName.Location = new System.Drawing.Point(132, 84);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(39, 17);
+            this.labelName.Size = new System.Drawing.Size(36, 16);
             this.labelName.TabIndex = 2;
             this.labelName.Text = "Имя:";
             // 
@@ -92,7 +94,7 @@ namespace client_application
             this.labelPatronymic.AutoSize = true;
             this.labelPatronymic.Location = new System.Drawing.Point(96, 118);
             this.labelPatronymic.Name = "labelPatronymic";
-            this.labelPatronymic.Size = new System.Drawing.Size(75, 17);
+            this.labelPatronymic.Size = new System.Drawing.Size(73, 16);
             this.labelPatronymic.TabIndex = 3;
             this.labelPatronymic.Text = "Отчество:";
             // 
@@ -101,7 +103,7 @@ namespace client_application
             this.labelPassportData.AutoSize = true;
             this.labelPassportData.Location = new System.Drawing.Point(81, 150);
             this.labelPassportData.Name = "labelPassportData";
-            this.labelPassportData.Size = new System.Drawing.Size(90, 34);
+            this.labelPassportData.Size = new System.Drawing.Size(88, 32);
             this.labelPassportData.TabIndex = 4;
             this.labelPassportData.Text = "Паспортные\r\nданные:";
             this.labelPassportData.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -111,7 +113,7 @@ namespace client_application
             this.labelDriversLicense.AutoSize = true;
             this.labelDriversLicense.Location = new System.Drawing.Point(59, 188);
             this.labelDriversLicense.Name = "labelDriversLicense";
-            this.labelDriversLicense.Size = new System.Drawing.Size(112, 34);
+            this.labelDriversLicense.Size = new System.Drawing.Size(112, 32);
             this.labelDriversLicense.TabIndex = 5;
             this.labelDriversLicense.Text = "Водительское \r\nудостоверение:";
             this.labelDriversLicense.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -121,7 +123,7 @@ namespace client_application
             this.labelNumberPhone.AutoSize = true;
             this.labelNumberPhone.Location = new System.Drawing.Point(46, 232);
             this.labelNumberPhone.Name = "labelNumberPhone";
-            this.labelNumberPhone.Size = new System.Drawing.Size(125, 17);
+            this.labelNumberPhone.Size = new System.Drawing.Size(122, 16);
             this.labelNumberPhone.TabIndex = 6;
             this.labelNumberPhone.Text = "Номер телефона:";
             // 
@@ -130,7 +132,7 @@ namespace client_application
             this.labelRates.AutoSize = true;
             this.labelRates.Location = new System.Drawing.Point(112, 83);
             this.labelRates.Name = "labelRates";
-            this.labelRates.Size = new System.Drawing.Size(56, 17);
+            this.labelRates.Size = new System.Drawing.Size(54, 16);
             this.labelRates.TabIndex = 8;
             this.labelRates.Text = "Тариф:";
             // 
@@ -139,7 +141,7 @@ namespace client_application
             this.labelResultCost.AutoSize = true;
             this.labelResultCost.Location = new System.Drawing.Point(26, 30);
             this.labelResultCost.Name = "labelResultCost";
-            this.labelResultCost.Size = new System.Drawing.Size(145, 17);
+            this.labelResultCost.Size = new System.Drawing.Size(143, 16);
             this.labelResultCost.TabIndex = 9;
             this.labelResultCost.Text = "Итоговая стоимость:";
             // 
@@ -148,7 +150,7 @@ namespace client_application
             this.labelCountDays.AutoSize = true;
             this.labelCountDays.Location = new System.Drawing.Point(42, 123);
             this.labelCountDays.Name = "labelCountDays";
-            this.labelCountDays.Size = new System.Drawing.Size(126, 17);
+            this.labelCountDays.Size = new System.Drawing.Size(123, 16);
             this.labelCountDays.TabIndex = 10;
             this.labelCountDays.Text = "Количество дней:";
             // 
@@ -262,6 +264,8 @@ namespace client_application
             // 
             // groupBoxPersonalData
             // 
+            this.groupBoxPersonalData.Controls.Add(this.textBoxEmail);
+            this.groupBoxPersonalData.Controls.Add(this.labelEmail);
             this.groupBoxPersonalData.Controls.Add(this.textBoxNumberPhone);
             this.groupBoxPersonalData.Controls.Add(this.labelFamilyName);
             this.groupBoxPersonalData.Controls.Add(this.labelName);
@@ -321,6 +325,23 @@ namespace client_application
             this.buttonClose.UseVisualStyleBackColor = true;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
+            // textBoxEmail
+            // 
+            this.textBoxEmail.Location = new System.Drawing.Point(176, 271);
+            this.textBoxEmail.Name = "textBoxEmail";
+            this.textBoxEmail.ShortcutsEnabled = false;
+            this.textBoxEmail.Size = new System.Drawing.Size(238, 22);
+            this.textBoxEmail.TabIndex = 21;
+            // 
+            // labelEmail
+            // 
+            this.labelEmail.AutoSize = true;
+            this.labelEmail.Location = new System.Drawing.Point(112, 271);
+            this.labelEmail.Name = "labelEmail";
+            this.labelEmail.Size = new System.Drawing.Size(44, 16);
+            this.labelEmail.TabIndex = 20;
+            this.labelEmail.Text = "Email:";
+            // 
             // formAddOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -376,5 +397,7 @@ namespace client_application
         private System.Windows.Forms.Button buttonAddOrder;
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.TextBox textBoxResultCost;
+        private System.Windows.Forms.TextBox textBoxEmail;
+        private System.Windows.Forms.Label labelEmail;
     }
 }
