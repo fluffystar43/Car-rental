@@ -97,18 +97,7 @@ namespace client_application
         /// <summary>
         /// Загрузка данных
         /// </summary>
-        private void LoadData(String strSQL, DataGridView dataGridView, ComboBox comboBoxFirst, Label labelInfo)
-        {
-            //using (NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString))
-            //{
-            //    try
-            //    {
-            //        npgSqlConnection.Open();
-            //        NpgsqlCommand cmd = new NpgsqlCommand(strSQL, npgSqlConnection);
-            //        using (NpgsqlDataReader reader = cmd.ExecuteReader())
-            //        {
-            //            DataGridViewAddCells(dataGridView, reader, new String[] { "name", "brand", "classcar", "transmission", "color" }, labelInfo);
-            //        }
+        
 
             //        if (comboBoxFirst.Items.Count == 0)
             //        {
