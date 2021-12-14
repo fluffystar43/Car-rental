@@ -337,49 +337,7 @@ namespace client_application
 
         private void comboBoxListCarsFirst_SelectedValueChanged(object sender, EventArgs e)
         {
-            //if (comboBoxListCarsFirst.SelectedItem != null)
-            //{
-            //    comboBoxListCarsSecond.Items.Clear();
-            //    LoadData("SELECT * FROM car WHERE deleted = false", dataGridViewListCars, comboBoxListCarsFirst, labelListCarsInfo);
-            //    using (NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString))
-            //    {
-            //        npgSqlConnection.Open();
-            //        String strSQL = "SELECT * FROM car WHERE deleted = false";
-            //        NpgsqlCommand cmd = new NpgsqlCommand(strSQL, npgSqlConnection);
-            //        using (NpgsqlDataReader reader = cmd.ExecuteReader())
-            //        {
-            //            attribut = null;
-            //            if (comboBoxListCarsFirst.SelectedItem.ToString() == "Название")
-            //            {
-            //                ComboBoxAddItems(comboBoxListCarsSecond, "name", reader);
-            //                attribut = "name";
-            //            }
-            //            else if (comboBoxListCarsFirst.SelectedItem.ToString() == "Бренд")
-            //            {
-            //                ComboBoxAddItems(comboBoxListCarsSecond, "brand", reader);
-            //                attribut = "brand";
-            //            }
-            //            else if (comboBoxListCarsFirst.SelectedItem.ToString() == "Класс")
-            //            {
-            //                ComboBoxAddItems(comboBoxListCarsSecond, "classcar", reader);
-            //                attribut = "classcar";
-            //            }
-            //            else if (comboBoxListCarsFirst.SelectedItem.ToString() == "Коробка передач")
-            //            {
-            //                ComboBoxAddItems(comboBoxListCarsSecond, "transmission", reader);
-            //                attribut = "transmission";
-            //            }
-            //            else if (comboBoxListCarsFirst.SelectedItem.ToString() == "Цвет")
-            //            {
-            //                ComboBoxAddItems(comboBoxListCarsSecond, "color", reader);
-            //                attribut = "color";
-            //            }
-            //        }
-            //        npgSqlConnection.Close();
-            //    }
-            //    labelSelectCriterionListCarsSecond.Visible = true;
-            //    comboBoxListCarsSecond.Visible = true;
-            //}
+            
         }
         private void comboBoxListCarsSecond_SelectedValueChanged(object sender, EventArgs e)
         {
