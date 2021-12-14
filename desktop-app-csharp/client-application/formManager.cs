@@ -94,27 +94,6 @@ namespace client_application
         //    }
         //}
 
-        /// <summary>
-        /// Загрузка данных
-        /// </summary>
-        
-
-            //        if (comboBoxFirst.Items.Count == 0)
-            //        {
-            //            for (int i = 0; i < dataGridView.Columns.Count; i++)
-            //            {
-            //                comboBoxFirst.Items.Add(dataGridView.Columns[i].HeaderText);
-            //            }
-            //        }
-            //        npgSqlConnection.Close();
-            //    }
-            //    catch (NpgsqlException ex)
-            //    {
-            //        MessageBox.Show(ex.Message);
-            //    }
-            //}
-        }
-
         private void DataLoad(String strSQL, DataGridView dataGridView, String[] column, Label labelInfo)
         {
             //using (NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString))
@@ -142,7 +121,7 @@ namespace client_application
 
         private void tabPageCarsNotInRent_Enter(object sender, EventArgs e)
         {
-            LoadData("SELECT * FROM car WHERE rented = false AND deleted = false", dataGridViewListCarsNotInRent, comboBoxListCarsFirst, labelAvailableListCars);
+            //LoadData("SELECT * FROM car WHERE rented = false AND deleted = false", dataGridViewListCarsNotInRent, comboBoxListCarsFirst, labelAvailableListCars);
             dataGridViewListCarsNotInRent.ClearSelection();
         }
 
@@ -230,7 +209,7 @@ namespace client_application
             if (comboBoxAvailableCarsSecond.SelectedItem != null)
                 comboBoxAvailableCarsSecond_SelectedValueChanged(comboBoxAvailableCarsSecond, null);
             else
-                LoadData($"SELECT * FROM car WHERE rented = false AND deleted = false", dataGridViewListCarsNotInRent, comboBoxAvailableCarsFirst, labelAvailableListCars);
+                //LoadData($"SELECT * FROM car WHERE rented = false AND deleted = false", dataGridViewListCarsNotInRent, comboBoxAvailableCarsFirst, labelAvailableListCars);
             buttonAddOrder.Enabled = false;
             dataGridViewListCarsNotInRent.ClearSelection();
         }
