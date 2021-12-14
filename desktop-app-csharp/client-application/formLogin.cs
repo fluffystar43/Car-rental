@@ -17,11 +17,6 @@ namespace client_application
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonEnter_Click(object sender, EventArgs e)
         {
             formManager formManager = new formManager();

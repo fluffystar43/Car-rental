@@ -65,7 +65,7 @@ namespace client_application
         //    dataGridView.ClearSelection();
         //}
 
-        /
+        
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             Close();
