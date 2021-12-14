@@ -83,38 +83,7 @@ namespace client_application
         //    }
         //    dataGridView.ClearSelection();
         //}
-
-        /// <summary>
-        /// Загрузка данных
-        /// </summary>
-        private void LoadData(String strSQL, DataGridView dataGridView, ComboBox comboBoxFirst, Label labelInfo)
-        {
-            //using (NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString))
-            //{
-            //    try
-            //    {
-            //        npgSqlConnection.Open();
-            //        NpgsqlCommand cmd = new NpgsqlCommand(strSQL, npgSqlConnection);
-            //        using (NpgsqlDataReader reader = cmd.ExecuteReader())
-            //        {
-            //            DataGridViewAddCells(dataGridView, reader, new String[] { "name", "brand", "classcar", "transmission", "color" }, labelInfo);
-            //        }
-
-            //        if (comboBoxFirst.Items.Count == 0)
-            //        {
-            //            for (int i = 0; i < dataGridView.Columns.Count; i++)
-            //            {
-            //                comboBoxFirst.Items.Add(dataGridView.Columns[i].HeaderText);
-            //            }
-            //        }
-            //        npgSqlConnection.Close();
-            //    }
-            //    catch (NpgsqlException ex)
-            //    {
-            //        MessageBox.Show(ex.Message);
-            //    }
-            //}
-        }
+               
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
