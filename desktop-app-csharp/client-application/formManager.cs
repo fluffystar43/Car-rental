@@ -316,7 +316,7 @@ namespace client_application
 
         private void tabPageListCars_Enter(object sender, EventArgs e)
         {
-            LoadData("SELECT * FROM car WHERE deleted = false", dataGridViewListCars, comboBoxListCarsFirst, labelListCarsInfo);
+            //LoadData("SELECT * FROM car WHERE deleted = false", dataGridViewListCars, comboBoxListCarsFirst, labelListCarsInfo);
             dataGridViewListCars.ClearSelection();
         }
 
