@@ -116,11 +116,6 @@ namespace client_application
                 comboBoxRates_Click(comboBoxRates, null);
         }
 
-        private void comboBoxCars_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void comboBoxCars_SelectedValueChanged(object sender, EventArgs e)
         {
             if (comboBoxRates.SelectedItem != null)

@@ -172,7 +172,7 @@ namespace client_application
             this.comboBoxCars.Size = new System.Drawing.Size(238, 24);
             this.comboBoxCars.TabIndex = 12;
             this.comboBoxCars.SelectedValueChanged += new System.EventHandler(this.comboBoxCars_SelectedValueChanged);
-            this.comboBoxCars.Click += new System.EventHandler(this.comboBoxCars_Click);
+ 
             // 
             // numericUpDownCountDays
             // 
