@@ -351,7 +351,7 @@ namespace client_application
             //        DataGridViewAddCells(dataGridViewListCars, reader, new String[] { "name", "brand", "classcar", "transmission", "color" }, labelListCarsInfo);
             //    }
             //    npgSqlConnection.Close();
-            // }
+           
         }
 
         private void buttonListCarsUpdate_Click(object sender, EventArgs e)
