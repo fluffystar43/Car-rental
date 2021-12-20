@@ -1,6 +1,7 @@
 package types;
+import java.io.Serializable;
 
-public class Car {
+public class Car implements Serializable {
 
     /**
      * Идентификатор Марка Модель Класс Коробка передач Мощность двигателя
@@ -18,7 +19,9 @@ public class Car {
     private short bodyId;
     private short yearManufacture;
     private Boolean isDeleted;
-    private String VIN;
+    private String registrationNumber;
+    private Boolean isRented;
+    private String vin;
 
     public Car() {
         this.isDeleted = false;
@@ -34,7 +37,9 @@ public class Car {
             short driveId,
             short bodyId,
             short yearManufacture,
-            String VIN) {
+            String registrationNumber,
+            Boolean isRented,
+            String vin) {
         this.brandId = brandId;
         this.modelId = modelId;
         this.carClassId = carClassId;
@@ -45,8 +50,10 @@ public class Car {
         this.driveId = driveId;
         this.bodyId = bodyId;
         this.yearManufacture = yearManufacture;
-        this.VIN = VIN;
         this.isDeleted = false;
+        this.registrationNumber = registrationNumber;
+        this.isRented = isRented;
+        this.vin = vin;
     }
 
     public Car(long id,
@@ -60,7 +67,10 @@ public class Car {
             short driveId,
             short bodyId,
             short yearManufacture,
-            String VIN) {
+            String registrationNumber,
+            Boolean isRented,
+            Boolean isDeleted,
+            String vin) {
         this(brandId,
                 modelId,
                 carClassId,
@@ -70,9 +80,12 @@ public class Car {
                 rentalPrice,
                 driveId,
                 bodyId,
-                yearManufacture, VIN);
+                yearManufacture,
+                registrationNumber,
+                isRented,
+                vin);
         this.id = id;
-        this.isDeleted = false;
+        this.isDeleted = isDeleted;
     }
 
     public long getId() {
@@ -171,11 +184,28 @@ public class Car {
         this.isDeleted = isDeleted;
     }
 
-    public String getVIN() {
-        return VIN;
+    public String getRegistrationNumber() {
+        return registrationNumber;
     }
 
-    public void setVIN(String VIN) {
-        this.VIN = VIN;
+    public void setRegistrationNumber(String registrationNumber) {
+        this.registrationNumber = registrationNumber;
     }
+
+    public Boolean getIsRented() {
+        return isRented;
+    }
+
+    public void setIsRented(Boolean isRented) {
+        this.isRented = isRented;
+    }
+
+    public String getVin() {
+        return vin;
+    }
+
+    public void setVin(String vin) {
+        this.vin = vin;
+    }
+    
 }
