@@ -393,7 +393,7 @@ namespace client_application
             //            NpgsqlCommand cmd = new NpgsqlCommand(strSQL, npgSqlConnection);
             //            if (cmd.ExecuteNonQuery() == 1)
             //            {
-            //                
+            //                String str = "SELECT * FROM car WHERE deleted = false ORDER BY idcar";
             //                DataGridView dataGrid = dataGridViewListCars;
             //                ComboBox comboBox = comboBoxListCarsFirst;
             //                LoadData(str, dataGrid, comboBox, labelListCarsInfo);
