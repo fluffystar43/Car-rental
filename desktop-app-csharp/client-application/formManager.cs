@@ -397,7 +397,7 @@ namespace client_application
             //                DataGridView dataGrid = dataGridViewListCars;
             //                ComboBox comboBox = comboBoxListCarsFirst;
             //                LoadData(str, dataGrid, comboBox, labelListCarsInfo);
-            //                
+            //                MessageBox.Show($"Автомобиль {name} удалён!");
             //            }
             //            npgSqlConnection.Close();
             //        }
