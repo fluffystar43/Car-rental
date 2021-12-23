@@ -468,9 +468,7 @@ namespace client_application
             this.dataGridViewListCars.ClearSelection();
         }
 
-        /// <summary>
-        /// Для вкладки "Клиенты"
-        /// </summary>
+        
 
         private void buttonUpdateClient_Click(object sender, EventArgs e)
         {
