@@ -512,7 +512,7 @@ namespace client_application
 
         private void buttonDeleteClient_Click(object sender, EventArgs e)
         {
-            //if (rowIndexClient != -1)
+            
             //{
             //    using (NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString))
             //    {
