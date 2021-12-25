@@ -1,8 +1,23 @@
 package client;
 
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.stream.Stream;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import service.endpoint.ClientServiceService;
 import types.Client;
 
@@ -74,6 +89,7 @@ public class Frame extends javax.swing.JFrame {
         jButtonEditDataClient = new javax.swing.JButton();
         jButtonUpdateTableClients = new javax.swing.JButton();
         jButtonBlockClient = new javax.swing.JButton();
+        jButtonExportClientsToPDF = new javax.swing.JButton();
 
         jDialogLogin.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jDialogLogin.setTitle("Авторизация");
@@ -596,6 +612,13 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
+        jButtonExportClientsToPDF.setText("Экспортировать данные в PDF");
+        jButtonExportClientsToPDF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExportClientsToPDFActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelClientsLayout = new javax.swing.GroupLayout(jPanelClients);
         jPanelClients.setLayout(jPanelClientsLayout);
         jPanelClientsLayout.setHorizontalGroup(
@@ -603,9 +626,10 @@ public class Frame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelClientsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelClientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPaneClients)
+                    .addComponent(jScrollPaneClients, javax.swing.GroupLayout.DEFAULT_SIZE, 838, Short.MAX_VALUE)
                     .addGroup(jPanelClientsLayout.createSequentialGroup()
-                        .addGap(0, 479, Short.MAX_VALUE)
+                        .addComponent(jButtonExportClientsToPDF)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanelClientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButtonBlockClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonEditDataClient, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
@@ -621,7 +645,9 @@ public class Frame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelClientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButtonUpdateTableClients, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                    .addComponent(jButtonEditDataClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanelClientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonEditDataClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonExportClientsToPDF, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonBlockClient, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12))
@@ -657,7 +683,7 @@ public class Frame extends javax.swing.JFrame {
 
     private void jPanelClientsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelClientsMouseClicked
         try {
-            model = (DefaultTableModel)jTableClients.getModel(); 
+            model = (DefaultTableModel) jTableClients.getModel();
             doVivod(clientService.getClientServicePort().getListOfClients());
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -670,7 +696,7 @@ public class Frame extends javax.swing.JFrame {
 
     private void jButtonUpdateTableClientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateTableClientsActionPerformed
         try {
-            model = (DefaultTableModel)jTableClients.getModel(); 
+            model = (DefaultTableModel) jTableClients.getModel();
             doVivod(clientService.getClientServicePort().getListOfClients());
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -723,6 +749,71 @@ public class Frame extends javax.swing.JFrame {
     private void jButtonDeleteCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteCarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonDeleteCarActionPerformed
+
+    private void jButtonExportClientsToPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportClientsToPDFActionPerformed
+
+        // Получаем список клиентов
+        List<Client> clients = new ArrayList<Client>();
+        clients = clientService.getClientServicePort().getListOfClients();
+
+        // Создаем документ
+        Document document = new Document();
+        TableModel tableClientsModel = jTableClients.getModel();
+
+        System.out.print(tableClientsModel.getColumnName(1));
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream("iTextTable.pdf"));
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (DocumentException ex) {
+            Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        // Открываем созданный документ для изменения данных
+        document.open();
+
+        // Создаем таблицу и добавляем в нее данные
+        PdfPTable table = new PdfPTable(jTableClients.getModel().getColumnCount());
+        addTableHeader(table, tableClientsModel);
+        addRows(table);
+
+        try {
+            document.add(table);
+        } catch (DocumentException ex) {
+            Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        document.close();
+    }//GEN-LAST:event_jButtonExportClientsToPDFActionPerformed
+
+    private void addTableHeader(PdfPTable table, TableModel tableModel) {
+        String[] array = new String[tableModel.getColumnCount()];
+
+        for (int i = 0; i < tableModel.getColumnCount(); i++) {
+            System.out.print(tableModel.getColumnName(i));
+            array[i] = tableModel.getColumnName(i);
+        }
+        System.out.print(array.toString());
+        Stream.of("aхахахах34345", "a1", "a1", "a1", "a1", "a1", "a1", "a1")
+                .forEach(columnTitle -> {
+                    PdfPCell header = new PdfPCell();
+                    header.setBackgroundColor(BaseColor.LIGHT_GRAY);
+                    header.setBorderWidth(2);
+                    header.setPhrase(new Phrase(columnTitle));
+                    table.addCell(header);
+                });
+    }
+
+    private void addRows(PdfPTable table) {
+        table.addCell("row 1, col 1");
+        table.addCell("row 1, col 2");
+        table.addCell("row 1, col 3");
+        table.addCell("row 1, col 3");
+        table.addCell("row 1, col 3");
+        table.addCell("row 1, col 3");
+        table.addCell("row 1, col 3");
+        table.addCell("row 1, col 3");
+    }
+
     private void doVivod(List<Client> listClients) {
         doClearTable();
 
@@ -795,6 +886,7 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JButton jButtonEditDataClient;
     private javax.swing.JButton jButtonEditDataOrder;
     private javax.swing.JButton jButtonEnter1;
+    private javax.swing.JButton jButtonExportClientsToPDF;
     private javax.swing.JButton jButtonRentedCarsCloseOrder;
     private javax.swing.JButton jButtonRentedCarsUpdateTable;
     private javax.swing.JButton jButtonUpdateTableClients;

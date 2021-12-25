@@ -733,9 +733,10 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jScrollPaneClients" max="32767" attributes="0"/>
+                          <Component id="jScrollPaneClients" pref="838" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <EmptySpace min="0" pref="479" max="32767" attributes="0"/>
+                              <Component id="jButtonExportClientsToPDF" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jButtonBlockClient" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jButtonEditDataClient" alignment="0" pref="190" max="32767" attributes="0"/>
@@ -756,7 +757,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jButtonUpdateTableClients" alignment="0" pref="32" max="32767" attributes="0"/>
-                          <Component id="jButtonEditDataClient" alignment="0" max="32767" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                              <Component id="jButtonEditDataClient" alignment="3" max="32767" attributes="0"/>
+                              <Component id="jButtonExportClientsToPDF" alignment="3" pref="32" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButtonBlockClient" min="-2" pref="34" max="-2" attributes="0"/>
@@ -813,6 +817,14 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonBlockClientActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonExportClientsToPDF">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x42d;&#x43a;&#x441;&#x43f;&#x43e;&#x440;&#x442;&#x438;&#x440;&#x43e;&#x432;&#x430;&#x442;&#x44c; &#x434;&#x430;&#x43d;&#x43d;&#x44b;&#x435; &#x432; PDF"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonExportClientsToPDFActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
