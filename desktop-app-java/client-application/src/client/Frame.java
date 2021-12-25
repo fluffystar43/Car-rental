@@ -4,11 +4,20 @@ import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfEncodings;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,6 +27,7 @@ import java.util.stream.Stream;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import org.apache.pdfbox.pdmodel.font.encoding.StandardEncoding;
 import service.endpoint.ClientServiceService;
 import types.Client;
 
@@ -762,7 +772,8 @@ public class Frame extends javax.swing.JFrame {
 
         System.out.print(tableClientsModel.getColumnName(1));
         try {
-            PdfWriter.getInstance(document, new FileOutputStream("iTextTable.pdf"));
+            
+            PdfWriter.getInstance(document, new FileOutputStream("file.pdf"));
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
         } catch (DocumentException ex) {
@@ -785,6 +796,24 @@ public class Frame extends javax.swing.JFrame {
         document.close();
     }//GEN-LAST:event_jButtonExportClientsToPDFActionPerformed
 
+    // Java 8 - Files.newBufferedWriter(path) - default UTF-8
+    public static void writeUnicodeJava8(String fileName, List<String> lines) {
+
+        Path path = Paths.get(fileName);
+
+        try (BufferedWriter writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {
+
+            for (String line : lines) {
+                writer.append(line);
+                writer.newLine();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    
     private void addTableHeader(PdfPTable table, TableModel tableModel) {
         String[] array = new String[tableModel.getColumnCount()];
 
@@ -792,13 +821,14 @@ public class Frame extends javax.swing.JFrame {
             System.out.print(tableModel.getColumnName(i));
             array[i] = tableModel.getColumnName(i);
         }
-        System.out.print(array.toString());
+
         Stream.of("aхахахах34345", "a1", "a1", "a1", "a1", "a1", "a1", "a1")
                 .forEach(columnTitle -> {
                     PdfPCell header = new PdfPCell();
                     header.setBackgroundColor(BaseColor.LIGHT_GRAY);
                     header.setBorderWidth(2);
                     header.setPhrase(new Phrase(columnTitle));
+                    System.out.print(header);
                     table.addCell(header);
                 });
     }
