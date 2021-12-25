@@ -801,7 +801,7 @@ public class Frame extends javax.swing.JFrame {
 
         Path path = Paths.get(fileName);
 
-        try (BufferedWriter writer = Files.newBufferedWriter(path, StandardCharsets.UT)) {
+        try (BufferedWriter writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {
 
             for (String line : lines) {
                 writer.append(line);
