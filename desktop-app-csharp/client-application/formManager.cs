@@ -777,6 +777,7 @@ namespace client_application
                     }
                     workbook.SaveAs($@"{sfd.FileName}");
                     workbook.Close();
+                    excel.Quit();
                     
                 }
                 catch (Exception ex)
