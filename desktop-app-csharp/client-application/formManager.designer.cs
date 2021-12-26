@@ -116,6 +116,7 @@ namespace client_application
             this.buttonListCarsEdit = new System.Windows.Forms.Button();
             this.buttonListCarsAdd = new System.Windows.Forms.Button();
             this.tabControlMain = new System.Windows.Forms.TabControl();
+            this.buttonExportToPDF = new System.Windows.Forms.Button();
             this.tabPageClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClients)).BeginInit();
             this.tabPageOrders.SuspendLayout();
@@ -133,6 +134,7 @@ namespace client_application
             // 
             // tabPageClients
             // 
+            this.tabPageClients.Controls.Add(this.buttonExportToPDF);
             this.tabPageClients.Controls.Add(this.dataGridViewClients);
             this.tabPageClients.Controls.Add(this.buttonDeleteClient);
             this.tabPageClients.Controls.Add(this.buttonEditClient);
@@ -995,6 +997,17 @@ namespace client_application
             this.tabControlMain.TabIndex = 1;
             this.tabControlMain.SelectedIndexChanged += new System.EventHandler(this.tabControlMain_SelectedIndexChanged);
             // 
+            // buttonExportToPDF
+            // 
+            this.buttonExportToPDF.Location = new System.Drawing.Point(10, 451);
+            this.buttonExportToPDF.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonExportToPDF.Name = "buttonExportToPDF";
+            this.buttonExportToPDF.Size = new System.Drawing.Size(261, 35);
+            this.buttonExportToPDF.TabIndex = 18;
+            this.buttonExportToPDF.Text = "Экспорт данных в PDF";
+            this.buttonExportToPDF.UseVisualStyleBackColor = true;
+            this.buttonExportToPDF.Click += new System.EventHandler(this.buttonExportToPDF_Click);
+            // 
             // formManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -1109,5 +1122,6 @@ namespace client_application
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
+        private System.Windows.Forms.Button buttonExportToPDF;
     }
 }

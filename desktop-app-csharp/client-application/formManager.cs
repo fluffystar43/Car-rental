@@ -1,4 +1,7 @@
-﻿using System;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace client_application
@@ -210,7 +213,7 @@ namespace client_application
                 comboBoxAvailableCarsSecond_SelectedValueChanged(comboBoxAvailableCarsSecond, null);
             else
                 //LoadData($"SELECT * FROM car WHERE rented = false AND deleted = false", dataGridViewListCarsNotInRent, comboBoxAvailableCarsFirst, labelAvailableListCars);
-            buttonAddOrder.Enabled = false;
+                buttonAddOrder.Enabled = false;
             dataGridViewListCarsNotInRent.ClearSelection();
         }
 
@@ -337,7 +340,7 @@ namespace client_application
 
         private void comboBoxListCarsFirst_SelectedValueChanged(object sender, EventArgs e)
         {
-            
+
         }
         private void comboBoxListCarsSecond_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -631,6 +634,81 @@ namespace client_application
             formAddCar formAddCar = new formAddCar(dataGridViewListCars, comboBoxListCarsFirst, labelListCarsInfo);
             formAddCar.Show();
             Hide();
+        }
+
+        private void buttonExportToPDF_Click(object sender, EventArgs e)
+        {
+            arrayClients = service.getListOfClients();
+
+            // Создаем объект документа с альбомной ориентацией
+            Document doc = new Document();
+            doc.SetPageSize(PageSize.A4.Rotate());
+
+            // Создаем документ
+            try
+            {
+                PdfWriter.GetInstance(doc, new FileStream("pdfTables.pdf", FileMode.Create));
+            }
+            catch
+            {
+                MessageBox.Show("Закроейте уже созданный документ!", "Внимание!");
+                return;
+            }
+
+            //Открываем документ
+            doc.Open();
+
+            // Определение шрифта необходимо для сохранения кириллического текста
+            // Иначе мы не увидим кириллический текст
+            // Если мы работаем только с англоязычными текстами, то шрифт можно не указывать
+            BaseFont baseFont = BaseFont.CreateFont("C:\\Windows\\Fonts\\arial.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+            Font font = new iTextSharp.text.Font(baseFont, iTextSharp.text.Font.DEFAULTSIZE, iTextSharp.text.Font.NORMAL);
+
+            // Создаем объект таблицы с определенным количеством столбцов
+            PdfPTable table = new PdfPTable(dataGridViewClients.Columns.Count-2) { WidthPercentage = 105 };
+
+            // Указываем размеры таблицы
+            float[] widths = new float[] { 10f, 40f, 30f, 40f, 30f, 40f };
+            table.SetWidths(widths);
+            table.SetTotalWidth(widths);
+
+            // Добавление заголовков таблицы
+            for (int j = 0; j < dataGridViewClients.Columns.Count; j++)
+            {
+                if (j == 0)
+                {
+                    PdfPCell cell = new PdfPCell(new Phrase(new Phrase("№", font)));
+                    cell.BackgroundColor = BaseColor.LIGHT_GRAY;
+                    table.AddCell(cell);
+                }
+                    
+                if (j != 3 && j != 4 && j != 5)
+                {
+                    PdfPCell cell = new PdfPCell(new Phrase(new Phrase(dataGridViewClients.Columns[j].HeaderText, font)));
+                    cell.BackgroundColor = BaseColor.LIGHT_GRAY;
+                    table.AddCell(cell);
+                }
+                if (j == 7) break;
+            }
+
+            // Добавляем записи в таблицу
+            uint i = 0;
+            foreach (localhost.client person in arrayClients)
+            {
+                i++;
+                table.AddCell(new Phrase(i.ToString(), font));
+                table.AddCell(new Phrase(person.secondName.ToString(), font));
+                table.AddCell(new Phrase(person.firstName.ToString(), font));
+                table.AddCell(new Phrase(person.middleName.ToString(), font));
+                table.AddCell(new Phrase(person.phoneNumber.ToString(), font));
+                table.AddCell(new Phrase(person.email.ToString(), font));
+            }
+
+            // Добавляем таблицу и закрывает документ
+            doc.Add(table);
+            doc.Close();
+
+            MessageBox.Show("Pdf-документ сохранен", "Успешно!");
         }
     }
 }
