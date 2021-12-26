@@ -86,17 +86,15 @@ public class ClientService implements ClientOperation {
     public void updateClient(Client client) {
         CompletableFuture.runAsync(() -> {
             try {
-                UpdateClientAsync(client);
+                updateClientAsync(client);
             } catch (SQLException ex) {
                 Logger.getLogger(ClientService.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }
 
-    private void UpdateClientAsync(Client client) throws SQLException {
-
+    private void updateClientAsync(Client client) throws SQLException {
         try {
-
             PreparedStatement statement = connection.prepareStatement
                     ("UPDATE client SET "
                             + "second_name = ?, "

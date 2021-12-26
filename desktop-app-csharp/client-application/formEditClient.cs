@@ -9,10 +9,12 @@ namespace client_application
 {
     public partial class formEditClient : Form
     {
-        String connectionString = "database=rentcarsdb;server=localhost;port=5432;uid=postgres;password=pass;";
         private string nameForUpdateClient;
         private int rowIndexClient;
         private DataGridView dataGridViewClient;
+
+        localhost.ClientServiceService service = new localhost.ClientServiceService();
+        localhost.client[] arrayClients;
 
         public formEditClient(string nameForUpdateClient, int rowIndexClient, DataGridView dataGridViewClient)
         {
@@ -67,34 +69,13 @@ namespace client_application
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-            //using (NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString))
-            //{
-            //    try
-            //    {
-            //        string name = nameForUpdateClient;
-            //        npgSqlConnection.Open();
-            //        String strSQL = $"UPDATE client SET passportdata='{textBoxPassportData.Text}', driverslicense='{textBoxDriversLicense.Text}', numberofphone='{textBoxNumberofphone.Text}' WHERE familyname='{name}'";
-            //        NpgsqlCommand cmd = new NpgsqlCommand(strSQL, npgSqlConnection);
-            //        if (cmd.ExecuteNonQuery() == 1)
-            //        {
-            //            String str = "SELECT * FROM client ORDER BY idclient";
-            //            DataGridView dataGrid = dataGridViewClient;
-            //            LoadData(str, dataGrid);
-            //            Close();
-            //            MessageBox.Show("Данные успешно обновлены!");
-            //        }
-            //        npgSqlConnection.Close();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message);
-            //    }
-            //}
+            //Client client = new Client();
+            //service
         }
 
         private void formEditClient_Load(object sender, EventArgs e)
