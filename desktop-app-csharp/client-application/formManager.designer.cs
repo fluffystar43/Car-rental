@@ -40,6 +40,7 @@ namespace client_application
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formManager));
             this.tabPageClients = new System.Windows.Forms.TabPage();
+            this.buttonExportToPDF = new System.Windows.Forms.Button();
             this.dataGridViewClients = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -116,7 +117,7 @@ namespace client_application
             this.buttonListCarsEdit = new System.Windows.Forms.Button();
             this.buttonListCarsAdd = new System.Windows.Forms.Button();
             this.tabControlMain = new System.Windows.Forms.TabControl();
-            this.buttonExportToPDF = new System.Windows.Forms.Button();
+            this.buttonExportToExcel = new System.Windows.Forms.Button();
             this.tabPageClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClients)).BeginInit();
             this.tabPageOrders.SuspendLayout();
@@ -134,6 +135,7 @@ namespace client_application
             // 
             // tabPageClients
             // 
+            this.tabPageClients.Controls.Add(this.buttonExportToExcel);
             this.tabPageClients.Controls.Add(this.buttonExportToPDF);
             this.tabPageClients.Controls.Add(this.dataGridViewClients);
             this.tabPageClients.Controls.Add(this.buttonDeleteClient);
@@ -148,6 +150,17 @@ namespace client_application
             this.tabPageClients.Text = "Клиенты";
             this.tabPageClients.UseVisualStyleBackColor = true;
             this.tabPageClients.Enter += new System.EventHandler(this.tabPageClients_Enter);
+            // 
+            // buttonExportToPDF
+            // 
+            this.buttonExportToPDF.Location = new System.Drawing.Point(10, 451);
+            this.buttonExportToPDF.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonExportToPDF.Name = "buttonExportToPDF";
+            this.buttonExportToPDF.Size = new System.Drawing.Size(261, 35);
+            this.buttonExportToPDF.TabIndex = 18;
+            this.buttonExportToPDF.Text = "Экспорт данных в PDF";
+            this.buttonExportToPDF.UseVisualStyleBackColor = true;
+            this.buttonExportToPDF.Click += new System.EventHandler(this.buttonExportToPDF_Click);
             // 
             // dataGridViewClients
             // 
@@ -997,16 +1010,16 @@ namespace client_application
             this.tabControlMain.TabIndex = 1;
             this.tabControlMain.SelectedIndexChanged += new System.EventHandler(this.tabControlMain_SelectedIndexChanged);
             // 
-            // buttonExportToPDF
+            // buttonExportToExcel
             // 
-            this.buttonExportToPDF.Location = new System.Drawing.Point(10, 451);
-            this.buttonExportToPDF.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonExportToPDF.Name = "buttonExportToPDF";
-            this.buttonExportToPDF.Size = new System.Drawing.Size(261, 35);
-            this.buttonExportToPDF.TabIndex = 18;
-            this.buttonExportToPDF.Text = "Экспорт данных в PDF";
-            this.buttonExportToPDF.UseVisualStyleBackColor = true;
-            this.buttonExportToPDF.Click += new System.EventHandler(this.buttonExportToPDF_Click);
+            this.buttonExportToExcel.Location = new System.Drawing.Point(10, 499);
+            this.buttonExportToExcel.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonExportToExcel.Name = "buttonExportToExcel";
+            this.buttonExportToExcel.Size = new System.Drawing.Size(261, 35);
+            this.buttonExportToExcel.TabIndex = 19;
+            this.buttonExportToExcel.Text = "Экспорт данных в Excel";
+            this.buttonExportToExcel.UseVisualStyleBackColor = true;
+            this.buttonExportToExcel.Click += new System.EventHandler(this.buttonExportToExcel_Click);
             // 
             // formManager
             // 
@@ -1123,5 +1136,6 @@ namespace client_application
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
         private System.Windows.Forms.Button buttonExportToPDF;
+        private System.Windows.Forms.Button buttonExportToExcel;
     }
 }

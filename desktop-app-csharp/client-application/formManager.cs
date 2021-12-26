@@ -97,7 +97,7 @@ namespace client_application
         //    }
         //}
 
-        private void DataLoad(String strSQL, DataGridView dataGridView, String[] column, Label labelInfo)
+        private void DataLoad(String strSQL, DataGridView dataGridView, String[] column, System.Windows.Forms.Label labelInfo)
         {
             //using (NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString))
             //{
@@ -665,7 +665,7 @@ namespace client_application
             Font font = new iTextSharp.text.Font(baseFont, iTextSharp.text.Font.DEFAULTSIZE, iTextSharp.text.Font.NORMAL);
 
             // Создаем объект таблицы с определенным количеством столбцов
-            PdfPTable table = new PdfPTable(dataGridViewClients.Columns.Count-2) { WidthPercentage = 105 };
+            PdfPTable table = new PdfPTable(dataGridViewClients.Columns.Count - 2) { WidthPercentage = 105 };
 
             // Указываем размеры таблицы
             float[] widths = new float[] { 10f, 40f, 30f, 40f, 30f, 40f };
@@ -681,7 +681,7 @@ namespace client_application
                     cell.BackgroundColor = BaseColor.LIGHT_GRAY;
                     table.AddCell(cell);
                 }
-                    
+
                 if (j != 3 && j != 4 && j != 5)
                 {
                     PdfPCell cell = new PdfPCell(new Phrase(new Phrase(dataGridViewClients.Columns[j].HeaderText, font)));
@@ -709,6 +709,60 @@ namespace client_application
             doc.Close();
 
             MessageBox.Show("Pdf-документ сохранен", "Успешно!");
+        }
+
+        private void buttonExportToExcel_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Excel Documents (*.xls)|*.xls";
+            sfd.FileName = "ListClients.xls";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {                
+                try
+                {
+                    Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+                    //excel.Visible = true;
+                    Microsoft.Office.Interop.Excel.Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
+                    Microsoft.Office.Interop.Excel.Worksheet sheet1 = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Sheets[1];
+                    int StartCol = 1;
+                    int StartRow = 1;
+                    int j = 0, i = 0;
+
+                    // Заголовки таблиц
+                    for (j = 0; j < dataGridViewClients.Columns.Count; j++)
+                    {
+                        Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[StartRow, StartCol + j];
+                        myRange.Value2 = dataGridViewClients.Columns[j].HeaderText;
+                    }
+
+                    StartRow++;
+
+                    // Заполнение данных
+                    for (i = 0; i < dataGridViewClients.Rows.Count; i++)
+                    {
+                        for (j = 0; j < dataGridViewClients.Columns.Count; j++)
+                        {
+                            try
+                            {
+                                Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[StartRow + i, StartCol + j];
+                                myRange.Value2 = dataGridViewClients[j, i].Value == null ? "" : dataGridViewClients[j, i].Value;
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.ToString());
+                            }
+                        }
+                    }
+                    workbook.Save();
+                    workbook.Close();
+                    
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+
         }
     }
 }
