@@ -799,19 +799,19 @@ public class Frame extends javax.swing.JFrame {
         }
 
         // Создаем таблицу и добавляем в нее данные
-        PdfPTable table = new PdfPTable(jTableClients.getModel().getColumnCount()-2);
+        PdfPTable table = new PdfPTable(jTableClients.getModel().getColumnCount() - 2);
         table.setWidthPercentage(105f);
         float[] widths = new float[]{10f, 40f, 30f, 40f, 30f, 40f};
-        
+
         try {
             table.setWidths(widths);
             table.setTotalWidth(widths);
         } catch (DocumentException ex) {
             Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         addTableHeader(table, tableClientsModel, font);
-        addRows(table);
+        addRows(table, clients, font);
 
         try {
             document.add(table);
@@ -824,7 +824,6 @@ public class Frame extends javax.swing.JFrame {
     private void addTableHeader(PdfPTable table, TableModel tableModel, Font font) {
         String[] array = new String[tableModel.getColumnCount() - 2];
 
-        //int j = 0;
         for (int i = 0, j = 0; i < tableModel.getColumnCount(); i++) {
 
             if (i == 0) {
@@ -852,20 +851,18 @@ public class Frame extends javax.swing.JFrame {
                 });
     }
 
-    private void addRows(PdfPTable table) {
-        table.addCell("row 1, кол 1");
-        table.addCell("row 1, клд 2");
-        table.addCell("row 1, col 3");
-        table.addCell("row 1, col 3");
-        table.addCell("row 1, col 3");
-        table.addCell("row 1, col 3");
-        table.addCell("row 1, col 3");
-        table.addCell("row 1, col 3");
-        table.addCell("row 1, col 3");
-        table.addCell("row 1, col 3");
-        table.addCell("row 1, col 3");
-        table.addCell("row 1, col 3");
-
+    private void addRows(PdfPTable table, List<Client> clients, Font font) {
+        // Добавляем записи в таблицу
+        int i = 0;
+        for (Client person : clients) {
+            i++;
+            table.addCell(new Phrase(String.valueOf(i), font));
+            table.addCell(new Phrase(person.getSecondName(), font));
+            table.addCell(new Phrase(person.getFirstName(), font));
+            table.addCell(new Phrase(person.getMiddleName(), font));
+            table.addCell(new Phrase(person.getPhoneNumber(), font));
+            table.addCell(new Phrase(person.getEmail(), font));
+        }
     }
 
     private void doVivod(List<Client> listClients) {
