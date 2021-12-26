@@ -2,6 +2,7 @@
 using iTextSharp.text.pdf;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace client_application
@@ -475,7 +476,7 @@ namespace client_application
         /// Для вкладки "Клиенты"
         /// </summary>
 
-        private void buttonUpdateClient_Click(object sender, EventArgs e)
+        private void UpdateData()
         {
             arrayClients = service.getListOfClients();
 
@@ -492,9 +493,14 @@ namespace client_application
                 buffer[5] = person.driversLicense;
                 buffer[6] = person.phoneNumber;
                 buffer[7] = person.email;
-
-                dataGridViewClients.Rows.Add(buffer);
+                Action action = () => dataGridViewClients.Rows.Add(buffer);
+                dataGridViewClients.Invoke(action);
             }
+        }
+
+        private async void buttonUpdateClient_ClickAsync(object sender, EventArgs e)
+        {
+            await Task.Run(() => UpdateData());
 
         }
 
@@ -624,9 +630,9 @@ namespace client_application
             buttonUpdateRentCar_Click(buttonUpdateRentCar, null);
         }
 
-        private void tabPageClients_Enter(object sender, EventArgs e)
+        private async void tabPageClients_EnterAsync(object sender, EventArgs e)
         {
-            buttonUpdateClient_Click(buttonUpdateClient, null);
+            buttonUpdateClient_ClickAsync(buttonUpdateClient, null);
         }
 
         private void buttonListCarsAdd_Click(object sender, EventArgs e)

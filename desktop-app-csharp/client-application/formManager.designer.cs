@@ -149,7 +149,7 @@ namespace client_application
             this.tabPageClients.TabIndex = 2;
             this.tabPageClients.Text = "Клиенты";
             this.tabPageClients.UseVisualStyleBackColor = true;
-            this.tabPageClients.Enter += new System.EventHandler(this.tabPageClients_Enter);
+            this.tabPageClients.Enter += new System.EventHandler(this.tabPageClients_EnterAsync);
             // 
             // buttonExportToPDF
             // 
@@ -276,7 +276,7 @@ namespace client_application
             this.buttonUpdateClient.TabIndex = 14;
             this.buttonUpdateClient.Text = "Обновить данные";
             this.buttonUpdateClient.UseVisualStyleBackColor = true;
-            this.buttonUpdateClient.Click += new System.EventHandler(this.buttonUpdateClient_Click);
+            this.buttonUpdateClient.Click += new System.EventHandler(this.buttonUpdateClient_ClickAsync);
             // 
             // tabPageOrders
             // 
