@@ -708,9 +708,10 @@ namespace client_application
             doc.Add(table);
             doc.Close();
 
-            MessageBox.Show("Pdf-документ сохранен", "Успешно!");
+            MessageBox.Show("PDF-документ с данными клиентов успешно создан!", "Успешно!");
         }
 
+        // Экспорт данных в Excel
         private void buttonExportToExcel_Click(object sender, EventArgs e)
         {
             SaveFileDialog sfd = new SaveFileDialog();

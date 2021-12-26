@@ -6,6 +6,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import operation.ClientOperation;
@@ -23,6 +27,20 @@ public class ClientService implements ClientOperation {
     @WebMethod()
     @Override
     public List<Client> getListOfClients() {
+
+        CompletableFuture completableFuture = CompletableFuture.supplyAsync(this::ListClients);
+        
+        try {
+            List<Client> result = (List<Client>) completableFuture.get();
+            return result;
+        } catch (InterruptedException | ExecutionException ex) {
+            Logger.getLogger(ClientService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public List<Client> ListClients() {
+        
         List listClients = new ArrayList<Client>();
         try {
             Statement statement = connection.createStatement();
