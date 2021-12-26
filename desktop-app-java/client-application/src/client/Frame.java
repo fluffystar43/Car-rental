@@ -9,11 +9,16 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.BufferedWriter;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -763,16 +768,15 @@ public class Frame extends javax.swing.JFrame {
     private void jButtonExportClientsToPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportClientsToPDFActionPerformed
 
         // Получаем список клиентов
-        List<Client> clients = new ArrayList<Client>();
-        clients = clientService.getClientServicePort().getListOfClients();
+        List<Client> clients = clientService.getClientServicePort().getListOfClients();
 
         // Создаем документ
         Document document = new Document();
         TableModel tableClientsModel = jTableClients.getModel();
 
-        System.out.print(tableClientsModel.getColumnName(1));
+        File file = new File("test.pdf");
+
         try {
-            
             PdfWriter.getInstance(document, new FileOutputStream("file.pdf"));
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
@@ -796,24 +800,6 @@ public class Frame extends javax.swing.JFrame {
         document.close();
     }//GEN-LAST:event_jButtonExportClientsToPDFActionPerformed
 
-    // Java 8 - Files.newBufferedWriter(path) - default UTF-8
-    public static void writeUnicodeJava8(String fileName, List<String> lines) {
-
-        Path path = Paths.get(fileName);
-
-        try (BufferedWriter writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {
-
-            for (String line : lines) {
-                writer.append(line);
-                writer.newLine();
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
-    
     private void addTableHeader(PdfPTable table, TableModel tableModel) {
         String[] array = new String[tableModel.getColumnCount()];
 
@@ -834,7 +820,7 @@ public class Frame extends javax.swing.JFrame {
     }
 
     private void addRows(PdfPTable table) {
-        table.addCell("row 1, col 1");
+        table.addCell("row 1, кол 1");
         table.addCell("row 1, col 2");
         table.addCell("row 1, col 3");
         table.addCell("row 1, col 3");
