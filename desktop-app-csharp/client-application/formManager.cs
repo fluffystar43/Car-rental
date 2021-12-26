@@ -647,7 +647,7 @@ namespace client_application
             // Создаем документ
             try
             {
-                PdfWriter.GetInstance(doc, new FileStream("pdfTables.pdf", FileMode.Create));
+                PdfWriter.GetInstance(doc, new FileStream("ListClientsCSharp.pdf", FileMode.Create));
             }
             catch
             {
@@ -714,8 +714,8 @@ namespace client_application
         private void buttonExportToExcel_Click(object sender, EventArgs e)
         {
             SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "Excel Documents (*.xls)|*.xls";
-            sfd.FileName = "ListClients.xls";
+            sfd.Filter = "Excel Documents (*.xlsx)|*.xlsx";
+            sfd.FileName = "ListClients.xlsx";
             if (sfd.ShowDialog() == DialogResult.OK)
             {                
                 try
@@ -728,11 +728,14 @@ namespace client_application
                     int StartRow = 1;
                     int j = 0, i = 0;
 
+                    sheet1.StandardWidth = 22;
+
                     // Заголовки таблиц
                     for (j = 0; j < dataGridViewClients.Columns.Count; j++)
                     {
                         Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[StartRow, StartCol + j];
                         myRange.Value2 = dataGridViewClients.Columns[j].HeaderText;
+                        myRange.HorizontalAlignment = Microsoft.Office.Interop.Excel.Constants.xlCenter;
                     }
 
                     StartRow++;
@@ -746,6 +749,7 @@ namespace client_application
                             {
                                 Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[StartRow + i, StartCol + j];
                                 myRange.Value2 = dataGridViewClients[j, i].Value == null ? "" : dataGridViewClients[j, i].Value;
+                                myRange.HorizontalAlignment = Microsoft.Office.Interop.Excel.Constants.xlLeft;
                             }
                             catch (Exception ex)
                             {
@@ -753,7 +757,8 @@ namespace client_application
                             }
                         }
                     }
-                    workbook.Save();
+                    MessageBox.Show(sfd.FileName);
+                    workbook.SaveAs($@"{sfd.FileName}");
                     workbook.Close();
                     
                 }

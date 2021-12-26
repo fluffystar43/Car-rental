@@ -3,7 +3,11 @@ package client;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfEncodings;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -772,24 +776,41 @@ public class Frame extends javax.swing.JFrame {
 
         // Создаем документ
         Document document = new Document();
+        document.setPageSize(PageSize.A4.rotate());
+
         TableModel tableClientsModel = jTableClients.getModel();
 
-        File file = new File("test.pdf");
-
         try {
-            PdfWriter.getInstance(document, new FileOutputStream("file.pdf"));
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (DocumentException ex) {
+            PdfWriter.getInstance(document, new FileOutputStream("ListClientsJava.pdf"));
+        } catch (FileNotFoundException | DocumentException ex) {
             Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         // Открываем созданный документ для изменения данных
         document.open();
 
+        BaseFont baseFont;
+        Font font = null;
+        try {
+            baseFont = BaseFont.createFont("C:\\Windows\\Fonts\\arial.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+            font = new Font(baseFont, Font.DEFAULTSIZE, Font.NORMAL);
+        } catch (DocumentException | IOException ex) {
+            Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         // Создаем таблицу и добавляем в нее данные
-        PdfPTable table = new PdfPTable(jTableClients.getModel().getColumnCount());
-        addTableHeader(table, tableClientsModel);
+        PdfPTable table = new PdfPTable(jTableClients.getModel().getColumnCount()-2);
+        table.setWidthPercentage(105f);
+        float[] widths = new float[]{10f, 40f, 30f, 40f, 30f, 40f};
+        
+        try {
+            table.setWidths(widths);
+            table.setTotalWidth(widths);
+        } catch (DocumentException ex) {
+            Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        addTableHeader(table, tableClientsModel, font);
         addRows(table);
 
         try {
@@ -800,21 +821,33 @@ public class Frame extends javax.swing.JFrame {
         document.close();
     }//GEN-LAST:event_jButtonExportClientsToPDFActionPerformed
 
-    private void addTableHeader(PdfPTable table, TableModel tableModel) {
-        String[] array = new String[tableModel.getColumnCount()];
+    private void addTableHeader(PdfPTable table, TableModel tableModel, Font font) {
+        String[] array = new String[tableModel.getColumnCount() - 2];
 
-        for (int i = 0; i < tableModel.getColumnCount(); i++) {
-            System.out.print(tableModel.getColumnName(i));
-            array[i] = tableModel.getColumnName(i);
+        //int j = 0;
+        for (int i = 0, j = 0; i < tableModel.getColumnCount(); i++) {
+
+            if (i == 0) {
+                array[j] = "№";
+                j++;
+            }
+            if (i != 3 && i != 4 && i != 5) {
+                array[j] = tableModel.getColumnName(i);
+                j++;
+            }
+            if (i == 7) {
+                break;
+            }
+
         }
 
-        Stream.of("aхахахах34345", "a1", "a1", "a1", "a1", "a1", "a1", "a1")
+        // Stream API
+        Arrays.stream(array)
                 .forEach(columnTitle -> {
                     PdfPCell header = new PdfPCell();
                     header.setBackgroundColor(BaseColor.LIGHT_GRAY);
                     header.setBorderWidth(2);
-                    header.setPhrase(new Phrase(columnTitle));
-                    System.out.print(header);
+                    header.setPhrase(new Phrase(columnTitle, font));
                     table.addCell(header);
                 });
     }
@@ -832,7 +865,7 @@ public class Frame extends javax.swing.JFrame {
         table.addCell("row 1, col 3");
         table.addCell("row 1, col 3");
         table.addCell("row 1, col 3");
-        
+
     }
 
     private void doVivod(List<Client> listClients) {
