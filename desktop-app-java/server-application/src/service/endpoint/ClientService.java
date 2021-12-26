@@ -1,6 +1,7 @@
 package service.endpoint;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -28,8 +29,8 @@ public class ClientService implements ClientOperation {
     @Override
     public List<Client> getListOfClients() {
 
-        CompletableFuture completableFuture = CompletableFuture.supplyAsync(this::ListClients);
-        
+        CompletableFuture completableFuture = CompletableFuture.supplyAsync(this::ListClientsAsync);
+
         try {
             List<Client> result = (List<Client>) completableFuture.get();
             return result;
@@ -38,9 +39,9 @@ public class ClientService implements ClientOperation {
         }
         return null;
     }
-    
-    public List<Client> ListClients() {
-        
+
+    private List<Client> ListClientsAsync() {
+
         List listClients = new ArrayList<Client>();
         try {
             Statement statement = connection.createStatement();
@@ -80,4 +81,48 @@ public class ClientService implements ClientOperation {
         return listClients;
     }
 
+    @WebMethod()
+    @Override
+    public void updateClient(Client client) {
+        CompletableFuture.runAsync(() -> {
+            try {
+                UpdateClientAsync(client);
+            } catch (SQLException ex) {
+                Logger.getLogger(ClientService.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+    }
+
+    private void UpdateClientAsync(Client client) throws SQLException {
+
+        try {
+
+            PreparedStatement statement = connection.prepareStatement
+                    ("UPDATE client SET "
+                            + "second_name = ?, "
+                            + "first_name = ?, "
+                            + "middle_name = ?, "
+                            + "passport_data = ?, "
+                            + "drivers_license = ?, "
+                            + "phone_number = ?, "
+                            + "email = ? "
+                            + "WHERE id = ?");
+            statement.setString(1, client.getSecondName());
+            statement.setString(2, client.getFirstName());
+            statement.setString(3, client.getMiddleName());
+            statement.setString(4, client.getPassportData());
+            statement.setString(5, client.getDriversLicense());
+            statement.setString(6, client.getPhoneNumber());
+            statement.setString(7, client.getEmail());
+            statement.setLong(8, client.getId());
+
+            int rowsInserted = statement.executeUpdate();
+            if (rowsInserted > 0) {
+                System.out.println("Клиент обновлен!");
+
+            }
+        } catch (SQLException e) {
+            System.out.print(e.getMessage());
+        }
+    }
 }

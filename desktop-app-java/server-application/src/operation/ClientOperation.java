@@ -5,4 +5,5 @@ import types.Client;
 
 public interface ClientOperation {
     List<Client> getListOfClients();
+    void updateClient(Client client);
 }
