@@ -821,13 +821,18 @@ public class Frame extends javax.swing.JFrame {
 
     private void addRows(PdfPTable table) {
         table.addCell("row 1, кол 1");
-        table.addCell("row 1, col 2");
+        table.addCell("row 1, клд 2");
         table.addCell("row 1, col 3");
         table.addCell("row 1, col 3");
         table.addCell("row 1, col 3");
         table.addCell("row 1, col 3");
         table.addCell("row 1, col 3");
         table.addCell("row 1, col 3");
+        table.addCell("row 1, col 3");
+        table.addCell("row 1, col 3");
+        table.addCell("row 1, col 3");
+        table.addCell("row 1, col 3");
+        
     }
 
     private void doVivod(List<Client> listClients) {
@@ -886,7 +891,6 @@ public class Frame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Frame().setVisible(true);
-
             }
         });
     }
