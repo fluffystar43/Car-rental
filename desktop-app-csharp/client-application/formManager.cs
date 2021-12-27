@@ -480,7 +480,8 @@ namespace client_application
         {
             arrayClients = service.getListOfClients();
 
-            dataGridViewClients.Rows.Clear();
+            Action actionClear = () => dataGridViewClients.Rows.Clear();
+            dataGridViewClients.Invoke(actionClear) ;
 
             foreach (localhost.client person in arrayClients)
             {
