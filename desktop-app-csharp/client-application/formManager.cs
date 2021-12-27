@@ -546,7 +546,7 @@ namespace client_application
             //        {
             //            MessageBox.Show(ex.Message);
             //        }
-            //    }
+          
             //}
         }
         private void buttonEditClient_Click(object sender, EventArgs e)
