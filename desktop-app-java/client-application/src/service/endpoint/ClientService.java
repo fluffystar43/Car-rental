@@ -1,7 +1,8 @@
 
 package service.endpoint;
 
-import java.util.List;
+import types.Client;
+
 import javax.jws.WebMethod;
 import javax.jws.WebResult;
 import javax.jws.WebService;
@@ -9,7 +10,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.ws.Action;
 import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
-import types.Client;
+import java.util.List;
 
 
 /**
