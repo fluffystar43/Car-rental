@@ -1,4 +1,5 @@
-﻿using iTextSharp.text;
+﻿using Grpc.Net.Client;
+using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System;
 using System.IO;
@@ -478,7 +479,16 @@ namespace client_application
 
         private void UpdateData()
         {
-            arrayClients = service.getListOfClients();
+            try
+            {
+                arrayClients = service.getListOfClients();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!");
+                return;
+            }
+            
 
             Action actionClear = () => dataGridViewClients.Rows.Clear();
             dataGridViewClients.Invoke(actionClear) ;
@@ -561,6 +571,8 @@ namespace client_application
 
         private void buttonUpdateRentCar_Click(object sender, EventArgs e)
         {
+            //var client = GrpcChannel.ForAddress("https://localhost:8082");
+            //var client = new Ord
             buttonEditRentCar.Enabled = false;
             buttonComplateOrder.Enabled = false;
             String[] column = new String[] { "idrentcar", "familyname", "name", "cost", "dateofissue", "countdaysrent" };
