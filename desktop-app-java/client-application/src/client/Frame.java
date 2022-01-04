@@ -5,6 +5,7 @@ import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.io.File;
 
 import service.endpoint.ClientServiceService;
 import types.Client;
@@ -19,6 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import service.endpoint.SearchCriteriaServiceService;
 
 public class Frame extends javax.swing.JFrame {
@@ -30,6 +32,7 @@ public class Frame extends javax.swing.JFrame {
         jTableListCars.getTableHeader().setFont(new java.awt.Font("Tahoma", 0, 16));
         jTableOrders.getTableHeader().setFont(new java.awt.Font("Tahoma", 0, 16));
         jTableClients.getTableHeader().setFont(new java.awt.Font("Tahoma", 0, 16));
+        jButtonAvailableCarsAddOrder.setEnabled(false);
 
         //jDialogLogin.setVisible(true);
     }
@@ -236,6 +239,11 @@ public class Frame extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jTableAvailableCars.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableAvailableCarsMouseClicked(evt);
             }
         });
         jScrollPaneAvailableCars.setViewportView(jTableAvailableCars);
@@ -839,54 +847,67 @@ public class Frame extends javax.swing.JFrame {
 
     private void jButtonExportClientsToPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportClientsToPDFActionPerformed
 
-        // Получаем список клиентов
-        List<Client> clients = clientService.getClientServicePort().getListOfClients();
+        JFileChooser pdfFile = new JFileChooser();
+        pdfFile.setSelectedFile(new File("ListClients"));
 
-        // Создаем документ
-        Document document = new Document();
-        document.setPageSize(PageSize.A4.rotate());
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("PDF Documents (*.pdf)|*.pdf", "pdf");
+        pdfFile.setFileFilter(filter);
+        if (pdfFile.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
+            // Получаем список клиентов
+            List<Client> clients = clientService.getClientServicePort().getListOfClients();
 
-        TableModel tableClientsModel = jTableClients.getModel();
+            // Создаем документ
+            Document document = new Document();
+            document.setPageSize(PageSize.A4.rotate());
 
-        try {
-            PdfWriter.getInstance(document, new FileOutputStream("ListClientsJava.pdf"));
-        } catch (FileNotFoundException | DocumentException ex) {
-            Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+            TableModel tableClientsModel = jTableClients.getModel();
+
+            try {
+                String path = pdfFile.getSelectedFile().getAbsolutePath() + ".pdf";
+                PdfWriter.getInstance(document, new FileOutputStream(path));
+            } catch (FileNotFoundException | DocumentException ex) {
+                Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            // Открываем созданный документ для изменения данных
+            document.open();
+
+            BaseFont baseFont;
+            Font font = null;
+            try {
+                baseFont = BaseFont.createFont("C:\\Windows\\Fonts\\arial.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+                font = new Font(baseFont, Font.DEFAULTSIZE, Font.NORMAL);
+            } catch (DocumentException | IOException ex) {
+                Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            // Создаем таблицу и добавляем в нее данные
+            PdfPTable table = new PdfPTable(jTableClients.getModel().getColumnCount() - 2);
+            table.setWidthPercentage(105f);
+            float[] widths = new float[]{10f, 40f, 30f, 40f, 30f, 40f};
+
+            try {
+                table.setWidths(widths);
+                table.setTotalWidth(widths);
+            } catch (DocumentException ex) {
+                Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            addTableHeader(table, tableClientsModel, font);
+            addRows(table, clients, font);
+
+            try {
+                document.add(table);
+            } catch (DocumentException ex) {
+                Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            document.close();
         }
-
-        // Открываем созданный документ для изменения данных
-        document.open();
-
-        BaseFont baseFont;
-        Font font = null;
-        try {
-            baseFont = BaseFont.createFont("C:\\Windows\\Fonts\\arial.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
-            font = new Font(baseFont, Font.DEFAULTSIZE, Font.NORMAL);
-        } catch (DocumentException | IOException ex) {
-            Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Экспорт данных отменен!", "Внимание!", JOptionPane.INFORMATION_MESSAGE);
         }
-
-        // Создаем таблицу и добавляем в нее данные
-        PdfPTable table = new PdfPTable(jTableClients.getModel().getColumnCount() - 2);
-        table.setWidthPercentage(105f);
-        float[] widths = new float[]{10f, 40f, 30f, 40f, 30f, 40f};
-
-        try {
-            table.setWidths(widths);
-            table.setTotalWidth(widths);
-        } catch (DocumentException ex) {
-            Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        addTableHeader(table, tableClientsModel, font);
-        addRows(table, clients, font);
-
-        try {
-            document.add(table);
-        } catch (DocumentException ex) {
-            Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        document.close();
+            
     }//GEN-LAST:event_jButtonExportClientsToPDFActionPerformed
 
     private void jPanelAvailableCarsComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelAvailableCarsComponentShown
@@ -914,7 +935,8 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelListCarsComponentShown
 
     private void jButtonAvailableCarsUpdateTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAvailableCarsUpdateTableActionPerformed
-        
+        jButtonAvailableCarsAddOrder.setEnabled(false);
+
         List listCars = searchCriteriaService.getSearchCriteriaServicePort().getListCars(null);
 
         try {
@@ -927,15 +949,18 @@ public class Frame extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButtonAvailableCarsUpdateTableActionPerformed
+
+    private void jTableAvailableCarsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAvailableCarsMouseClicked
+        jButtonAvailableCarsAddOrder.setEnabled(true);
+    }//GEN-LAST:event_jTableAvailableCarsMouseClicked
     private void doVivodCars(List listСars) {
         doClearTable();
         Object[] rowData = new String[8];
-        int i=0;
-        for (Object var : listСars)
-        {
+        int i = 0;
+        for (Object var : listСars) {
             rowData[i] = String.valueOf(var);
             i++;
-        }    
+        }
         model.addRow(rowData);
 
     }
