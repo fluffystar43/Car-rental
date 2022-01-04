@@ -50,33 +50,32 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
             String sql = null;
             switch (criteria) {
                 case ("Бренд"):
-                    sql = "SELECT id, name from brand";
+                    sql = "SELECT name from brand";
                     break;
-                case ("Марка"):
-                    sql = "SELECT id, name from model";
+                case ("Модель"):
+                    sql = "SELECT name from model";
                     break;
                 case ("Коробка передач"):
-                    sql = "SELECT id, name from gear_box";
+                    sql = "SELECT name from gear_box";
                     break;
                 case ("Привод"):
-                    sql = "SELECT id, name from drive";
+                    sql = "SELECT name from drive";
                     break;
                 case ("Цвет"):
-                    sql = "SELECT id, name from color";
+                    sql = "SELECT name from color";
                     break;
                 case ("Цена, руб/сут."):
-                    sql = "SELECT id, rental_price from car";
+                    sql = "SELECT rental_price from car";
                     break;
                 case ("Номер"):
-                    sql = "SELECT id, registration_number from car";
+                    sql = "SELECT registration_number from car";
                     break;
             }
             ResultSet result = statement.executeQuery(sql);
             while (result.next()) {
-                listCriteria.add(result.getInt("id"));
-                listCriteria.add(result.getObject(2));
+                listCriteria.add(result.getObject(1));
             }
-            System.out.println("Получен список клиентов");
+            System.out.println("Получен список критериев");
         } catch (SQLException e) {
             System.out.print(e.getMessage());
         }
@@ -84,7 +83,37 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
     }
 
     @Override
-    public List<Car> getListCars(String criteria) throws RemoteException {
+    public List getListCars(String criteria) throws RemoteException {
+        if (criteria == null) {
+            List listCars = new ArrayList<>();
+            try {
+                Statement statement = connection.createStatement();
+                String sql = "SELECT brand.name, "
+                        + "model.name, "
+                        + "gear_box.name, drive.name, color.name, car.rental_price, car.registration_number "
+                        + "FROM brand, model, car_class, gear_box, drive, color, car, car_exterior "
+                        + "WHERE car.brand_id = brand.id AND car.model_id = model.id AND "
+                        + "car.gear_box_id = gear_box.id AND "
+                        + "car.drive_id = drive.id AND car_exterior.color_id = color.id AND car.id = car_exterior.car_id";
+
+                ResultSet result = statement.executeQuery(sql);
+                while (result.next()) {
+                    listCars.add(result.getObject(1));
+                    listCars.add(result.getObject(2));
+                    listCars.add(result.getObject(3));
+                    listCars.add(result.getObject(4));
+                    listCars.add(result.getObject(5));
+                    listCars.add(result.getObject(6));
+                    listCars.add(result.getObject(7));
+                }
+                System.out.println("Получен список автомобилей");
+            } catch (SQLException e) {
+                System.out.print(e.getMessage());
+            }
+            return listCars;
+        } else {
+
+        }
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

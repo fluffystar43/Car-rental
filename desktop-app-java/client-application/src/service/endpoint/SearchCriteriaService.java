@@ -10,6 +10,8 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.ws.Action;
 import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
+import types.Client;
+import types.Order;
 
 
 /**
@@ -20,7 +22,8 @@ import javax.xml.ws.ResponseWrapper;
  */
 @WebService(name = "SearchCriteriaService", targetNamespace = "http://endpoint.service/")
 @XmlSeeAlso({
-    ObjectFactory.class
+    service.endpoint.ObjectFactory.class,
+    types.ObjectFactory.class
 })
 public interface SearchCriteriaService {
 
@@ -37,6 +40,51 @@ public interface SearchCriteriaService {
     @ResponseWrapper(localName = "getListSecondCriteriaResponse", targetNamespace = "http://endpoint.service/", className = "service.endpoint.GetListSecondCriteriaResponse")
     @Action(input = "http://endpoint.service/SearchCriteriaService/getListSecondCriteriaRequest", output = "http://endpoint.service/SearchCriteriaService/getListSecondCriteriaResponse")
     public List<Object> getListSecondCriteria(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.util.List<types.Order>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getListOrders", targetNamespace = "http://endpoint.service/", className = "service.endpoint.GetListOrders")
+    @ResponseWrapper(localName = "getListOrdersResponse", targetNamespace = "http://endpoint.service/", className = "service.endpoint.GetListOrdersResponse")
+    @Action(input = "http://endpoint.service/SearchCriteriaService/getListOrdersRequest", output = "http://endpoint.service/SearchCriteriaService/getListOrdersResponse")
+    public List<Order> getListOrders(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.util.List<java.lang.Object>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getListCars", targetNamespace = "http://endpoint.service/", className = "service.endpoint.GetListCars")
+    @ResponseWrapper(localName = "getListCarsResponse", targetNamespace = "http://endpoint.service/", className = "service.endpoint.GetListCarsResponse")
+    @Action(input = "http://endpoint.service/SearchCriteriaService/getListCarsRequest", output = "http://endpoint.service/SearchCriteriaService/getListCarsResponse")
+    public List<Object> getListCars(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.util.List<types.Client>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getListClients", targetNamespace = "http://endpoint.service/", className = "service.endpoint.GetListClients")
+    @ResponseWrapper(localName = "getListClientsResponse", targetNamespace = "http://endpoint.service/", className = "service.endpoint.GetListClientsResponse")
+    @Action(input = "http://endpoint.service/SearchCriteriaService/getListClientsRequest", output = "http://endpoint.service/SearchCriteriaService/getListClientsResponse")
+    public List<Client> getListClients(
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0);
 

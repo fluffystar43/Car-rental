@@ -7,6 +7,7 @@ public class Car implements Serializable {
      * Идентификатор Марка Модель Класс Коробка передач Мощность двигателя
      * Топливо Цена аренды Привод Кузов Год выпуска Удален
      */
+    
     private long id;
     private short brandId;
     private int modelId;

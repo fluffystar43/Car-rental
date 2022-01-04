@@ -188,6 +188,11 @@ public class Frame extends javax.swing.JFrame {
 
         jButtonAvailableCarsUpdateTable.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButtonAvailableCarsUpdateTable.setText("Обновить список автомобилей");
+        jButtonAvailableCarsUpdateTable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAvailableCarsUpdateTableActionPerformed(evt);
+            }
+        });
 
         jLabelAvailableCarsSearchСriteriaFirst.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabelAvailableCarsSearchСriteriaFirst.setText("Выберите критерий поиска:");
@@ -209,13 +214,13 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
-        jTableAvailableCars.setFont(getFont());
+        jTableAvailableCars.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jTableAvailableCars.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Бренд", "Марка", "Коробка передач", "Привод", "Цвет", "Цена, руб/сут.", "Номер"
+                "Бренд", "Модель", "Коробка передач", "Привод", "Цвет", "Цена, руб/сут.", "Номер"
             }
         ) {
             Class[] types = new Class [] {
@@ -751,10 +756,13 @@ public class Frame extends javax.swing.JFrame {
         jComboBoxAvailableCarsSearchСriteriaSecond.setSelectedItem(null);
         if (jComboBoxAvailableCarsSearchСriteriaFirst.getSelectedItem() != null) {
             List listSecondCriteria = searchCriteriaService.getSearchCriteriaServicePort().getListSecondCriteria(jComboBoxAvailableCarsSearchСriteriaFirst.getSelectedItem().toString());
-            System.out.print(listSecondCriteria.toString());
+
             cbModel = new DefaultComboBoxModel<>();
-            for (int i = 0; i < listSecondCriteria.size(); i++)
-                if (i%2 == 1) cbModel.addElement(String.valueOf(listSecondCriteria.get(i)));
+
+            for (int i = 0; i < listSecondCriteria.size(); i++) {
+                cbModel.addElement(String.valueOf(listSecondCriteria.get(i)));
+            }
+
             jComboBoxAvailableCarsSearchСriteriaSecond.setModel(cbModel);
             jComboBoxAvailableCarsSearchСriteriaSecond.setSelectedIndex(-1);
         }
@@ -883,11 +891,10 @@ public class Frame extends javax.swing.JFrame {
 
     private void jPanelAvailableCarsComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelAvailableCarsComponentShown
         SearchCriteriaFirst(jTableAvailableCars, jComboBoxAvailableCarsSearchСriteriaFirst);
-        UpdateListClients();
     }//GEN-LAST:event_jPanelAvailableCarsComponentShown
 
     private void jPanelClientsComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelClientsComponentShown
-
+        UpdateListClients();
         this.setSize(1600, 730);
         this.setLocationRelativeTo(null);
 
@@ -905,6 +912,33 @@ public class Frame extends javax.swing.JFrame {
     private void jPanelListCarsComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelListCarsComponentShown
         SearchCriteriaFirst(jTableListCars, jComboBoxListCarsSearchСriteriaFirst);
     }//GEN-LAST:event_jPanelListCarsComponentShown
+
+    private void jButtonAvailableCarsUpdateTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAvailableCarsUpdateTableActionPerformed
+        
+        List listCars = searchCriteriaService.getSearchCriteriaServicePort().getListCars(null);
+
+        try {
+            model = (DefaultTableModel) jTableAvailableCars.getModel();
+            doVivodCars(listCars);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Не удалось установить соединение с сервером:" + ex.getMessage() + ".",
+                    "Ошибка",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+
+    }//GEN-LAST:event_jButtonAvailableCarsUpdateTableActionPerformed
+    private void doVivodCars(List listСars) {
+        doClearTable();
+        Object[] rowData = new String[8];
+        int i=0;
+        for (Object var : listСars)
+        {
+            rowData[i] = String.valueOf(var);
+            i++;
+        }    
+        model.addRow(rowData);
+
+    }
 
     private void addTableHeader(PdfPTable table, TableModel tableModel, Font font) {
         String[] array = new String[tableModel.getColumnCount() - 2];
