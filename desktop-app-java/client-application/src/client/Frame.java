@@ -23,6 +23,12 @@ public class Frame extends javax.swing.JFrame {
 
     public Frame() {
         initComponents();
+        jTableAvailableCars.getTableHeader().setFont(new java.awt.Font("Tahoma", 0, 16));
+        jTableCarsInRent.getTableHeader().setFont(new java.awt.Font("Tahoma", 0, 16));
+        jTableListCars.getTableHeader().setFont(new java.awt.Font("Tahoma", 0, 16));
+        jTableOrders.getTableHeader().setFont(new java.awt.Font("Tahoma", 0, 16));
+        jTableClients.getTableHeader().setFont(new java.awt.Font("Tahoma", 0, 16));
+
         //jDialogLogin.setVisible(true);
     }
 
@@ -64,7 +70,7 @@ public class Frame extends javax.swing.JFrame {
         jComboBoxRentedCarsSearchСriteriaFirst = new javax.swing.JComboBox<>();
         jComboBoxRentedCarsSearchСriteriaSecond = new javax.swing.JComboBox<>();
         jScrollPaneAvailableCars1 = new javax.swing.JScrollPane();
-        jTableAvailableCars1 = new javax.swing.JTable();
+        jTableCarsInRent = new javax.swing.JTable();
         jPanelListCars = new javax.swing.JPanel();
         jButtonAddCar = new javax.swing.JButton();
         jButtonDeleteCar = new javax.swing.JButton();
@@ -74,7 +80,7 @@ public class Frame extends javax.swing.JFrame {
         jComboBoxSearchСriteriaSecond = new javax.swing.JComboBox<>();
         jButtonEditDataCar = new javax.swing.JButton();
         jScrollPaneAvailableCars2 = new javax.swing.JScrollPane();
-        jTableAvailableCars2 = new javax.swing.JTable();
+        jTableListCars = new javax.swing.JTable();
         jPanelOrders = new javax.swing.JPanel();
         jButtonCloseOrder = new javax.swing.JButton();
         jButtonUpdateTableOrders = new javax.swing.JButton();
@@ -159,27 +165,47 @@ public class Frame extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Прокат автомобилей");
+        setResizable(false);
+        setSize(new java.awt.Dimension(1280, 720));
 
+        jTabbedPaneForm.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+
+        jTabbedPaneAutopark.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+
+        jPanelAvailableCars.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanelAvailableCarsComponentShown(evt);
+            }
+        });
+
+        jButtonAvailableCarsAddOrder.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButtonAvailableCarsAddOrder.setText("Оформить заказ");
 
+        jButtonAvailableCarsUpdateTable.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButtonAvailableCarsUpdateTable.setText("Обновить список автомобилей");
 
+        jLabelAvailableCarsSearchСriteriaFirst.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabelAvailableCarsSearchСriteriaFirst.setText("Выберите критерий поиска:");
 
+        jLabelAvailableCarsSearchСriteriaSecond.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabelAvailableCarsSearchСriteriaSecond.setText("Выберите из списка:");
 
+        jComboBoxAvailableCarsSearchСriteriaFirst.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jComboBoxAvailableCarsSearchСriteriaFirst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxAvailableCarsSearchСriteriaFirstActionPerformed(evt);
             }
         });
 
+        jComboBoxAvailableCarsSearchСriteriaSecond.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jComboBoxAvailableCarsSearchСriteriaSecond.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxAvailableCarsSearchСriteriaSecondActionPerformed(evt);
             }
         });
 
+        jTableAvailableCars.setFont(getFont());
         jTableAvailableCars.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -221,7 +247,7 @@ public class Frame extends javax.swing.JFrame {
                                 .addComponent(jLabelAvailableCarsSearchСriteriaSecond)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelAvailableCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBoxAvailableCarsSearchСriteriaFirst, 0, 180, Short.MAX_VALUE)
+                            .addComponent(jComboBoxAvailableCarsSearchСriteriaFirst, 0, 276, Short.MAX_VALUE)
                             .addComponent(jComboBoxAvailableCarsSearchСriteriaSecond, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanelAvailableCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -229,7 +255,7 @@ public class Frame extends javax.swing.JFrame {
                             .addComponent(jButtonAvailableCarsAddOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanelAvailableCarsLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPaneAvailableCars, javax.swing.GroupLayout.DEFAULT_SIZE, 833, Short.MAX_VALUE)))
+                        .addComponent(jScrollPaneAvailableCars, javax.swing.GroupLayout.DEFAULT_SIZE, 1205, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelAvailableCarsLayout.setVerticalGroup(
@@ -247,7 +273,7 @@ public class Frame extends javax.swing.JFrame {
                         .addComponent(jLabelAvailableCarsSearchСriteriaSecond)
                         .addComponent(jComboBoxAvailableCarsSearchСriteriaSecond, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPaneAvailableCars, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                .addComponent(jScrollPaneAvailableCars, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -255,27 +281,33 @@ public class Frame extends javax.swing.JFrame {
 
         jPanelRentedCars.setPreferredSize(new java.awt.Dimension(810, 100));
 
+        jButtonRentedCarsCloseOrder.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButtonRentedCarsCloseOrder.setText("Завершить заказ");
 
+        jButtonRentedCarsUpdateTable.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButtonRentedCarsUpdateTable.setText("Обновить список автомобилей");
 
+        jLabelRentedCarsSearchСriteriaFirst.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabelRentedCarsSearchСriteriaFirst.setText("Выберите критерий поиска:");
 
+        jLabelRentedCarsSearchСriteriaSecond.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabelRentedCarsSearchСriteriaSecond.setText("Выберите из списка:");
 
+        jComboBoxRentedCarsSearchСriteriaFirst.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jComboBoxRentedCarsSearchСriteriaFirst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxRentedCarsSearchСriteriaFirstActionPerformed(evt);
             }
         });
 
+        jComboBoxRentedCarsSearchСriteriaSecond.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jComboBoxRentedCarsSearchСriteriaSecond.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxRentedCarsSearchСriteriaSecondActionPerformed(evt);
             }
         });
 
-        jTableAvailableCars1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableCarsInRent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -298,7 +330,7 @@ public class Frame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPaneAvailableCars1.setViewportView(jTableAvailableCars1);
+        jScrollPaneAvailableCars1.setViewportView(jTableCarsInRent);
 
         javax.swing.GroupLayout jPanelRentedCarsLayout = new javax.swing.GroupLayout(jPanelRentedCars);
         jPanelRentedCars.setLayout(jPanelRentedCarsLayout);
@@ -316,15 +348,15 @@ public class Frame extends javax.swing.JFrame {
                                 .addComponent(jLabelRentedCarsSearchСriteriaSecond)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelRentedCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBoxRentedCarsSearchСriteriaFirst, 0, 180, Short.MAX_VALUE)
+                            .addComponent(jComboBoxRentedCarsSearchСriteriaFirst, 0, 305, Short.MAX_VALUE)
                             .addComponent(jComboBoxRentedCarsSearchСriteriaSecond, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanelRentedCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButtonRentedCarsUpdateTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonRentedCarsCloseOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jButtonRentedCarsCloseOrder, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)))
                     .addGroup(jPanelRentedCarsLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPaneAvailableCars1, javax.swing.GroupLayout.DEFAULT_SIZE, 833, Short.MAX_VALUE)))
+                        .addComponent(jScrollPaneAvailableCars1, javax.swing.GroupLayout.DEFAULT_SIZE, 1205, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelRentedCarsLayout.setVerticalGroup(
@@ -342,12 +374,13 @@ public class Frame extends javax.swing.JFrame {
                         .addComponent(jLabelRentedCarsSearchСriteriaSecond)
                         .addComponent(jComboBoxRentedCarsSearchСriteriaSecond, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPaneAvailableCars1, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                .addComponent(jScrollPaneAvailableCars1, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jTabbedPaneAutopark.addTab("Автомобили в прокате", jPanelRentedCars);
 
+        jButtonAddCar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButtonAddCar.setText("Добавить автомобиль");
         jButtonAddCar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -355,6 +388,7 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
+        jButtonDeleteCar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButtonDeleteCar.setText("Удалить автомобиль");
         jButtonDeleteCar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -362,22 +396,27 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
+        jLabelListCarsSearchСriteriaFirst.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabelListCarsSearchСriteriaFirst.setText("Выберите критерий поиска:");
 
+        jLabelListCarsSearchСriteriaSecond.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabelListCarsSearchСriteriaSecond.setText("Выберите из списка:");
 
+        jComboBoxSearchСriteriaFirst.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jComboBoxSearchСriteriaFirst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxSearchСriteriaFirstActionPerformed(evt);
             }
         });
 
+        jComboBoxSearchСriteriaSecond.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jComboBoxSearchСriteriaSecond.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxSearchСriteriaSecondActionPerformed(evt);
             }
         });
 
+        jButtonEditDataCar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButtonEditDataCar.setText("Изменить данные автомобиля");
         jButtonEditDataCar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -385,7 +424,7 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
-        jTableAvailableCars2.setModel(new javax.swing.table.DefaultTableModel(
+        jTableListCars.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -408,7 +447,7 @@ public class Frame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPaneAvailableCars2.setViewportView(jTableAvailableCars2);
+        jScrollPaneAvailableCars2.setViewportView(jTableListCars);
 
         javax.swing.GroupLayout jPanelListCarsLayout = new javax.swing.GroupLayout(jPanelListCars);
         jPanelListCars.setLayout(jPanelListCarsLayout);
@@ -416,6 +455,9 @@ public class Frame extends javax.swing.JFrame {
             jPanelListCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelListCarsLayout.createSequentialGroup()
                 .addGroup(jPanelListCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelListCarsLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPaneAvailableCars2, javax.swing.GroupLayout.DEFAULT_SIZE, 1205, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelListCarsLayout.createSequentialGroup()
                         .addGroup(jPanelListCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelListCarsLayout.createSequentialGroup()
@@ -426,18 +468,13 @@ public class Frame extends javax.swing.JFrame {
                                 .addComponent(jLabelListCarsSearchСriteriaSecond)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelListCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBoxSearchСriteriaFirst, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBoxSearchСriteriaSecond, 0, 180, Short.MAX_VALUE))
-                        .addGap(235, 235, 235)
-                        .addGroup(jPanelListCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonEditDataCar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonAddCar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelListCarsLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonDeleteCar, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelListCarsLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPaneAvailableCars2, javax.swing.GroupLayout.DEFAULT_SIZE, 833, Short.MAX_VALUE)))
+                            .addComponent(jComboBoxSearchСriteriaFirst, 0, 305, Short.MAX_VALUE)
+                            .addComponent(jComboBoxSearchСriteriaSecond, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanelListCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jButtonEditDataCar, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                            .addComponent(jButtonAddCar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonDeleteCar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanelListCarsLayout.setVerticalGroup(
@@ -458,7 +495,7 @@ public class Frame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonDeleteCar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPaneAvailableCars2, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPaneAvailableCars2, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -479,6 +516,7 @@ public class Frame extends javax.swing.JFrame {
 
         jTabbedPaneForm.addTab("Автопарк", jPanelAutopark);
 
+        jButtonCloseOrder.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButtonCloseOrder.setText("Завершить заказ");
         jButtonCloseOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -486,6 +524,7 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
+        jButtonUpdateTableOrders.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButtonUpdateTableOrders.setText("Обновить данные");
         jButtonUpdateTableOrders.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -493,6 +532,7 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
+        jButtonEditDataOrder.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButtonEditDataOrder.setText("Изменить данные заказа");
         jButtonEditDataOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -500,6 +540,7 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
+        jTableOrders.setFont(getFont());
         jTableOrders.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -534,10 +575,10 @@ public class Frame extends javax.swing.JFrame {
                 .addGroup(jPanelOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPaneOrders)
                     .addGroup(jPanelOrdersLayout.createSequentialGroup()
-                        .addGap(0, 479, Short.MAX_VALUE)
+                        .addGap(0, 826, Short.MAX_VALUE)
                         .addGroup(jPanelOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButtonCloseOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonEditDataOrder, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
+                            .addComponent(jButtonEditDataOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonUpdateTableOrders, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -546,7 +587,7 @@ public class Frame extends javax.swing.JFrame {
             jPanelOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelOrdersLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPaneOrders, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                .addComponent(jScrollPaneOrders, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButtonUpdateTableOrders, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
@@ -589,6 +630,7 @@ public class Frame extends javax.swing.JFrame {
         });
         jScrollPaneClients.setViewportView(jTableClients);
 
+        jButtonEditDataClient.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButtonEditDataClient.setText("Изменить данные клиента");
         jButtonEditDataClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -596,6 +638,7 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
+        jButtonUpdateTableClients.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButtonUpdateTableClients.setText("Обновить данные");
         jButtonUpdateTableClients.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -603,6 +646,7 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
+        jButtonBlockClient.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButtonBlockClient.setText("Заблокировать клиента");
         jButtonBlockClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -610,6 +654,7 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
+        jButtonExportClientsToPDF.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButtonExportClientsToPDF.setText("Экспортировать данные в PDF");
         jButtonExportClientsToPDF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -621,16 +666,16 @@ public class Frame extends javax.swing.JFrame {
         jPanelClients.setLayout(jPanelClientsLayout);
         jPanelClientsLayout.setHorizontalGroup(
             jPanelClientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelClientsLayout.createSequentialGroup()
+            .addGroup(jPanelClientsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelClientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPaneClients, javax.swing.GroupLayout.DEFAULT_SIZE, 838, Short.MAX_VALUE)
+                .addGroup(jPanelClientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPaneClients, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1210, Short.MAX_VALUE)
                     .addGroup(jPanelClientsLayout.createSequentialGroup()
                         .addComponent(jButtonExportClientsToPDF)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanelClientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButtonBlockClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonEditDataClient, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
+                            .addComponent(jButtonEditDataClient))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonUpdateTableClients, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -639,16 +684,17 @@ public class Frame extends javax.swing.JFrame {
             jPanelClientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelClientsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPaneClients, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelClientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonUpdateTableClients, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                    .addGroup(jPanelClientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonEditDataClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonExportClientsToPDF, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonBlockClient, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12))
+                .addComponent(jScrollPaneClients, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelClientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonExportClientsToPDF, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelClientsLayout.createSequentialGroup()
+                        .addGroup(jPanelClientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButtonUpdateTableClients, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                            .addComponent(jButtonEditDataClient))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonBlockClient, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(15, 15, 15))
         );
 
         jTabbedPaneForm.addTab("Клиенты", jPanelClients);
@@ -665,10 +711,20 @@ public class Frame extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    private DefaultComboBoxModel<String> cbModel;
+    
+    private void SearchCriteriaFirst(JTable table, JComboBox<String> comboBox)
+    {
+        cbModel = new DefaultComboBoxModel<>();
+        for (int i = 0; i < table.getModel().getColumnCount(); i++) 
+            cbModel.addElement((String)table.getModel().getColumnName(i));
+        comboBox.setModel(cbModel);
+        comboBox.setSelectedIndex(-1);
+    }
     private void jComboBoxAvailableCarsSearchСriteriaFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAvailableCarsSearchСriteriaFirstActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jComboBoxAvailableCarsSearchСriteriaFirstActionPerformed
 
     private void jComboBoxSearchСriteriaFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSearchСriteriaFirstActionPerformed
@@ -799,6 +855,10 @@ public class Frame extends javax.swing.JFrame {
         }
         document.close();
     }//GEN-LAST:event_jButtonExportClientsToPDFActionPerformed
+
+    private void jPanelAvailableCarsComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelAvailableCarsComponentShown
+        SearchCriteriaFirst(jTableAvailableCars, jComboBoxAvailableCarsSearchСriteriaFirst);        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanelAvailableCarsComponentShown
 
     private void addTableHeader(PdfPTable table, TableModel tableModel, Font font) {
         String[] array = new String[tableModel.getColumnCount() - 2];
@@ -951,9 +1011,9 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPaneAutopark;
     private javax.swing.JTabbedPane jTabbedPaneForm;
     private javax.swing.JTable jTableAvailableCars;
-    private javax.swing.JTable jTableAvailableCars1;
-    private javax.swing.JTable jTableAvailableCars2;
+    private javax.swing.JTable jTableCarsInRent;
     private javax.swing.JTable jTableClients;
+    private javax.swing.JTable jTableListCars;
     private javax.swing.JTable jTableOrders;
     private javax.swing.JTextField jTextFieldLogin1;
     // End of variables declaration//GEN-END:variables
