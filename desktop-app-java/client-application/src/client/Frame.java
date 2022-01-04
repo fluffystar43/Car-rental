@@ -748,11 +748,13 @@ public class Frame extends javax.swing.JFrame {
         comboBox.setSelectedIndex(-1);
     }
     private void jComboBoxAvailableCarsSearchСriteriaFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAvailableCarsSearchСriteriaFirstActionPerformed
+        jComboBoxAvailableCarsSearchСriteriaSecond.setSelectedItem(null);
         if (jComboBoxAvailableCarsSearchСriteriaFirst.getSelectedItem() != null) {
-            List listSecondCriteria = searchCriteriaService.getSearchCriteriaServicePort().getListSecondCriteria((String) jComboBoxAvailableCarsSearchСriteriaFirst.getSelectedItem());
+            List listSecondCriteria = searchCriteriaService.getSearchCriteriaServicePort().getListSecondCriteria(jComboBoxAvailableCarsSearchСriteriaFirst.getSelectedItem().toString());
+            System.out.print(listSecondCriteria.toString());
             cbModel = new DefaultComboBoxModel<>();
             for (int i = 0; i < listSecondCriteria.size(); i++)
-                if (i%2 == 1) cbModel.addElement((String) listSecondCriteria.get(i));
+                if (i%2 == 1) cbModel.addElement(String.valueOf(listSecondCriteria.get(i)));
             jComboBoxAvailableCarsSearchСriteriaSecond.setModel(cbModel);
             jComboBoxAvailableCarsSearchСriteriaSecond.setSelectedIndex(-1);
         }
@@ -784,7 +786,7 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonUpdateTableClientsActionPerformed
 
     private void jComboBoxAvailableCarsSearchСriteriaSecondActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAvailableCarsSearchСriteriaSecondActionPerformed
-        // TODO add your handling code here:
+        //dfgfdg
     }//GEN-LAST:event_jComboBoxAvailableCarsSearchСriteriaSecondActionPerformed
 
     private void jComboBoxRentedCarsSearchСriteriaSecondActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxRentedCarsSearchСriteriaSecondActionPerformed
