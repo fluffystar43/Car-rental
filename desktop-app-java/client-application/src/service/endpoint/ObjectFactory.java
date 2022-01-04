@@ -25,6 +25,8 @@ import javax.xml.namespace.QName;
 public class ObjectFactory {
 
     private final static QName _GetListOfClientsResponse_QNAME = new QName("http://endpoint.service/", "getListOfClientsResponse");
+    private final static QName _UpdateClient_QNAME = new QName("http://endpoint.service/", "updateClient");
+    private final static QName _UpdateClientResponse_QNAME = new QName("http://endpoint.service/", "updateClientResponse");
     private final static QName _GetListOfClients_QNAME = new QName("http://endpoint.service/", "getListOfClients");
 
     /**
@@ -43,6 +45,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link UpdateClientResponse }
+     * 
+     */
+    public UpdateClientResponse createUpdateClientResponse() {
+        return new UpdateClientResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateClient }
+     * 
+     */
+    public UpdateClient createUpdateClient() {
+        return new UpdateClient();
+    }
+
+    /**
      * Create an instance of {@link GetListOfClients }
      * 
      */
@@ -57,6 +75,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://endpoint.service/", name = "getListOfClientsResponse")
     public JAXBElement<GetListOfClientsResponse> createGetListOfClientsResponse(GetListOfClientsResponse value) {
         return new JAXBElement<GetListOfClientsResponse>(_GetListOfClientsResponse_QNAME, GetListOfClientsResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateClient }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://endpoint.service/", name = "updateClient")
+    public JAXBElement<UpdateClient> createUpdateClient(UpdateClient value) {
+        return new JAXBElement<UpdateClient>(_UpdateClient_QNAME, UpdateClient.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateClientResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://endpoint.service/", name = "updateClientResponse")
+    public JAXBElement<UpdateClientResponse> createUpdateClientResponse(UpdateClientResponse value) {
+        return new JAXBElement<UpdateClientResponse>(_UpdateClientResponse_QNAME, UpdateClientResponse.class, null, value);
     }
 
     /**

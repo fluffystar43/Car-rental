@@ -9,6 +9,7 @@ import operation.CarOperationImpl;
 import operation.JDBCConnection;
 import javax.xml.ws.Endpoint;
 import service.endpoint.ClientService;
+import service.endpoint.SearchCriteriaService;
 
 public class RunServer {
 
@@ -31,6 +32,8 @@ public class RunServer {
             // SOAP API
             Endpoint.publish("http://localhost:8080/ws01/ClientService", 
                     new ClientService(connection));
+            Endpoint.publish("http://localhost:8080/ws01/SearchCriteriaService", 
+                    new SearchCriteriaService(connection));
             
             System.out.println("Сервер запущен.");
         } catch (AlreadyBoundException | RemoteException e) {

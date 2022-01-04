@@ -1,16 +1,16 @@
 
 package service.endpoint;
 
-import types.Client;
-
+import java.util.List;
 import javax.jws.WebMethod;
+import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.ws.Action;
 import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
-import java.util.List;
+import types.Client;
 
 
 /**
@@ -26,6 +26,18 @@ import java.util.List;
 })
 public interface ClientService {
 
+
+    /**
+     * 
+     * @param arg0
+     */
+    @WebMethod
+    @RequestWrapper(localName = "updateClient", targetNamespace = "http://endpoint.service/", className = "service.endpoint.UpdateClient")
+    @ResponseWrapper(localName = "updateClientResponse", targetNamespace = "http://endpoint.service/", className = "service.endpoint.UpdateClientResponse")
+    @Action(input = "http://endpoint.service/ClientService/updateClientRequest", output = "http://endpoint.service/ClientService/updateClientResponse")
+    public void updateClient(
+        @WebParam(name = "arg0", targetNamespace = "")
+        Client arg0);
 
     /**
      * 

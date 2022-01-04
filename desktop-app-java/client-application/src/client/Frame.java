@@ -5,8 +5,7 @@ import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import java.awt.Dimension;
-import java.awt.Toolkit;
+
 import service.endpoint.ClientServiceService;
 import types.Client;
 
@@ -20,6 +19,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import service.endpoint.SearchCriteriaServiceService;
 
 public class Frame extends javax.swing.JFrame {
 
@@ -36,9 +36,11 @@ public class Frame extends javax.swing.JFrame {
 
     static DefaultTableModel model = new DefaultTableModel();
     static ClientServiceService clientService = null;
+    static SearchCriteriaServiceService searchCriteriaService = null;
 
     static {
         clientService = new ClientServiceService();
+        searchCriteriaService = new SearchCriteriaServiceService();
     }
 
     @SuppressWarnings("unchecked")
@@ -746,7 +748,14 @@ public class Frame extends javax.swing.JFrame {
         comboBox.setSelectedIndex(-1);
     }
     private void jComboBoxAvailableCarsSearchСriteriaFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAvailableCarsSearchСriteriaFirstActionPerformed
-
+        if (jComboBoxAvailableCarsSearchСriteriaFirst.getSelectedItem() != null) {
+            List listSecondCriteria = searchCriteriaService.getSearchCriteriaServicePort().getListSecondCriteria((String) jComboBoxAvailableCarsSearchСriteriaFirst.getSelectedItem());
+            cbModel = new DefaultComboBoxModel<>();
+            for (int i = 0; i < listSecondCriteria.size(); i++)
+                if (i%2 == 1) cbModel.addElement((String) listSecondCriteria.get(i));
+            jComboBoxAvailableCarsSearchСriteriaSecond.setModel(cbModel);
+            jComboBoxAvailableCarsSearchСriteriaSecond.setSelectedIndex(-1);
+        }
     }//GEN-LAST:event_jComboBoxAvailableCarsSearchСriteriaFirstActionPerformed
 
     private void jComboBoxListCarsSearchСriteriaFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxListCarsSearchСriteriaFirstActionPerformed
@@ -871,7 +880,7 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonExportClientsToPDFActionPerformed
 
     private void jPanelAvailableCarsComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelAvailableCarsComponentShown
-        SearchCriteriaFirst(jTableAvailableCars, jComboBoxAvailableCarsSearchСriteriaFirst);  
+        SearchCriteriaFirst(jTableAvailableCars, jComboBoxAvailableCarsSearchСriteriaFirst);
         UpdateListClients();
     }//GEN-LAST:event_jPanelAvailableCarsComponentShown
 
