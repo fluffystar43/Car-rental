@@ -60,6 +60,7 @@ public interface SearchCriteriaService {
 
     /**
      * 
+     * @param arg1
      * @param arg0
      * @return
      *     returns java.util.List<java.lang.Object>
@@ -71,7 +72,9 @@ public interface SearchCriteriaService {
     @Action(input = "http://endpoint.service/SearchCriteriaService/getListCarsRequest", output = "http://endpoint.service/SearchCriteriaService/getListCarsResponse")
     public List<Object> getListCars(
         @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
+        String arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        String arg1);
 
     /**
      * 

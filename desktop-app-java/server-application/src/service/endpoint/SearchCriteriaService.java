@@ -14,7 +14,6 @@ import java.util.logging.Logger;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import operation.SeachCriteriaOperation;
-import types.Car;
 import types.Client;
 import types.Order;
 
@@ -83,47 +82,69 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
     }
 
     @Override
-    public List getListCars(String criteria) throws RemoteException {
-        if (criteria == null) {
-            List listCars = new ArrayList<>();
-            try {
-                Statement statement = connection.createStatement();
-                String sql = "SELECT brand.name, "
-                        + "model.name, "
-                        + "gear_box.name, drive.name, color.name, car.rental_price, car.registration_number "
-                        + "FROM brand, model, car_class, gear_box, drive, color, car, car_exterior "
-                        + "WHERE car.brand_id = brand.id AND car.model_id = model.id AND "
-                        + "car.gear_box_id = gear_box.id AND "
-                        + "car.drive_id = drive.id AND car_exterior.color_id = color.id AND car.id = car_exterior.car_id";
+    public List getListCars(String criteriaFirst, String criteriaSecond) throws RemoteException {
 
-                ResultSet result = statement.executeQuery(sql);
-                while (result.next()) {
-                    listCars.add(result.getObject(1));
-                    listCars.add(result.getObject(2));
-                    listCars.add(result.getObject(3));
-                    listCars.add(result.getObject(4));
-                    listCars.add(result.getObject(5));
-                    listCars.add(result.getObject(6));
-                    listCars.add(result.getObject(7));
+        List listCars = new ArrayList<>();
+        try {
+            Statement statement = connection.createStatement();
+            String sql = "SELECT brand.name, "
+                    + "model.name, "
+                    + "gear_box.name, drive.name, color.name, car.rental_price, car.registration_number "
+                    + "FROM brand, model, car_class, gear_box, drive, color, car, car_exterior "
+                    + "WHERE car.brand_id = brand.id AND car.model_id = model.id AND "
+                    + "car.gear_box_id = gear_box.id AND "
+                    + "car.drive_id = drive.id AND car_exterior.color_id = color.id AND car.id = car_exterior.car_id";
+            if (criteriaFirst != null) {
+
+                switch (criteriaFirst) {
+                    case ("Бренд"):
+                        sql += " AND brand.name = '" + criteriaSecond + "'";
+                        break;
+                    case ("Модель"):
+                        sql += " AND model.name = '" + criteriaSecond + "'";
+                        break;
+                    case ("Коробка передач"):
+                        sql += " AND gear_box.name = '" + criteriaSecond + "'";
+                        break;
+                    case ("Привод"):
+                        sql += " AND drive.name = '" + criteriaSecond + "'";
+                        break;
+                    case ("Цвет"):
+                        sql += " AND color.name = '" + criteriaSecond + "'";
+                        break;
+                    case ("Цена, руб/сут."):
+                        sql += " AND car.rental_price = '" + criteriaSecond + "'";
+                        break;
+                    case ("Номер"):
+                        sql += " AND car.registration_number = '" + criteriaSecond + "'";
+                        break;
                 }
-                System.out.println("Получен список автомобилей");
-            } catch (SQLException e) {
-                System.out.print(e.getMessage());
             }
-            return listCars;
-        } else {
-
+            ResultSet result = statement.executeQuery(sql);
+            while (result.next()) {
+                listCars.add(result.getObject(1));
+                listCars.add(result.getObject(2));
+                listCars.add(result.getObject(3));
+                listCars.add(result.getObject(4));
+                listCars.add(result.getObject(5));
+                listCars.add(result.getObject(6));
+                listCars.add(result.getObject(7));
+                System.out.print(result.getArray(1).toString());
+            }
+            System.out.println("Получен список автомобилей");
+        } catch (SQLException e) {
+            System.out.print(e.getMessage());
         }
+        return listCars;
+    }
+
+    @Override
+        public List<Client> getListClients(String criteria) throws RemoteException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Client> getListClients(String criteria) throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Order> getListOrders(String criteria) throws RemoteException {
+        public List<Order> getListOrders(String criteria) throws RemoteException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

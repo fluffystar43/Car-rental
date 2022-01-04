@@ -761,7 +761,9 @@ public class Frame extends javax.swing.JFrame {
         comboBox.setSelectedIndex(-1);
     }
     private void jComboBoxAvailableCarsSearchСriteriaFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAvailableCarsSearchСriteriaFirstActionPerformed
-        jComboBoxAvailableCarsSearchСriteriaSecond.setSelectedItem(null);
+        if (jComboBoxAvailableCarsSearchСriteriaSecond.getSelectedItem() != null) {
+            jComboBoxAvailableCarsSearchСriteriaSecond.setSelectedIndex(-1);
+        }
         if (jComboBoxAvailableCarsSearchСriteriaFirst.getSelectedItem() != null) {
             List listSecondCriteria = searchCriteriaService.getSearchCriteriaServicePort().getListSecondCriteria(jComboBoxAvailableCarsSearchСriteriaFirst.getSelectedItem().toString());
 
@@ -802,7 +804,24 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonUpdateTableClientsActionPerformed
 
     private void jComboBoxAvailableCarsSearchСriteriaSecondActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAvailableCarsSearchСriteriaSecondActionPerformed
-        //dfgfdg
+        jButtonAvailableCarsAddOrder.setEnabled(false);
+
+        if (jComboBoxAvailableCarsSearchСriteriaSecond.getSelectedItem() != null) {
+            List listCars = searchCriteriaService
+                    .getSearchCriteriaServicePort()
+                    .getListCars(jComboBoxAvailableCarsSearchСriteriaFirst.getSelectedItem().toString(),
+                            jComboBoxAvailableCarsSearchСriteriaSecond.getSelectedItem().toString());
+
+            try {
+                model = (DefaultTableModel) jTableAvailableCars.getModel();
+                doVivodCars(listCars);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Не удалось установить соединение с сервером:" + ex.getMessage() + ".",
+                        "Ошибка",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
     }//GEN-LAST:event_jComboBoxAvailableCarsSearchСriteriaSecondActionPerformed
 
     private void jComboBoxRentedCarsSearchСriteriaSecondActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxRentedCarsSearchСriteriaSecondActionPerformed
@@ -902,12 +921,10 @@ public class Frame extends javax.swing.JFrame {
                 Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
             }
             document.close();
-        }
-        else
-        {
+        } else {
             JOptionPane.showMessageDialog(null, "Экспорт данных отменен!", "Внимание!", JOptionPane.INFORMATION_MESSAGE);
         }
-            
+
     }//GEN-LAST:event_jButtonExportClientsToPDFActionPerformed
 
     private void jPanelAvailableCarsComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelAvailableCarsComponentShown
@@ -936,12 +953,21 @@ public class Frame extends javax.swing.JFrame {
 
     private void jButtonAvailableCarsUpdateTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAvailableCarsUpdateTableActionPerformed
         jButtonAvailableCarsAddOrder.setEnabled(false);
-
-        List listCars = searchCriteriaService.getSearchCriteriaServicePort().getListCars(null);
-
+        List listCars = searchCriteriaService.getSearchCriteriaServicePort().getListCars(null, null);
+        if (jComboBoxAvailableCarsSearchСriteriaFirst.getSelectedItem() == null
+                || jComboBoxAvailableCarsSearchСriteriaSecond.getSelectedItem() == null) {
+            listCars = searchCriteriaService.getSearchCriteriaServicePort().getListCars(null, null);
+        } else {
+            listCars = searchCriteriaService
+                    .getSearchCriteriaServicePort()
+                    .getListCars(jComboBoxAvailableCarsSearchСriteriaFirst.getSelectedItem().toString(),
+                            jComboBoxAvailableCarsSearchСriteriaSecond.getSelectedItem().toString());
+        }
         try {
             model = (DefaultTableModel) jTableAvailableCars.getModel();
-            doVivodCars(listCars);
+            if (listCars != null) {
+                doVivodCars(listCars);
+            }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Не удалось установить соединение с сервером:" + ex.getMessage() + ".",
                     "Ошибка",
