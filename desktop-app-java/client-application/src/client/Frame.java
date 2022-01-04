@@ -626,6 +626,7 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
+        jTableClients.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jTableClients.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -735,17 +736,17 @@ public class Frame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     private DefaultComboBoxModel<String> cbModel;
-    
-    private void SearchCriteriaFirst(JTable table, JComboBox<String> comboBox)
-    {
+
+    private void SearchCriteriaFirst(JTable table, JComboBox<String> comboBox) {
         cbModel = new DefaultComboBoxModel<>();
-        for (int i = 0; i < table.getModel().getColumnCount(); i++) 
-            cbModel.addElement((String)table.getModel().getColumnName(i));
+        for (int i = 0; i < table.getModel().getColumnCount(); i++) {
+            cbModel.addElement((String) table.getModel().getColumnName(i));
+        }
         comboBox.setModel(cbModel);
         comboBox.setSelectedIndex(-1);
     }
     private void jComboBoxAvailableCarsSearchСriteriaFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAvailableCarsSearchСriteriaFirstActionPerformed
-        
+
     }//GEN-LAST:event_jComboBoxAvailableCarsSearchСriteriaFirstActionPerformed
 
     private void jComboBoxListCarsSearchСriteriaFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxListCarsSearchСriteriaFirstActionPerformed
@@ -757,28 +758,20 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxRentedCarsSearchСriteriaFirstActionPerformed
 
     private void jPanelClientsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelClientsMouseClicked
-        try {
-            model = (DefaultTableModel) jTableClients.getModel();
-            doVivod(clientService.getClientServicePort().getListOfClients());
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Не удалось установить соединение с сервером:" + ex.getMessage() + ".",
-                    "Ошибка",
-                    JOptionPane.ERROR_MESSAGE);
-        }
 
     }//GEN-LAST:event_jPanelClientsMouseClicked
-
-    private void jButtonUpdateTableClientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateTableClientsActionPerformed
+    private void UpdateListClients() {
         try {
             model = (DefaultTableModel) jTableClients.getModel();
             doVivod(clientService.getClientServicePort().getListOfClients());
         } catch (Exception ex) {
-            ex.printStackTrace();
             JOptionPane.showMessageDialog(this, "Не удалось установить соединение с сервером:" + ex.getMessage() + ".",
                     "Ошибка",
                     JOptionPane.ERROR_MESSAGE);
         }
+    }
+    private void jButtonUpdateTableClientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateTableClientsActionPerformed
+        UpdateListClients();
     }//GEN-LAST:event_jButtonUpdateTableClientsActionPerformed
 
     private void jComboBoxAvailableCarsSearchСriteriaSecondActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAvailableCarsSearchСriteriaSecondActionPerformed
@@ -878,14 +871,15 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonExportClientsToPDFActionPerformed
 
     private void jPanelAvailableCarsComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelAvailableCarsComponentShown
-        SearchCriteriaFirst(jTableAvailableCars, jComboBoxAvailableCarsSearchСriteriaFirst);        // TODO add your handling code here:
+        SearchCriteriaFirst(jTableAvailableCars, jComboBoxAvailableCarsSearchСriteriaFirst);  
+        UpdateListClients();
     }//GEN-LAST:event_jPanelAvailableCarsComponentShown
 
     private void jPanelClientsComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelClientsComponentShown
-        
+
         this.setSize(1600, 730);
         this.setLocationRelativeTo(null);
-        
+
     }//GEN-LAST:event_jPanelClientsComponentShown
 
     private void jPanelClientsComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelClientsComponentHidden
@@ -953,7 +947,7 @@ public class Frame extends javax.swing.JFrame {
             rowData[0] = client.getSecondName();
             rowData[1] = client.getFirstName();
             rowData[2] = client.getMiddleName();
-            rowData[3] = client.getDateBirthday();
+            rowData[3] = client.getDateBirthday().toString().substring(0, 10);
             rowData[4] = client.getPassportData();
             rowData[5] = client.getDriversLicense();
             rowData[6] = client.getPhoneNumber();
@@ -986,15 +980,11 @@ public class Frame extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+
         //</editor-fold>
 
         /* Create and display the form */
