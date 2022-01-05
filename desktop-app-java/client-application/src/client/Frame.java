@@ -9,6 +9,7 @@ import java.io.File;
 
 import service.endpoint.ClientServiceService;
 import types.Client;
+import java.text.SimpleDateFormat;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -16,7 +17,9 @@ import javax.swing.table.TableModel;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -835,7 +838,7 @@ public class Frame extends javax.swing.JFrame {
         if (jComboBoxAvailableCarsSearchСriteriaSecond.getSelectedItem() != null) {
             List listCars = searchCriteriaService
                     .getSearchCriteriaServicePort()
-                    .getListCars(jComboBoxAvailableCarsSearchСriteriaFirst.getSelectedItem().toString(),
+                    .getListAvailableCars(jComboBoxAvailableCarsSearchСriteriaFirst.getSelectedItem().toString(),
                             jComboBoxAvailableCarsSearchСriteriaSecond.getSelectedItem().toString());
 
             try {
@@ -851,7 +854,23 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxAvailableCarsSearchСriteriaSecondActionPerformed
 
     private void jComboBoxRentedCarsSearchСriteriaSecondActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxRentedCarsSearchСriteriaSecondActionPerformed
-        // TODO add your handling code here:
+        jButtonCloseOrder.setEnabled(false);
+
+        if (jComboBoxRentedCarsSearchСriteriaSecond.getSelectedItem() != null) {
+            List listCars = searchCriteriaService
+                    .getSearchCriteriaServicePort()
+                    .getListRentedCars(jComboBoxRentedCarsSearchСriteriaFirst.getSelectedItem().toString(),
+                            jComboBoxRentedCarsSearchСriteriaSecond.getSelectedItem().toString());
+
+            try {
+                model = (DefaultTableModel) jTableCarsInRent.getModel();
+                doVivodRentedCars(listCars);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Не удалось установить соединение с сервером:" + ex.getMessage() + ".",
+                        "Ошибка",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_jComboBoxRentedCarsSearchСriteriaSecondActionPerformed
 
     private void jComboBoxSearchСriteriaSecondActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSearchСriteriaSecondActionPerformed
@@ -958,6 +977,7 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelAvailableCarsComponentShown
 
     private void jPanelClientsComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelClientsComponentShown
+        
         UpdateListClients();
         this.setSize(1600, 730);
         this.setLocationRelativeTo(null);
@@ -986,11 +1006,11 @@ public class Frame extends javax.swing.JFrame {
         List listCars = null;
         if (jComboBoxAvailableCarsSearchСriteriaFirst.getSelectedItem() == null
                 || jComboBoxAvailableCarsSearchСriteriaSecond.getSelectedItem() == null) {
-            listCars = searchCriteriaService.getSearchCriteriaServicePort().getListCars(null, null);
+            listCars = searchCriteriaService.getSearchCriteriaServicePort().getListAvailableCars(null, null);
         } else {
             listCars = searchCriteriaService
                     .getSearchCriteriaServicePort()
-                    .getListCars(jComboBoxAvailableCarsSearchСriteriaFirst.getSelectedItem().toString(),
+                    .getListAvailableCars(jComboBoxAvailableCarsSearchСriteriaFirst.getSelectedItem().toString(),
                             jComboBoxAvailableCarsSearchСriteriaSecond.getSelectedItem().toString());
         }
         try {
@@ -1013,7 +1033,7 @@ public class Frame extends javax.swing.JFrame {
     private void jTableCarsInRentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCarsInRentMouseClicked
         jButtonRentedCarsCloseOrder.setEnabled(true);
     }//GEN-LAST:event_jTableCarsInRentMouseClicked
-    private void doVivodCars(List listСars) {
+    private void doVivodCars(List listСars) throws ParseException {
         doClearTable();
         Object[] rowData = new String[7];
         int i = 0;
@@ -1023,6 +1043,38 @@ public class Frame extends javax.swing.JFrame {
                 model.addRow(rowData);
                 i = 0;
                 continue;
+            }
+            i++;
+        }
+    }
+    
+    private void doVivodRentedCars(List listСars) throws ParseException {
+        doClearTable();
+        Object[] rowData = new String[7];
+        int i = 0;
+        for (Object var : listСars) { 
+            if (i != 4 && i != 5)
+                rowData[i] = String.valueOf(var);
+            else{
+               rowData[i] = String.valueOf(var).substring(0, 10); 
+            }
+            if(i == 5)
+            {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                Date date1 = dateFormat.parse((String) rowData[i-1]);
+                Date date2 = dateFormat.parse((String) rowData[i]);
+                
+                long milliseconds = date2.getTime() - date1.getTime();
+                System.out.println("\nРазница между датами в миллисекундах: " + milliseconds);
+                
+                int days = (int) (milliseconds / (24 * 60 * 60 * 1000));
+                System.out.println("Разница между датами в днях: " + days);
+            
+                rowData[i+1] = String.valueOf(days);
+                
+                model.addRow(rowData);
+                i = 0;
+                continue; 
             }
             i++;
         }

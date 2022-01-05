@@ -11,7 +11,8 @@ public interface SeachCriteriaOperation {
     List getListSecondCriteria(String criteria) throws RemoteException;
     
     // Списки данных по определенному критерию
-    List getListCars(String criteriaFirst, String criteriaSecond) throws RemoteException;
+    List getListAvailableCars(String criteriaFirst, String criteriaSecond) throws RemoteException;
+    List getListRentedCars(String criteriaFirst, String criteriaSecond) throws RemoteException;
     List<Client> getListClients(String criteria) throws RemoteException;
     List<Order> getListOrders(String criteria) throws RemoteException;
 }

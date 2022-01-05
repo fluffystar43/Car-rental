@@ -81,10 +81,11 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
             }
             ResultSet result = statement.executeQuery(sql);
             while (result.next()) {
-                if (!"Клиент".equals(criteria))
+                if (!"Клиент".equals(criteria)) {
                     listCriteria.add(result.getObject(1));
-                else
+                } else {
                     listCriteria.add(result.getObject(1) + " " + result.getObject(2) + " " + result.getObject(3));
+                }
             }
             System.out.println("Получен список данных второго критерия");
         } catch (SQLException e) {
@@ -93,8 +94,9 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
         return listCriteria;
     }
 
+    @WebMethod()
     @Override
-    public List getListCars(String criteriaFirst, String criteriaSecond) throws RemoteException {
+    public List getListAvailableCars(String criteriaFirst, String criteriaSecond) throws RemoteException {
 
         List listCars = new ArrayList<>();
         try {
@@ -142,18 +144,69 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
                 listCars.add(result.getObject(6));
                 listCars.add(result.getObject(7));
             }
-            System.out.println("Получен список автомобилей");
+            System.out.println("Получен список доступных автомобилей");
         } catch (SQLException e) {
             System.out.print(e.getMessage());
         }
         return listCars;
     }
 
+    @WebMethod()
+    @Override
+    public List getListRentedCars(String criteriaFirst, String criteriaSecond) throws RemoteException {
+        List listCars = new ArrayList<>();
+        try {
+            Statement statement = connection.createStatement();
+            String sql = "SELECT brand.name, "
+                    + "model.name, car.registration_number,  client.second_name || ' ' || client.first_name || ' ' || client.middle_name AS client_full_name, ordertable.start_date, ordertable.end_date "
+                    + "FROM brand, model, car, client, \"order\" as ordertable "
+                    + "WHERE car.brand_id = brand.id AND car.model_id = model.id AND car.id = ordertable.car_id AND client.id = ordertable.client_id AND car.is_rented = true";
+            if (criteriaFirst != null) {
+
+                switch (criteriaFirst) {
+                    case ("Бренд"):
+                        sql += " AND brand.name = '" + criteriaSecond + "'";
+                        break;
+                    case ("Модель"):
+                        sql += " AND model.name = '" + criteriaSecond + "'";
+                        break;
+                    case ("Номер"):
+                        sql += " AND registration_number = '" + criteriaSecond + "'";
+                        break;
+                    case ("Клиент"):
+                        sql += " AND client.full_name = '" + criteriaSecond + "'";
+                        break;
+                    case ("Дата аренды"):
+                        sql += " AND ordertable.start_date LIKE '" + criteriaSecond + "'";
+                        break;
+                    case ("Дата возврата"):
+                        sql += " AND ordertable.end_date LIKE '" + criteriaSecond + "'";
+                        break;
+                }
+            }
+            ResultSet result = statement.executeQuery(sql);
+            while (result.next()) {
+                listCars.add(result.getObject(1));
+                listCars.add(result.getObject(2));
+                listCars.add(result.getObject(3));
+                listCars.add(result.getObject(4));
+                listCars.add(result.getObject(5));
+                listCars.add(result.getObject(6));
+            }
+            System.out.println("Получен список арендованных автомобилей");
+        } catch (SQLException e) {
+            System.out.print(e.getMessage());
+        }
+        return listCars;
+    }
+
+    @WebMethod()
     @Override
     public List<Client> getListClients(String criteria) throws RemoteException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @WebMethod()
     @Override
     public List<Order> getListOrders(String criteria) throws RemoteException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
