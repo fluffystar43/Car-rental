@@ -329,16 +329,17 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
+        jTableCarsInRent.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jTableCarsInRent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Бренд", "Марка", "Коробка передач", "Привод", "Цвет", "Цена, руб/сут.", "Номер"
+                "Бренд", "Модель", "Номер", "Клиент", "Дата аренды", "Дата возврата", "Количество дней"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false
@@ -350,6 +351,11 @@ public class Frame extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jTableCarsInRent.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableCarsInRentMouseClicked(evt);
             }
         });
         jScrollPaneAvailableCars1.setViewportView(jTableCarsInRent);
@@ -783,7 +789,27 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxListCarsSearchСriteriaFirstActionPerformed
 
     private void jComboBoxRentedCarsSearchСriteriaFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxRentedCarsSearchСriteriaFirstActionPerformed
-        // TODO add your handling code here:
+        if (jComboBoxRentedCarsSearchСriteriaSecond.getSelectedItem() != null) {
+            jComboBoxRentedCarsSearchСriteriaSecond.setSelectedIndex(-1);
+        }
+        if (jComboBoxRentedCarsSearchСriteriaFirst.getSelectedItem() != null) {
+            String criteria = jComboBoxRentedCarsSearchСriteriaFirst.getSelectedItem().toString();
+            List listSecondCriteria = searchCriteriaService.getSearchCriteriaServicePort().getListSecondCriteria(criteria);
+
+            cbModel = new DefaultComboBoxModel<>();
+
+            for (int i = 0; i < listSecondCriteria.size(); i++) {
+                if (!"Дата аренды".equals(criteria) && !"Дата возврата".equals(criteria))
+                    cbModel.addElement(String.valueOf(listSecondCriteria.get(i)));
+                else
+                {
+                    cbModel.addElement(String.valueOf(listSecondCriteria.get(i)).substring(0, 10));
+                }
+            }
+
+            jComboBoxRentedCarsSearchСriteriaSecond.setModel(cbModel);
+            jComboBoxRentedCarsSearchСriteriaSecond.setSelectedIndex(-1);
+        }
     }//GEN-LAST:event_jComboBoxRentedCarsSearchСriteriaFirstActionPerformed
 
     private void jPanelClientsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelClientsMouseClicked
@@ -944,7 +970,11 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelClientsComponentHidden
 
     private void jPanelRentedCarsComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelRentedCarsComponentShown
+        jButtonRentedCarsCloseOrder.setEnabled(false);
         SearchCriteriaFirst(jTableCarsInRent, jComboBoxRentedCarsSearchСriteriaFirst);
+        System.out.print(jComboBoxRentedCarsSearchСriteriaFirst.getItemCount());
+        if (jComboBoxRentedCarsSearchСriteriaFirst.getItemCount()!= 0)
+            jComboBoxRentedCarsSearchСriteriaFirst.removeItemAt(jComboBoxRentedCarsSearchСriteriaFirst.getItemCount()-1);
     }//GEN-LAST:event_jPanelRentedCarsComponentShown
 
     private void jPanelListCarsComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelListCarsComponentShown
@@ -979,6 +1009,10 @@ public class Frame extends javax.swing.JFrame {
     private void jTableAvailableCarsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAvailableCarsMouseClicked
         jButtonAvailableCarsAddOrder.setEnabled(true);
     }//GEN-LAST:event_jTableAvailableCarsMouseClicked
+
+    private void jTableCarsInRentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCarsInRentMouseClicked
+        jButtonRentedCarsCloseOrder.setEnabled(true);
+    }//GEN-LAST:event_jTableCarsInRentMouseClicked
     private void doVivodCars(List listСars) {
         doClearTable();
         Object[] rowData = new String[7];

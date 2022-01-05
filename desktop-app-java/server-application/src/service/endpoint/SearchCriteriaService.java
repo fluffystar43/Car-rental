@@ -69,12 +69,24 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
                 case ("Номер"):
                     sql = "SELECT registration_number from car";
                     break;
+                case ("Клиент"):
+                    sql = "SELECT DISTINCT second_name, first_name, middle_name from client";
+                    break;
+                case ("Дата аренды"):
+                    sql = "SELECT start_date from \"order\"";
+                    break;
+                case ("Дата возврата"):
+                    sql = "SELECT end_date from \"order\"";
+                    break;
             }
             ResultSet result = statement.executeQuery(sql);
             while (result.next()) {
-                listCriteria.add(result.getObject(1));
+                if (!"Клиент".equals(criteria))
+                    listCriteria.add(result.getObject(1));
+                else
+                    listCriteria.add(result.getObject(1) + " " + result.getObject(2) + " " + result.getObject(3));
             }
-            System.out.println("Получен список критериев");
+            System.out.println("Получен список данных второго критерия");
         } catch (SQLException e) {
             System.out.print(e.getMessage());
         }
@@ -129,7 +141,6 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
                 listCars.add(result.getObject(5));
                 listCars.add(result.getObject(6));
                 listCars.add(result.getObject(7));
-                System.out.print(result.getArray(1).toString());
             }
             System.out.println("Получен список автомобилей");
         } catch (SQLException e) {
@@ -139,12 +150,12 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
     }
 
     @Override
-        public List<Client> getListClients(String criteria) throws RemoteException {
+    public List<Client> getListClients(String criteria) throws RemoteException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-        public List<Order> getListOrders(String criteria) throws RemoteException {
+    public List<Order> getListOrders(String criteria) throws RemoteException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
