@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableCellRenderer;
 import service.endpoint.SearchCriteriaServiceService;
 
 public class Frame extends javax.swing.JFrame {
@@ -73,7 +74,7 @@ public class Frame extends javax.swing.JFrame {
         jScrollPaneAvailableCars = new javax.swing.JScrollPane();
         jTableAvailableCars = new javax.swing.JTable();
         jPanelRentedCars = new javax.swing.JPanel();
-        jButtonRentedCarsCloseOrder = new javax.swing.JButton();
+        jButtonRentedCarsMoveToOrders = new javax.swing.JButton();
         jButtonRentedCarsUpdateTable = new javax.swing.JButton();
         jLabelRentedCarsSearchСriteriaFirst = new javax.swing.JLabel();
         jLabelRentedCarsSearchСriteriaSecond = new javax.swing.JLabel();
@@ -178,6 +179,11 @@ public class Frame extends javax.swing.JFrame {
         setTitle("Прокат автомобилей");
         setResizable(false);
         setSize(new java.awt.Dimension(1280, 720));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         jTabbedPaneForm.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
@@ -230,7 +236,7 @@ public class Frame extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false
@@ -306,11 +312,22 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
-        jButtonRentedCarsCloseOrder.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jButtonRentedCarsCloseOrder.setText("Завершить заказ");
+        jButtonRentedCarsMoveToOrders.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jButtonRentedCarsMoveToOrders.setActionCommand("Перейти к заказам");
+        jButtonRentedCarsMoveToOrders.setLabel("Перейти к заказам");
+        jButtonRentedCarsMoveToOrders.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRentedCarsMoveToOrdersActionPerformed(evt);
+            }
+        });
 
         jButtonRentedCarsUpdateTable.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButtonRentedCarsUpdateTable.setText("Обновить список автомобилей");
+        jButtonRentedCarsUpdateTable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRentedCarsUpdateTableActionPerformed(evt);
+            }
+        });
 
         jLabelRentedCarsSearchСriteriaFirst.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabelRentedCarsSearchСriteriaFirst.setText("Выберите критерий поиска:");
@@ -342,7 +359,7 @@ public class Frame extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false
@@ -384,7 +401,7 @@ public class Frame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanelRentedCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButtonRentedCarsUpdateTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonRentedCarsCloseOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jButtonRentedCarsMoveToOrders, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanelRentedCarsLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPaneAvailableCars1, javax.swing.GroupLayout.DEFAULT_SIZE, 1205, Short.MAX_VALUE)))
@@ -395,7 +412,7 @@ public class Frame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRentedCarsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelRentedCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonRentedCarsCloseOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonRentedCarsMoveToOrders, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelRentedCarsSearchСriteriaFirst)
                     .addComponent(jComboBoxRentedCarsSearchСriteriaFirst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -470,7 +487,7 @@ public class Frame extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false
@@ -802,10 +819,9 @@ public class Frame extends javax.swing.JFrame {
             cbModel = new DefaultComboBoxModel<>();
 
             for (int i = 0; i < listSecondCriteria.size(); i++) {
-                if (!"Дата аренды".equals(criteria) && !"Дата возврата".equals(criteria))
+                if (!"Дата аренды".equals(criteria) && !"Дата возврата".equals(criteria)) {
                     cbModel.addElement(String.valueOf(listSecondCriteria.get(i)));
-                else
-                {
+                } else {
                     cbModel.addElement(String.valueOf(listSecondCriteria.get(i)).substring(0, 10));
                 }
             }
@@ -821,7 +837,7 @@ public class Frame extends javax.swing.JFrame {
     private void UpdateListClients() {
         try {
             model = (DefaultTableModel) jTableClients.getModel();
-            doVivod(clientService.getClientServicePort().getListOfClients());
+            OutputToTable(clientService.getClientServicePort().getListOfClients());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Не удалось установить соединение с сервером:" + ex.getMessage() + ".",
                     "Ошибка",
@@ -843,7 +859,7 @@ public class Frame extends javax.swing.JFrame {
 
             try {
                 model = (DefaultTableModel) jTableAvailableCars.getModel();
-                doVivodCars(listCars);
+                OutputToTableCars(listCars);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "Не удалось установить соединение с сервером:" + ex.getMessage() + ".",
                         "Ошибка",
@@ -854,7 +870,6 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxAvailableCarsSearchСriteriaSecondActionPerformed
 
     private void jComboBoxRentedCarsSearchСriteriaSecondActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxRentedCarsSearchСriteriaSecondActionPerformed
-        jButtonCloseOrder.setEnabled(false);
 
         if (jComboBoxRentedCarsSearchСriteriaSecond.getSelectedItem() != null) {
             List listCars = searchCriteriaService
@@ -864,7 +879,7 @@ public class Frame extends javax.swing.JFrame {
 
             try {
                 model = (DefaultTableModel) jTableCarsInRent.getModel();
-                doVivodRentedCars(listCars);
+                OutputToTableRentedCars(listCars);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "Не удалось установить соединение с сервером:" + ex.getMessage() + ".",
                         "Ошибка",
@@ -977,7 +992,7 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelAvailableCarsComponentShown
 
     private void jPanelClientsComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelClientsComponentShown
-        
+
         UpdateListClients();
         this.setSize(1600, 730);
         this.setLocationRelativeTo(null);
@@ -990,11 +1005,14 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelClientsComponentHidden
 
     private void jPanelRentedCarsComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelRentedCarsComponentShown
-        jButtonRentedCarsCloseOrder.setEnabled(false);
+        // Добавление данных в первый критерий поиска
         SearchCriteriaFirst(jTableCarsInRent, jComboBoxRentedCarsSearchСriteriaFirst);
-        System.out.print(jComboBoxRentedCarsSearchСriteriaFirst.getItemCount());
-        if (jComboBoxRentedCarsSearchСriteriaFirst.getItemCount()!= 0)
-            jComboBoxRentedCarsSearchСriteriaFirst.removeItemAt(jComboBoxRentedCarsSearchСriteriaFirst.getItemCount()-1);
+        if (jComboBoxRentedCarsSearchСriteriaFirst.getItemCount() != 0) {
+            jComboBoxRentedCarsSearchСriteriaFirst.removeItemAt(jComboBoxRentedCarsSearchСriteriaFirst.getItemCount() - 1);
+        }
+
+        // Получаем список арендованных автомобилей
+        jButtonRentedCarsUpdateTableActionPerformed(null);
     }//GEN-LAST:event_jPanelRentedCarsComponentShown
 
     private void jPanelListCarsComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelListCarsComponentShown
@@ -1016,7 +1034,7 @@ public class Frame extends javax.swing.JFrame {
         try {
             model = (DefaultTableModel) jTableAvailableCars.getModel();
             if (listCars != null) {
-                doVivodCars(listCars);
+                OutputToTableCars(listCars);
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Не удалось установить соединение с сервером:" + ex.getMessage() + ".",
@@ -1031,9 +1049,41 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jTableAvailableCarsMouseClicked
 
     private void jTableCarsInRentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCarsInRentMouseClicked
-        jButtonRentedCarsCloseOrder.setEnabled(true);
+        jButtonRentedCarsMoveToOrders.setEnabled(true);
     }//GEN-LAST:event_jTableCarsInRentMouseClicked
-    private void doVivodCars(List listСars) throws ParseException {
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        jButtonAvailableCarsUpdateTableActionPerformed(null);
+    }//GEN-LAST:event_formComponentShown
+
+    private void jButtonRentedCarsUpdateTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRentedCarsUpdateTableActionPerformed
+
+        List listCars = null;
+        if (jComboBoxRentedCarsSearchСriteriaFirst.getSelectedItem() == null
+                || jComboBoxRentedCarsSearchСriteriaSecond.getSelectedItem() == null) {
+            listCars = searchCriteriaService.getSearchCriteriaServicePort().getListRentedCars(null, null);
+        } else {
+            listCars = searchCriteriaService
+                    .getSearchCriteriaServicePort()
+                    .getListRentedCars(jComboBoxRentedCarsSearchСriteriaFirst.getSelectedItem().toString(),
+                            jComboBoxRentedCarsSearchСriteriaSecond.getSelectedItem().toString());
+        }
+        try {
+            model = (DefaultTableModel) jTableCarsInRent.getModel();
+            if (listCars != null) {
+                OutputToTableRentedCars(listCars);
+            }
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(this, "Не удалось установить соединение с сервером:" + ex.getMessage() + ".",
+                    "Ошибка",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonRentedCarsUpdateTableActionPerformed
+
+    private void jButtonRentedCarsMoveToOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRentedCarsMoveToOrdersActionPerformed
+        jTabbedPaneForm.setSelectedIndex(1);
+    }//GEN-LAST:event_jButtonRentedCarsMoveToOrdersActionPerformed
+    private void OutputToTableCars(List listСars) throws ParseException {
         doClearTable();
         Object[] rowData = new String[7];
         int i = 0;
@@ -1047,34 +1097,31 @@ public class Frame extends javax.swing.JFrame {
             i++;
         }
     }
-    
-    private void doVivodRentedCars(List listСars) throws ParseException {
+
+    private void OutputToTableRentedCars(List listСars) throws ParseException {
         doClearTable();
         Object[] rowData = new String[7];
         int i = 0;
-        for (Object var : listСars) { 
-            if (i != 4 && i != 5)
+        for (Object var : listСars) {
+            if (i != 4 && i != 5) {
                 rowData[i] = String.valueOf(var);
-            else{
-               rowData[i] = String.valueOf(var).substring(0, 10); 
+            } else {
+                rowData[i] = String.valueOf(var).substring(0, 10);
             }
-            if(i == 5)
-            {
+            if (i == 5) {
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                Date date1 = dateFormat.parse((String) rowData[i-1]);
+                Date date1 = dateFormat.parse((String) rowData[i - 1]);
                 Date date2 = dateFormat.parse((String) rowData[i]);
-                
+
+                // Разница между датами в миллисекундах и днях
                 long milliseconds = date2.getTime() - date1.getTime();
-                System.out.println("\nРазница между датами в миллисекундах: " + milliseconds);
-                
                 int days = (int) (milliseconds / (24 * 60 * 60 * 1000));
-                System.out.println("Разница между датами в днях: " + days);
-            
-                rowData[i+1] = String.valueOf(days);
-                
+
+                rowData[i + 1] = String.valueOf(days);
+
                 model.addRow(rowData);
                 i = 0;
-                continue; 
+                continue;
             }
             i++;
         }
@@ -1124,7 +1171,7 @@ public class Frame extends javax.swing.JFrame {
         }
     }
 
-    private void doVivod(List<Client> listClients) {
+    private void OutputToTable(List<Client> listClients) {
         doClearTable();
 
         listClients.stream().map(client -> {
@@ -1192,7 +1239,7 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JButton jButtonEditDataOrder;
     private javax.swing.JButton jButtonEnter1;
     private javax.swing.JButton jButtonExportClientsToPDF;
-    private javax.swing.JButton jButtonRentedCarsCloseOrder;
+    private javax.swing.JButton jButtonRentedCarsMoveToOrders;
     private javax.swing.JButton jButtonRentedCarsUpdateTable;
     private javax.swing.JButton jButtonUpdateTableClients;
     private javax.swing.JButton jButtonUpdateTableOrders;
