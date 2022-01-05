@@ -953,7 +953,7 @@ public class Frame extends javax.swing.JFrame {
 
     private void jButtonAvailableCarsUpdateTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAvailableCarsUpdateTableActionPerformed
         jButtonAvailableCarsAddOrder.setEnabled(false);
-        List listCars = searchCriteriaService.getSearchCriteriaServicePort().getListCars(null, null);
+        List listCars = null;
         if (jComboBoxAvailableCarsSearchСriteriaFirst.getSelectedItem() == null
                 || jComboBoxAvailableCarsSearchСriteriaSecond.getSelectedItem() == null) {
             listCars = searchCriteriaService.getSearchCriteriaServicePort().getListCars(null, null);
@@ -981,13 +981,20 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jTableAvailableCarsMouseClicked
     private void doVivodCars(List listСars) {
         doClearTable();
-        Object[] rowData = new String[8];
+        Object[] rowData = new String[7];
         int i = 0;
         for (Object var : listСars) {
             rowData[i] = String.valueOf(var);
+            if (i!= 0 && i%6 == 0) 
+            {
+                model.addRow(rowData);
+                i = 0;
+                continue;
+            }
             i++;
+            
         }
-        model.addRow(rowData);
+        
 
     }
 

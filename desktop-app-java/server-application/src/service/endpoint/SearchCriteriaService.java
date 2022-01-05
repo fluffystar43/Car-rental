@@ -90,10 +90,10 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
             String sql = "SELECT brand.name, "
                     + "model.name, "
                     + "gear_box.name, drive.name, color.name, car.rental_price, car.registration_number "
-                    + "FROM brand, model, car_class, gear_box, drive, color, car, car_exterior "
+                    + "FROM brand, model, gear_box, drive, color, car, car_exterior "
                     + "WHERE car.brand_id = brand.id AND car.model_id = model.id AND "
                     + "car.gear_box_id = gear_box.id AND "
-                    + "car.drive_id = drive.id AND car_exterior.color_id = color.id AND car.id = car_exterior.car_id";
+                    + "car.drive_id = drive.id AND car_exterior.color_id = color.id";
             if (criteriaFirst != null) {
 
                 switch (criteriaFirst) {
