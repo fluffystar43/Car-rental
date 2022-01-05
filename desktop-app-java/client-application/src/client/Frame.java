@@ -24,7 +24,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.table.DefaultTableCellRenderer;
 import service.endpoint.SearchCriteriaServiceService;
 
 public class Frame extends javax.swing.JFrame {
@@ -83,16 +82,19 @@ public class Frame extends javax.swing.JFrame {
         jComboBoxRentedCarsSearchСriteriaSecond = new javax.swing.JComboBox<>();
         jScrollPaneAvailableCars1 = new javax.swing.JScrollPane();
         jTableCarsInRent = new javax.swing.JTable();
+        jButtonRentedCarsClearSearchCriteries = new javax.swing.JButton();
         jPanelListCars = new javax.swing.JPanel();
         jButtonAddCar = new javax.swing.JButton();
         jButtonDeleteCar = new javax.swing.JButton();
         jLabelListCarsSearchСriteriaFirst = new javax.swing.JLabel();
         jLabelListCarsSearchСriteriaSecond = new javax.swing.JLabel();
         jComboBoxListCarsSearchСriteriaFirst = new javax.swing.JComboBox<>();
-        jComboBoxSearchСriteriaSecond = new javax.swing.JComboBox<>();
+        jComboBoxListCarsSearchСriteriaSecond = new javax.swing.JComboBox<>();
         jButtonEditDataCar = new javax.swing.JButton();
         jScrollPaneAvailableCars2 = new javax.swing.JScrollPane();
         jTableListCars = new javax.swing.JTable();
+        jButtonListCarsClearSearchCriteries = new javax.swing.JButton();
+        jButtonListCarsUpdateTable = new javax.swing.JButton();
         jPanelOrders = new javax.swing.JPanel();
         jButtonCloseOrder = new javax.swing.JButton();
         jButtonUpdateTableOrders = new javax.swing.JButton();
@@ -395,25 +397,36 @@ public class Frame extends javax.swing.JFrame {
         });
         jScrollPaneAvailableCars1.setViewportView(jTableCarsInRent);
 
+        jButtonRentedCarsClearSearchCriteries.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonRentedCarsClearSearchCriteries.setText("Очистить поля выбора");
+        jButtonRentedCarsClearSearchCriteries.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRentedCarsClearSearchCriteriesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelRentedCarsLayout = new javax.swing.GroupLayout(jPanelRentedCars);
         jPanelRentedCars.setLayout(jPanelRentedCarsLayout);
         jPanelRentedCarsLayout.setHorizontalGroup(
             jPanelRentedCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelRentedCarsLayout.createSequentialGroup()
                 .addGroup(jPanelRentedCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRentedCarsLayout.createSequentialGroup()
-                        .addGroup(jPanelRentedCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelRentedCarsLayout.createSequentialGroup()
+                        .addGroup(jPanelRentedCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButtonRentedCarsClearSearchCriteries)
                             .addGroup(jPanelRentedCarsLayout.createSequentialGroup()
-                                .addGap(69, 69, 69)
-                                .addComponent(jLabelRentedCarsSearchСriteriaFirst))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRentedCarsLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabelRentedCarsSearchСriteriaSecond)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelRentedCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBoxRentedCarsSearchСriteriaFirst, 0, 305, Short.MAX_VALUE)
-                            .addComponent(jComboBoxRentedCarsSearchСriteriaSecond, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanelRentedCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanelRentedCarsLayout.createSequentialGroup()
+                                        .addGap(69, 69, 69)
+                                        .addComponent(jLabelRentedCarsSearchСriteriaFirst))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRentedCarsLayout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(jLabelRentedCarsSearchСriteriaSecond)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanelRentedCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jComboBoxRentedCarsSearchСriteriaFirst, 0, 305, Short.MAX_VALUE)
+                                    .addComponent(jComboBoxRentedCarsSearchСriteriaSecond, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 374, Short.MAX_VALUE)
                         .addGroup(jPanelRentedCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButtonRentedCarsUpdateTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonRentedCarsMoveToOrders, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -436,8 +449,10 @@ public class Frame extends javax.swing.JFrame {
                     .addGroup(jPanelRentedCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabelRentedCarsSearchСriteriaSecond)
                         .addComponent(jComboBoxRentedCarsSearchСriteriaSecond, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPaneAvailableCars1, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonRentedCarsClearSearchCriteries)
+                .addGap(12, 12, 12)
+                .addComponent(jScrollPaneAvailableCars1, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -478,10 +493,10 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
-        jComboBoxSearchСriteriaSecond.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jComboBoxSearchСriteriaSecond.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxListCarsSearchСriteriaSecond.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jComboBoxListCarsSearchСriteriaSecond.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxSearchСriteriaSecondActionPerformed(evt);
+                jComboBoxListCarsSearchСriteriaSecondActionPerformed(evt);
             }
         });
 
@@ -493,12 +508,13 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
+        jTableListCars.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jTableListCars.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Бренд", "Марка", "Коробка передач", "Привод", "Цвет", "Цена, руб/сут.", "Номер"
+                "Бренд", "Модель", "Коробка передач", "Привод", "Цвет", "Цена, руб/сут.", "Номер"
             }
         ) {
             Class[] types = new Class [] {
@@ -518,6 +534,22 @@ public class Frame extends javax.swing.JFrame {
         });
         jScrollPaneAvailableCars2.setViewportView(jTableListCars);
 
+        jButtonListCarsClearSearchCriteries.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonListCarsClearSearchCriteries.setText("Очистить поля выбора");
+        jButtonListCarsClearSearchCriteries.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListCarsClearSearchCriteriesActionPerformed(evt);
+            }
+        });
+
+        jButtonListCarsUpdateTable.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jButtonListCarsUpdateTable.setText("Обновить список автомобилей");
+        jButtonListCarsUpdateTable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListCarsUpdateTableActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelListCarsLayout = new javax.swing.GroupLayout(jPanelListCars);
         jPanelListCars.setLayout(jPanelListCarsLayout);
         jPanelListCarsLayout.setHorizontalGroup(
@@ -528,18 +560,23 @@ public class Frame extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jScrollPaneAvailableCars2, javax.swing.GroupLayout.DEFAULT_SIZE, 1205, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelListCarsLayout.createSequentialGroup()
-                        .addGroup(jPanelListCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelListCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanelListCarsLayout.createSequentialGroup()
-                                .addGap(69, 69, 69)
-                                .addComponent(jLabelListCarsSearchСriteriaFirst))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelListCarsLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabelListCarsSearchСriteriaSecond)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelListCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBoxListCarsSearchСriteriaFirst, 0, 305, Short.MAX_VALUE)
-                            .addComponent(jComboBoxSearchСriteriaSecond, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanelListCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanelListCarsLayout.createSequentialGroup()
+                                        .addGap(69, 69, 69)
+                                        .addComponent(jLabelListCarsSearchСriteriaFirst))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelListCarsLayout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(jLabelListCarsSearchСriteriaSecond)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanelListCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jComboBoxListCarsSearchСriteriaFirst, 0, 305, Short.MAX_VALUE)
+                                    .addComponent(jComboBoxListCarsSearchСriteriaSecond, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jButtonListCarsClearSearchCriteries))
+                        .addGap(60, 60, 60)
+                        .addComponent(jButtonListCarsUpdateTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(34, 34, 34)
                         .addGroup(jPanelListCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jButtonEditDataCar, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
                             .addComponent(jButtonAddCar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -559,10 +596,14 @@ public class Frame extends javax.swing.JFrame {
                 .addGroup(jPanelListCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelListCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabelListCarsSearchСriteriaSecond)
-                        .addComponent(jComboBoxSearchСriteriaSecond, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jComboBoxListCarsSearchСriteriaSecond, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButtonEditDataCar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonDeleteCar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelListCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelListCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonDeleteCar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonListCarsUpdateTable, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonListCarsClearSearchCriteries))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPaneAvailableCars2, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -822,7 +863,23 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxAvailableCarsSearchСriteriaFirstActionPerformed
 
     private void jComboBoxListCarsSearchСriteriaFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxListCarsSearchСriteriaFirstActionPerformed
-        // TODO add your handling code here:
+         if (jComboBoxListCarsSearchСriteriaSecond.getSelectedItem() != null) {
+            jComboBoxListCarsSearchСriteriaSecond.setSelectedIndex(-1);
+        }
+        if (jComboBoxListCarsSearchСriteriaFirst.getSelectedItem() != null) {
+            // Открываем доступ ко второму критерию
+            jComboBoxListCarsSearchСriteriaSecond.setEnabled(true);
+            List listSecondCriteria = searchCriteriaService.getSearchCriteriaServicePort().getListSecondCriteria(jComboBoxListCarsSearchСriteriaFirst.getSelectedItem().toString());
+
+            cbModel = new DefaultComboBoxModel<>();
+
+            for (int i = 0; i < listSecondCriteria.size(); i++) {
+                cbModel.addElement(String.valueOf(listSecondCriteria.get(i)));
+            }
+
+            jComboBoxListCarsSearchСriteriaSecond.setModel(cbModel);
+            jComboBoxListCarsSearchСriteriaSecond.setSelectedIndex(-1);
+        }
     }//GEN-LAST:event_jComboBoxListCarsSearchСriteriaFirstActionPerformed
 
     private void jComboBoxRentedCarsSearchСriteriaFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxRentedCarsSearchСriteriaFirstActionPerformed
@@ -884,7 +941,6 @@ public class Frame extends javax.swing.JFrame {
                         JOptionPane.ERROR_MESSAGE);
             }
         }
-
     }//GEN-LAST:event_jComboBoxAvailableCarsSearchСriteriaSecondActionPerformed
 
     private void jComboBoxRentedCarsSearchСriteriaSecondActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxRentedCarsSearchСriteriaSecondActionPerformed
@@ -906,9 +962,24 @@ public class Frame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jComboBoxRentedCarsSearchСriteriaSecondActionPerformed
 
-    private void jComboBoxSearchСriteriaSecondActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSearchСriteriaSecondActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxSearchСriteriaSecondActionPerformed
+    private void jComboBoxListCarsSearchСriteriaSecondActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxListCarsSearchСriteriaSecondActionPerformed
+
+        if (jComboBoxListCarsSearchСriteriaSecond.getSelectedItem() != null) {
+            List listCars = searchCriteriaService
+                    .getSearchCriteriaServicePort()
+                    .getListAvailableCars(jComboBoxListCarsSearchСriteriaFirst.getSelectedItem().toString(),
+                            jComboBoxListCarsSearchСriteriaSecond.getSelectedItem().toString());
+
+            try {
+                model = (DefaultTableModel) jTableListCars.getModel();
+                OutputToTableCars(listCars);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Не удалось установить соединение с сервером:" + ex.getMessage() + ".",
+                        "Ошибка",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jComboBoxListCarsSearchСriteriaSecondActionPerformed
 
     private void jButtonUpdateTableOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateTableOrdersActionPerformed
         // TODO add your handling code here:
@@ -1045,6 +1116,7 @@ public class Frame extends javax.swing.JFrame {
 
     private void jPanelListCarsComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelListCarsComponentShown
         SearchCriteriaFirst(jTableListCars, jComboBoxListCarsSearchСriteriaFirst);
+        jButtonListCarsUpdateTableActionPerformed(null);
     }//GEN-LAST:event_jPanelListCarsComponentShown
 
     private void jButtonAvailableCarsUpdateTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAvailableCarsUpdateTableActionPerformed
@@ -1069,7 +1141,6 @@ public class Frame extends javax.swing.JFrame {
                     "Ошибка",
                     JOptionPane.ERROR_MESSAGE);
         }
-
     }//GEN-LAST:event_jButtonAvailableCarsUpdateTableActionPerformed
 
     private void jTableAvailableCarsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAvailableCarsMouseClicked
@@ -1117,6 +1188,42 @@ public class Frame extends javax.swing.JFrame {
         jComboBoxAvailableCarsSearchСriteriaSecond.setSelectedIndex(-1);
         jButtonAvailableCarsUpdateTableActionPerformed(null);
     }//GEN-LAST:event_jButtonAvailableCarsClearSearchCriteriesActionPerformed
+
+    private void jButtonRentedCarsClearSearchCriteriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRentedCarsClearSearchCriteriesActionPerformed
+        jComboBoxRentedCarsSearchСriteriaFirst.setSelectedIndex(-1);
+        jComboBoxRentedCarsSearchСriteriaSecond.setSelectedIndex(-1);
+        jButtonRentedCarsUpdateTableActionPerformed(null);
+    }//GEN-LAST:event_jButtonRentedCarsClearSearchCriteriesActionPerformed
+
+    private void jButtonListCarsClearSearchCriteriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListCarsClearSearchCriteriesActionPerformed
+        jComboBoxListCarsSearchСriteriaFirst.setSelectedIndex(-1);
+        jComboBoxListCarsSearchСriteriaSecond.setSelectedIndex(-1);
+        jButtonListCarsUpdateTableActionPerformed(null);
+    }//GEN-LAST:event_jButtonListCarsClearSearchCriteriesActionPerformed
+
+    private void jButtonListCarsUpdateTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListCarsUpdateTableActionPerformed
+
+        List listCars = null;
+        if (jComboBoxListCarsSearchСriteriaFirst.getSelectedItem() == null
+                || jComboBoxListCarsSearchСriteriaSecond.getSelectedItem() == null) {
+            listCars = searchCriteriaService.getSearchCriteriaServicePort().getListAvailableCars(null, null);
+        } else {
+            listCars = searchCriteriaService
+                    .getSearchCriteriaServicePort()
+                    .getListAvailableCars(jComboBoxListCarsSearchСriteriaFirst.getSelectedItem().toString(),
+                            jComboBoxListCarsSearchСriteriaSecond.getSelectedItem().toString());
+        }
+        try {
+            model = (DefaultTableModel) jTableListCars.getModel();
+            if (listCars != null) {
+                OutputToTableCars(listCars);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Не удалось установить соединение с сервером:" + ex.getMessage() + ".",
+                    "Ошибка",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonListCarsUpdateTableActionPerformed
     private void OutputToTableCars(List listСars) throws ParseException {
         doClearTable();
         Object[] rowData = new String[7];
@@ -1274,6 +1381,9 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JButton jButtonEditDataOrder;
     private javax.swing.JButton jButtonEnter1;
     private javax.swing.JButton jButtonExportClientsToPDF;
+    private javax.swing.JButton jButtonListCarsClearSearchCriteries;
+    private javax.swing.JButton jButtonListCarsUpdateTable;
+    private javax.swing.JButton jButtonRentedCarsClearSearchCriteries;
     private javax.swing.JButton jButtonRentedCarsMoveToOrders;
     private javax.swing.JButton jButtonRentedCarsUpdateTable;
     private javax.swing.JButton jButtonUpdateTableClients;
@@ -1281,9 +1391,9 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxAvailableCarsSearchСriteriaFirst;
     private javax.swing.JComboBox<String> jComboBoxAvailableCarsSearchСriteriaSecond;
     private javax.swing.JComboBox<String> jComboBoxListCarsSearchСriteriaFirst;
+    private javax.swing.JComboBox<String> jComboBoxListCarsSearchСriteriaSecond;
     private javax.swing.JComboBox<String> jComboBoxRentedCarsSearchСriteriaFirst;
     private javax.swing.JComboBox<String> jComboBoxRentedCarsSearchСriteriaSecond;
-    private javax.swing.JComboBox<String> jComboBoxSearchСriteriaSecond;
     private javax.swing.JDialog jDialogLogin;
     private javax.swing.JLabel jLabelAvailableCarsSearchСriteriaFirst;
     private javax.swing.JLabel jLabelAvailableCarsSearchСriteriaSecond;

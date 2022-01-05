@@ -406,23 +406,28 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                                              <Component id="jLabelRentedCarsSearchСriteriaFirst" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="jButtonRentedCarsClearSearchCriteries" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                                                      <Component id="jLabelRentedCarsSearchСriteriaFirst" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="jLabelRentedCarsSearchСriteriaSecond" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabelRentedCarsSearchСriteriaSecond" min="-2" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="jComboBoxRentedCarsSearchСriteriaFirst" pref="305" max="32767" attributes="0"/>
+                                                  <Component id="jComboBoxRentedCarsSearchСriteriaSecond" max="32767" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jComboBoxRentedCarsSearchСriteriaFirst" pref="305" max="32767" attributes="0"/>
-                                          <Component id="jComboBoxRentedCarsSearchСriteriaSecond" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace pref="374" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jButtonRentedCarsUpdateTable" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jButtonRentedCarsMoveToOrders" alignment="0" max="32767" attributes="0"/>
@@ -454,8 +459,10 @@
                                       <Component id="jComboBoxRentedCarsSearchСriteriaSecond" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jScrollPaneAvailableCars1" pref="516" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jButtonRentedCarsClearSearchCriteries" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                              <Component id="jScrollPaneAvailableCars1" pref="491" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -563,6 +570,17 @@
                         </Component>
                       </SubComponents>
                     </Container>
+                    <Component class="javax.swing.JButton" name="jButtonRentedCarsClearSearchCriteries">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="14" style="0"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="&#x41e;&#x447;&#x438;&#x441;&#x442;&#x438;&#x442;&#x44c; &#x43f;&#x43e;&#x43b;&#x44f; &#x432;&#x44b;&#x431;&#x43e;&#x440;&#x430;"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRentedCarsClearSearchCriteriesActionPerformed"/>
+                      </Events>
+                    </Component>
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="jPanelListCars">
@@ -587,22 +605,29 @@
                                       <Component id="jScrollPaneAvailableCars2" pref="1205" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                                              <Component id="jLabelListCarsSearchСriteriaFirst" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                                                      <Component id="jLabelListCarsSearchСriteriaFirst" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="jLabelListCarsSearchСriteriaSecond" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabelListCarsSearchСriteriaSecond" min="-2" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="jComboBoxListCarsSearchСriteriaFirst" pref="305" max="32767" attributes="0"/>
+                                                  <Component id="jComboBoxListCarsSearchСriteriaSecond" max="32767" attributes="0"/>
+                                              </Group>
                                           </Group>
+                                          <Component id="jButtonListCarsClearSearchCriteries" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jComboBoxListCarsSearchСriteriaFirst" pref="305" max="32767" attributes="0"/>
-                                          <Component id="jComboBoxSearchСriteriaSecond" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                                      <Component id="jButtonListCarsUpdateTable" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                           <Component id="jButtonEditDataCar" pref="280" max="32767" attributes="0"/>
                                           <Component id="jButtonAddCar" alignment="1" max="32767" attributes="0"/>
@@ -629,12 +654,18 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabelListCarsSearchСriteriaSecond" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jComboBoxSearchСriteriaSecond" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jComboBoxListCarsSearchСriteriaSecond" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="jButtonEditDataCar" min="-2" pref="32" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButtonDeleteCar" min="-2" pref="34" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jButtonDeleteCar" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                                      <Component id="jButtonListCarsUpdateTable" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jButtonListCarsClearSearchCriteries" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jScrollPaneAvailableCars2" min="-2" pref="485" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -694,14 +725,14 @@
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBoxSearch&#x421;riteriaSecond">
+                    <Component class="javax.swing.JComboBox" name="jComboBoxListCarsSearch&#x421;riteriaSecond">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="16" style="0"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxSearch&#x421;riteriaSecondActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxListCarsSearch&#x421;riteriaSecondActionPerformed"/>
                       </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -727,10 +758,13 @@
                       <SubComponents>
                         <Component class="javax.swing.JTable" name="jTableListCars">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Tahoma" size="16" style="0"/>
+                            </Property>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="7" rowCount="0">
                                 <Column editable="false" title="&#x411;&#x440;&#x435;&#x43d;&#x434;" type="java.lang.String"/>
-                                <Column editable="false" title="&#x41c;&#x430;&#x440;&#x43a;&#x430;" type="java.lang.String"/>
+                                <Column editable="false" title="&#x41c;&#x43e;&#x434;&#x435;&#x43b;&#x44c;" type="java.lang.String"/>
                                 <Column editable="false" title="&#x41a;&#x43e;&#x440;&#x43e;&#x431;&#x43a;&#x430; &#x43f;&#x435;&#x440;&#x435;&#x434;&#x430;&#x447;" type="java.lang.String"/>
                                 <Column editable="false" title="&#x41f;&#x440;&#x438;&#x432;&#x43e;&#x434;" type="java.lang.String"/>
                                 <Column editable="false" title="&#x426;&#x432;&#x435;&#x442;" type="java.lang.String"/>
@@ -742,6 +776,28 @@
                         </Component>
                       </SubComponents>
                     </Container>
+                    <Component class="javax.swing.JButton" name="jButtonListCarsClearSearchCriteries">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="14" style="0"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="&#x41e;&#x447;&#x438;&#x441;&#x442;&#x438;&#x442;&#x44c; &#x43f;&#x43e;&#x43b;&#x44f; &#x432;&#x44b;&#x431;&#x43e;&#x440;&#x430;"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonListCarsClearSearchCriteriesActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="jButtonListCarsUpdateTable">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="16" style="0"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="&#x41e;&#x431;&#x43d;&#x43e;&#x432;&#x438;&#x442;&#x44c; &#x441;&#x43f;&#x438;&#x441;&#x43e;&#x43a; &#x430;&#x432;&#x442;&#x43e;&#x43c;&#x43e;&#x431;&#x438;&#x43b;&#x435;&#x439;"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonListCarsUpdateTableActionPerformed"/>
+                      </Events>
+                    </Component>
                   </SubComponents>
                 </Container>
               </SubComponents>
