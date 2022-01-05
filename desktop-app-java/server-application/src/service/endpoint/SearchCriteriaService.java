@@ -23,7 +23,7 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
     private static Connection connection;
 
     public SearchCriteriaService(Connection connection) {
-        this.connection = connection;
+        SearchCriteriaService.connection = connection;
     }
 
     @WebMethod()
@@ -107,30 +107,30 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
                     + "FROM brand, model, gear_box, drive, color, car, car_exterior "
                     + "WHERE car.brand_id = brand.id AND car.model_id = model.id AND "
                     + "car.gear_box_id = gear_box.id AND "
-                    + "car.drive_id = drive.id AND car_exterior.color_id = color.id";
+                    + "car.drive_id = drive.id AND car_exterior.color_id = color.id AND car.is_rented = false ";
             if (criteriaFirst != null) {
 
                 switch (criteriaFirst) {
                     case ("Бренд"):
-                        sql += " AND brand.name = '" + criteriaSecond + "'";
+                        sql += "AND brand.name = '" + criteriaSecond + "'";
                         break;
                     case ("Модель"):
-                        sql += " AND model.name = '" + criteriaSecond + "'";
+                        sql += "AND model.name = '" + criteriaSecond + "'";
                         break;
                     case ("Коробка передач"):
-                        sql += " AND gear_box.name = '" + criteriaSecond + "'";
+                        sql += "AND gear_box.name = '" + criteriaSecond + "'";
                         break;
                     case ("Привод"):
-                        sql += " AND drive.name = '" + criteriaSecond + "'";
+                        sql += "AND drive.name = '" + criteriaSecond + "'";
                         break;
                     case ("Цвет"):
-                        sql += " AND color.name = '" + criteriaSecond + "'";
+                        sql += "AND color.name = '" + criteriaSecond + "'";
                         break;
                     case ("Цена, руб/сут."):
-                        sql += " AND car.rental_price = '" + criteriaSecond + "'";
+                        sql += "AND car.rental_price = '" + criteriaSecond + "'";
                         break;
                     case ("Номер"):
-                        sql += " AND car.registration_number = '" + criteriaSecond + "'";
+                        sql += "AND car.registration_number = '" + criteriaSecond + "'";
                         break;
                 }
             }
@@ -158,29 +158,29 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
         try {
             Statement statement = connection.createStatement();
             String sql = "SELECT brand.name, "
-                    + "model.name, car.registration_number,  client.second_name || ' ' || client.first_name || ' ' || client.middle_name AS client_full_name, ordertable.start_date, ordertable.end_date "
+                    + "model.name, car.registration_number,  client.second_name || ' ' || client.first_name || ' ' || client.middle_name, ordertable.start_date, ordertable.end_date "
                     + "FROM brand, model, car, client, \"order\" as ordertable "
-                    + "WHERE car.brand_id = brand.id AND car.model_id = model.id AND car.id = ordertable.car_id AND client.id = ordertable.client_id AND car.is_rented = true";
+                    + "WHERE car.brand_id = brand.id AND car.model_id = model.id AND car.id = ordertable.car_id AND client.id = ordertable.client_id AND car.is_rented = true ";
             if (criteriaFirst != null) {
 
                 switch (criteriaFirst) {
                     case ("Бренд"):
-                        sql += " AND brand.name = '" + criteriaSecond + "'";
+                        sql += "AND brand.name = '" + criteriaSecond + "'";
                         break;
                     case ("Модель"):
-                        sql += " AND model.name = '" + criteriaSecond + "'";
+                        sql += "AND model.name = '" + criteriaSecond + "'";
                         break;
                     case ("Номер"):
-                        sql += " AND registration_number = '" + criteriaSecond + "'";
+                        sql += "AND registration_number = '" + criteriaSecond + "'";
                         break;
                     case ("Клиент"):
-                        sql += " AND client.full_name = '" + criteriaSecond + "'";
+                        sql += "AND client.second_name || ' ' || client.first_name || ' ' || client.middle_name = '" + criteriaSecond + "'";
                         break;
                     case ("Дата аренды"):
-                        sql += " AND ordertable.start_date LIKE '" + criteriaSecond + "'";
+                        sql += "AND ordertable.start_date = '" + criteriaSecond + "'";
                         break;
                     case ("Дата возврата"):
-                        sql += " AND ordertable.end_date LIKE '" + criteriaSecond + "'";
+                        sql += "AND ordertable.end_date = '" + criteriaSecond + "'";
                         break;
                 }
             }
