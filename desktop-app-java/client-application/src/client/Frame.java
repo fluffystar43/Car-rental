@@ -5,6 +5,8 @@ import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.io.File;
 
 import service.endpoint.ClientServiceService;
@@ -36,7 +38,7 @@ public class Frame extends javax.swing.JFrame {
         jTableOrders.getTableHeader().setFont(new java.awt.Font("Tahoma", 0, 16));
         jTableClients.getTableHeader().setFont(new java.awt.Font("Tahoma", 0, 16));
         jButtonAvailableCarsAddOrder.setEnabled(false);
-
+        
         //jDialogLogin.setVisible(true);
     }
 
@@ -254,6 +256,7 @@ public class Frame extends javax.swing.JFrame {
             }
         });
         jTableAvailableCars.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        jTableAvailableCars.setRowHeight(20);
         jTableAvailableCars.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableAvailableCarsMouseClicked(evt);
@@ -280,7 +283,7 @@ public class Frame extends javax.swing.JFrame {
                         .addComponent(jScrollPaneAvailableCars, javax.swing.GroupLayout.DEFAULT_SIZE, 1205, Short.MAX_VALUE))
                     .addGroup(jPanelAvailableCarsLayout.createSequentialGroup()
                         .addGroup(jPanelAvailableCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButtonAvailableCarsClearSearchCriteries)
+                            .addComponent(jButtonAvailableCarsClearSearchCriteries, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanelAvailableCarsLayout.createSequentialGroup()
                                 .addGroup(jPanelAvailableCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanelAvailableCarsLayout.createSequentialGroup()
@@ -291,7 +294,7 @@ public class Frame extends javax.swing.JFrame {
                                         .addComponent(jLabelAvailableCarsSearchСriteriaSecond)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanelAvailableCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jComboBoxAvailableCarsSearchСriteriaFirst, 0, 301, Short.MAX_VALUE)
+                                    .addComponent(jComboBoxAvailableCarsSearchСriteriaFirst, 0, 300, Short.MAX_VALUE)
                                     .addComponent(jComboBoxAvailableCarsSearchСriteriaSecond, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanelAvailableCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -316,8 +319,8 @@ public class Frame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonAvailableCarsClearSearchCriteries)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPaneAvailableCars, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addComponent(jScrollPaneAvailableCars, javax.swing.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jTabbedPaneAutopark.addTab("Доступные автомобили", jPanelAvailableCars);
@@ -412,8 +415,11 @@ public class Frame extends javax.swing.JFrame {
             .addGroup(jPanelRentedCarsLayout.createSequentialGroup()
                 .addGroup(jPanelRentedCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelRentedCarsLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPaneAvailableCars1, javax.swing.GroupLayout.DEFAULT_SIZE, 1205, Short.MAX_VALUE))
+                    .addGroup(jPanelRentedCarsLayout.createSequentialGroup()
                         .addGroup(jPanelRentedCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButtonRentedCarsClearSearchCriteries)
+                            .addComponent(jButtonRentedCarsClearSearchCriteries, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanelRentedCarsLayout.createSequentialGroup()
                                 .addGroup(jPanelRentedCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanelRentedCarsLayout.createSequentialGroup()
@@ -424,15 +430,12 @@ public class Frame extends javax.swing.JFrame {
                                         .addComponent(jLabelRentedCarsSearchСriteriaSecond)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanelRentedCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jComboBoxRentedCarsSearchСriteriaFirst, 0, 305, Short.MAX_VALUE)
+                                    .addComponent(jComboBoxRentedCarsSearchСriteriaFirst, 0, 300, Short.MAX_VALUE)
                                     .addComponent(jComboBoxRentedCarsSearchСriteriaSecond, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 374, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanelRentedCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButtonRentedCarsUpdateTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonRentedCarsMoveToOrders, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanelRentedCarsLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPaneAvailableCars1, javax.swing.GroupLayout.DEFAULT_SIZE, 1205, Short.MAX_VALUE)))
+                            .addComponent(jButtonRentedCarsMoveToOrders, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanelRentedCarsLayout.setVerticalGroup(
@@ -451,9 +454,9 @@ public class Frame extends javax.swing.JFrame {
                         .addComponent(jComboBoxRentedCarsSearchСriteriaSecond, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonRentedCarsClearSearchCriteries)
-                .addGap(12, 12, 12)
-                .addComponent(jScrollPaneAvailableCars1, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPaneAvailableCars1, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
+                .addGap(19, 19, 19))
         );
 
         jTabbedPaneAutopark.addTab("Автомобили в прокате", jPanelRentedCars);
@@ -574,9 +577,9 @@ public class Frame extends javax.swing.JFrame {
                                     .addComponent(jComboBoxListCarsSearchСriteriaFirst, 0, 305, Short.MAX_VALUE)
                                     .addComponent(jComboBoxListCarsSearchСriteriaSecond, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addComponent(jButtonListCarsClearSearchCriteries))
-                        .addGap(60, 60, 60)
-                        .addComponent(jButtonListCarsUpdateTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(34, 34, 34)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonListCarsUpdateTable)
+                        .addGap(31, 31, 31)
                         .addGroup(jPanelListCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jButtonEditDataCar, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
                             .addComponent(jButtonAddCar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -605,7 +608,7 @@ public class Frame extends javax.swing.JFrame {
                         .addComponent(jButtonListCarsUpdateTable, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButtonListCarsClearSearchCriteries))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPaneAvailableCars2, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPaneAvailableCars2, javax.swing.GroupLayout.PREFERRED_SIZE, 504, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -619,7 +622,7 @@ public class Frame extends javax.swing.JFrame {
         );
         jPanelAutoparkLayout.setVerticalGroup(
             jPanelAutoparkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPaneAutopark)
+            .addComponent(jTabbedPaneAutopark, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
         );
 
         jTabbedPaneAutopark.getAccessibleContext().setAccessibleName("Автомобили в прокате");
@@ -697,7 +700,7 @@ public class Frame extends javax.swing.JFrame {
             jPanelOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelOrdersLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPaneOrders, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
+                .addComponent(jScrollPaneOrders, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButtonUpdateTableOrders, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
@@ -826,7 +829,7 @@ public class Frame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPaneForm)
+            .addComponent(jTabbedPaneForm, javax.swing.GroupLayout.DEFAULT_SIZE, 715, Short.MAX_VALUE)
         );
 
         pack();
@@ -1086,13 +1089,19 @@ public class Frame extends javax.swing.JFrame {
     private void jPanelClientsComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelClientsComponentShown
 
         UpdateListClients();
-        this.setSize(1600, 730);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int height = (int) (screenSize.height*0.7);
+        int width = (int) (screenSize.width*0.85);
+        this.setSize(width, height);
         this.setLocationRelativeTo(null);
 
     }//GEN-LAST:event_jPanelClientsComponentShown
 
     private void jPanelClientsComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelClientsComponentHidden
-        this.setSize(1280, 730);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int height = (int) (screenSize.height*0.7);
+        int width = (int) (screenSize.width*0.75);
+        this.setSize(width, height);
         this.setLocationRelativeTo(null);
     }//GEN-LAST:event_jPanelClientsComponentHidden
 
@@ -1152,6 +1161,11 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jTableCarsInRentMouseClicked
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int height = (int) (screenSize.height*0.7);
+        int width = (int) (screenSize.width*0.75);
+        this.setSize(width, height);
+        this.setLocationRelativeTo(null);
         jButtonAvailableCarsUpdateTableActionPerformed(null);
     }//GEN-LAST:event_formComponentShown
 
