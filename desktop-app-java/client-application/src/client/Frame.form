@@ -151,7 +151,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jTabbedPaneForm" alignment="0" pref="715" max="32767" attributes="0"/>
+          <Component id="jTabbedPaneForm" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -159,13 +159,18 @@
     <Container class="javax.swing.JTabbedPane" name="jTabbedPaneForm">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="16" style="0"/>
+          <Font name="MS Reference Sans Serif" size="18" style="0"/>
         </Property>
       </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="jPanelAutopark">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="MS Reference Sans Serif" size="18" style="0"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="&#x410;&#x432;&#x442;&#x43e;&#x43f;&#x430;&#x440;&#x43a;">
@@ -182,7 +187,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jTabbedPaneAutopark" alignment="0" pref="681" max="32767" attributes="0"/>
+                  <Component id="jTabbedPaneAutopark" alignment="0" pref="698" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -190,7 +195,7 @@
             <Container class="javax.swing.JTabbedPane" name="jTabbedPaneAutopark">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="16" style="0"/>
+                  <Font name="MS Reference Sans Serif" size="18" style="0"/>
                 </Property>
               </Properties>
               <AccessibilityProperties>
@@ -200,6 +205,11 @@
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
               <SubComponents>
                 <Container class="javax.swing.JPanel" name="jPanelAvailableCars">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="MS Reference Sans Serif" size="18" style="0"/>
+                    </Property>
+                  </Properties>
                   <Events>
                     <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="jPanelAvailableCarsComponentShown"/>
                   </Events>
@@ -218,11 +228,10 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jScrollPaneAvailableCars" pref="1205" max="32767" attributes="0"/>
+                                      <Component id="jScrollPaneAvailableCars" pref="1631" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="jButtonAvailableCarsClearSearchCriteries" min="-2" pref="195" max="-2" attributes="0"/>
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" attributes="0">
@@ -240,6 +249,7 @@
                                                   <Component id="jComboBoxAvailableCarsSearchСriteriaSecond" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
+                                          <Component id="jButtonAvailableCarsClearSearchCriteries" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -255,24 +265,29 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jButtonAvailableCarsAddOrder" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                                  <Component id="jLabelAvailableCarsSearchСriteriaFirst" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jComboBoxAvailableCarsSearchСriteriaFirst" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace pref="41" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jButtonAvailableCarsUpdateTable" min="-2" pref="34" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabelAvailableCarsSearchСriteriaSecond" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jComboBoxAvailableCarsSearchСriteriaSecond" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabelAvailableCarsSearchСriteriaFirst" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jComboBoxAvailableCarsSearchСriteriaFirst" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabelAvailableCarsSearchСriteriaSecond" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jComboBoxAvailableCarsSearchСriteriaSecond" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jButtonAvailableCarsClearSearchCriteries" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jButtonAvailableCarsAddOrder" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jButtonAvailableCarsUpdateTable" min="-2" pref="40" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButtonAvailableCarsClearSearchCriteries" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jScrollPaneAvailableCars" pref="511" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jScrollPaneAvailableCars" min="-2" pref="490" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -282,7 +297,7 @@
                     <Component class="javax.swing.JButton" name="jButtonAvailableCarsAddOrder">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Tahoma" size="16" style="0"/>
+                          <Font name="MS Reference Sans Serif" size="18" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="&#x41e;&#x444;&#x43e;&#x440;&#x43c;&#x438;&#x442;&#x44c; &#x437;&#x430;&#x43a;&#x430;&#x437;"/>
                       </Properties>
@@ -290,7 +305,7 @@
                     <Component class="javax.swing.JButton" name="jButtonAvailableCarsUpdateTable">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Tahoma" size="16" style="0"/>
+                          <Font name="MS Reference Sans Serif" size="18" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="&#x41e;&#x431;&#x43d;&#x43e;&#x432;&#x438;&#x442;&#x44c; &#x441;&#x43f;&#x438;&#x441;&#x43e;&#x43a; &#x430;&#x432;&#x442;&#x43e;&#x43c;&#x43e;&#x431;&#x438;&#x43b;&#x435;&#x439;"/>
                       </Properties>
@@ -301,7 +316,7 @@
                     <Component class="javax.swing.JLabel" name="jLabelAvailableCarsSearch&#x421;riteriaFirst">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Tahoma" size="16" style="0"/>
+                          <Font name="MS Reference Sans Serif" size="18" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="&#x412;&#x44b;&#x431;&#x435;&#x440;&#x438;&#x442;&#x435; &#x43a;&#x440;&#x438;&#x442;&#x435;&#x440;&#x438;&#x439; &#x43f;&#x43e;&#x438;&#x441;&#x43a;&#x430;:"/>
                       </Properties>
@@ -309,7 +324,7 @@
                     <Component class="javax.swing.JLabel" name="jLabelAvailableCarsSearch&#x421;riteriaSecond">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Tahoma" size="16" style="0"/>
+                          <Font name="MS Reference Sans Serif" size="18" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="&#x412;&#x44b;&#x431;&#x435;&#x440;&#x438;&#x442;&#x435; &#x438;&#x437; &#x441;&#x43f;&#x438;&#x441;&#x43a;&#x430;:"/>
                       </Properties>
@@ -317,7 +332,7 @@
                     <Component class="javax.swing.JComboBox" name="jComboBoxAvailableCarsSearch&#x421;riteriaFirst">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Tahoma" size="16" style="0"/>
+                          <Font name="MS Reference Sans Serif" size="16" style="0"/>
                         </Property>
                       </Properties>
                       <Events>
@@ -330,7 +345,7 @@
                     <Component class="javax.swing.JComboBox" name="jComboBoxAvailableCarsSearch&#x421;riteriaSecond">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Tahoma" size="16" style="0"/>
+                          <Font name="MS Reference Sans Serif" size="16" style="0"/>
                         </Property>
                       </Properties>
                       <Events>
@@ -350,7 +365,7 @@
                         <Component class="javax.swing.JTable" name="jTableAvailableCars">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Tahoma" size="16" style="0"/>
+                              <Font name="MS Reference Sans Serif" size="18" style="0"/>
                             </Property>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="7" rowCount="0">
@@ -364,7 +379,7 @@
                               </Table>
                             </Property>
                             <Property name="autoResizeMode" type="int" value="4"/>
-                            <Property name="rowHeight" type="int" value="20"/>
+                            <Property name="rowHeight" type="int" value="28"/>
                           </Properties>
                           <Events>
                             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTableAvailableCarsMouseClicked"/>
@@ -375,7 +390,7 @@
                     <Component class="javax.swing.JButton" name="jButtonAvailableCarsClearSearchCriteries">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Tahoma" size="14" style="0"/>
+                          <Font name="MS Reference Sans Serif" size="18" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="&#x41e;&#x447;&#x438;&#x441;&#x442;&#x438;&#x442;&#x44c; &#x43f;&#x43e;&#x43b;&#x44f; &#x432;&#x44b;&#x431;&#x43e;&#x440;&#x430;"/>
                       </Properties>
@@ -409,7 +424,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jScrollPaneAvailableCars1" pref="1205" max="32767" attributes="0"/>
+                                      <Component id="jScrollPaneAvailableCars1" pref="1631" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" attributes="0">
@@ -432,7 +447,7 @@
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace pref="805" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jButtonRentedCarsUpdateTable" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jButtonRentedCarsMoveToOrders" alignment="0" max="32767" attributes="0"/>
@@ -463,7 +478,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jButtonRentedCarsClearSearchCriteries" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPaneAvailableCars1" pref="508" max="32767" attributes="0"/>
+                              <Component id="jScrollPaneAvailableCars1" pref="522" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -551,7 +566,7 @@
                         <Component class="javax.swing.JTable" name="jTableCarsInRent">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Tahoma" size="16" style="0"/>
+                              <Font name="MS Reference Sans Serif" size="18" style="0"/>
                             </Property>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="7" rowCount="0">
@@ -564,6 +579,7 @@
                                 <Column editable="false" title="&#x41a;&#x43e;&#x43b;&#x438;&#x447;&#x435;&#x441;&#x442;&#x432;&#x43e; &#x434;&#x43d;&#x435;&#x439;" type="java.lang.String"/>
                               </Table>
                             </Property>
+                            <Property name="rowHeight" type="int" value="28"/>
                           </Properties>
                           <Events>
                             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTableCarsInRentMouseClicked"/>
@@ -601,38 +617,37 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jScrollPaneAvailableCars2" pref="1205" max="32767" attributes="0"/>
+                                      <Component id="jScrollPaneAvailableCars2" max="32767" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                                                      <Component id="jLabelListCarsSearchСriteriaFirst" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="1" attributes="0">
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="jLabelListCarsSearchСriteriaSecond" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabelListCarsSearchСriteriaFirst" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="jComboBoxListCarsSearchСriteriaFirst" pref="305" max="32767" attributes="0"/>
-                                                  <Component id="jComboBoxListCarsSearchСriteriaSecond" max="32767" attributes="0"/>
-                                              </Group>
+                                              <Component id="jComboBoxListCarsSearchСriteriaFirst" min="-2" pref="305" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="jButtonListCarsClearSearchCriteries" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Component id="jLabelListCarsSearchСriteriaSecond" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="jComboBoxListCarsSearchСriteriaSecond" min="-2" pref="304" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="jButtonListCarsClearSearchCriteries" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                              <Component id="jButtonListCarsUpdateTable" min="-2" pref="340" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jButtonListCarsUpdateTable" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="jButtonEditDataCar" pref="280" max="32767" attributes="0"/>
-                                          <Component id="jButtonAddCar" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="jButtonDeleteCar" alignment="1" max="32767" attributes="0"/>
+                                      <EmptySpace pref="305" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jButtonAddCar" alignment="1" min="-2" pref="320" max="-2" attributes="0"/>
+                                          <Component id="jButtonEditDataCar" alignment="1" min="-2" pref="320" max="-2" attributes="0"/>
+                                          <Component id="jButtonDeleteCar" alignment="1" min="-2" pref="320" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -642,33 +657,40 @@
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabelListCarsSearchСriteriaFirst" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jComboBoxListCarsSearchСriteriaFirst" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabelListCarsSearchСriteriaFirst" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jComboBoxListCarsSearchСriteriaFirst" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                                              <Component id="jButtonListCarsUpdateTable" min="-2" pref="40" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="jLabelListCarsSearchСriteriaSecond" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jComboBoxListCarsSearchСriteriaSecond" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jButtonListCarsClearSearchCriteries" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
                                   </Group>
-                                  <Component id="jButtonAddCar" min="-2" pref="32" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabelListCarsSearchСriteriaSecond" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jComboBoxListCarsSearchСriteriaSecond" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jButtonAddCar" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jButtonEditDataCar" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jButtonDeleteCar" min="-2" pref="40" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jButtonEditDataCar" min="-2" pref="32" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jButtonDeleteCar" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                                      <Component id="jButtonListCarsUpdateTable" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="jButtonListCarsClearSearchCriteries" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jScrollPaneAvailableCars2" min="-2" pref="504" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jScrollPaneAvailableCars2" min="-2" pref="536" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -678,7 +700,7 @@
                     <Component class="javax.swing.JButton" name="jButtonAddCar">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Tahoma" size="16" style="0"/>
+                          <Font name="MS Reference Sans Serif" size="18" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="&#x414;&#x43e;&#x431;&#x430;&#x432;&#x438;&#x442;&#x44c; &#x430;&#x432;&#x442;&#x43e;&#x43c;&#x43e;&#x431;&#x438;&#x43b;&#x44c;"/>
                       </Properties>
@@ -689,7 +711,7 @@
                     <Component class="javax.swing.JButton" name="jButtonDeleteCar">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Tahoma" size="16" style="0"/>
+                          <Font name="MS Reference Sans Serif" size="18" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="&#x423;&#x434;&#x430;&#x43b;&#x438;&#x442;&#x44c; &#x430;&#x432;&#x442;&#x43e;&#x43c;&#x43e;&#x431;&#x438;&#x43b;&#x44c;"/>
                       </Properties>
@@ -700,7 +722,7 @@
                     <Component class="javax.swing.JLabel" name="jLabelListCarsSearch&#x421;riteriaFirst">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Tahoma" size="16" style="0"/>
+                          <Font name="MS Reference Sans Serif" size="18" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="&#x412;&#x44b;&#x431;&#x435;&#x440;&#x438;&#x442;&#x435; &#x43a;&#x440;&#x438;&#x442;&#x435;&#x440;&#x438;&#x439; &#x43f;&#x43e;&#x438;&#x441;&#x43a;&#x430;:"/>
                       </Properties>
@@ -708,7 +730,7 @@
                     <Component class="javax.swing.JLabel" name="jLabelListCarsSearch&#x421;riteriaSecond">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Tahoma" size="16" style="0"/>
+                          <Font name="MS Reference Sans Serif" size="18" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="&#x412;&#x44b;&#x431;&#x435;&#x440;&#x438;&#x442;&#x435; &#x438;&#x437; &#x441;&#x43f;&#x438;&#x441;&#x43a;&#x430;:"/>
                       </Properties>
@@ -716,7 +738,7 @@
                     <Component class="javax.swing.JComboBox" name="jComboBoxListCarsSearch&#x421;riteriaFirst">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Tahoma" size="16" style="0"/>
+                          <Font name="MS Reference Sans Serif" size="18" style="0"/>
                         </Property>
                       </Properties>
                       <Events>
@@ -729,7 +751,7 @@
                     <Component class="javax.swing.JComboBox" name="jComboBoxListCarsSearch&#x421;riteriaSecond">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Tahoma" size="16" style="0"/>
+                          <Font name="MS Reference Sans Serif" size="18" style="0"/>
                         </Property>
                       </Properties>
                       <Events>
@@ -742,9 +764,15 @@
                     <Component class="javax.swing.JButton" name="jButtonEditDataCar">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Tahoma" size="16" style="0"/>
+                          <Font name="MS Reference Sans Serif" size="18" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="&#x418;&#x437;&#x43c;&#x435;&#x43d;&#x438;&#x442;&#x44c; &#x434;&#x430;&#x43d;&#x43d;&#x44b;&#x435; &#x430;&#x432;&#x442;&#x43e;&#x43c;&#x43e;&#x431;&#x438;&#x43b;&#x44f;"/>
+                        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[319, 40]"/>
+                        </Property>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[315, 30]"/>
+                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEditDataCarActionPerformed"/>
@@ -760,7 +788,7 @@
                         <Component class="javax.swing.JTable" name="jTableListCars">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Tahoma" size="16" style="0"/>
+                              <Font name="MS Reference Sans Serif" size="18" style="0"/>
                             </Property>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="7" rowCount="0">
@@ -773,6 +801,7 @@
                                 <Column editable="false" title="&#x41d;&#x43e;&#x43c;&#x435;&#x440;" type="java.lang.String"/>
                               </Table>
                             </Property>
+                            <Property name="rowHeight" type="int" value="28"/>
                           </Properties>
                         </Component>
                       </SubComponents>
@@ -780,7 +809,7 @@
                     <Component class="javax.swing.JButton" name="jButtonListCarsClearSearchCriteries">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Tahoma" size="14" style="0"/>
+                          <Font name="MS Reference Sans Serif" size="18" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="&#x41e;&#x447;&#x438;&#x441;&#x442;&#x438;&#x442;&#x44c; &#x43f;&#x43e;&#x43b;&#x44f; &#x432;&#x44b;&#x431;&#x43e;&#x440;&#x430;"/>
                       </Properties>
@@ -791,7 +820,7 @@
                     <Component class="javax.swing.JButton" name="jButtonListCarsUpdateTable">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Tahoma" size="16" style="0"/>
+                          <Font name="MS Reference Sans Serif" size="18" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="&#x41e;&#x431;&#x43d;&#x43e;&#x432;&#x438;&#x442;&#x44c; &#x441;&#x43f;&#x438;&#x441;&#x43e;&#x43a; &#x430;&#x432;&#x442;&#x43e;&#x43c;&#x43e;&#x431;&#x438;&#x43b;&#x435;&#x439;"/>
                       </Properties>
@@ -806,6 +835,11 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanelOrders">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="MS Reference Sans Serif" size="18" style="0"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="&#x417;&#x430;&#x43a;&#x430;&#x437;&#x44b;">
@@ -817,18 +851,18 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jScrollPaneOrders" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="0" pref="826" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jScrollPaneOrders" alignment="1" pref="1636" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jButtonCloseOrder" max="32767" attributes="0"/>
-                                  <Component id="jButtonEditDataOrder" max="32767" attributes="0"/>
+                                  <Component id="jButtonEditDataOrder" min="-2" pref="320" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButtonUpdateTableOrders" min="-2" pref="163" max="-2" attributes="0"/>
+                              <Component id="jButtonUpdateTableOrders" min="-2" pref="320" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -839,15 +873,15 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPaneOrders" pref="580" max="32767" attributes="0"/>
+                      <Component id="jScrollPaneOrders" min="-2" pref="557" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jButtonUpdateTableOrders" pref="32" max="32767" attributes="0"/>
-                          <Component id="jButtonEditDataOrder" max="32767" attributes="0"/>
+                          <Component id="jButtonUpdateTableOrders" max="32767" attributes="0"/>
+                          <Component id="jButtonEditDataOrder" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonCloseOrder" min="-2" pref="34" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Component id="jButtonCloseOrder" min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace pref="38" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -895,8 +929,8 @@
               <SubComponents>
                 <Component class="javax.swing.JTable" name="jTableOrders">
                   <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection component="Form" name="font" type="property"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="MS Reference Sans Serif" size="18" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="6" rowCount="0">
@@ -908,6 +942,7 @@
                         <Column editable="false" title="&#x421;&#x442;&#x43e;&#x438;&#x43c;&#x43e;&#x441;&#x442;&#x44c;, &#x440;&#x443;&#x431;." type="java.lang.Integer"/>
                       </Table>
                     </Property>
+                    <Property name="rowHeight" type="int" value="28"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -915,6 +950,11 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanelClients">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="MS Reference Sans Serif" size="18" style="0"/>
+            </Property>
+          </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanelClientsMouseClicked"/>
             <EventHandler event="componentHidden" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="jPanelClientsComponentHidden"/>
@@ -934,16 +974,16 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPaneClients" alignment="1" pref="1210" max="32767" attributes="0"/>
+                          <Component id="jScrollPaneClients" alignment="1" pref="1636" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jButtonExportClientsToPDF" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonExportClientsToPDF" min="-2" pref="350" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jButtonBlockClient" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jButtonEditDataClient" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButtonEditDataClient" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButtonUpdateTableClients" min="-2" pref="163" max="-2" attributes="0"/>
+                              <Component id="jButtonUpdateTableClients" min="-2" pref="350" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -957,14 +997,14 @@
                       <Component id="jScrollPaneClients" min="-2" pref="553" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButtonExportClientsToPDF" min="-2" pref="32" max="-2" attributes="0"/>
+                          <Component id="jButtonExportClientsToPDF" min="-2" pref="40" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jButtonUpdateTableClients" alignment="0" pref="32" max="32767" attributes="0"/>
-                                  <Component id="jButtonEditDataClient" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButtonUpdateTableClients" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jButtonEditDataClient" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButtonBlockClient" min="-2" pref="34" max="-2" attributes="0"/>
+                              <Component id="jButtonBlockClient" min="-2" pref="40" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
@@ -983,7 +1023,7 @@
                 <Component class="javax.swing.JTable" name="jTableClients">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="16" style="0"/>
+                      <Font name="MS Reference Sans Serif" size="18" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="8" rowCount="0">
@@ -997,6 +1037,7 @@
                         <Column editable="false" title="&#x42d;&#x43b;&#x435;&#x43a;&#x442;&#x440;&#x43e;&#x43d;&#x43d;&#x430;&#x44f; &#x43f;&#x43e;&#x447;&#x442;&#x430;" type="java.lang.String"/>
                       </Table>
                     </Property>
+                    <Property name="rowHeight" type="int" value="28"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -1004,7 +1045,7 @@
             <Component class="javax.swing.JButton" name="jButtonEditDataClient">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="16" style="0"/>
+                  <Font name="MS Reference Sans Serif" size="18" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="&#x418;&#x437;&#x43c;&#x435;&#x43d;&#x438;&#x442;&#x44c; &#x434;&#x430;&#x43d;&#x43d;&#x44b;&#x435; &#x43a;&#x43b;&#x438;&#x435;&#x43d;&#x442;&#x430;"/>
               </Properties>
@@ -1015,7 +1056,7 @@
             <Component class="javax.swing.JButton" name="jButtonUpdateTableClients">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="16" style="0"/>
+                  <Font name="MS Reference Sans Serif" size="18" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="&#x41e;&#x431;&#x43d;&#x43e;&#x432;&#x438;&#x442;&#x44c; &#x434;&#x430;&#x43d;&#x43d;&#x44b;&#x435;"/>
               </Properties>
@@ -1026,7 +1067,7 @@
             <Component class="javax.swing.JButton" name="jButtonBlockClient">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="16" style="0"/>
+                  <Font name="MS Reference Sans Serif" size="18" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="&#x417;&#x430;&#x431;&#x43b;&#x43e;&#x43a;&#x438;&#x440;&#x43e;&#x432;&#x430;&#x442;&#x44c; &#x43a;&#x43b;&#x438;&#x435;&#x43d;&#x442;&#x430;"/>
               </Properties>
@@ -1037,7 +1078,7 @@
             <Component class="javax.swing.JButton" name="jButtonExportClientsToPDF">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="16" style="0"/>
+                  <Font name="MS Reference Sans Serif" size="18" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="&#x42d;&#x43a;&#x441;&#x43f;&#x43e;&#x440;&#x442;&#x438;&#x440;&#x43e;&#x432;&#x430;&#x442;&#x44c; &#x434;&#x430;&#x43d;&#x43d;&#x44b;&#x435; &#x432; PDF"/>
               </Properties>

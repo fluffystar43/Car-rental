@@ -60,6 +60,7 @@ public interface SearchCriteriaService {
 
     /**
      * 
+     * @param arg2
      * @param arg1
      * @param arg0
      * @return
@@ -71,6 +72,26 @@ public interface SearchCriteriaService {
     @ResponseWrapper(localName = "getListAvailableCarsResponse", targetNamespace = "http://endpoint.service/", className = "service.endpoint.GetListAvailableCarsResponse")
     @Action(input = "http://endpoint.service/SearchCriteriaService/getListAvailableCarsRequest", output = "http://endpoint.service/SearchCriteriaService/getListAvailableCarsResponse")
     public List<Object> getListAvailableCars(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        String arg1,
+        @WebParam(name = "arg2", targetNamespace = "")
+        Boolean arg2);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns java.util.List<java.lang.Object>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getListRentedCars", targetNamespace = "http://endpoint.service/", className = "service.endpoint.GetListRentedCars")
+    @ResponseWrapper(localName = "getListRentedCarsResponse", targetNamespace = "http://endpoint.service/", className = "service.endpoint.GetListRentedCarsResponse")
+    @Action(input = "http://endpoint.service/SearchCriteriaService/getListRentedCarsRequest", output = "http://endpoint.service/SearchCriteriaService/getListRentedCarsResponse")
+    public List<Object> getListRentedCars(
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0,
         @WebParam(name = "arg1", targetNamespace = "")
@@ -90,23 +111,5 @@ public interface SearchCriteriaService {
     public List<Object> getListSecondCriteria(
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0);
-
-    /**
-     * 
-     * @param arg1
-     * @param arg0
-     * @return
-     *     returns java.util.List<java.lang.Object>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getListRentedCars", targetNamespace = "http://endpoint.service/", className = "service.endpoint.GetListRentedCars")
-    @ResponseWrapper(localName = "getListRentedCarsResponse", targetNamespace = "http://endpoint.service/", className = "service.endpoint.GetListRentedCarsResponse")
-    @Action(input = "http://endpoint.service/SearchCriteriaService/getListRentedCarsRequest", output = "http://endpoint.service/SearchCriteriaService/getListRentedCarsResponse")
-    public List<Object> getListRentedCars(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0,
-        @WebParam(name = "arg1", targetNamespace = "")
-        String arg1);
 
 }

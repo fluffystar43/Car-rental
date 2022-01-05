@@ -96,7 +96,7 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
 
     @WebMethod()
     @Override
-    public List getListAvailableCars(String criteriaFirst, String criteriaSecond) throws RemoteException {
+    public List getListAvailableCars(String criteriaFirst, String criteriaSecond, Boolean isDependsRental) throws RemoteException {
 
         List listCars = new ArrayList<>();
         try {
@@ -107,7 +107,10 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
                     + "FROM brand, model, gear_box, drive, color, car, car_exterior "
                     + "WHERE car.brand_id = brand.id AND car.model_id = model.id AND "
                     + "car.gear_box_id = gear_box.id AND "
-                    + "car.drive_id = drive.id AND car_exterior.color_id = color.id AND car.is_rented = false ";
+                    + "car.drive_id = drive.id AND car_exterior.color_id = color.id AND car.is_deleted = false ";
+            
+            if (isDependsRental == true)
+                sql += "AND car.is_rented = false ";
             if (criteriaFirst != null) {
 
                 switch (criteriaFirst) {
