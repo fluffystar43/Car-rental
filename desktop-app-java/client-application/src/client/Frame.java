@@ -985,17 +985,13 @@ public class Frame extends javax.swing.JFrame {
         int i = 0;
         for (Object var : listСars) {
             rowData[i] = String.valueOf(var);
-            if (i!= 0 && i%6 == 0) 
-            {
+            if (i != 0 && i % 6 == 0) {
                 model.addRow(rowData);
                 i = 0;
                 continue;
             }
             i++;
-            
         }
-        
-
     }
 
     private void addTableHeader(PdfPTable table, TableModel tableModel, Font font) {
