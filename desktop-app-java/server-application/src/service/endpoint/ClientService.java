@@ -83,6 +83,26 @@ public class ClientService implements ClientOperation {
 
     @WebMethod()
     @Override
+    public Long findClientByNumberPhone(String numberPhone) {
+        Long idClient = 0l;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT id FROM client "
+                    + "WHERE is_blocked = false "
+                    + "AND phone_number = '" + numberPhone + "'");
+            result.next();
+            idClient = result.getLong("id");
+            System.out.println("Клиент найден");
+            return idClient;
+
+        } catch (SQLException e) {
+            System.out.print(e.getMessage());
+        }
+        return idClient;
+    }
+    
+    @WebMethod()
+    @Override
     public void updateClient(Client client) {
         CompletableFuture.runAsync(() -> {
             try {
@@ -95,16 +115,15 @@ public class ClientService implements ClientOperation {
 
     private void updateClientAsync(Client client) throws SQLException {
         try {
-            PreparedStatement statement = connection.prepareStatement
-                    ("UPDATE client SET "
-                            + "second_name = ?, "
-                            + "first_name = ?, "
-                            + "middle_name = ?, "
-                            + "passport_data = ?, "
-                            + "drivers_license = ?, "
-                            + "phone_number = ?, "
-                            + "email = ? "
-                            + "WHERE id = ?");
+            PreparedStatement statement = connection.prepareStatement("UPDATE client SET "
+                    + "second_name = ?, "
+                    + "first_name = ?, "
+                    + "middle_name = ?, "
+                    + "passport_data = ?, "
+                    + "drivers_license = ?, "
+                    + "phone_number = ?, "
+                    + "email = ? "
+                    + "WHERE id = ?");
             statement.setString(1, client.getSecondName());
             statement.setString(2, client.getFirstName());
             statement.setString(3, client.getMiddleName());
@@ -118,6 +137,32 @@ public class ClientService implements ClientOperation {
             if (rowsInserted > 0) {
                 System.out.println("Клиент обновлен!");
 
+            }
+        } catch (SQLException e) {
+            System.out.print(e.getMessage());
+        }
+    }
+
+    @WebMethod()
+    @Override
+    public void deleteClient(Long id) {
+        CompletableFuture.runAsync(() -> {
+            try {
+                deleteClientAsync(id);
+            } catch (SQLException ex) {
+                Logger.getLogger(ClientService.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+    }
+
+    private void deleteClientAsync(Long id) throws SQLException {
+        try {
+            PreparedStatement statement = connection.prepareStatement("UPDATE client SET is_blocked = true WHERE id = ?");
+            statement.setLong(1, id);
+
+            int rowsInserted = statement.executeUpdate();
+            if (rowsInserted > 0) {
+                System.out.println("Клиент удален!");
             }
         } catch (SQLException e) {
             System.out.print(e.getMessage());

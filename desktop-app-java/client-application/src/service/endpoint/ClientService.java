@@ -29,15 +29,30 @@ public interface ClientService {
 
     /**
      * 
+     * @param arg0
      * @return
-     *     returns java.util.List<types.Client>
+     *     returns java.lang.Long
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getListOfClients", targetNamespace = "http://endpoint.service/", className = "service.endpoint.GetListOfClients")
-    @ResponseWrapper(localName = "getListOfClientsResponse", targetNamespace = "http://endpoint.service/", className = "service.endpoint.GetListOfClientsResponse")
-    @Action(input = "http://endpoint.service/ClientService/getListOfClientsRequest", output = "http://endpoint.service/ClientService/getListOfClientsResponse")
-    public List<Client> getListOfClients();
+    @RequestWrapper(localName = "findClientByNumberPhone", targetNamespace = "http://endpoint.service/", className = "service.endpoint.FindClientByNumberPhone")
+    @ResponseWrapper(localName = "findClientByNumberPhoneResponse", targetNamespace = "http://endpoint.service/", className = "service.endpoint.FindClientByNumberPhoneResponse")
+    @Action(input = "http://endpoint.service/ClientService/findClientByNumberPhoneRequest", output = "http://endpoint.service/ClientService/findClientByNumberPhoneResponse")
+    public Long findClientByNumberPhone(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     */
+    @WebMethod
+    @RequestWrapper(localName = "deleteClient", targetNamespace = "http://endpoint.service/", className = "service.endpoint.DeleteClient")
+    @ResponseWrapper(localName = "deleteClientResponse", targetNamespace = "http://endpoint.service/", className = "service.endpoint.DeleteClientResponse")
+    @Action(input = "http://endpoint.service/ClientService/deleteClientRequest", output = "http://endpoint.service/ClientService/deleteClientResponse")
+    public void deleteClient(
+        @WebParam(name = "arg0", targetNamespace = "")
+        Long arg0);
 
     /**
      * 
@@ -50,5 +65,17 @@ public interface ClientService {
     public void updateClient(
         @WebParam(name = "arg0", targetNamespace = "")
         Client arg0);
+
+    /**
+     * 
+     * @return
+     *     returns java.util.List<types.Client>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getListOfClients", targetNamespace = "http://endpoint.service/", className = "service.endpoint.GetListOfClients")
+    @ResponseWrapper(localName = "getListOfClientsResponse", targetNamespace = "http://endpoint.service/", className = "service.endpoint.GetListOfClientsResponse")
+    @Action(input = "http://endpoint.service/ClientService/getListOfClientsRequest", output = "http://endpoint.service/ClientService/getListOfClientsResponse")
+    public List<Client> getListOfClients();
 
 }

@@ -770,6 +770,11 @@ public class Frame extends javax.swing.JFrame {
             }
         });
         jTableClients.setRowHeight(28);
+        jTableClients.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableClientsMouseClicked(evt);
+            }
+        });
         jScrollPaneClients.setViewportView(jTableClients);
 
         jButtonEditDataClient.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
@@ -935,8 +940,12 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelClientsMouseClicked
     private void UpdateListClients() {
         try {
+            jButtonEditDataClient.setEnabled(false);
+            jButtonBlockClient.setEnabled(false);
+            
             model = (DefaultTableModel) jTableClients.getModel();
             OutputToTable(clientService.getClientServicePort().getListOfClients());
+            
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Не удалось установить соединение с сервером:" + ex.getMessage() + ".",
                     "Ошибка",
@@ -1018,7 +1027,34 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEditDataOrderActionPerformed
 
     private void jButtonBlockClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBlockClientActionPerformed
-        // TODO add your handling code here:
+        int result = JOptionPane.showConfirmDialog(this, 
+                "Вы желаете заблокировать клиента?", 
+                "Внимание!", 
+                JOptionPane.YES_NO_OPTION);
+        
+        if (result == JOptionPane.OK_OPTION) {
+            try {
+                int row = jTableClients.getSelectedRow();
+                int column = 6;
+                String numberPhone = jTableClients.getModel().getValueAt(row, column).toString();
+                
+                Long idClient = null;
+                idClient = clientService.getClientServicePort().findClientByNumberPhone(numberPhone);
+
+                clientService.getClientServicePort().deleteClient(idClient);
+
+                JOptionPane.showMessageDialog(this, "Клиент заблокирован",
+                        "Успешно",
+                        JOptionPane.NO_OPTION);
+                
+                UpdateListClients();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Не удалось установить соединение с сервером:" + ex.getMessage() + ".",
+                        "Ошибка",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+
+        }
     }//GEN-LAST:event_jButtonBlockClientActionPerformed
 
     private void jButtonEditDataClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditDataClientActionPerformed
@@ -1108,13 +1144,15 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelAvailableCarsComponentShown
 
     private void jPanelClientsComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelClientsComponentShown
-
+        
         UpdateListClients();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int height = (int) (screenSize.height * 0.7);
         int width = (int) (screenSize.width * 0.95);
         this.setSize(width, height);
         this.setLocationRelativeTo(null);
+        jButtonEditDataClient.setEnabled(false);
+        jButtonBlockClient.setEnabled(false);
 
     }//GEN-LAST:event_jPanelClientsComponentShown
 
@@ -1263,6 +1301,11 @@ public class Frame extends javax.swing.JFrame {
                     JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonListCarsUpdateTableActionPerformed
+
+    private void jTableClientsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableClientsMouseClicked
+        jButtonEditDataClient.setEnabled(true);
+        jButtonBlockClient.setEnabled(true);
+    }//GEN-LAST:event_jTableClientsMouseClicked
     private void OutputToTableCars(List listСars) throws ParseException {
         doClearTable();
         Object[] rowData = new String[7];
