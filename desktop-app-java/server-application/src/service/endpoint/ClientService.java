@@ -145,24 +145,24 @@ public class ClientService implements ClientOperation {
 
     @WebMethod()
     @Override
-    public void deleteClient(Long id) {
+    public void blockClient(Long id) {
         CompletableFuture.runAsync(() -> {
             try {
-                deleteClientAsync(id);
+                blockClientAsync(id);
             } catch (SQLException ex) {
                 Logger.getLogger(ClientService.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }
 
-    private void deleteClientAsync(Long id) throws SQLException {
+    private void blockClientAsync(Long id) throws SQLException {
         try {
             PreparedStatement statement = connection.prepareStatement("UPDATE client SET is_blocked = true WHERE id = ?");
             statement.setLong(1, id);
 
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
-                System.out.println("Клиент удален!");
+                System.out.println("Клиент заблокирован!");
             }
         } catch (SQLException e) {
             System.out.print(e.getMessage());

@@ -38,6 +38,9 @@ public class Frame extends javax.swing.JFrame {
         jTableOrders.getTableHeader().setFont(new java.awt.Font("MS Reference Sans Serif", 0, 20));
         jTableClients.getTableHeader().setFont(new java.awt.Font("MS Reference Sans Serif", 0, 20));
         jButtonAvailableCarsAddOrder.setEnabled(false);
+        jDialogEditDataClient.setMinimumSize(new Dimension(800, 750));
+        jDialogEditDataClient.setLocationRelativeTo(null);
+        jDialogEditDataClient.setResizable(false);
 
         //jDialogLogin.setVisible(true);
     }
@@ -62,6 +65,25 @@ public class Frame extends javax.swing.JFrame {
         jLabelPassword1 = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
         jButtonEnter1 = new javax.swing.JButton();
+        jDialogEditDataClient = new javax.swing.JDialog();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jTextFieldEditDataClientEmail = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jButtonEditClientAccept = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jTextFieldEditDataClientPhoneNumber = new javax.swing.JTextField();
+        jTextFieldEditDataClientMiddleName = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jButtonEditClientClose = new javax.swing.JButton();
+        jTextFieldEditDataClientFirstName = new javax.swing.JTextField();
+        jTextFieldEditDataClientSecondName = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextAreaEditDataClientPassportData = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextAreaEditDataClientDriversLicense = new javax.swing.JTextArea();
         jTabbedPaneForm = new javax.swing.JTabbedPane();
         jPanelAutopark = new javax.swing.JPanel();
         jTabbedPaneAutopark = new javax.swing.JTabbedPane();
@@ -180,6 +202,145 @@ public class Frame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jLabel2.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
+        jLabel2.setText("Имя:");
+
+        jLabel4.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
+        jLabel4.setText("Номер телефона:");
+
+        jTextFieldEditDataClientEmail.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
+
+        jLabel6.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
+        jLabel6.setText("Водительское удостоверение:");
+
+        jButtonEditClientAccept.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
+        jButtonEditClientAccept.setText("Изменить");
+
+        jLabel5.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
+        jLabel5.setText("Паспортные данные:");
+
+        jTextFieldEditDataClientPhoneNumber.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
+
+        jTextFieldEditDataClientMiddleName.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
+        jLabel1.setText("Фамилия:");
+
+        jButtonEditClientClose.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
+        jButtonEditClientClose.setText("Отмена");
+        jButtonEditClientClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditClientCloseActionPerformed(evt);
+            }
+        });
+
+        jTextFieldEditDataClientFirstName.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
+
+        jTextFieldEditDataClientSecondName.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
+
+        jLabel7.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
+        jLabel7.setText("Электронная почта:");
+
+        jLabel3.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
+        jLabel3.setText("Отчество:");
+
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setHorizontalScrollBar(null);
+
+        jTextAreaEditDataClientPassportData.setColumns(20);
+        jTextAreaEditDataClientPassportData.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
+        jTextAreaEditDataClientPassportData.setLineWrap(true);
+        jTextAreaEditDataClientPassportData.setRows(5);
+        jTextAreaEditDataClientPassportData.setWrapStyleWord(true);
+        jScrollPane1.setViewportView(jTextAreaEditDataClientPassportData);
+
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane2.setHorizontalScrollBar(null);
+
+        jTextAreaEditDataClientDriversLicense.setColumns(20);
+        jTextAreaEditDataClientDriversLicense.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
+        jTextAreaEditDataClientDriversLicense.setLineWrap(true);
+        jTextAreaEditDataClientDriversLicense.setRows(5);
+        jTextAreaEditDataClientDriversLicense.setWrapStyleWord(true);
+        jScrollPane2.setViewportView(jTextAreaEditDataClientDriversLicense);
+
+        javax.swing.GroupLayout jDialogEditDataClientLayout = new javax.swing.GroupLayout(jDialogEditDataClient.getContentPane());
+        jDialogEditDataClient.getContentPane().setLayout(jDialogEditDataClientLayout);
+        jDialogEditDataClientLayout.setHorizontalGroup(
+            jDialogEditDataClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogEditDataClientLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jDialogEditDataClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDialogEditDataClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDialogEditDataClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jDialogEditDataClientLayout.createSequentialGroup()
+                            .addGap(191, 191, 191)
+                            .addGroup(jDialogEditDataClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogEditDataClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jDialogEditDataClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialogEditDataClientLayout.createSequentialGroup()
+                        .addComponent(jButtonEditClientAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonEditClientClose, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jTextFieldEditDataClientMiddleName)
+                    .addComponent(jTextFieldEditDataClientFirstName)
+                    .addComponent(jTextFieldEditDataClientSecondName)
+                    .addComponent(jTextFieldEditDataClientEmail)
+                    .addComponent(jTextFieldEditDataClientPhoneNumber)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(472, 472, 472))
+        );
+        jDialogEditDataClientLayout.setVerticalGroup(
+            jDialogEditDataClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogEditDataClientLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(jDialogEditDataClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextFieldEditDataClientSecondName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDialogEditDataClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextFieldEditDataClientFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDialogEditDataClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldEditDataClientMiddleName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(42, 42, 42)
+                .addGroup(jDialogEditDataClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDialogEditDataClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDialogEditDataClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialogEditDataClientLayout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(22, 22, 22))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogEditDataClientLayout.createSequentialGroup()
+                        .addComponent(jTextFieldEditDataClientPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGroup(jDialogEditDataClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldEditDataClientEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addGap(18, 18, 18)
+                .addGroup(jDialogEditDataClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonEditClientAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonEditClientClose, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Прокат автомобилей");
         setResizable(false);
@@ -280,35 +441,34 @@ public class Frame extends javax.swing.JFrame {
         jPanelAvailableCarsLayout.setHorizontalGroup(
             jPanelAvailableCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAvailableCarsLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanelAvailableCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelAvailableCarsLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPaneAvailableCars, javax.swing.GroupLayout.DEFAULT_SIZE, 1631, Short.MAX_VALUE))
+                    .addComponent(jScrollPaneAvailableCars, javax.swing.GroupLayout.DEFAULT_SIZE, 1631, Short.MAX_VALUE)
                     .addGroup(jPanelAvailableCarsLayout.createSequentialGroup()
                         .addGroup(jPanelAvailableCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanelAvailableCarsLayout.createSequentialGroup()
                                 .addGroup(jPanelAvailableCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanelAvailableCarsLayout.createSequentialGroup()
-                                        .addGap(69, 69, 69)
+                                        .addGap(59, 59, 59)
                                         .addComponent(jLabelAvailableCarsSearchСriteriaFirst))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAvailableCarsLayout.createSequentialGroup()
-                                        .addContainerGap()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabelAvailableCarsSearchСriteriaSecond)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanelAvailableCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jComboBoxAvailableCarsSearchСriteriaFirst, 0, 300, Short.MAX_VALUE)
-                                    .addComponent(jComboBoxAvailableCarsSearchСriteriaSecond, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(jComboBoxAvailableCarsSearchСriteriaFirst, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBoxAvailableCarsSearchСriteriaSecond, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jButtonAvailableCarsClearSearchCriteries))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanelAvailableCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButtonAvailableCarsUpdateTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonAvailableCarsAddOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jButtonAvailableCarsAddOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanelAvailableCarsLayout.setVerticalGroup(
             jPanelAvailableCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAvailableCarsLayout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
+            .addGroup(jPanelAvailableCarsLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addGroup(jPanelAvailableCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelAvailableCarsLayout.createSequentialGroup()
                         .addGroup(jPanelAvailableCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -325,8 +485,8 @@ public class Frame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonAvailableCarsUpdateTable, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPaneAvailableCars, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPaneAvailableCars, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         jTabbedPaneAutopark.addTab("Доступные автомобили", jPanelAvailableCars);
@@ -637,7 +797,7 @@ public class Frame extends javax.swing.JFrame {
         );
         jPanelAutoparkLayout.setVerticalGroup(
             jPanelAutoparkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPaneAutopark, javax.swing.GroupLayout.PREFERRED_SIZE, 698, Short.MAX_VALUE)
+            .addComponent(jTabbedPaneAutopark, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
         );
 
         jTabbedPaneAutopark.getAccessibleContext().setAccessibleName("Автомобили в прокате");
@@ -942,10 +1102,10 @@ public class Frame extends javax.swing.JFrame {
         try {
             jButtonEditDataClient.setEnabled(false);
             jButtonBlockClient.setEnabled(false);
-            
+
             model = (DefaultTableModel) jTableClients.getModel();
             OutputToTable(clientService.getClientServicePort().getListOfClients());
-            
+
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Не удалось установить соединение с сервером:" + ex.getMessage() + ".",
                     "Ошибка",
@@ -1027,17 +1187,17 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEditDataOrderActionPerformed
 
     private void jButtonBlockClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBlockClientActionPerformed
-        int result = JOptionPane.showConfirmDialog(this, 
-                "Вы желаете заблокировать клиента?", 
-                "Внимание!", 
+        int result = JOptionPane.showConfirmDialog(this,
+                "Вы желаете заблокировать клиента?",
+                "Внимание!",
                 JOptionPane.YES_NO_OPTION);
-        
+
         if (result == JOptionPane.OK_OPTION) {
             try {
                 int row = jTableClients.getSelectedRow();
                 int column = 6;
                 String numberPhone = jTableClients.getModel().getValueAt(row, column).toString();
-                
+
                 Long idClient = null;
                 idClient = clientService.getClientServicePort().findClientByNumberPhone(numberPhone);
 
@@ -1046,7 +1206,7 @@ public class Frame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Клиент заблокирован",
                         "Успешно",
                         JOptionPane.NO_OPTION);
-                
+
                 UpdateListClients();
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "Не удалось установить соединение с сервером:" + ex.getMessage() + ".",
@@ -1058,7 +1218,22 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBlockClientActionPerformed
 
     private void jButtonEditDataClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditDataClientActionPerformed
-        // TODO add your handling code here:
+        if (jTableClients.getSelectedRow() != -1)
+        {
+            int row = jTableClients.getSelectedRow();
+            
+            jTextFieldEditDataClientSecondName.setText((String) jTableClients.getModel().getValueAt(row, 0));
+            jTextFieldEditDataClientFirstName.setText((String) jTableClients.getModel().getValueAt(row, 1));
+            jTextFieldEditDataClientMiddleName.setText((String) jTableClients.getModel().getValueAt(row, 2));          
+            
+            jTextAreaEditDataClientPassportData.setText((String) jTableClients.getModel().getValueAt(row, 4));
+            jTextAreaEditDataClientDriversLicense.setText((String) jTableClients.getModel().getValueAt(row, 5));
+            jTextFieldEditDataClientPhoneNumber.setText((String) jTableClients.getModel().getValueAt(row, 6));
+            jTextFieldEditDataClientEmail.setText((String) jTableClients.getModel().getValueAt(row, 7));
+            
+            jDialogEditDataClient.setVisible(true);
+        }
+            
     }//GEN-LAST:event_jButtonEditDataClientActionPerformed
 
     private void jButtonAddCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddCarActionPerformed
@@ -1144,7 +1319,7 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelAvailableCarsComponentShown
 
     private void jPanelClientsComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelClientsComponentShown
-        
+
         UpdateListClients();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int height = (int) (screenSize.height * 0.7);
@@ -1306,6 +1481,10 @@ public class Frame extends javax.swing.JFrame {
         jButtonEditDataClient.setEnabled(true);
         jButtonBlockClient.setEnabled(true);
     }//GEN-LAST:event_jTableClientsMouseClicked
+
+    private void jButtonEditClientCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditClientCloseActionPerformed
+        jDialogEditDataClient.setVisible(false);
+    }//GEN-LAST:event_jButtonEditClientCloseActionPerformed
     private void OutputToTableCars(List listСars) throws ParseException {
         doClearTable();
         Object[] rowData = new String[7];
@@ -1458,6 +1637,8 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JButton jButtonBlockClient;
     private javax.swing.JButton jButtonCloseOrder;
     private javax.swing.JButton jButtonDeleteCar;
+    private javax.swing.JButton jButtonEditClientAccept;
+    private javax.swing.JButton jButtonEditClientClose;
     private javax.swing.JButton jButtonEditDataCar;
     private javax.swing.JButton jButtonEditDataClient;
     private javax.swing.JButton jButtonEditDataOrder;
@@ -1476,7 +1657,15 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxListCarsSearchСriteriaSecond;
     private javax.swing.JComboBox<String> jComboBoxRentedCarsSearchСriteriaFirst;
     private javax.swing.JComboBox<String> jComboBoxRentedCarsSearchСriteriaSecond;
+    private javax.swing.JDialog jDialogEditDataClient;
     private javax.swing.JDialog jDialogLogin;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelAvailableCarsSearchСriteriaFirst;
     private javax.swing.JLabel jLabelAvailableCarsSearchСriteriaSecond;
     private javax.swing.JLabel jLabelListCarsSearchСriteriaFirst;
@@ -1493,6 +1682,8 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelOrders;
     private javax.swing.JPanel jPanelRentedCars;
     private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPaneAvailableCars;
     private javax.swing.JScrollPane jScrollPaneAvailableCars1;
     private javax.swing.JScrollPane jScrollPaneAvailableCars2;
@@ -1505,6 +1696,13 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JTable jTableClients;
     private javax.swing.JTable jTableListCars;
     private javax.swing.JTable jTableOrders;
+    private javax.swing.JTextArea jTextAreaEditDataClientDriversLicense;
+    private javax.swing.JTextArea jTextAreaEditDataClientPassportData;
+    private javax.swing.JTextField jTextFieldEditDataClientEmail;
+    private javax.swing.JTextField jTextFieldEditDataClientFirstName;
+    private javax.swing.JTextField jTextFieldEditDataClientMiddleName;
+    private javax.swing.JTextField jTextFieldEditDataClientPhoneNumber;
+    private javax.swing.JTextField jTextFieldEditDataClientSecondName;
     private javax.swing.JTextField jTextFieldLogin1;
     // End of variables declaration//GEN-END:variables
 }
