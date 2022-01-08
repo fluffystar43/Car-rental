@@ -98,6 +98,7 @@ public class Frame extends javax.swing.JFrame {
         jScrollPaneAvailableCars = new javax.swing.JScrollPane();
         jTableAvailableCars = new javax.swing.JTable();
         jButtonAvailableCarsClearSearchCriteries = new javax.swing.JButton();
+        jLabelAvailableCarsCount = new javax.swing.JLabel();
         jPanelRentedCars = new javax.swing.JPanel();
         jButtonRentedCarsMoveToOrders = new javax.swing.JButton();
         jButtonRentedCarsUpdateTable = new javax.swing.JButton();
@@ -108,6 +109,7 @@ public class Frame extends javax.swing.JFrame {
         jScrollPaneAvailableCars1 = new javax.swing.JScrollPane();
         jTableCarsInRent = new javax.swing.JTable();
         jButtonRentedCarsClearSearchCriteries = new javax.swing.JButton();
+        jLabelCarsInRentCount = new javax.swing.JLabel();
         jPanelListCars = new javax.swing.JPanel();
         jButtonAddCar = new javax.swing.JButton();
         jButtonDeleteCar = new javax.swing.JButton();
@@ -120,6 +122,7 @@ public class Frame extends javax.swing.JFrame {
         jTableListCars = new javax.swing.JTable();
         jButtonListCarsClearSearchCriteries = new javax.swing.JButton();
         jButtonListCarsUpdateTable = new javax.swing.JButton();
+        jLabelListCarsCount = new javax.swing.JLabel();
         jPanelOrders = new javax.swing.JPanel();
         jButtonCloseOrder = new javax.swing.JButton();
         jButtonUpdateTableOrders = new javax.swing.JButton();
@@ -304,7 +307,7 @@ public class Frame extends javax.swing.JFrame {
                     .addComponent(jTextFieldEditDataClientPhoneNumber)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(472, 472, 472))
+                .addGap(55, 55, 55))
         );
         jDialogEditDataClientLayout.setVerticalGroup(
             jDialogEditDataClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -442,6 +445,9 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
+        jLabelAvailableCarsCount.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 16)); // NOI18N
+        jLabelAvailableCarsCount.setText("Количество автомобилей в таблице: 10");
+
         javax.swing.GroupLayout jPanelAvailableCarsLayout = new javax.swing.GroupLayout(jPanelAvailableCars);
         jPanelAvailableCars.setLayout(jPanelAvailableCarsLayout);
         jPanelAvailableCarsLayout.setHorizontalGroup(
@@ -457,17 +463,17 @@ public class Frame extends javax.swing.JFrame {
                                     .addGroup(jPanelAvailableCarsLayout.createSequentialGroup()
                                         .addGap(59, 59, 59)
                                         .addComponent(jLabelAvailableCarsSearchСriteriaFirst))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAvailableCarsLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabelAvailableCarsSearchСriteriaSecond)))
+                                    .addComponent(jLabelAvailableCarsSearchСriteriaSecond, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanelAvailableCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jComboBoxAvailableCarsSearchСriteriaFirst, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jComboBoxAvailableCarsSearchСriteriaSecond, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jButtonAvailableCarsClearSearchCriteries))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabelAvailableCarsCount)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanelAvailableCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButtonAvailableCarsUpdateTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonAvailableCarsUpdateTable, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
                             .addComponent(jButtonAvailableCarsAddOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
@@ -485,14 +491,16 @@ public class Frame extends javax.swing.JFrame {
                             .addComponent(jLabelAvailableCarsSearchСriteriaSecond)
                             .addComponent(jComboBoxAvailableCarsSearchСriteriaSecond, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonAvailableCarsClearSearchCriteries))
+                        .addGroup(jPanelAvailableCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonAvailableCarsClearSearchCriteries)
+                            .addComponent(jLabelAvailableCarsCount, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanelAvailableCarsLayout.createSequentialGroup()
                         .addComponent(jButtonAvailableCarsAddOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonAvailableCarsUpdateTable, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPaneAvailableCars, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         jTabbedPaneAutopark.addTab("Доступные автомобили", jPanelAvailableCars);
@@ -504,7 +512,7 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
-        jButtonRentedCarsMoveToOrders.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jButtonRentedCarsMoveToOrders.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
         jButtonRentedCarsMoveToOrders.setActionCommand("Перейти к заказам");
         jButtonRentedCarsMoveToOrders.setLabel("Перейти к заказам");
         jButtonRentedCarsMoveToOrders.addActionListener(new java.awt.event.ActionListener() {
@@ -513,7 +521,7 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
-        jButtonRentedCarsUpdateTable.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jButtonRentedCarsUpdateTable.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
         jButtonRentedCarsUpdateTable.setText("Обновить список автомобилей");
         jButtonRentedCarsUpdateTable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -521,20 +529,20 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
-        jLabelRentedCarsSearchСriteriaFirst.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabelRentedCarsSearchСriteriaFirst.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
         jLabelRentedCarsSearchСriteriaFirst.setText("Выберите критерий поиска:");
 
-        jLabelRentedCarsSearchСriteriaSecond.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabelRentedCarsSearchСriteriaSecond.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
         jLabelRentedCarsSearchСriteriaSecond.setText("Выберите из списка:");
 
-        jComboBoxRentedCarsSearchСriteriaFirst.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jComboBoxRentedCarsSearchСriteriaFirst.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
         jComboBoxRentedCarsSearchСriteriaFirst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxRentedCarsSearchСriteriaFirstActionPerformed(evt);
             }
         });
 
-        jComboBoxRentedCarsSearchСriteriaSecond.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jComboBoxRentedCarsSearchСriteriaSecond.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
         jComboBoxRentedCarsSearchСriteriaSecond.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxRentedCarsSearchСriteriaSecondActionPerformed(evt);
@@ -573,13 +581,16 @@ public class Frame extends javax.swing.JFrame {
         });
         jScrollPaneAvailableCars1.setViewportView(jTableCarsInRent);
 
-        jButtonRentedCarsClearSearchCriteries.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonRentedCarsClearSearchCriteries.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
         jButtonRentedCarsClearSearchCriteries.setText("Очистить поля выбора");
         jButtonRentedCarsClearSearchCriteries.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRentedCarsClearSearchCriteriesActionPerformed(evt);
             }
         });
+
+        jLabelCarsInRentCount.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 16)); // NOI18N
+        jLabelCarsInRentCount.setText("Количество автомобилей в таблице: 10");
 
         javax.swing.GroupLayout jPanelRentedCarsLayout = new javax.swing.GroupLayout(jPanelRentedCars);
         jPanelRentedCars.setLayout(jPanelRentedCarsLayout);
@@ -589,23 +600,22 @@ public class Frame extends javax.swing.JFrame {
                 .addGroup(jPanelRentedCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelRentedCarsLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPaneAvailableCars1, javax.swing.GroupLayout.DEFAULT_SIZE, 1631, Short.MAX_VALUE))
+                        .addComponent(jScrollPaneAvailableCars1))
                     .addGroup(jPanelRentedCarsLayout.createSequentialGroup()
+                        .addGap(83, 83, 83)
                         .addGroup(jPanelRentedCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButtonRentedCarsClearSearchCriteries, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanelRentedCarsLayout.createSequentialGroup()
                                 .addGroup(jPanelRentedCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanelRentedCarsLayout.createSequentialGroup()
-                                        .addGap(69, 69, 69)
-                                        .addComponent(jLabelRentedCarsSearchСriteriaFirst))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRentedCarsLayout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(jLabelRentedCarsSearchСriteriaSecond)))
+                                    .addComponent(jLabelRentedCarsSearchСriteriaFirst)
+                                    .addComponent(jLabelRentedCarsSearchСriteriaSecond, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanelRentedCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jComboBoxRentedCarsSearchСriteriaFirst, 0, 300, Short.MAX_VALUE)
-                                    .addComponent(jComboBoxRentedCarsSearchСriteriaSecond, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 805, Short.MAX_VALUE)
+                                    .addComponent(jComboBoxRentedCarsSearchСriteriaFirst, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBoxRentedCarsSearchСriteriaSecond, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jButtonRentedCarsClearSearchCriteries))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabelCarsInRentCount)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 316, Short.MAX_VALUE)
                         .addGroup(jPanelRentedCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButtonRentedCarsUpdateTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonRentedCarsMoveToOrders, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -613,23 +623,29 @@ public class Frame extends javax.swing.JFrame {
         );
         jPanelRentedCarsLayout.setVerticalGroup(
             jPanelRentedCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRentedCarsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelRentedCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonRentedCarsMoveToOrders, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelRentedCarsSearchСriteriaFirst)
-                    .addComponent(jComboBoxRentedCarsSearchСriteriaFirst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanelRentedCarsLayout.createSequentialGroup()
                 .addGroup(jPanelRentedCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonRentedCarsUpdateTable, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelRentedCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabelRentedCarsSearchСriteriaSecond)
-                        .addComponent(jComboBoxRentedCarsSearchСriteriaSecond, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonRentedCarsClearSearchCriteries)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneAvailableCars1, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
-                .addGap(19, 19, 19))
+                    .addGroup(jPanelRentedCarsLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jButtonRentedCarsMoveToOrders, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonRentedCarsUpdateTable, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelRentedCarsLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanelRentedCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelRentedCarsSearchСriteriaFirst)
+                            .addComponent(jComboBoxRentedCarsSearchСriteriaFirst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelRentedCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelRentedCarsSearchСriteriaSecond)
+                            .addComponent(jComboBoxRentedCarsSearchСriteriaSecond, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelRentedCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonRentedCarsClearSearchCriteries)
+                            .addComponent(jLabelCarsInRentCount, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(9, 9, 9)
+                .addComponent(jScrollPaneAvailableCars1, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         jTabbedPaneAutopark.addTab("Автомобили в прокате", jPanelRentedCars);
@@ -729,6 +745,9 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
+        jLabelListCarsCount.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 16)); // NOI18N
+        jLabelListCarsCount.setText("Количество автомобилей в таблице: 10");
+
         javax.swing.GroupLayout jPanelListCarsLayout = new javax.swing.GroupLayout(jPanelListCars);
         jPanelListCars.setLayout(jPanelListCarsLayout);
         jPanelListCarsLayout.setHorizontalGroup(
@@ -742,20 +761,24 @@ public class Frame extends javax.swing.JFrame {
                         .addGap(62, 62, 62)
                         .addGroup(jPanelListCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelListCarsLayout.createSequentialGroup()
-                                .addComponent(jLabelListCarsSearchСriteriaFirst)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBoxListCarsSearchСriteriaFirst, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelListCarsLayout.createSequentialGroup()
                                 .addGap(70, 70, 70)
                                 .addGroup(jPanelListCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanelListCarsLayout.createSequentialGroup()
                                         .addComponent(jLabelListCarsSearchСriteriaSecond)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jComboBoxListCarsSearchСriteriaSecond, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jButtonListCarsClearSearchCriteries))
-                                .addGap(35, 35, 35)
-                                .addComponent(jButtonListCarsUpdateTable, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 305, Short.MAX_VALUE)
+                                    .addComponent(jButtonListCarsClearSearchCriteries)))
+                            .addGroup(jPanelListCarsLayout.createSequentialGroup()
+                                .addComponent(jLabelListCarsSearchСriteriaFirst)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBoxListCarsSearchСriteriaFirst, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanelListCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonListCarsUpdateTable, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelListCarsLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabelListCarsCount, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 280, Short.MAX_VALUE)
                         .addGroup(jPanelListCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonAddCar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButtonEditDataCar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -765,33 +788,35 @@ public class Frame extends javax.swing.JFrame {
         jPanelListCarsLayout.setVerticalGroup(
             jPanelListCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelListCarsLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelListCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelListCarsLayout.createSequentialGroup()
                         .addGroup(jPanelListCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelListCarsSearchСriteriaFirst)
                             .addComponent(jComboBoxListCarsSearchСriteriaFirst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanelListCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelListCarsLayout.createSequentialGroup()
-                                .addGap(55, 55, 55)
-                                .addComponent(jButtonListCarsUpdateTable, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelListCarsLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanelListCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabelListCarsSearchСriteriaSecond)
-                                    .addComponent(jComboBoxListCarsSearchСriteriaSecond, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonListCarsClearSearchCriteries))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelListCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelListCarsSearchСriteriaSecond)
+                            .addComponent(jComboBoxListCarsSearchСriteriaSecond, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonListCarsClearSearchCriteries))
                     .addGroup(jPanelListCarsLayout.createSequentialGroup()
                         .addComponent(jButtonAddCar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonEditDataCar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonDeleteCar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPaneAvailableCars2, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                        .addComponent(jButtonDeleteCar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelListCarsLayout.createSequentialGroup()
+                        .addComponent(jButtonListCarsUpdateTable, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelListCarsCount)
+                        .addGap(10, 10, 10)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPaneAvailableCars2, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(71, 71, 71))
         );
+
+        jLabelListCarsCount.getAccessibleContext().setAccessibleName("");
 
         jTabbedPaneAutopark.addTab("Список автомобилей", jPanelListCars);
 
@@ -803,7 +828,7 @@ public class Frame extends javax.swing.JFrame {
         );
         jPanelAutoparkLayout.setVerticalGroup(
             jPanelAutoparkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPaneAutopark, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
+            .addComponent(jTabbedPaneAutopark, javax.swing.GroupLayout.PREFERRED_SIZE, 698, Short.MAX_VALUE)
         );
 
         jTabbedPaneAutopark.getAccessibleContext().setAccessibleName("Автомобили в прокате");
@@ -1134,6 +1159,7 @@ public class Frame extends javax.swing.JFrame {
             try {
                 model = (DefaultTableModel) jTableAvailableCars.getModel();
                 OutputToTableCars(listCars);
+                jLabelAvailableCarsCount.setText("Количество автомобилей в таблице: " + jTableAvailableCars.getModel().getRowCount());
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "Не удалось установить соединение с сервером:" + ex.getMessage() + ".",
                         "Ошибка",
@@ -1153,6 +1179,7 @@ public class Frame extends javax.swing.JFrame {
             try {
                 model = (DefaultTableModel) jTableCarsInRent.getModel();
                 OutputToTableRentedCars(listCars);
+                jLabelCarsInRentCount.setText("Количество автомобилей в таблице: " + jTableCarsInRent.getModel().getRowCount());
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "Не удалось установить соединение с сервером:" + ex.getMessage() + ".",
                         "Ошибка",
@@ -1172,6 +1199,7 @@ public class Frame extends javax.swing.JFrame {
             try {
                 model = (DefaultTableModel) jTableListCars.getModel();
                 OutputToTableCars(listCars);
+                jLabelListCarsCount.setText("Количество автомобилей в таблице: " + jTableListCars.getModel().getRowCount());
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "Не удалось установить соединение с сервером:" + ex.getMessage() + ".",
                         "Ошибка",
@@ -1321,6 +1349,7 @@ public class Frame extends javax.swing.JFrame {
         jComboBoxAvailableCarsSearchСriteriaSecond.setEnabled(false);
 
         SearchCriteriaFirst(jTableAvailableCars, jComboBoxAvailableCarsSearchСriteriaFirst);
+        jButtonAvailableCarsUpdateTableActionPerformed(null);
     }//GEN-LAST:event_jPanelAvailableCarsComponentShown
 
     private void jPanelClientsComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelClientsComponentShown
@@ -1384,6 +1413,7 @@ public class Frame extends javax.swing.JFrame {
             model = (DefaultTableModel) jTableAvailableCars.getModel();
             if (listCars != null) {
                 OutputToTableCars(listCars);
+                jLabelAvailableCarsCount.setText("Количество автомобилей в таблице: " + jTableAvailableCars.getModel().getRowCount());
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Не удалось установить соединение с сервером:" + ex.getMessage() + ".",
@@ -1406,7 +1436,6 @@ public class Frame extends javax.swing.JFrame {
         int width = (int) (screenSize.width * 0.8);
         this.setSize(width, height);
         this.setLocationRelativeTo(null);
-        jButtonAvailableCarsUpdateTableActionPerformed(null);
     }//GEN-LAST:event_formComponentShown
 
     private void jButtonRentedCarsUpdateTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRentedCarsUpdateTableActionPerformed
@@ -1425,6 +1454,7 @@ public class Frame extends javax.swing.JFrame {
             model = (DefaultTableModel) jTableCarsInRent.getModel();
             if (listCars != null) {
                 OutputToTableRentedCars(listCars);
+                jLabelCarsInRentCount.setText("Количество автомобилей в таблице: " + jTableCarsInRent.getModel().getRowCount());
             }
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(this, "Не удалось установить соединение с сервером:" + ex.getMessage() + ".",
@@ -1474,6 +1504,8 @@ public class Frame extends javax.swing.JFrame {
             model = (DefaultTableModel) jTableListCars.getModel();
             if (listCars != null) {
                 OutputToTableCars(listCars);
+                
+                jLabelListCarsCount.setText("Количество автомобилей в таблице: " + jTableListCars.getModel().getRowCount());
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Не удалось установить соединение с сервером:" + ex.getMessage() + ".",
@@ -1708,8 +1740,11 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabelAvailableCarsCount;
     private javax.swing.JLabel jLabelAvailableCarsSearchСriteriaFirst;
     private javax.swing.JLabel jLabelAvailableCarsSearchСriteriaSecond;
+    private javax.swing.JLabel jLabelCarsInRentCount;
+    private javax.swing.JLabel jLabelListCarsCount;
     private javax.swing.JLabel jLabelListCarsSearchСriteriaFirst;
     private javax.swing.JLabel jLabelListCarsSearchСriteriaSecond;
     private javax.swing.JLabel jLabelLogin1;

@@ -147,7 +147,10 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
                 listCars.add(result.getObject(6));
                 listCars.add(result.getObject(7));
             }
-            System.out.println("Получен список доступных автомобилей");
+            if (isDependsRental == true)
+                System.out.println("Получен список доступных автомобилей");
+            else
+                System.out.println("Получен список автомобилей");
         } catch (SQLException e) {
             System.out.print(e.getMessage());
         }
