@@ -1,6 +1,7 @@
 
 package types;
 
+import java.util.Date;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlSchemaType;
@@ -68,6 +69,57 @@ public class Client {
     protected String passportData;
     protected String phoneNumber;
     protected String secondName;
+    
+    
+    public Client() {
+        this.isBlocked = false;
+    }
+
+    public Client(String login,
+            String hashPassword,
+            String secondName,
+            String firstName,
+            String middleName,
+            String phoneNumber,
+            String passportData,
+            String driversLicense,
+            String email,
+            Boolean isBlocked) {
+        this.login = login;
+        this.hashPassword = hashPassword;
+        this.secondName = secondName;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.phoneNumber = phoneNumber;
+        this.passportData = passportData;
+        this.driversLicense = driversLicense;
+        this.email = email;
+        this.isBlocked = isBlocked;
+    }
+
+    public Client(long id,
+            String login,
+            String hashPassword,
+            String secondName,
+            String firstName,
+            String middleName,
+            String phoneNumber,
+            String passportData,
+            String driversLicense,
+            String email,
+            Boolean isBlocked) {
+        this(login,
+                hashPassword,
+                secondName,
+                firstName,
+                middleName,
+                phoneNumber,
+                passportData,
+                driversLicense,
+                email,
+                isBlocked);
+        this.id = id;
+    }
 
     /**
      * Gets the value of the dateBirthday property.

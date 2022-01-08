@@ -6,6 +6,7 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Dimension;
+import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import java.io.File;
 
@@ -215,6 +216,11 @@ public class Frame extends javax.swing.JFrame {
 
         jButtonEditClientAccept.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
         jButtonEditClientAccept.setText("Изменить");
+        jButtonEditClientAccept.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditClientAcceptActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
         jLabel5.setText("Паспортные данные:");
@@ -1218,22 +1224,21 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBlockClientActionPerformed
 
     private void jButtonEditDataClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditDataClientActionPerformed
-        if (jTableClients.getSelectedRow() != -1)
-        {
+        if (jTableClients.getSelectedRow() != -1) {
             int row = jTableClients.getSelectedRow();
-            
+
             jTextFieldEditDataClientSecondName.setText((String) jTableClients.getModel().getValueAt(row, 0));
             jTextFieldEditDataClientFirstName.setText((String) jTableClients.getModel().getValueAt(row, 1));
-            jTextFieldEditDataClientMiddleName.setText((String) jTableClients.getModel().getValueAt(row, 2));          
-            
+            jTextFieldEditDataClientMiddleName.setText((String) jTableClients.getModel().getValueAt(row, 2));
+
             jTextAreaEditDataClientPassportData.setText((String) jTableClients.getModel().getValueAt(row, 4));
             jTextAreaEditDataClientDriversLicense.setText((String) jTableClients.getModel().getValueAt(row, 5));
             jTextFieldEditDataClientPhoneNumber.setText((String) jTableClients.getModel().getValueAt(row, 6));
             jTextFieldEditDataClientEmail.setText((String) jTableClients.getModel().getValueAt(row, 7));
-            
+
             jDialogEditDataClient.setVisible(true);
         }
-            
+
     }//GEN-LAST:event_jButtonEditDataClientActionPerformed
 
     private void jButtonAddCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddCarActionPerformed
@@ -1485,6 +1490,43 @@ public class Frame extends javax.swing.JFrame {
     private void jButtonEditClientCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditClientCloseActionPerformed
         jDialogEditDataClient.setVisible(false);
     }//GEN-LAST:event_jButtonEditClientCloseActionPerformed
+
+    private void jButtonEditClientAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditClientAcceptActionPerformed
+
+        int row = jTableClients.getSelectedRow();
+
+        Long idClient = clientService
+                .getClientServicePort()
+                .findClientByNumberPhone((String) jTableClients.getModel().getValueAt(row, 6));
+        Client client = new Client(
+                idClient,
+                "login",
+                "pass",
+                jTextFieldEditDataClientSecondName.getText(),
+                jTextFieldEditDataClientFirstName.getText(),
+                jTextFieldEditDataClientMiddleName.getText(),
+                jTextFieldEditDataClientPhoneNumber.getText(),
+                jTextAreaEditDataClientPassportData.getText(),
+                jTextAreaEditDataClientDriversLicense.getText(),
+                jTextFieldEditDataClientEmail.getText(),
+                false
+        );
+
+        try {
+            clientService.getClientServicePort().updateClient(client);
+            jDialogEditDataClient.setVisible(false);
+            jButtonUpdateTableClientsActionPerformed(null);
+            JOptionPane.showMessageDialog(this, "Данные клиента изменены успешно!",
+                    "Успешно!",
+                    JOptionPane.NO_OPTION);
+        } catch (HeadlessException ex) {
+            JOptionPane.showMessageDialog(this, "Ошибка изменения данных клиента: " + ex.getMessage() + ".",
+                    "Ошибка",
+                    JOptionPane.ERROR_MESSAGE);
+
+        }
+    }//GEN-LAST:event_jButtonEditClientAcceptActionPerformed
+
     private void OutputToTableCars(List listСars) throws ParseException {
         doClearTable();
         Object[] rowData = new String[7];
