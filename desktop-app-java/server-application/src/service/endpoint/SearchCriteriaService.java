@@ -2,6 +2,8 @@ package service.endpoint;
 
 import java.rmi.RemoteException;
 import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -207,7 +209,7 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
         }
         return listCars;
     }
-    
+
     @WebMethod()
     @Override
     public List getListCarsByRegistrationNumber(String registrationNumber) throws RemoteException {
@@ -247,5 +249,96 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
+    @WebMethod()
+    @Override
+    public void AddOrder(List infoAboutOrder, Client client, Boolean isNewClient) {
+        List listID = new ArrayList<>();
+
+        if (isNewClient = true) {
+            //  Добавление клиента
+            try {
+                PreparedStatement statement = connection.prepareStatement("INSERT INTO client ("
+                        + "login, "
+                        + "hash_password, "
+                        + "second_name, "
+                        + "first_name, "
+                        + "middle_name, "
+                        + "date_birthday, "
+                        + "phone_number, "
+                        + "passport_data, "
+                        + "drivers_license, "
+                        + "email, "
+                        + "is_blocked) "
+                        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, false)"
+                );
+                statement.setString(1, "login");
+                statement.setString(2, "password");
+                statement.setString(3, client.getSecondName());
+                statement.setString(4, client.getFirstName());
+                statement.setString(5, client.getMiddleName());
+                statement.setDate(6, (Date) client.getDateBirthday());
+                statement.setString(7, client.getPhoneNumber());
+                statement.setString(8, client.getPassportData());
+                statement.setString(9, client.getPassportData());
+                statement.setString(10, client.getEmail());
+
+                int rowsInserted = statement.executeUpdate();
+                if (rowsInserted > 0) {
+                    System.out.println("Клиент добавлен!");
+                }
+
+            } catch (SQLException ex) {
+                Logger.getLogger(SearchCriteriaService.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            //  Добавление заказа
+            
+            //  Поиск id клиента и автомобиля
+            try {
+                Statement statement = connection.createStatement();
+                String sql = "SELECT "
+                        + "client.id, "
+                        + "car.id "
+                        + "FROM client, car "
+                        + "WHERE client.passport_data = '"
+                        + infoAboutOrder.get(3).toString()
+                        + "' AND car.registration_number = '"
+                        + infoAboutOrder.get(8).toString() + "'";
+                ResultSet result = statement.executeQuery(sql);
+                while (result.next()) {
+                    listID.add(result.getObject(1));
+                    listID.add(result.getObject(2));
+                }
+                System.out.println("Получен список ID");
+
+            } catch (SQLException ex) {
+                Logger.getLogger(SearchCriteriaService.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            //  Добавление заказа в базу данных
+            try {
+                String sql = String.format("INSERT INTO 'order' (client_id, car_id, start_date, end_date, total_cost) "
+                        + "VALUES (%d, %d, %s, %s, %d)", 
+                        (Long) listID.get(0),
+                        (Long) listID.get(1),
+                        infoAboutOrder.get(9),
+                        infoAboutOrder.get(10),
+                        infoAboutOrder.get(11)
+                        
+                );
+                PreparedStatement statement = connection.prepareStatement(sql);
+                
+                int rowsInserted = statement.executeUpdate();
+                if (rowsInserted > 0) {
+                    System.out.println("Заказ добавлен!");
+                }               
+
+            } catch (SQLException ex) {
+                Logger.getLogger(SearchCriteriaService.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } else {
+
+        }
+    }
 }
