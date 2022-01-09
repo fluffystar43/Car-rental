@@ -37,12 +37,4 @@ public class ObjectFactory {
         return new Client();
     }
 
-    /**
-     * Create an instance of {@link Order }
-     * 
-     */
-    public Order createOrder() {
-        return new Order();
-    }
-
 }

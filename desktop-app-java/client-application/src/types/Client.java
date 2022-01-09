@@ -70,7 +70,6 @@ public class Client {
     protected String phoneNumber;
     protected String secondName;
     
-    
     public Client() {
         this.isBlocked = false;
     }

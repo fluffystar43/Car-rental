@@ -47,10 +47,10 @@ public interface ClientService {
      * @param arg0
      */
     @WebMethod
-    @RequestWrapper(localName = "deleteClient", targetNamespace = "http://endpoint.service/", className = "service.endpoint.DeleteClient")
-    @ResponseWrapper(localName = "deleteClientResponse", targetNamespace = "http://endpoint.service/", className = "service.endpoint.DeleteClientResponse")
-    @Action(input = "http://endpoint.service/ClientService/deleteClientRequest", output = "http://endpoint.service/ClientService/deleteClientResponse")
-    public void deleteClient(
+    @RequestWrapper(localName = "blockClient", targetNamespace = "http://endpoint.service/", className = "service.endpoint.BlockClient")
+    @ResponseWrapper(localName = "blockClientResponse", targetNamespace = "http://endpoint.service/", className = "service.endpoint.BlockClientResponse")
+    @Action(input = "http://endpoint.service/ClientService/blockClientRequest", output = "http://endpoint.service/ClientService/blockClientResponse")
+    public void blockClient(
         @WebParam(name = "arg0", targetNamespace = "")
         Long arg0);
 
