@@ -24,8 +24,11 @@ import java.text.ParseException;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import service.endpoint.SearchCriteriaServiceService;
 
@@ -42,6 +45,8 @@ public class Frame extends javax.swing.JFrame {
         jDialogEditDataClient.setMinimumSize(new Dimension(800, 750));
         jDialogEditDataClient.setLocationRelativeTo(null);
         jDialogEditDataClient.setResizable(false);
+
+        jDialogAddOrder.setLocationRelativeTo(null);
 
         //jDialogLogin.setVisible(true);
     }
@@ -95,12 +100,13 @@ public class Frame extends javax.swing.JFrame {
         jLabelAddOrderTotalCost = new javax.swing.JLabel();
         jComboBoxAddOrderCar = new javax.swing.JComboBox<>();
         jTextFieldAddOrderRentalCost = new javax.swing.JTextField();
-        jTextFieldAddOrderCountDays = new javax.swing.JTextField();
         jTextFieldAddOrderTotalCost = new javax.swing.JTextField();
         jTextFieldAddOrderStartDate = new javax.swing.JTextField();
         jTextFieldAddOrderEndDate = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButtonAddOrder = new javax.swing.JButton();
+        jButtonAddOrderClose = new javax.swing.JButton();
+        jTextFieldAddOrderBrandAndModel = new javax.swing.JTextField();
+        jSpinnerAddOrderCountDays = new javax.swing.JSpinner();
         jTabbedPaneForm = new javax.swing.JTabbedPane();
         jPanelAutopark = new javax.swing.JPanel();
         jTabbedPaneAutopark = new javax.swing.JTabbedPane();
@@ -366,6 +372,14 @@ public class Frame extends javax.swing.JFrame {
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
+        jDialogAddOrder.setMinimumSize(new java.awt.Dimension(590, 510));
+        jDialogAddOrder.setResizable(false);
+        jDialogAddOrder.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jDialogAddOrderComponentShown(evt);
+            }
+        });
+
         jLabelAddOrderCar.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
         jLabelAddOrderCar.setText("Автомобиль:");
 
@@ -385,60 +399,94 @@ public class Frame extends javax.swing.JFrame {
         jLabelAddOrderTotalCost.setText("Итоговая стоимость:");
 
         jComboBoxAddOrderCar.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
+        jComboBoxAddOrderCar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxAddOrderCarActionPerformed(evt);
+            }
+        });
 
         jTextFieldAddOrderRentalCost.setEditable(false);
-        jTextFieldAddOrderRentalCost.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
-
-        jTextFieldAddOrderCountDays.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
+        jTextFieldAddOrderRentalCost.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
 
         jTextFieldAddOrderTotalCost.setEditable(false);
-        jTextFieldAddOrderTotalCost.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
+        jTextFieldAddOrderTotalCost.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
 
         jTextFieldAddOrderStartDate.setEditable(false);
-        jTextFieldAddOrderStartDate.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
+        jTextFieldAddOrderStartDate.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
 
         jTextFieldAddOrderEndDate.setEditable(false);
-        jTextFieldAddOrderEndDate.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
+        jTextFieldAddOrderEndDate.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
-        jButton1.setText("Оформить заказ");
+        jButtonAddOrder.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
+        jButtonAddOrder.setText("Оформить заказ");
 
-        jButton2.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
-        jButton2.setText("Отмена");
+        jButtonAddOrderClose.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
+        jButtonAddOrderClose.setText("Отмена");
+        jButtonAddOrderClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddOrderCloseActionPerformed(evt);
+            }
+        });
+
+        jTextFieldAddOrderBrandAndModel.setEditable(false);
+        jTextFieldAddOrderBrandAndModel.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
+
+        jSpinnerAddOrderCountDays.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
+        jSpinnerAddOrderCountDays.setModel(new javax.swing.SpinnerNumberModel(1, 1, 365, 1));
+        jSpinnerAddOrderCountDays.setValue(1);
+        jSpinnerAddOrderCountDays.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jSpinnerAddOrderCountDaysMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jSpinnerAddOrderCountDaysMousePressed(evt);
+            }
+        });
+        jSpinnerAddOrderCountDays.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jSpinnerAddOrderCountDaysKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelAddOrderLayout = new javax.swing.GroupLayout(jPanelAddOrder);
         jPanelAddOrder.setLayout(jPanelAddOrderLayout);
         jPanelAddOrderLayout.setHorizontalGroup(
             jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAddOrderLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
                 .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelAddOrderLayout.createSequentialGroup()
-                        .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelAddOrderStartDate)
-                            .addComponent(jLabelAddOrderEndDate)
-                            .addComponent(jLabelAddOrderCountDays)
-                            .addComponent(jLabelAddOrderRentalCost)
-                            .addComponent(jLabelAddOrderCar))
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanelAddOrderLayout.createSequentialGroup()
+                                    .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabelAddOrderStartDate)
+                                        .addComponent(jLabelAddOrderEndDate)
+                                        .addComponent(jLabelAddOrderCountDays)
+                                        .addComponent(jLabelAddOrderRentalCost))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jTextFieldAddOrderStartDate, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                                        .addComponent(jTextFieldAddOrderEndDate, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                                        .addComponent(jTextFieldAddOrderRentalCost)
+                                        .addComponent(jSpinnerAddOrderCountDays, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAddOrderLayout.createSequentialGroup()
+                                    .addComponent(jLabelAddOrderTotalCost)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jTextFieldAddOrderTotalCost, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanelAddOrderLayout.createSequentialGroup()
+                                .addGap(202, 202, 202)
+                                .addComponent(jButtonAddOrder)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonAddOrderClose))))
+                    .addGroup(jPanelAddOrderLayout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(jLabelAddOrderCar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextFieldAddOrderStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextFieldAddOrderEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextFieldAddOrderRentalCost)
-                                .addComponent(jTextFieldAddOrderCountDays, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jComboBoxAddOrderCar, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanelAddOrderLayout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAddOrderLayout.createSequentialGroup()
-                        .addComponent(jLabelAddOrderTotalCost)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldAddOrderTotalCost, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(105, 105, 105)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                            .addComponent(jTextFieldAddOrderBrandAndModel, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxAddOrderCar, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanelAddOrderLayout.setVerticalGroup(
             jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -447,14 +495,16 @@ public class Frame extends javax.swing.JFrame {
                 .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelAddOrderCar)
                     .addComponent(jComboBoxAddOrderCar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextFieldAddOrderBrandAndModel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelAddOrderRentalCost)
                     .addComponent(jTextFieldAddOrderRentalCost, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(11, 11, 11)
                 .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelAddOrderCountDays)
-                    .addComponent(jTextFieldAddOrderCountDays, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSpinnerAddOrderCountDays, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelAddOrderTotalCost)
@@ -469,9 +519,9 @@ public class Frame extends javax.swing.JFrame {
                     .addComponent(jTextFieldAddOrderEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(25, Short.MAX_VALUE))
+                    .addComponent(jButtonAddOrder)
+                    .addComponent(jButtonAddOrderClose))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jDialogAddOrderLayout = new javax.swing.GroupLayout(jDialogAddOrder.getContentPane());
@@ -481,14 +531,14 @@ public class Frame extends javax.swing.JFrame {
             .addGroup(jDialogAddOrderLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanelAddOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jDialogAddOrderLayout.setVerticalGroup(
             jDialogAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDialogAddOrderLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanelAddOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(1, 1, 1))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -516,6 +566,11 @@ public class Frame extends javax.swing.JFrame {
 
         jButtonAvailableCarsAddOrder.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
         jButtonAvailableCarsAddOrder.setText("Оформить заказ");
+        jButtonAvailableCarsAddOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAvailableCarsAddOrderActionPerformed(evt);
+            }
+        });
 
         jButtonAvailableCarsUpdateTable.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
         jButtonAvailableCarsUpdateTable.setText("Обновить список автомобилей");
@@ -1644,7 +1699,7 @@ public class Frame extends javax.swing.JFrame {
             model = (DefaultTableModel) jTableListCars.getModel();
             if (listCars != null) {
                 OutputToTableCars(listCars);
-                
+
                 jLabelListCarsCount.setText("Количество автомобилей в таблице: " + jTableListCars.getModel().getRowCount());
             }
         } catch (Exception ex) {
@@ -1698,6 +1753,98 @@ public class Frame extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_jButtonEditClientAcceptActionPerformed
+
+    private void jButtonAvailableCarsAddOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAvailableCarsAddOrderActionPerformed
+        int selectedRow = jTableAvailableCars.getSelectedRow();
+
+        if (selectedRow != -1) {
+//            String registrationNumber = jTableAvailableCars.getValueAt(selectedRow, 6).toString();
+//            String brand = jTableAvailableCars.getValueAt(selectedRow, 0).toString();
+//            String model = jTableAvailableCars.getValueAt(selectedRow, 1).toString();
+
+            // Дата заказа
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String startDate = dateFormat.format(new Date());
+            jTextFieldAddOrderStartDate.setText(startDate);
+
+            // Разница между датами в миллисекундах и днях
+//            long milliseconds = date2.getTime() - date1.getTime();
+//            int days = (int) (milliseconds / (24 * 60 * 60 * 1000));
+//            rowData[i + 1] = String.valueOf(days);
+//
+            jTextFieldAddOrderStartDate.setText(startDate);
+            jDialogAddOrder.setVisible(true);
+        }
+
+    }//GEN-LAST:event_jButtonAvailableCarsAddOrderActionPerformed
+
+    private void jDialogAddOrderComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jDialogAddOrderComponentShown
+        int selectedRow = jTableAvailableCars.getSelectedRow();
+
+        if (selectedRow != -1) {
+            String registrationNumber = jTableAvailableCars.getValueAt(selectedRow, 6).toString();
+            String brand = jTableAvailableCars.getValueAt(selectedRow, 0).toString();
+            String model = jTableAvailableCars.getValueAt(selectedRow, 1).toString();
+            String rentalCost = jTableAvailableCars.getValueAt(selectedRow, 5).toString();
+
+            cbModel = new DefaultComboBoxModel<>();
+            for (int i = 0; i < jTableAvailableCars.getModel().getRowCount(); i++) {
+                cbModel.addElement((String) jTableAvailableCars.getModel().getValueAt(i, 6));
+            }
+            jComboBoxAddOrderCar.setModel(cbModel);
+            jComboBoxAddOrderCar.setSelectedItem((Object) registrationNumber);
+            jTextFieldAddOrderBrandAndModel.setText(brand + " " + model);
+            jTextFieldAddOrderRentalCost.setText(rentalCost);
+
+//            jSpinnerAddOrderCountDays.addChangeListener(new ChangeListener()
+//        {
+//            @Override
+//            public void stateChanged(ChangeEvent e)
+//            {
+//                int rentalCost = Integer.parseInt(jTextFieldAddOrderRentalCost.getText());
+//        int countDays = Integer.parseInt(jTextFieldAddOrderRentalCost.getText());
+//
+//        jTextFieldAddOrderTotalCost.setText(String.valueOf(rentalCost * countDays));
+//            }
+//        });;
+
+        }
+    }//GEN-LAST:event_jDialogAddOrderComponentShown
+
+    private void jComboBoxAddOrderCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAddOrderCarActionPerformed
+        int selectedRow = jTableAvailableCars.getSelectedRow();
+        String registrationNumber = jTableAvailableCars.getValueAt(selectedRow, 6).toString();
+
+        List infoAboutCar = searchCriteriaService
+                .getSearchCriteriaServicePort()
+                .getListCarsByRegistrationNumber(registrationNumber);
+
+    }//GEN-LAST:event_jComboBoxAddOrderCarActionPerformed
+
+    private void jButtonAddOrderCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddOrderCloseActionPerformed
+        jDialogAddOrder.setVisible(false);
+    }//GEN-LAST:event_jButtonAddOrderCloseActionPerformed
+
+    private void jSpinnerAddOrderCountDaysKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jSpinnerAddOrderCountDaysKeyTyped
+        int rentalCost = Integer.parseInt(jTextFieldAddOrderRentalCost.getText());
+        int countDays = Integer.parseInt(jTextFieldAddOrderRentalCost.getText());
+
+        jTextFieldAddOrderTotalCost.setText(String.valueOf(rentalCost * countDays));
+    }//GEN-LAST:event_jSpinnerAddOrderCountDaysKeyTyped
+
+    private void jSpinnerAddOrderCountDaysMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSpinnerAddOrderCountDaysMouseClicked
+        int rentalCost = Integer.parseInt(jTextFieldAddOrderRentalCost.getText());
+        int countDays = Integer.parseInt(jTextFieldAddOrderRentalCost.getText());
+
+        jTextFieldAddOrderTotalCost.setText(String.valueOf(rentalCost * countDays));
+    }//GEN-LAST:event_jSpinnerAddOrderCountDaysMouseClicked
+
+    private void jSpinnerAddOrderCountDaysMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSpinnerAddOrderCountDaysMousePressed
+        int rentalCost = Integer.parseInt(jTextFieldAddOrderRentalCost.getText());
+        int countDays = Integer.parseInt(jTextFieldAddOrderRentalCost.getText());
+
+        jTextFieldAddOrderTotalCost.setText(String.valueOf(rentalCost * countDays));
+    }//GEN-LAST:event_jSpinnerAddOrderCountDaysMousePressed
 
     private void OutputToTableCars(List listСars) throws ParseException {
         doClearTable();
@@ -1844,9 +1991,9 @@ public class Frame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonAddCar;
+    private javax.swing.JButton jButtonAddOrder;
+    private javax.swing.JButton jButtonAddOrderClose;
     private javax.swing.JButton jButtonAvailableCarsAddOrder;
     private javax.swing.JButton jButtonAvailableCarsClearSearchCriteries;
     private javax.swing.JButton jButtonAvailableCarsUpdateTable;
@@ -1917,6 +2064,7 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPaneAvailableCars2;
     private javax.swing.JScrollPane jScrollPaneClients;
     private javax.swing.JScrollPane jScrollPaneOrders;
+    private javax.swing.JSpinner jSpinnerAddOrderCountDays;
     private javax.swing.JTabbedPane jTabbedPaneAutopark;
     private javax.swing.JTabbedPane jTabbedPaneForm;
     private javax.swing.JTable jTableAvailableCars;
@@ -1926,7 +2074,7 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JTable jTableOrders;
     private javax.swing.JTextArea jTextAreaEditDataClientDriversLicense;
     private javax.swing.JTextArea jTextAreaEditDataClientPassportData;
-    private javax.swing.JTextField jTextFieldAddOrderCountDays;
+    private javax.swing.JTextField jTextFieldAddOrderBrandAndModel;
     private javax.swing.JTextField jTextFieldAddOrderEndDate;
     private javax.swing.JTextField jTextFieldAddOrderRentalCost;
     private javax.swing.JTextField jTextFieldAddOrderStartDate;

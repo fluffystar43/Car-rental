@@ -108,9 +108,10 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
                     + "WHERE car.brand_id = brand.id AND car.model_id = model.id AND "
                     + "car.gear_box_id = gear_box.id AND "
                     + "car.drive_id = drive.id AND car_exterior.color_id = color.id AND car.is_deleted = false ";
-            
-            if (isDependsRental == true)
+
+            if (isDependsRental == true) {
                 sql += "AND car.is_rented = false ";
+            }
             if (criteriaFirst != null) {
 
                 switch (criteriaFirst) {
@@ -147,10 +148,11 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
                 listCars.add(result.getObject(6));
                 listCars.add(result.getObject(7));
             }
-            if (isDependsRental == true)
+            if (isDependsRental == true) {
                 System.out.println("Получен список доступных автомобилей");
-            else
+            } else {
                 System.out.println("Получен список автомобилей");
+            }
         } catch (SQLException e) {
             System.out.print(e.getMessage());
         }
@@ -205,6 +207,33 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
         }
         return listCars;
     }
+    
+    @WebMethod()
+    @Override
+    public List getListCarsByRegistrationNumber(String registrationNumber) throws RemoteException {
+        List listCars = new ArrayList<>();
+        try {
+            Statement statement = connection.createStatement();
+            String sql = "SELECT brand.name, "
+                    + "model.name, "
+                    + "car.registration_number "
+                    + "FROM brand, model, car "
+                    + "WHERE car.brand_id = brand.id AND car.model_id = model.id AND "
+                    + "car.registration_number = '" + registrationNumber + "' AND "
+                    + "car.is_deleted = false AND car.is_rented = false";
+
+            ResultSet result = statement.executeQuery(sql);
+            while (result.next()) {
+                listCars.add(result.getObject(1));
+                listCars.add(result.getObject(2));
+                listCars.add(result.getObject(3));
+            }
+            System.out.println("Получен список автомобилей при оформлении заказа");
+        } catch (SQLException e) {
+            System.out.print(e.getMessage());
+        }
+        return listCars;
+    }
 
     @WebMethod()
     @Override
@@ -217,4 +246,6 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
     public List<Order> getListOrders(String criteria) throws RemoteException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    
 }

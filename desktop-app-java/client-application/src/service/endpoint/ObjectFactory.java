@@ -24,14 +24,18 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _BlockClient_QNAME = new QName("http://endpoint.service/", "blockClient");
-    private final static QName _FindClientByNumberPhone_QNAME = new QName("http://endpoint.service/", "findClientByNumberPhone");
-    private final static QName _GetListOfClientsResponse_QNAME = new QName("http://endpoint.service/", "getListOfClientsResponse");
-    private final static QName _UpdateClient_QNAME = new QName("http://endpoint.service/", "updateClient");
-    private final static QName _UpdateClientResponse_QNAME = new QName("http://endpoint.service/", "updateClientResponse");
-    private final static QName _FindClientByNumberPhoneResponse_QNAME = new QName("http://endpoint.service/", "findClientByNumberPhoneResponse");
-    private final static QName _BlockClientResponse_QNAME = new QName("http://endpoint.service/", "blockClientResponse");
-    private final static QName _GetListOfClients_QNAME = new QName("http://endpoint.service/", "getListOfClients");
+    private final static QName _GetListAvailableCarsResponse_QNAME = new QName("http://endpoint.service/", "getListAvailableCarsResponse");
+    private final static QName _GetListRentedCars_QNAME = new QName("http://endpoint.service/", "getListRentedCars");
+    private final static QName _GetListRentedCarsResponse_QNAME = new QName("http://endpoint.service/", "getListRentedCarsResponse");
+    private final static QName _GetListCarsByRegistrationNumber_QNAME = new QName("http://endpoint.service/", "getListCarsByRegistrationNumber");
+    private final static QName _GetListOrders_QNAME = new QName("http://endpoint.service/", "getListOrders");
+    private final static QName _GetListAvailableCars_QNAME = new QName("http://endpoint.service/", "getListAvailableCars");
+    private final static QName _GetListCarsByRegistrationNumberResponse_QNAME = new QName("http://endpoint.service/", "getListCarsByRegistrationNumberResponse");
+    private final static QName _GetListSecondCriteriaResponse_QNAME = new QName("http://endpoint.service/", "getListSecondCriteriaResponse");
+    private final static QName _GetListOrdersResponse_QNAME = new QName("http://endpoint.service/", "getListOrdersResponse");
+    private final static QName _GetListClientsResponse_QNAME = new QName("http://endpoint.service/", "getListClientsResponse");
+    private final static QName _GetListClients_QNAME = new QName("http://endpoint.service/", "getListClients");
+    private final static QName _GetListSecondCriteria_QNAME = new QName("http://endpoint.service/", "getListSecondCriteria");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: service.endpoint
@@ -41,139 +45,207 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link FindClientByNumberPhone }
+     * Create an instance of {@link GetListCarsByRegistrationNumber }
      * 
      */
-    public FindClientByNumberPhone createFindClientByNumberPhone() {
-        return new FindClientByNumberPhone();
+    public GetListCarsByRegistrationNumber createGetListCarsByRegistrationNumber() {
+        return new GetListCarsByRegistrationNumber();
     }
 
     /**
-     * Create an instance of {@link GetListOfClientsResponse }
+     * Create an instance of {@link GetListAvailableCarsResponse }
      * 
      */
-    public GetListOfClientsResponse createGetListOfClientsResponse() {
-        return new GetListOfClientsResponse();
+    public GetListAvailableCarsResponse createGetListAvailableCarsResponse() {
+        return new GetListAvailableCarsResponse();
     }
 
     /**
-     * Create an instance of {@link BlockClient }
+     * Create an instance of {@link GetListRentedCars }
      * 
      */
-    public BlockClient createBlockClient() {
-        return new BlockClient();
+    public GetListRentedCars createGetListRentedCars() {
+        return new GetListRentedCars();
     }
 
     /**
-     * Create an instance of {@link UpdateClientResponse }
+     * Create an instance of {@link GetListRentedCarsResponse }
      * 
      */
-    public UpdateClientResponse createUpdateClientResponse() {
-        return new UpdateClientResponse();
+    public GetListRentedCarsResponse createGetListRentedCarsResponse() {
+        return new GetListRentedCarsResponse();
     }
 
     /**
-     * Create an instance of {@link UpdateClient }
+     * Create an instance of {@link GetListOrders }
      * 
      */
-    public UpdateClient createUpdateClient() {
-        return new UpdateClient();
+    public GetListOrders createGetListOrders() {
+        return new GetListOrders();
     }
 
     /**
-     * Create an instance of {@link FindClientByNumberPhoneResponse }
+     * Create an instance of {@link GetListOrdersResponse }
      * 
      */
-    public FindClientByNumberPhoneResponse createFindClientByNumberPhoneResponse() {
-        return new FindClientByNumberPhoneResponse();
+    public GetListOrdersResponse createGetListOrdersResponse() {
+        return new GetListOrdersResponse();
     }
 
     /**
-     * Create an instance of {@link GetListOfClients }
+     * Create an instance of {@link GetListAvailableCars }
      * 
      */
-    public GetListOfClients createGetListOfClients() {
-        return new GetListOfClients();
+    public GetListAvailableCars createGetListAvailableCars() {
+        return new GetListAvailableCars();
     }
 
     /**
-     * Create an instance of {@link BlockClientResponse }
+     * Create an instance of {@link GetListCarsByRegistrationNumberResponse }
      * 
      */
-    public BlockClientResponse createBlockClientResponse() {
-        return new BlockClientResponse();
+    public GetListCarsByRegistrationNumberResponse createGetListCarsByRegistrationNumberResponse() {
+        return new GetListCarsByRegistrationNumberResponse();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BlockClient }{@code >}}
+     * Create an instance of {@link GetListSecondCriteriaResponse }
      * 
      */
-    @XmlElementDecl(namespace = "http://endpoint.service/", name = "blockClient")
-    public JAXBElement<BlockClient> createBlockClient(BlockClient value) {
-        return new JAXBElement<BlockClient>(_BlockClient_QNAME, BlockClient.class, null, value);
+    public GetListSecondCriteriaResponse createGetListSecondCriteriaResponse() {
+        return new GetListSecondCriteriaResponse();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindClientByNumberPhone }{@code >}}
+     * Create an instance of {@link GetListSecondCriteria }
      * 
      */
-    @XmlElementDecl(namespace = "http://endpoint.service/", name = "findClientByNumberPhone")
-    public JAXBElement<FindClientByNumberPhone> createFindClientByNumberPhone(FindClientByNumberPhone value) {
-        return new JAXBElement<FindClientByNumberPhone>(_FindClientByNumberPhone_QNAME, FindClientByNumberPhone.class, null, value);
+    public GetListSecondCriteria createGetListSecondCriteria() {
+        return new GetListSecondCriteria();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetListOfClientsResponse }{@code >}}
+     * Create an instance of {@link GetListClientsResponse }
      * 
      */
-    @XmlElementDecl(namespace = "http://endpoint.service/", name = "getListOfClientsResponse")
-    public JAXBElement<GetListOfClientsResponse> createGetListOfClientsResponse(GetListOfClientsResponse value) {
-        return new JAXBElement<GetListOfClientsResponse>(_GetListOfClientsResponse_QNAME, GetListOfClientsResponse.class, null, value);
+    public GetListClientsResponse createGetListClientsResponse() {
+        return new GetListClientsResponse();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateClient }{@code >}}
+     * Create an instance of {@link GetListClients }
      * 
      */
-    @XmlElementDecl(namespace = "http://endpoint.service/", name = "updateClient")
-    public JAXBElement<UpdateClient> createUpdateClient(UpdateClient value) {
-        return new JAXBElement<UpdateClient>(_UpdateClient_QNAME, UpdateClient.class, null, value);
+    public GetListClients createGetListClients() {
+        return new GetListClients();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateClientResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetListAvailableCarsResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://endpoint.service/", name = "updateClientResponse")
-    public JAXBElement<UpdateClientResponse> createUpdateClientResponse(UpdateClientResponse value) {
-        return new JAXBElement<UpdateClientResponse>(_UpdateClientResponse_QNAME, UpdateClientResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://endpoint.service/", name = "getListAvailableCarsResponse")
+    public JAXBElement<GetListAvailableCarsResponse> createGetListAvailableCarsResponse(GetListAvailableCarsResponse value) {
+        return new JAXBElement<GetListAvailableCarsResponse>(_GetListAvailableCarsResponse_QNAME, GetListAvailableCarsResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindClientByNumberPhoneResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetListRentedCars }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://endpoint.service/", name = "findClientByNumberPhoneResponse")
-    public JAXBElement<FindClientByNumberPhoneResponse> createFindClientByNumberPhoneResponse(FindClientByNumberPhoneResponse value) {
-        return new JAXBElement<FindClientByNumberPhoneResponse>(_FindClientByNumberPhoneResponse_QNAME, FindClientByNumberPhoneResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://endpoint.service/", name = "getListRentedCars")
+    public JAXBElement<GetListRentedCars> createGetListRentedCars(GetListRentedCars value) {
+        return new JAXBElement<GetListRentedCars>(_GetListRentedCars_QNAME, GetListRentedCars.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BlockClientResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetListRentedCarsResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://endpoint.service/", name = "blockClientResponse")
-    public JAXBElement<BlockClientResponse> createBlockClientResponse(BlockClientResponse value) {
-        return new JAXBElement<BlockClientResponse>(_BlockClientResponse_QNAME, BlockClientResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://endpoint.service/", name = "getListRentedCarsResponse")
+    public JAXBElement<GetListRentedCarsResponse> createGetListRentedCarsResponse(GetListRentedCarsResponse value) {
+        return new JAXBElement<GetListRentedCarsResponse>(_GetListRentedCarsResponse_QNAME, GetListRentedCarsResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetListOfClients }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetListCarsByRegistrationNumber }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://endpoint.service/", name = "getListOfClients")
-    public JAXBElement<GetListOfClients> createGetListOfClients(GetListOfClients value) {
-        return new JAXBElement<GetListOfClients>(_GetListOfClients_QNAME, GetListOfClients.class, null, value);
+    @XmlElementDecl(namespace = "http://endpoint.service/", name = "getListCarsByRegistrationNumber")
+    public JAXBElement<GetListCarsByRegistrationNumber> createGetListCarsByRegistrationNumber(GetListCarsByRegistrationNumber value) {
+        return new JAXBElement<GetListCarsByRegistrationNumber>(_GetListCarsByRegistrationNumber_QNAME, GetListCarsByRegistrationNumber.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetListOrders }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://endpoint.service/", name = "getListOrders")
+    public JAXBElement<GetListOrders> createGetListOrders(GetListOrders value) {
+        return new JAXBElement<GetListOrders>(_GetListOrders_QNAME, GetListOrders.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetListAvailableCars }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://endpoint.service/", name = "getListAvailableCars")
+    public JAXBElement<GetListAvailableCars> createGetListAvailableCars(GetListAvailableCars value) {
+        return new JAXBElement<GetListAvailableCars>(_GetListAvailableCars_QNAME, GetListAvailableCars.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetListCarsByRegistrationNumberResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://endpoint.service/", name = "getListCarsByRegistrationNumberResponse")
+    public JAXBElement<GetListCarsByRegistrationNumberResponse> createGetListCarsByRegistrationNumberResponse(GetListCarsByRegistrationNumberResponse value) {
+        return new JAXBElement<GetListCarsByRegistrationNumberResponse>(_GetListCarsByRegistrationNumberResponse_QNAME, GetListCarsByRegistrationNumberResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetListSecondCriteriaResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://endpoint.service/", name = "getListSecondCriteriaResponse")
+    public JAXBElement<GetListSecondCriteriaResponse> createGetListSecondCriteriaResponse(GetListSecondCriteriaResponse value) {
+        return new JAXBElement<GetListSecondCriteriaResponse>(_GetListSecondCriteriaResponse_QNAME, GetListSecondCriteriaResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetListOrdersResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://endpoint.service/", name = "getListOrdersResponse")
+    public JAXBElement<GetListOrdersResponse> createGetListOrdersResponse(GetListOrdersResponse value) {
+        return new JAXBElement<GetListOrdersResponse>(_GetListOrdersResponse_QNAME, GetListOrdersResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetListClientsResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://endpoint.service/", name = "getListClientsResponse")
+    public JAXBElement<GetListClientsResponse> createGetListClientsResponse(GetListClientsResponse value) {
+        return new JAXBElement<GetListClientsResponse>(_GetListClientsResponse_QNAME, GetListClientsResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetListClients }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://endpoint.service/", name = "getListClients")
+    public JAXBElement<GetListClients> createGetListClients(GetListClients value) {
+        return new JAXBElement<GetListClients>(_GetListClients_QNAME, GetListClients.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetListSecondCriteria }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://endpoint.service/", name = "getListSecondCriteria")
+    public JAXBElement<GetListSecondCriteria> createGetListSecondCriteria(GetListSecondCriteria value) {
+        return new JAXBElement<GetListSecondCriteria>(_GetListSecondCriteria_QNAME, GetListSecondCriteria.class, null, value);
     }
 
 }
