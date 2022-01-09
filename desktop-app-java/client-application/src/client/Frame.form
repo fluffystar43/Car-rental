@@ -465,14 +465,14 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                              <Component id="jLabelAddOrderCar9" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelAddOrderClient" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="jTextFieldAddOrderBrandAndModel1" min="-2" pref="180" max="-2" attributes="0"/>
+                                      <Component id="jTextFieldAddOrderPassportData" min="-2" pref="180" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <Component id="jComboBoxAddOrderCar1" max="32767" attributes="0"/>
+                                  <Component id="jComboBoxAddOrderClient" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -481,46 +481,46 @@
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="-2" pref="178" max="-2" attributes="0"/>
-                                      <Component id="jLabelAddOrderCar4" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabelAddOrderClientDateBirthday" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
                                           <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="jLabelAddOrderCar6" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabelAddOrderClientPassportData" alignment="1" min="-2" max="-2" attributes="0"/>
                                               <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                                                      <Component id="jLabelAddOrderCar2" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jLabelAddOrderClientFirstName" min="-2" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <Component id="jLabelAddOrderCar" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jLabelAddOrderCar3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabelAddOrderClientSecondName" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabelAddOrderCarAddOrderClientMiddleName" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabelAddOrderCar7" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabelAddOrderCar5" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabelAddOrderCar8" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabelAddOrderClientDriversLicense" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabelAddOrderClientNumberPhone" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabelAddOrderClientEmail" alignment="1" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTextFieldAddOrderRentalCost6" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="jTextFieldAddOrderRentalCost4" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldAddOrderClientEmail" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldAddOrderClientNumberPhone" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jScrollPane3" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="jTextFieldAddOrderRentalCost1" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTextFieldAddOrderRentalCost2" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="jTextFieldAddOrderRentalCost3" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldAddOrderClientSecondName" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldAddOrderClientFirstName" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldAddOrderClientMiddleName" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jScrollPane4" alignment="0" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabelAddOrderCar10" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jSpinnerAddOrderCountDays1" alignment="0" min="-2" pref="227" max="-2" attributes="0"/>
+                                          <Component id="jLabelAddOrderCar10" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jSpinnerAddOrderClientDateBirthday" min="-2" pref="143" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
@@ -582,52 +582,52 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelAddOrderCar9" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBoxAddOrderCar1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelAddOrderClient" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jComboBoxAddOrderClient" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jTextFieldAddOrderBrandAndModel1" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="jTextFieldAddOrderPassportData" min="-2" pref="30" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabelAddOrderCar10" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelAddOrderCar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldAddOrderRentalCost1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="jLabelAddOrderClientSecondName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldAddOrderClientSecondName" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelAddOrderCar2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldAddOrderRentalCost2" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="jLabelAddOrderClientFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldAddOrderClientFirstName" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelAddOrderCar3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldAddOrderRentalCost3" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="jLabelAddOrderCarAddOrderClientMiddleName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldAddOrderClientMiddleName" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jSpinnerAddOrderCountDays1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelAddOrderCar4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jSpinnerAddOrderClientDateBirthday" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelAddOrderClientDateBirthday" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jScrollPane4" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelAddOrderCar6" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelAddOrderClientPassportData" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jScrollPane3" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelAddOrderCar7" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelAddOrderClientDriversLicense" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jTextFieldAddOrderRentalCost4" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="jLabelAddOrderCar5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldAddOrderClientNumberPhone" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="jLabelAddOrderClientNumberPhone" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelAddOrderCar8" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldAddOrderRentalCost6" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="jLabelAddOrderClientEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldAddOrderClientEmail" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="102" max="32767" attributes="0"/>
                   </Group>
@@ -635,7 +635,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabelAddOrderCar">
+            <Component class="javax.swing.JLabel" name="jLabelAddOrderClientSecondName">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="MS Reference Sans Serif" size="18" style="0"/>
@@ -738,6 +738,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="&#x41e;&#x444;&#x43e;&#x440;&#x43c;&#x438;&#x442;&#x44c; &#x437;&#x430;&#x43a;&#x430;&#x437;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAddOrderActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonAddOrderClose">
               <Properties>
@@ -784,7 +787,7 @@
                 <Property name="text" type="java.lang.String" value="&#x410;&#x432;&#x442;&#x43e;&#x43c;&#x43e;&#x431;&#x438;&#x43b;&#x44c;:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelAddOrderCar2">
+            <Component class="javax.swing.JLabel" name="jLabelAddOrderClientFirstName">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="MS Reference Sans Serif" size="18" style="0"/>
@@ -792,7 +795,7 @@
                 <Property name="text" type="java.lang.String" value="&#x418;&#x43c;&#x44f;:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelAddOrderCar3">
+            <Component class="javax.swing.JLabel" name="jLabelAddOrderCarAddOrderClientMiddleName">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="MS Reference Sans Serif" size="18" style="0"/>
@@ -800,7 +803,7 @@
                 <Property name="text" type="java.lang.String" value="&#x41e;&#x442;&#x447;&#x435;&#x441;&#x442;&#x432;&#x43e;:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelAddOrderCar4">
+            <Component class="javax.swing.JLabel" name="jLabelAddOrderClientDateBirthday">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="MS Reference Sans Serif" size="18" style="0"/>
@@ -808,7 +811,7 @@
                 <Property name="text" type="java.lang.String" value="&#x414;&#x430;&#x442;&#x430; &#x440;&#x43e;&#x436;&#x434;&#x435;&#x43d;&#x438;&#x44f;:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelAddOrderCar5">
+            <Component class="javax.swing.JLabel" name="jLabelAddOrderClientNumberPhone">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="MS Reference Sans Serif" size="18" style="0"/>
@@ -816,7 +819,7 @@
                 <Property name="text" type="java.lang.String" value="&#x41d;&#x43e;&#x43c;&#x435;&#x440; &#x442;&#x435;&#x43b;&#x435;&#x444;&#x43e;&#x43d;&#x430;:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelAddOrderCar6">
+            <Component class="javax.swing.JLabel" name="jLabelAddOrderClientPassportData">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="MS Reference Sans Serif" size="18" style="0"/>
@@ -824,7 +827,7 @@
                 <Property name="text" type="java.lang.String" value="&#x41f;&#x430;&#x441;&#x43f;&#x43e;&#x440;&#x442;&#x43d;&#x44b;&#x435; &#x434;&#x430;&#x43d;&#x43d;&#x44b;&#x435;:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelAddOrderCar7">
+            <Component class="javax.swing.JLabel" name="jLabelAddOrderClientDriversLicense">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="MS Reference Sans Serif" size="18" style="0"/>
@@ -832,7 +835,7 @@
                 <Property name="text" type="java.lang.String" value="&#x412;&#x43e;&#x434;&#x438;&#x442;&#x435;&#x43b;&#x44c;&#x441;&#x43a;&#x43e;&#x435; &#x443;&#x434;&#x43e;&#x441;&#x442;&#x43e;&#x432;&#x435;&#x440;&#x435;&#x43d;&#x438;&#x435;:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelAddOrderCar8">
+            <Component class="javax.swing.JLabel" name="jLabelAddOrderClientEmail">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="MS Reference Sans Serif" size="18" style="0"/>
@@ -840,7 +843,7 @@
                 <Property name="text" type="java.lang.String" value="&#x42d;&#x43b;&#x435;&#x43a;&#x442;&#x440;&#x43e;&#x43d;&#x43d;&#x430;&#x44f; &#x43f;&#x43e;&#x447;&#x442;&#x430;:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelAddOrderCar9">
+            <Component class="javax.swing.JLabel" name="jLabelAddOrderClient">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="MS Reference Sans Serif" size="18" style="0"/>
@@ -848,7 +851,7 @@
                 <Property name="text" type="java.lang.String" value="&#x412;&#x44b;&#x431;&#x435;&#x440;&#x438;&#x442;&#x435; &#x441;&#x443;&#x449;&#x435;&#x441;&#x442;&#x432;&#x443;&#x44e;&#x449;&#x435;&#x433;&#x43e; &#x43a;&#x43b;&#x438;&#x435;&#x43d;&#x442;&#x430;:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBoxAddOrderCar1">
+            <Component class="javax.swing.JComboBox" name="jComboBoxAddOrderClient">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="MS Reference Sans Serif" size="18" style="0"/>
@@ -858,7 +861,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxAddOrderCar1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxAddOrderClientActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -872,7 +875,7 @@
                 <Property name="text" type="java.lang.String" value="&#x438;&#x43b;&#x438; &#x432;&#x432;&#x435;&#x434;&#x438;&#x442;&#x435; &#x434;&#x430;&#x43d;&#x43d;&#x44b;&#x435; &#x43e; &#x43d;&#x43e;&#x432;&#x43e;&#x43c; &#x43a;&#x43b;&#x438;&#x435;&#x43d;&#x442;&#x435;:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldAddOrderBrandAndModel1">
+            <Component class="javax.swing.JTextField" name="jTextFieldAddOrderPassportData">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -880,7 +883,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldAddOrderBrandAndModel1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldAddOrderPassportDataActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator1">
@@ -888,28 +891,28 @@
                 <Property name="orientation" type="int" value="1"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldAddOrderRentalCost1">
+            <Component class="javax.swing.JTextField" name="jTextFieldAddOrderClientSecondName">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="MS Reference Sans Serif" size="18" style="0"/>
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldAddOrderRentalCost2">
+            <Component class="javax.swing.JTextField" name="jTextFieldAddOrderClientFirstName">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="MS Reference Sans Serif" size="18" style="0"/>
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldAddOrderRentalCost3">
+            <Component class="javax.swing.JTextField" name="jTextFieldAddOrderClientMiddleName">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="MS Reference Sans Serif" size="18" style="0"/>
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JSpinner" name="jSpinnerAddOrderCountDays1">
+            <Component class="javax.swing.JSpinner" name="jSpinnerAddOrderClientDateBirthday">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="MS Reference Sans Serif" size="18" style="0"/>
@@ -917,16 +920,14 @@
                 <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
                   <SpinnerModel initial="978210000000" stepSize="5" type="date"/>
                 </Property>
+                <Property name="editor" type="javax.swing.JComponent" editor="org.netbeans.modules.form.editors.SpinnerEditorEditor">
+                  <SpinnerEditor format="yyyy-MM-dd" type="1"/>
+                </Property>
                 <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="jTextAreaAddOrderPassportData"/>
+                  <ComponentRef name="jTextAreaAddOrderClientPassportData"/>
                 </Property>
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jSpinnerAddOrderCountDays1MouseClicked"/>
-                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jSpinnerAddOrderCountDays1MousePressed"/>
-                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jSpinnerAddOrderCountDays1KeyTyped"/>
-              </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane3">
               <AuxValues>
@@ -935,7 +936,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="jTextArea1">
+                <Component class="javax.swing.JTextArea" name="jTextAreaAddOrderClientDriversLicense">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -955,7 +956,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="jTextAreaAddOrderPassportData">
+                <Component class="javax.swing.JTextArea" name="jTextAreaAddOrderClientPassportData">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -968,14 +969,14 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JTextField" name="jTextFieldAddOrderRentalCost4">
+            <Component class="javax.swing.JTextField" name="jTextFieldAddOrderClientNumberPhone">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="MS Reference Sans Serif" size="18" style="0"/>
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldAddOrderRentalCost6">
+            <Component class="javax.swing.JTextField" name="jTextFieldAddOrderClientEmail">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="MS Reference Sans Serif" size="18" style="0"/>

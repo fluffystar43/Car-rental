@@ -94,6 +94,25 @@ public class Client {
         this.email = email;
         this.isBlocked = isBlocked;
     }
+    
+    public Client (
+            String secondName,
+            String firstName,
+            String middleName,
+            XMLGregorianCalendar dateBirthday,
+            String phoneNumber,
+            String passportData,
+            String driversLicense,
+            String email) {
+        this.secondName = secondName;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.dateBirthday = dateBirthday;
+        this.phoneNumber = phoneNumber;
+        this.passportData = passportData;
+        this.driversLicense = driversLicense;
+        this.email = email;
+    }
 
     public Client(long id,
             String login,

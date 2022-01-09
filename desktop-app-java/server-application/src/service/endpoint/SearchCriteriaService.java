@@ -276,7 +276,7 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
                 statement.setString(3, client.getSecondName());
                 statement.setString(4, client.getFirstName());
                 statement.setString(5, client.getMiddleName());
-                statement.setDate(6, (Date) client.getDateBirthday());
+                statement.setDate(6,   new java.sql.Date(client.getDateBirthday().getTime()));
                 statement.setString(7, client.getPhoneNumber());
                 statement.setString(8, client.getPassportData());
                 statement.setString(9, client.getPassportData());
@@ -301,9 +301,9 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
                         + "car.id "
                         + "FROM client, car "
                         + "WHERE client.passport_data = '"
-                        + infoAboutOrder.get(3).toString()
+                        + client.getPassportData()
                         + "' AND car.registration_number = '"
-                        + infoAboutOrder.get(8).toString() + "'";
+                        + infoAboutOrder.get(0).toString() + "'";
                 ResultSet result = statement.executeQuery(sql);
                 while (result.next()) {
                     listID.add(result.getObject(1));
@@ -317,13 +317,13 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
             
             //  Добавление заказа в базу данных
             try {
-                String sql = String.format("INSERT INTO 'order' (client_id, car_id, start_date, end_date, total_cost) "
-                        + "VALUES (%d, %d, %s, %s, %d)", 
+                String sql = String.format("INSERT INTO \"order\" (client_id, car_id, start_date, end_date, total_cost) "
+                        + "VALUES (%d, %d, '%s', '%s', %d)", 
                         (Long) listID.get(0),
                         (Long) listID.get(1),
-                        infoAboutOrder.get(9),
-                        infoAboutOrder.get(10),
-                        infoAboutOrder.get(11)
+                        infoAboutOrder.get(1),
+                        infoAboutOrder.get(2),
+                        infoAboutOrder.get(3)
                         
                 );
                 PreparedStatement statement = connection.prepareStatement(sql);

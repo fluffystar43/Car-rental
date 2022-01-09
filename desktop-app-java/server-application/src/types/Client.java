@@ -1,6 +1,7 @@
 package types;
 
 import java.util.Date;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 public class Client {
 
@@ -16,6 +17,7 @@ public class Client {
     private String firstName;
     private String middleName;
     private Date dateBirthday;
+    private XMLGregorianCalendar dateBirthday2;
     private String phoneNumber;
     private String passportData;
     private String driversLicense;
@@ -75,9 +77,36 @@ public class Client {
                 isBlocked);
         this.id = id;
     }
+    
+    public Client (
+            String secondName,
+            String firstName,
+            String middleName,
+            XMLGregorianCalendar dateBirthday2,
+            String phoneNumber,
+            String passportData,
+            String driversLicense,
+            String email) {
+        this.secondName = secondName;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.dateBirthday2 = dateBirthday2;
+        this.phoneNumber = phoneNumber;
+        this.passportData = passportData;
+        this.driversLicense = driversLicense;
+        this.email = email;
+    }
 
     public long getId() {
         return id;
+    }
+
+    public XMLGregorianCalendar getDateBirthday2() {
+        return dateBirthday2;
+    }
+
+    public void setDateBirthday2(XMLGregorianCalendar dateBirthday2) {
+        this.dateBirthday2 = dateBirthday2;
     }
 
     public void setId(long id) {
