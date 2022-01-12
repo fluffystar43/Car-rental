@@ -20,6 +20,10 @@ import javax.swing.table.TableModel;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -36,6 +40,7 @@ import javax.swing.text.DefaultFormatter;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
+import operation.OrderOperation;
 import service.endpoint.SearchCriteriaServiceService;
 
 public class Frame extends javax.swing.JFrame {
@@ -1184,18 +1189,18 @@ public class Frame extends javax.swing.JFrame {
                                         .addComponent(jLabelListCarsSearchСriteriaSecond)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jComboBoxListCarsSearchСriteriaSecond, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jButtonListCarsClearSearchCriteries)))
+                                    .addComponent(jButtonListCarsClearSearchCriteries))
+                                .addGap(30, 30, 30)
+                                .addGroup(jPanelListCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButtonListCarsUpdateTable, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanelListCarsLayout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(jLabelListCarsCount, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanelListCarsLayout.createSequentialGroup()
                                 .addComponent(jLabelListCarsSearchСriteriaFirst)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jComboBoxListCarsSearchСriteriaFirst, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(34, 34, 34)
-                        .addGroup(jPanelListCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonListCarsUpdateTable, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanelListCarsLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabelListCarsCount, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 281, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 285, Short.MAX_VALUE)
                         .addGroup(jPanelListCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonAddCar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButtonEditDataCar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1226,10 +1231,10 @@ public class Frame extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelListCarsLayout.createSequentialGroup()
                         .addComponent(jButtonListCarsUpdateTable, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelListCarsCount)
-                        .addGap(10, 10, 10)))
-                .addComponent(jScrollPaneAvailableCars2, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(71, 71, 71))
+                        .addComponent(jLabelListCarsCount)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPaneAvailableCars2, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
 
         jLabelListCarsCount.getAccessibleContext().setAccessibleName("");
@@ -1244,7 +1249,7 @@ public class Frame extends javax.swing.JFrame {
         );
         jPanelAutoparkLayout.setVerticalGroup(
             jPanelAutoparkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPaneAutopark, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
+            .addComponent(jTabbedPaneAutopark)
         );
 
         jTabbedPaneAutopark.getAccessibleContext().setAccessibleName("Автомобили в прокате");
@@ -1288,7 +1293,7 @@ public class Frame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Клиент", "Автомобиль", "Дата заказа", "Дата окончания", "Количество дней аренды", "Стоимость, руб."
+                "Клиент", "Автомобиль", "Дата заказа", "Дата окончания", "Количество дней", "Стоимость, руб."
             }
         ) {
             Class[] types = new Class [] {
@@ -1307,6 +1312,11 @@ public class Frame extends javax.swing.JFrame {
             }
         });
         jTableOrders.setRowHeight(28);
+        jTableOrders.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableOrdersMouseClicked(evt);
+            }
+        });
         jScrollPaneOrders.setViewportView(jTableOrders);
 
         javax.swing.GroupLayout jPanelOrdersLayout = new javax.swing.GroupLayout(jPanelOrders);
@@ -1550,10 +1560,15 @@ public class Frame extends javax.swing.JFrame {
     private void UpdateListClients() {
         try {
             jButtonEditDataClient.setEnabled(false);
-            jButtonBlockClient.setEnabled(false);
+            jButtonBlockClient.setEnabled(false);            
 
             model = (DefaultTableModel) jTableClients.getModel();
             OutputToTable(clientService.getClientServicePort().getListOfClients());
+            
+            if(jTableClients.getRowCount() == 0)
+                jButtonExportClientsToPDF.setEnabled(false);
+            else
+                jButtonExportClientsToPDF.setEnabled(true);
 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Не удалось установить соединение с сервером:" + ex.getMessage() + ".",
@@ -1627,11 +1642,55 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxListCarsSearchСriteriaSecondActionPerformed
 
     private void jButtonUpdateTableOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateTableOrdersActionPerformed
-        // TODO add your handling code here:
+        
+        jButtonCloseOrder.setEnabled(false);
+        jButtonEditDataOrder.setEnabled(false);
+        
+        try {
+            
+            /**
+             * вызывается метод lookup класса Naming для получения удаленной
+             * ссылки на удаленный объект Order с заданным URL.
+             */
+            OrderOperation order = (OrderOperation) Naming.lookup("//localhost:1199/orderRMI");
+
+            model = (DefaultTableModel) jTableOrders.getModel();
+            OutputToTableOrders(order.getListOrders());
+        } catch (NotBoundException | MalformedURLException | RemoteException | ParseException ex) {
+            Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonUpdateTableOrdersActionPerformed
 
     private void jButtonCloseOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseOrderActionPerformed
-        // TODO add your handling code here:
+        int row = jTableOrders.getSelectedRow();
+
+        String fullName = jTableOrders.getValueAt(row, 0).toString().trim();
+        String registrationNumber = jTableOrders.getValueAt(row, 1).toString().trim();
+
+        int result = JOptionPane.showConfirmDialog(this,
+                "Вы завершить заказ клиента: " + fullName + "?",
+                "Внимание!",
+                JOptionPane.YES_NO_OPTION);
+
+        if (result == JOptionPane.OK_OPTION) {
+            try {
+                /**
+                 * вызывается метод lookup класса Naming для получения удаленной
+                 * ссылки на удаленный объект Order с заданным URL.
+                 */
+                OrderOperation order = (OrderOperation) Naming.lookup("//localhost:1199/orderRMI");
+                order.closeOrder(fullName, registrationNumber);
+
+                JOptionPane.showMessageDialog(this, "Заказ клиента: " + fullName + " завершен!",
+                        "Успешно",
+                        JOptionPane.NO_OPTION);
+                
+                jButtonUpdateTableOrdersActionPerformed(null);
+
+            } catch (NotBoundException | MalformedURLException | RemoteException ex) {
+                Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_jButtonCloseOrderActionPerformed
 
     private void jButtonEditDataOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditDataOrderActionPerformed
@@ -1702,7 +1761,7 @@ public class Frame extends javax.swing.JFrame {
     private void jButtonExportClientsToPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportClientsToPDFActionPerformed
 
         JFileChooser pdfFile = new JFileChooser();
-        pdfFile.setSelectedFile(new File("ListClients"));
+        pdfFile.setSelectedFile(new File("Cписок клиентов"));
 
         FileNameExtensionFilter filter = new FileNameExtensionFilter("PDF Documents (*.pdf)|*.pdf", "pdf");
         pdfFile.setFileFilter(filter);
@@ -2246,15 +2305,15 @@ public class Frame extends javax.swing.JFrame {
             );
             searchCriteriaService.getSearchCriteriaServicePort().addOrder(info, client, true, null);
         }
-        
+
         jDialogAddOrder.setVisible(false);
-        
+
         JOptionPane.showMessageDialog(this, "Заказ успешно оформлен!",
-                    "Успешно!",
-                    JOptionPane.NO_OPTION);
-        
-        jButtonAvailableCarsUpdateTableActionPerformed(null);     
-        
+                "Успешно!",
+                JOptionPane.NO_OPTION);
+
+        jButtonAvailableCarsUpdateTableActionPerformed(null);
+
     }//GEN-LAST:event_jButtonAddOrderActionPerformed
 
     private void jButtonAddOrderClearClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddOrderClearClientActionPerformed
@@ -2279,11 +2338,72 @@ public class Frame extends javax.swing.JFrame {
 
     private void jPanelOrdersComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelOrdersComponentShown
         setDefaultFormSize();
+
+        // Изменяем ширину столбца данных клиента
+        jTableOrders.getColumnModel().getColumn(0).setMaxWidth(450);
+        jTableOrders.getColumnModel().getColumn(0).setPreferredWidth(450);
+        
+        // Изменяем ширину столбца количества дней
+        jTableOrders.getColumnModel().getColumn(4).setMaxWidth(220);
+        jTableOrders.getColumnModel().getColumn(4).setPreferredWidth(220);
+        
+        jButtonUpdateTableOrdersActionPerformed(null);       
+        
     }//GEN-LAST:event_jPanelOrdersComponentShown
 
     private void jPanelAutoparkComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelAutoparkComponentShown
         setDefaultFormSize();
     }//GEN-LAST:event_jPanelAutoparkComponentShown
+
+    private void jTableOrdersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableOrdersMouseClicked
+        jButtonCloseOrder.setEnabled(true);
+        jButtonEditDataOrder.setEnabled(true);
+    }//GEN-LAST:event_jTableOrdersMouseClicked
+
+    private void OutputToTableOrders(List listOrders) throws ParseException {
+        doClearTable();
+        Object[] rowData = new String[6];
+        int i = 0;
+        for (Object var : listOrders) {
+            switch (i) {
+                case 0:
+                    rowData[0] = var + " ";
+                    break;
+                case 1:
+                case 2:
+                    rowData[0] += var + " ";
+                    if (i == 2) {
+                        rowData[0] = rowData[0].toString().trim();
+                    }
+                    break;
+                case 3:
+                    rowData[1] = var + " ";
+                    break;
+                case 4:
+                    rowData[2] = String.valueOf(var).substring(0, 10);
+                    break;
+                case 5:
+                    rowData[3] = String.valueOf(var).substring(0, 10);
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    Date date1 = dateFormat.parse((String) rowData[2]);
+                    Date date2 = dateFormat.parse((String) rowData[3]);
+                    // Разница между датами в миллисекундах и днях
+                    long milliseconds = date2.getTime() - date1.getTime();
+                    int days = (int) (milliseconds / (24 * 60 * 60 * 1000));
+                    rowData[4] = String.valueOf(days);
+                    break;
+                case 6:
+                    rowData[5] = var.toString();
+                    model.addRow(rowData);
+                    i = 0;
+                    continue;
+                default:
+                    break;
+            }
+            i++;
+        }
+
+    }
 
     private void OutputToTableCars(List listСars) throws ParseException {
         doClearTable();

@@ -6,6 +6,6 @@ import java.util.List;
 import types.Car;
 
 public interface CarOperation extends Remote {
-    List<Car> getListOfCars() throws RemoteException;
+    List<Car> getListOfCars() throws RemoteException;    
     void addNewCar(Car car) throws RemoteException;    
 }

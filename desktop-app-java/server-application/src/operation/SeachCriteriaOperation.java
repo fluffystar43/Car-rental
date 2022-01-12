@@ -2,7 +2,6 @@ package operation;
 
 import java.rmi.RemoteException;
 import java.util.List;
-import types.Car;
 import types.Client;
 import types.Order;
 

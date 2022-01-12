@@ -16,7 +16,7 @@ public class RunClient {
              * вызывается метод lookup класса Naming для получения удаленной
              * ссылки на удаленный объект Car с заданным URL.
              */
-            CarOperation car = (CarOperation) Naming.lookup("//localhost:1198/сarImp");
+            CarOperation car = (CarOperation) Naming.lookup("//localhost:1199/сarRMI");
             doVivod(car.getListOfCars());
 
             System.out.println("Завершено");

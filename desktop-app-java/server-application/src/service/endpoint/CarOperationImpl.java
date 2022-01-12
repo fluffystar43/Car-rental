@@ -1,4 +1,4 @@
-package operation;
+package service.endpoint;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import operation.CarOperation;
 import types.Car;
 
 public class CarOperationImpl extends UnicastRemoteObject implements CarOperation {

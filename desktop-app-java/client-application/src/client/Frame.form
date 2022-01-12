@@ -1081,7 +1081,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jTabbedPaneAutopark" alignment="0" pref="698" max="32767" attributes="0"/>
+                  <Component id="jTabbedPaneAutopark" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -1553,6 +1553,14 @@
                                                   </Group>
                                                   <Component id="jButtonListCarsClearSearchCriteries" min="-2" max="-2" attributes="0"/>
                                               </Group>
+                                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jButtonListCarsUpdateTable" min="-2" pref="340" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                                      <Component id="jLabelListCarsCount" min="-2" pref="360" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabelListCarsSearchСriteriaFirst" min="-2" max="-2" attributes="0"/>
@@ -1560,15 +1568,7 @@
                                               <Component id="jComboBoxListCarsSearchСriteriaFirst" min="-2" pref="305" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jButtonListCarsUpdateTable" min="-2" pref="340" max="-2" attributes="0"/>
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                              <Component id="jLabelListCarsCount" min="-2" pref="360" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace pref="281" max="32767" attributes="0"/>
+                                      <EmptySpace pref="285" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jButtonAddCar" alignment="1" min="-2" pref="320" max="-2" attributes="0"/>
                                           <Component id="jButtonEditDataCar" alignment="1" min="-2" pref="320" max="-2" attributes="0"/>
@@ -1609,11 +1609,11 @@
                                       <Component id="jButtonListCarsUpdateTable" min="-2" pref="40" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabelListCarsCount" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="jScrollPaneAvailableCars2" min="-2" pref="481" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <Component id="jScrollPaneAvailableCars2" min="-2" pref="475" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1874,12 +1874,15 @@
                         <Column editable="false" title="&#x410;&#x432;&#x442;&#x43e;&#x43c;&#x43e;&#x431;&#x438;&#x43b;&#x44c;" type="java.lang.String"/>
                         <Column editable="false" title="&#x414;&#x430;&#x442;&#x430; &#x437;&#x430;&#x43a;&#x430;&#x437;&#x430;" type="java.lang.Object"/>
                         <Column editable="false" title="&#x414;&#x430;&#x442;&#x430; &#x43e;&#x43a;&#x43e;&#x43d;&#x447;&#x430;&#x43d;&#x438;&#x44f;" type="java.lang.Object"/>
-                        <Column editable="false" title="&#x41a;&#x43e;&#x43b;&#x438;&#x447;&#x435;&#x441;&#x442;&#x432;&#x43e; &#x434;&#x43d;&#x435;&#x439; &#x430;&#x440;&#x435;&#x43d;&#x434;&#x44b;" type="java.lang.Integer"/>
+                        <Column editable="false" title="&#x41a;&#x43e;&#x43b;&#x438;&#x447;&#x435;&#x441;&#x442;&#x432;&#x43e; &#x434;&#x43d;&#x435;&#x439;" type="java.lang.Integer"/>
                         <Column editable="false" title="&#x421;&#x442;&#x43e;&#x438;&#x43c;&#x43e;&#x441;&#x442;&#x44c;, &#x440;&#x443;&#x431;." type="java.lang.Integer"/>
                       </Table>
                     </Property>
                     <Property name="rowHeight" type="int" value="28"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTableOrdersMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
