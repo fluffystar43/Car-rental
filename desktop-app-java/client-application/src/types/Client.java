@@ -1,4 +1,3 @@
-
 package types;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -7,12 +6,14 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
 
-
 /**
- * <p>Java class for client complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
+ * Java class for client complex type.
+ *
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
+ *
  * <pre>
  * &lt;complexType name="client">
  *   &lt;complexContent>
@@ -36,8 +37,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "client", propOrder = {
@@ -71,7 +72,7 @@ public class Client {
     protected String passportData;
     protected String phoneNumber;
     protected String secondName;
-    
+
     public Client() {
         this.isBlocked = false;
     }
@@ -81,7 +82,7 @@ public class Client {
             String secondName,
             String firstName,
             String middleName,
-            String phoneNumber, 
+            String phoneNumber,
             String passportData,
             String driversLicense,
             String email,
@@ -97,8 +98,8 @@ public class Client {
         this.email = email;
         this.isBlocked = isBlocked;
     }
-    
-    public Client (
+
+    public Client(
             String secondName,
             String firstName,
             String middleName,
@@ -140,7 +141,7 @@ public class Client {
                 isBlocked);
         this.id = id;
     }
-    
+
     public Client(long id,
             String login,
             String hashPassword,
@@ -165,15 +166,13 @@ public class Client {
                 isBlocked);
         this.dateBirthday = dateBirthday;
         this.id = id;
-}
+    }
 
     /**
      * Gets the value of the dateBirthday property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *
+     * @return possible object is {@link XMLGregorianCalendar }
+     *
      */
     public XMLGregorianCalendar getDateBirthday() {
         return dateBirthday;
@@ -181,11 +180,9 @@ public class Client {
 
     /**
      * Sets the value of the dateBirthday property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *
+     * @param value allowed object is {@link XMLGregorianCalendar }
+     *
      */
     public void setDateBirthday(XMLGregorianCalendar value) {
         this.dateBirthday = value;
@@ -193,11 +190,9 @@ public class Client {
 
     /**
      * Gets the value of the dateBirthday2 property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Object }
-     *     
+     *
+     * @return possible object is {@link Object }
+     *
      */
     public Object getDateBirthday2() {
         return dateBirthday2;
@@ -205,11 +200,9 @@ public class Client {
 
     /**
      * Sets the value of the dateBirthday2 property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Object }
-     *     
+     *
+     * @param value allowed object is {@link Object }
+     *
      */
     public void setDateBirthday2(Object value) {
         this.dateBirthday2 = value;
@@ -217,11 +210,9 @@ public class Client {
 
     /**
      * Gets the value of the driversLicense property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is {@link String }
+     *
      */
     public String getDriversLicense() {
         return driversLicense;
@@ -229,11 +220,9 @@ public class Client {
 
     /**
      * Sets the value of the driversLicense property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is {@link String }
+     *
      */
     public void setDriversLicense(String value) {
         this.driversLicense = value;
@@ -241,11 +230,9 @@ public class Client {
 
     /**
      * Gets the value of the email property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is {@link String }
+     *
      */
     public String getEmail() {
         return email;
@@ -253,11 +240,9 @@ public class Client {
 
     /**
      * Sets the value of the email property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is {@link String }
+     *
      */
     public void setEmail(String value) {
         this.email = value;
@@ -265,11 +250,9 @@ public class Client {
 
     /**
      * Gets the value of the firstName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is {@link String }
+     *
      */
     public String getFirstName() {
         return firstName;
@@ -277,11 +260,9 @@ public class Client {
 
     /**
      * Sets the value of the firstName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is {@link String }
+     *
      */
     public void setFirstName(String value) {
         this.firstName = value;
@@ -289,11 +270,9 @@ public class Client {
 
     /**
      * Gets the value of the hashPassword property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is {@link String }
+     *
      */
     public String getHashPassword() {
         return hashPassword;
@@ -301,11 +280,9 @@ public class Client {
 
     /**
      * Sets the value of the hashPassword property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is {@link String }
+     *
      */
     public void setHashPassword(String value) {
         this.hashPassword = value;
@@ -313,7 +290,7 @@ public class Client {
 
     /**
      * Gets the value of the id property.
-     * 
+     *
      */
     public long getId() {
         return id;
@@ -321,7 +298,7 @@ public class Client {
 
     /**
      * Sets the value of the id property.
-     * 
+     *
      */
     public void setId(long value) {
         this.id = value;
@@ -329,11 +306,9 @@ public class Client {
 
     /**
      * Gets the value of the isBlocked property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
+     *
+     * @return possible object is {@link Boolean }
+     *
      */
     public Boolean isIsBlocked() {
         return isBlocked;
@@ -341,11 +316,9 @@ public class Client {
 
     /**
      * Sets the value of the isBlocked property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
+     *
+     * @param value allowed object is {@link Boolean }
+     *
      */
     public void setIsBlocked(Boolean value) {
         this.isBlocked = value;
@@ -353,11 +326,9 @@ public class Client {
 
     /**
      * Gets the value of the login property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is {@link String }
+     *
      */
     public String getLogin() {
         return login;
@@ -365,11 +336,9 @@ public class Client {
 
     /**
      * Sets the value of the login property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is {@link String }
+     *
      */
     public void setLogin(String value) {
         this.login = value;
@@ -377,11 +346,9 @@ public class Client {
 
     /**
      * Gets the value of the middleName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is {@link String }
+     *
      */
     public String getMiddleName() {
         return middleName;
@@ -389,11 +356,9 @@ public class Client {
 
     /**
      * Sets the value of the middleName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is {@link String }
+     *
      */
     public void setMiddleName(String value) {
         this.middleName = value;
@@ -401,11 +366,9 @@ public class Client {
 
     /**
      * Gets the value of the passportData property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is {@link String }
+     *
      */
     public String getPassportData() {
         return passportData;
@@ -413,11 +376,9 @@ public class Client {
 
     /**
      * Sets the value of the passportData property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is {@link String }
+     *
      */
     public void setPassportData(String value) {
         this.passportData = value;
@@ -425,11 +386,9 @@ public class Client {
 
     /**
      * Gets the value of the phoneNumber property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is {@link String }
+     *
      */
     public String getPhoneNumber() {
         return phoneNumber;
@@ -437,11 +396,9 @@ public class Client {
 
     /**
      * Sets the value of the phoneNumber property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is {@link String }
+     *
      */
     public void setPhoneNumber(String value) {
         this.phoneNumber = value;
@@ -449,11 +406,9 @@ public class Client {
 
     /**
      * Gets the value of the secondName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is {@link String }
+     *
      */
     public String getSecondName() {
         return secondName;
@@ -461,11 +416,9 @@ public class Client {
 
     /**
      * Sets the value of the secondName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is {@link String }
+     *
      */
     public void setSecondName(String value) {
         this.secondName = value;

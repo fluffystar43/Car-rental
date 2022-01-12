@@ -27,9 +27,15 @@ public class OrderOperationImpl extends UnicastRemoteObject implements OrderOper
             String sql = "SELECT client.second_name, "
                     + "client.first_name, "
                     + "client.middle_name, "
-                    + "car.registration_number, ordertable.start_date, ordertable.end_date, ordertable.total_cost "
+                    + "car.registration_number, ordertable.start_date, "
+                    + "ordertable.end_date, "
+                    + "ordertable.total_cost "
                     + "FROM client, \"order\" as ordertable, car "
-                    + "WHERE ordertable.client_id = client.id AND ordertable.car_id = car.id AND car.is_rented = true AND car.is_deleted = false";
+                    + "WHERE ordertable.client_id = client.id "
+                    + "AND ordertable.car_id = car.id "
+                    + "AND car.is_rented = true "
+                    + "AND car.is_deleted = false "
+                    + "AND is_closed = false";
             ResultSet result = statement.executeQuery(sql);
 
             while (result.next()) {

@@ -170,7 +170,7 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
             String sql = "SELECT brand.name, "
                     + "model.name, car.registration_number,  client.second_name || ' ' || client.first_name || ' ' || client.middle_name, ordertable.start_date, ordertable.end_date "
                     + "FROM brand, model, car, client, \"order\" as ordertable "
-                    + "WHERE car.brand_id = brand.id AND car.model_id = model.id AND car.id = ordertable.car_id AND client.id = ordertable.client_id AND car.is_rented = true ";
+                    + "WHERE car.brand_id = brand.id AND car.model_id = model.id AND car.id = ordertable.car_id AND client.id = ordertable.client_id AND car.is_rented = true AND ordertable.is_closed = false";
             if (criteriaFirst != null) {
 
                 switch (criteriaFirst) {
@@ -235,18 +235,6 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
             System.out.print(e.getMessage());
         }
         return listCars;
-    }
-
-    @WebMethod()
-    @Override
-    public List<Client> getListClients(String criteria) throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @WebMethod()
-    @Override
-    public List<Order> getListOrders(String criteria) throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @WebMethod()
@@ -340,14 +328,16 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
 
         //  Добавление заказа в базу данных
         try {
-            String sql = String.format("INSERT INTO \"order\" (client_id, car_id, start_date, end_date, total_cost) "
-                    + "VALUES (%d, %d, '%s', '%s', %d)",
+            String sql = String.format("INSERT INTO \"order\" (client_id, car_id, start_date, end_date, total_cost, is_closed) "
+                    + "VALUES (%d, %d, '%s', '%s', %d, %b)",
                     (Long) listID.get(0),
                     (Long) listID.get(1),
                     infoAboutOrder.get(1),
                     infoAboutOrder.get(2),
-                    infoAboutOrder.get(3)
+                    infoAboutOrder.get(3),
+                    false
             );
+            
             PreparedStatement statement = connection.prepareStatement(sql);
 
             int rowsInserted = statement.executeUpdate();
@@ -367,5 +357,15 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
         } catch (SQLException ex) {
             Logger.getLogger(SearchCriteriaService.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @Override
+    public List<Client> getListClients(String criteria) throws RemoteException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<Order> getListOrders(String criteria) throws RemoteException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

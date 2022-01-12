@@ -46,6 +46,7 @@ import service.endpoint.SearchCriteriaServiceService;
 public class Frame extends javax.swing.JFrame {
 
     public Frame() {
+
         initComponents();
         jTableAvailableCars.getTableHeader().setFont(new java.awt.Font("MS Reference Sans Serif", 0, 20));
         jTableCarsInRent.getTableHeader().setFont(new java.awt.Font("MS Reference Sans Serif", 0, 20));
@@ -67,6 +68,7 @@ public class Frame extends javax.swing.JFrame {
     static DefaultTableModel model = new DefaultTableModel();
     static ClientServiceService clientService = null;
     static SearchCriteriaServiceService searchCriteriaService = null;
+    
 
     static {
         clientService = new ClientServiceService();
@@ -1480,7 +1482,7 @@ public class Frame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     private DefaultComboBoxModel<String> cbModel;
-
+    
     private void SearchCriteriaFirst(JTable table, JComboBox<String> comboBox) {
         cbModel = new DefaultComboBoxModel<>();
         for (int i = 0; i < table.getModel().getColumnCount(); i++) {
@@ -1560,15 +1562,16 @@ public class Frame extends javax.swing.JFrame {
     private void UpdateListClients() {
         try {
             jButtonEditDataClient.setEnabled(false);
-            jButtonBlockClient.setEnabled(false);            
+            jButtonBlockClient.setEnabled(false);
 
             model = (DefaultTableModel) jTableClients.getModel();
             OutputToTable(clientService.getClientServicePort().getListOfClients());
-            
-            if(jTableClients.getRowCount() == 0)
+
+            if (jTableClients.getRowCount() == 0) {
                 jButtonExportClientsToPDF.setEnabled(false);
-            else
+            } else {
                 jButtonExportClientsToPDF.setEnabled(true);
+            }
 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Не удалось установить соединение с сервером:" + ex.getMessage() + ".",
@@ -1642,12 +1645,12 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxListCarsSearchСriteriaSecondActionPerformed
 
     private void jButtonUpdateTableOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateTableOrdersActionPerformed
-        
+
         jButtonCloseOrder.setEnabled(false);
         jButtonEditDataOrder.setEnabled(false);
-        
+
         try {
-            
+
             /**
              * вызывается метод lookup класса Naming для получения удаленной
              * ссылки на удаленный объект Order с заданным URL.
@@ -1684,7 +1687,7 @@ public class Frame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Заказ клиента: " + fullName + " завершен!",
                         "Успешно",
                         JOptionPane.NO_OPTION);
-                
+
                 jButtonUpdateTableOrdersActionPerformed(null);
 
             } catch (NotBoundException | MalformedURLException | RemoteException ex) {
@@ -2050,6 +2053,7 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAvailableCarsAddOrderActionPerformed
 
     private void jDialogAddOrderComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jDialogAddOrderComponentShown
+
         int selectedRow = jTableAvailableCars.getSelectedRow();
 
         if (selectedRow != -1) {
@@ -2221,7 +2225,19 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxAddOrderClientActionPerformed
 
     private void jDialogAddOrderComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jDialogAddOrderComponentHidden
+        
         this.setVisible(true);
+
+        // Убираем значения заполненных полей
+        jComboBoxAddOrderClient.setSelectedIndex(-1);
+        jTextFieldAddOrderClientSecondName.setText("");
+        jTextFieldAddOrderClientFirstName.setText("");
+        jTextFieldAddOrderClientSecondName.setText("");
+        jTextAreaAddOrderClientPassportData.setText("");
+        jTextAreaAddOrderClientDriversLicense.setText("");
+        jTextFieldAddOrderClientNumberPhone.setText("");
+        jTextFieldAddOrderClientEmail.setText(""); 
+
     }//GEN-LAST:event_jDialogAddOrderComponentHidden
 
     private void jButtonAddOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddOrderActionPerformed
@@ -2342,17 +2358,18 @@ public class Frame extends javax.swing.JFrame {
         // Изменяем ширину столбца данных клиента
         jTableOrders.getColumnModel().getColumn(0).setMaxWidth(450);
         jTableOrders.getColumnModel().getColumn(0).setPreferredWidth(450);
-        
+
         // Изменяем ширину столбца количества дней
         jTableOrders.getColumnModel().getColumn(4).setMaxWidth(220);
         jTableOrders.getColumnModel().getColumn(4).setPreferredWidth(220);
-        
-        jButtonUpdateTableOrdersActionPerformed(null);       
-        
+
+        jButtonUpdateTableOrdersActionPerformed(null);
+
     }//GEN-LAST:event_jPanelOrdersComponentShown
 
     private void jPanelAutoparkComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelAutoparkComponentShown
         setDefaultFormSize();
+        jButtonAvailableCarsUpdateTableActionPerformed(null);
     }//GEN-LAST:event_jPanelAutoparkComponentShown
 
     private void jTableOrdersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableOrdersMouseClicked
