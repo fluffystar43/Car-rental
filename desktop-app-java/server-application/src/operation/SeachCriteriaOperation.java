@@ -18,5 +18,5 @@ public interface SeachCriteriaOperation {
     List<Order> getListOrders(String criteria) throws RemoteException;  
     
     List getListCarsByRegistrationNumber(String registrationNumber) throws RemoteException;
-    void AddOrder(List infoAboutOrder, Client client, Boolean isNewClient);
+    void AddOrder(List infoAboutOrder, Client client, Boolean isNewClient, List fullNameAndPhone);
 }

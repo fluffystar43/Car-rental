@@ -251,10 +251,10 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
 
     @WebMethod()
     @Override
-    public void AddOrder(List infoAboutOrder, Client client, Boolean isNewClient) {
+    public void AddOrder(List infoAboutOrder, Client client, Boolean isNewClient, List fullNameAndPhone) {
         List listID = new ArrayList<>();
 
-        if (isNewClient = true) {
+        if (isNewClient == true) {
             //  Добавление клиента
             try {
                 PreparedStatement statement = connection.prepareStatement("INSERT INTO client ("
@@ -276,7 +276,7 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
                 statement.setString(3, client.getSecondName());
                 statement.setString(4, client.getFirstName());
                 statement.setString(5, client.getMiddleName());
-                statement.setDate(6,   new java.sql.Date(client.getDateBirthday().getTime()));
+                statement.setDate(6, new java.sql.Date(client.getDateBirthday().getTime()));
                 statement.setString(7, client.getPhoneNumber());
                 statement.setString(8, client.getPassportData());
                 statement.setString(9, client.getPassportData());
@@ -290,9 +290,8 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
             } catch (SQLException ex) {
                 Logger.getLogger(SearchCriteriaService.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             //  Добавление заказа
-            
             //  Поиск id клиента и автомобиля
             try {
                 Statement statement = connection.createStatement();
@@ -314,31 +313,59 @@ public class SearchCriteriaService implements SeachCriteriaOperation {
             } catch (SQLException ex) {
                 Logger.getLogger(SearchCriteriaService.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            //  Добавление заказа в базу данных
+        } else {
+            //  Поиск id клиента и автомобиля
             try {
-                String sql = String.format("INSERT INTO \"order\" (client_id, car_id, start_date, end_date, total_cost) "
-                        + "VALUES (%d, %d, '%s', '%s', %d)", 
-                        (Long) listID.get(0),
-                        (Long) listID.get(1),
-                        infoAboutOrder.get(1),
-                        infoAboutOrder.get(2),
-                        infoAboutOrder.get(3)
-                        
-                );
-                PreparedStatement statement = connection.prepareStatement(sql);
-                
-                int rowsInserted = statement.executeUpdate();
-                if (rowsInserted > 0) {
-                    System.out.println("Заказ добавлен!");
-                }               
+                Statement statement = connection.createStatement();
+                String sql = "SELECT "
+                        + "client.id, "
+                        + "car.id "
+                        + "FROM client, car "
+                        + "WHERE client.phone_number = '"
+                        + fullNameAndPhone.get(1)
+                        + "' AND client.second_name || ' ' || client.first_name || ' ' || client.middle_name = '" + fullNameAndPhone.get(0)
+                        + "' AND car.registration_number = '"
+                        + infoAboutOrder.get(0).toString() + "'";
+                ResultSet result = statement.executeQuery(sql);
+                while (result.next()) {
+                    listID.add(result.getObject(1));
+                    listID.add(result.getObject(2));
+                }
+                System.out.println("Получен список ID");
 
             } catch (SQLException ex) {
                 Logger.getLogger(SearchCriteriaService.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
 
-        } else {
+        //  Добавление заказа в базу данных
+        try {
+            String sql = String.format("INSERT INTO \"order\" (client_id, car_id, start_date, end_date, total_cost) "
+                    + "VALUES (%d, %d, '%s', '%s', %d)",
+                    (Long) listID.get(0),
+                    (Long) listID.get(1),
+                    infoAboutOrder.get(1),
+                    infoAboutOrder.get(2),
+                    infoAboutOrder.get(3)
+            );
+            PreparedStatement statement = connection.prepareStatement(sql);
 
+            int rowsInserted = statement.executeUpdate();
+            if (rowsInserted > 0) {
+                System.out.println("Заказ добавлен!");
+            }
+
+            statement = connection.prepareStatement("UPDATE car SET is_rented = true "
+                    + "WHERE id = ?");
+            statement.setLong(1, (Long) listID.get(1));
+
+            rowsInserted = statement.executeUpdate();
+            if (rowsInserted > 0) {
+                System.out.println("Автомобиль арендован!");
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SearchCriteriaService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

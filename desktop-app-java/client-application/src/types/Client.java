@@ -19,6 +19,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="dateBirthday" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         &lt;element name="dateBirthday2" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" minOccurs="0"/>
  *         &lt;element name="driversLicense" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="email" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="firstName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -41,6 +42,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "client", propOrder = {
     "dateBirthday",
+    "dateBirthday2",
     "driversLicense",
     "email",
     "firstName",
@@ -57,6 +59,7 @@ public class Client {
 
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar dateBirthday;
+    protected Object dateBirthday2;
     protected String driversLicense;
     protected String email;
     protected String firstName;
@@ -78,7 +81,7 @@ public class Client {
             String secondName,
             String firstName,
             String middleName,
-            String phoneNumber,
+            String phoneNumber, 
             String passportData,
             String driversLicense,
             String email,
@@ -137,6 +140,32 @@ public class Client {
                 isBlocked);
         this.id = id;
     }
+    
+    public Client(long id,
+            String login,
+            String hashPassword,
+            String secondName,
+            String firstName,
+            String middleName,
+            XMLGregorianCalendar dateBirthday,
+            String phoneNumber,
+            String passportData,
+            String driversLicense,
+            String email,
+            Boolean isBlocked) {
+        this(login,
+                hashPassword,
+                secondName,
+                firstName,
+                middleName,
+                phoneNumber,
+                passportData,
+                driversLicense,
+                email,
+                isBlocked);
+        this.dateBirthday = dateBirthday;
+        this.id = id;
+}
 
     /**
      * Gets the value of the dateBirthday property.
@@ -160,6 +189,30 @@ public class Client {
      */
     public void setDateBirthday(XMLGregorianCalendar value) {
         this.dateBirthday = value;
+    }
+
+    /**
+     * Gets the value of the dateBirthday2 property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Object }
+     *     
+     */
+    public Object getDateBirthday2() {
+        return dateBirthday2;
+    }
+
+    /**
+     * Sets the value of the dateBirthday2 property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Object }
+     *     
+     */
+    public void setDateBirthday2(Object value) {
+        this.dateBirthday2 = value;
     }
 
     /**

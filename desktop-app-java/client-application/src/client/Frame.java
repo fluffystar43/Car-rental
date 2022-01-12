@@ -54,6 +54,8 @@ public class Frame extends javax.swing.JFrame {
 
         jDialogAddOrder.setLocationRelativeTo(null);
 
+        setDefaultFormSize();
+
         //jDialogLogin.setVisible(true);
     }
 
@@ -124,7 +126,6 @@ public class Frame extends javax.swing.JFrame {
         jLabelAddOrderClient = new javax.swing.JLabel();
         jComboBoxAddOrderClient = new javax.swing.JComboBox<>();
         jLabelAddOrderCar10 = new javax.swing.JLabel();
-        jTextFieldAddOrderPassportData = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jTextFieldAddOrderClientSecondName = new javax.swing.JTextField();
         jTextFieldAddOrderClientFirstName = new javax.swing.JTextField();
@@ -136,6 +137,9 @@ public class Frame extends javax.swing.JFrame {
         jTextAreaAddOrderClientPassportData = new javax.swing.JTextArea();
         jTextFieldAddOrderClientNumberPhone = new javax.swing.JTextField();
         jTextFieldAddOrderClientEmail = new javax.swing.JTextField();
+        jLabelInfoAboutFields = new javax.swing.JLabel();
+        jButtonAddOrderClearClient = new javax.swing.JButton();
+        jLabelAddOrderDateFormat = new javax.swing.JLabel();
         jTabbedPaneForm = new javax.swing.JTabbedPane();
         jPanelAutopark = new javax.swing.JPanel();
         jTabbedPaneAutopark = new javax.swing.JTabbedPane();
@@ -413,7 +417,7 @@ public class Frame extends javax.swing.JFrame {
         });
 
         jLabelAddOrderClientSecondName.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
-        jLabelAddOrderClientSecondName.setText("Фамилия:");
+        jLabelAddOrderClientSecondName.setText("Фамилия*:");
 
         jLabelAddOrderRentalCost.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
         jLabelAddOrderRentalCost.setText("Стоимость руб./сут.:");
@@ -489,25 +493,25 @@ public class Frame extends javax.swing.JFrame {
         jLabelAddOrderCar1.setText("Автомобиль:");
 
         jLabelAddOrderClientFirstName.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
-        jLabelAddOrderClientFirstName.setText("Имя:");
+        jLabelAddOrderClientFirstName.setText("Имя*:");
 
         jLabelAddOrderCarAddOrderClientMiddleName.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
         jLabelAddOrderCarAddOrderClientMiddleName.setText("Отчество:");
 
         jLabelAddOrderClientDateBirthday.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
-        jLabelAddOrderClientDateBirthday.setText("Дата рождения:");
+        jLabelAddOrderClientDateBirthday.setText("Дата рождения*:");
 
         jLabelAddOrderClientNumberPhone.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
-        jLabelAddOrderClientNumberPhone.setText("Номер телефона:");
+        jLabelAddOrderClientNumberPhone.setText("Номер телефона*:");
 
         jLabelAddOrderClientPassportData.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
-        jLabelAddOrderClientPassportData.setText("Паспортные данные:");
+        jLabelAddOrderClientPassportData.setText("Паспортные данные*:");
 
         jLabelAddOrderClientDriversLicense.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
-        jLabelAddOrderClientDriversLicense.setText("Водительское удостоверение:");
+        jLabelAddOrderClientDriversLicense.setText("Водительское удостоверение*:");
 
         jLabelAddOrderClientEmail.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
-        jLabelAddOrderClientEmail.setText("Электронная почта:");
+        jLabelAddOrderClientEmail.setText("Электронная почта*:");
 
         jLabelAddOrderClient.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
         jLabelAddOrderClient.setText("Выберите существующего клиента:");
@@ -521,14 +525,6 @@ public class Frame extends javax.swing.JFrame {
 
         jLabelAddOrderCar10.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
         jLabelAddOrderCar10.setText("или введите данные о новом клиенте:");
-
-        jTextFieldAddOrderPassportData.setEditable(false);
-        jTextFieldAddOrderPassportData.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
-        jTextFieldAddOrderPassportData.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldAddOrderPassportDataActionPerformed(evt);
-            }
-        });
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
@@ -561,6 +557,20 @@ public class Frame extends javax.swing.JFrame {
         jTextFieldAddOrderClientNumberPhone.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
 
         jTextFieldAddOrderClientEmail.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
+
+        jLabelInfoAboutFields.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 16)); // NOI18N
+        jLabelInfoAboutFields.setText("* - поля, обязательные для заполнения");
+
+        jButtonAddOrderClearClient.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
+        jButtonAddOrderClearClient.setText("Отменить выбор");
+        jButtonAddOrderClearClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddOrderClearClientActionPerformed(evt);
+            }
+        });
+
+        jLabelAddOrderDateFormat.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 16)); // NOI18N
+        jLabelAddOrderDateFormat.setText("(год-месяц-день)");
 
         javax.swing.GroupLayout jPanelAddOrderLayout = new javax.swing.GroupLayout(jPanelAddOrder);
         jPanelAddOrder.setLayout(jPanelAddOrderLayout);
@@ -598,40 +608,31 @@ public class Frame extends javax.swing.JFrame {
                         .addComponent(jButtonAddOrder)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonAddOrderClose)))
+                .addGap(20, 20, 20)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelAddOrderLayout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabelAddOrderClient)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelAddOrderLayout.createSequentialGroup()
-                                .addComponent(jTextFieldAddOrderPassportData, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jComboBoxAddOrderClient, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanelAddOrderLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanelAddOrderLayout.createSequentialGroup()
-                                .addGap(178, 178, 178)
-                                .addComponent(jLabelAddOrderClientDateBirthday))
-                            .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jPanelAddOrderLayout.createSequentialGroup()
-                                    .addGap(132, 132, 132)
-                                    .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabelAddOrderClientPassportData)
-                                        .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(jPanelAddOrderLayout.createSequentialGroup()
-                                                .addGap(48, 48, 48)
-                                                .addComponent(jLabelAddOrderClientFirstName))
-                                            .addComponent(jLabelAddOrderClientSecondName)
-                                            .addComponent(jLabelAddOrderCarAddOrderClientMiddleName))))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAddOrderLayout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabelAddOrderClientDriversLicense, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabelAddOrderClientNumberPhone, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabelAddOrderClientEmail, javax.swing.GroupLayout.Alignment.TRAILING)))))
+                                    .addGap(178, 178, 178)
+                                    .addComponent(jLabelAddOrderClientDateBirthday))
+                                .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanelAddOrderLayout.createSequentialGroup()
+                                        .addGap(132, 132, 132)
+                                        .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabelAddOrderClientPassportData)
+                                            .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addGroup(jPanelAddOrderLayout.createSequentialGroup()
+                                                    .addGap(48, 48, 48)
+                                                    .addComponent(jLabelAddOrderClientFirstName))
+                                                .addComponent(jLabelAddOrderClientSecondName)
+                                                .addComponent(jLabelAddOrderCarAddOrderClientMiddleName))))
+                                    .addComponent(jLabelAddOrderClientDriversLicense, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabelAddOrderClientNumberPhone, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabelAddOrderClientEmail, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addComponent(jButtonAddOrderClearClient))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldAddOrderClientEmail, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -644,90 +645,104 @@ public class Frame extends javax.swing.JFrame {
                             .addGroup(jPanelAddOrderLayout.createSequentialGroup()
                                 .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabelAddOrderCar10)
-                                    .addComponent(jSpinnerAddOrderClientDateBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                    .addGroup(jPanelAddOrderLayout.createSequentialGroup()
+                                        .addComponent(jSpinnerAddOrderClientDateBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabelAddOrderDateFormat, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jLabelInfoAboutFields, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanelAddOrderLayout.createSequentialGroup()
+                        .addComponent(jLabelAddOrderClient)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jComboBoxAddOrderClient, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanelAddOrderLayout.setVerticalGroup(
             jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAddOrderLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelAddOrderLayout.createSequentialGroup()
-                        .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBoxAddOrderCar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelAddOrderCar1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldAddOrderBrandAndModel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelAddOrderRentalCost)
-                            .addComponent(jTextFieldAddOrderRentalCost, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(11, 11, 11)
-                        .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelAddOrderCountDays)
-                            .addComponent(jSpinnerAddOrderCountDays, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelAddOrderTotalCost)
-                            .addComponent(jTextFieldAddOrderTotalCost, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(39, 39, 39)
-                        .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelAddOrderStartDate)
-                            .addComponent(jTextFieldAddOrderStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelAddOrderEndDate)
-                            .addComponent(jTextFieldAddOrderEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(63, 63, 63)
-                        .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonAddOrder)
-                            .addComponent(jButtonAddOrderClose))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jSeparator1))
+                        .addContainerGap()
+                        .addComponent(jSeparator1))
+                    .addGroup(jPanelAddOrderLayout.createSequentialGroup()
+                        .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelAddOrderLayout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addComponent(jLabelAddOrderClient)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBoxAddOrderClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButtonAddOrderClearClient)
+                                    .addComponent(jLabelAddOrderCar10))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabelAddOrderClientSecondName)
+                                    .addComponent(jTextFieldAddOrderClientSecondName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabelAddOrderClientFirstName)
+                                    .addComponent(jTextFieldAddOrderClientFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabelAddOrderCarAddOrderClientMiddleName)
+                                    .addComponent(jTextFieldAddOrderClientMiddleName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jSpinnerAddOrderClientDateBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelAddOrderClientDateBirthday)
+                                    .addComponent(jLabelAddOrderDateFormat))
+                                .addGap(19, 19, 19)
+                                .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelAddOrderClientPassportData))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelAddOrderClientDriversLicense))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jTextFieldAddOrderClientNumberPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelAddOrderClientNumberPhone))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabelAddOrderClientEmail)
+                                    .addComponent(jTextFieldAddOrderClientEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabelInfoAboutFields))
+                            .addGroup(jPanelAddOrderLayout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jComboBoxAddOrderCar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelAddOrderCar1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldAddOrderBrandAndModel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabelAddOrderRentalCost)
+                                    .addComponent(jTextFieldAddOrderRentalCost, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(11, 11, 11)
+                                .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabelAddOrderCountDays)
+                                    .addComponent(jSpinnerAddOrderCountDays, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabelAddOrderTotalCost)
+                                    .addComponent(jTextFieldAddOrderTotalCost, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(39, 39, 39)
+                                .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabelAddOrderStartDate)
+                                    .addComponent(jTextFieldAddOrderStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabelAddOrderEndDate)
+                                    .addComponent(jTextFieldAddOrderEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(63, 63, 63)
+                                .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jButtonAddOrder)
+                                    .addComponent(jButtonAddOrderClose))))
+                        .addGap(0, 47, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanelAddOrderLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelAddOrderClient)
-                    .addComponent(jComboBoxAddOrderClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextFieldAddOrderPassportData, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelAddOrderCar10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelAddOrderClientSecondName)
-                    .addComponent(jTextFieldAddOrderClientSecondName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelAddOrderClientFirstName)
-                    .addComponent(jTextFieldAddOrderClientFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelAddOrderCarAddOrderClientMiddleName)
-                    .addComponent(jTextFieldAddOrderClientMiddleName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSpinnerAddOrderClientDateBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelAddOrderClientDateBirthday))
-                .addGap(19, 19, 19)
-                .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelAddOrderClientPassportData))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelAddOrderClientDriversLicense))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldAddOrderClientNumberPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelAddOrderClientNumberPhone))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelAddOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelAddOrderClientEmail)
-                    .addComponent(jTextFieldAddOrderClientEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(102, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jDialogAddOrderLayout = new javax.swing.GroupLayout(jDialogAddOrder.getContentPane());
@@ -751,15 +766,15 @@ public class Frame extends javax.swing.JFrame {
         setTitle("Прокат автомобилей");
         setResizable(false);
         setSize(new java.awt.Dimension(1280, 720));
-        addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                formComponentShown(evt);
-            }
-        });
 
         jTabbedPaneForm.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
 
         jPanelAutopark.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
+        jPanelAutopark.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanelAutoparkComponentShown(evt);
+            }
+        });
 
         jTabbedPaneAutopark.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
 
@@ -1237,6 +1252,11 @@ public class Frame extends javax.swing.JFrame {
         jTabbedPaneForm.addTab("Автопарк", jPanelAutopark);
 
         jPanelOrders.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
+        jPanelOrders.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanelOrdersComponentShown(evt);
+            }
+        });
 
         jButtonCloseOrder.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButtonCloseOrder.setText("Завершить заказ");
@@ -1329,9 +1349,6 @@ public class Frame extends javax.swing.JFrame {
             }
         });
         jPanelClients.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentHidden(java.awt.event.ComponentEvent evt) {
-                jPanelClientsComponentHidden(evt);
-            }
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 jPanelClientsComponentShown(evt);
             }
@@ -1766,14 +1783,21 @@ public class Frame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jPanelClientsComponentShown
 
-    private void jPanelClientsComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelClientsComponentHidden
+    // Функция установки размеров основной формы
+    private void setDefaultFormSize() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int height = (int) (screenSize.height * 0.7);
         int width = (int) (screenSize.width * 0.8);
-        this.setSize(width, height);
-        this.setLocationRelativeTo(null);
-    }//GEN-LAST:event_jPanelClientsComponentHidden
 
+        Dimension currentFormSize = this.getSize();
+
+        // Если текущая форма имеет другие размеры, устанавливаем
+        // новый размер
+        if (currentFormSize.height != height || currentFormSize.width != width) {
+            this.setSize(width, height);
+        }
+        this.setLocationRelativeTo(null);
+    }
     private void jPanelRentedCarsComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelRentedCarsComponentShown
         // Отключаем доступ ко второму критерию
         jComboBoxRentedCarsSearchСriteriaSecond.setEnabled(false);
@@ -1830,14 +1854,6 @@ public class Frame extends javax.swing.JFrame {
     private void jTableCarsInRentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCarsInRentMouseClicked
         jButtonRentedCarsMoveToOrders.setEnabled(true);
     }//GEN-LAST:event_jTableCarsInRentMouseClicked
-
-    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int height = (int) (screenSize.height * 0.7);
-        int width = (int) (screenSize.width * 0.8);
-        this.setSize(width, height);
-        this.setLocationRelativeTo(null);
-    }//GEN-LAST:event_formComponentShown
 
     private void jButtonRentedCarsUpdateTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRentedCarsUpdateTableActionPerformed
 
@@ -1964,7 +1980,12 @@ public class Frame extends javax.swing.JFrame {
         int selectedRow = jTableAvailableCars.getSelectedRow();
 
         if (selectedRow != -1) {
+            // Скрываем основную форму
+            this.setVisible(false);
+
+            // Выводим форму оформления заказа
             jDialogAddOrder.setVisible(true);
+
         }
 
     }//GEN-LAST:event_jButtonAvailableCarsAddOrderActionPerformed
@@ -2041,7 +2062,34 @@ public class Frame extends javax.swing.JFrame {
                 }
             });
 
-            this.setVisible(false);
+            // *Заполнение списока выбора клиентов*
+            // Получение клиентов
+            List<Client> clients = clientService.getClientServicePort().getListOfClients();
+
+            // Новая модель для ClientComboBox
+            cbModel = new DefaultComboBoxModel<>();
+
+            // Находим всех клиентов
+            for (Client client : clients) {
+                String secondName = client.getSecondName();
+                String familyName = client.getFirstName();
+                String middleName = client.getMiddleName();
+                String fullName = String.format("%s %s %s", secondName, familyName, middleName);
+
+                /*
+                    Вывод телефонного номера для идентифицирования клиента 
+                    (если у нас несколько клиентов с одинаковым ФИО)
+                 */
+                String passportData = client.getPhoneNumber();
+                cbModel.addElement(String.format("%s, %s", fullName, passportData));
+            }
+
+            // Установка модели для ClientComboBox
+            jComboBoxAddOrderClient.setModel(cbModel);
+            jComboBoxAddOrderClient.setSelectedIndex(-1);
+
+            // Кнопка "Отменить выбор"
+            jButtonAddOrderClearClient.setEnabled(false);
         }
     }//GEN-LAST:event_jDialogAddOrderComponentShown
 
@@ -2071,40 +2119,84 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAddOrderCloseActionPerformed
 
     private void jComboBoxAddOrderCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAddOrderCarActionPerformed
-        int selectedRow = jTableAvailableCars.getSelectedRow();
-        String registrationNumber = jTableAvailableCars.getValueAt(selectedRow, 6).toString();
 
+        // Регистрационный номер автомобиля - далее используем в поиске
+        String registrationNumber = jComboBoxAddOrderCar.getSelectedItem().toString();
+
+        // Получаем список данных выбранного автомобиля
         List infoAboutCar = searchCriteriaService
                 .getSearchCriteriaServicePort()
                 .getListCarsByRegistrationNumber(registrationNumber);
+
+        // Бренд и марка выбранного автомобиля
+        String brand = (String) infoAboutCar.get(0);
+        String modelCar = (String) infoAboutCar.get(1);
+
+        // Отображаем бренд и марку выбранного автомобиля
+        jTextFieldAddOrderBrandAndModel.setText(String.format("%s %s", brand, modelCar));
+
     }//GEN-LAST:event_jComboBoxAddOrderCarActionPerformed
 
     private void jComboBoxAddOrderClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAddOrderClientActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxAddOrderClientActionPerformed
 
-    private void jTextFieldAddOrderPassportDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldAddOrderPassportDataActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldAddOrderPassportDataActionPerformed
+        // Если в ClientComboBox выбрано значение
+        if (jComboBoxAddOrderClient.getSelectedIndex() != -1) {
+            // Кнопка "Отменить выбор"
+            jButtonAddOrderClearClient.setEnabled(true);
+
+            // Поля ввода информации о клиенте делаем недоступными
+            jTextFieldAddOrderClientSecondName.setEnabled(false);
+            jTextFieldAddOrderClientFirstName.setEnabled(false);
+            jTextFieldAddOrderClientMiddleName.setEnabled(false);
+            jSpinnerAddOrderClientDateBirthday.setEnabled(false);
+            jTextAreaAddOrderClientPassportData.setEnabled(false);
+            jTextAreaAddOrderClientDriversLicense.setEnabled(false);
+            jTextFieldAddOrderClientNumberPhone.setEnabled(false);
+            jTextFieldAddOrderClientEmail.setEnabled(false);
+
+            // Убирем текст обязательного заполнения
+            jLabelInfoAboutFields.setText("");
+        }
+
+
+    }//GEN-LAST:event_jComboBoxAddOrderClientActionPerformed
 
     private void jDialogAddOrderComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jDialogAddOrderComponentHidden
         this.setVisible(true);
     }//GEN-LAST:event_jDialogAddOrderComponentHidden
 
     private void jButtonAddOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddOrderActionPerformed
+
+        // Если обязательное поле не заполнено обязательные поля заполнены
+        if (jComboBoxAddOrderClient.getSelectedIndex() == -1
+                && (jTextFieldAddOrderClientSecondName.getText().trim().length() == 0
+                || jTextFieldAddOrderClientFirstName.getText().trim().length() == 0
+                || jTextAreaAddOrderClientPassportData.getText().trim().length() == 0
+                || jTextAreaAddOrderClientDriversLicense.getText().trim().length() == 0
+                || jTextFieldAddOrderClientNumberPhone.getText().trim().length() == 0
+                || jTextFieldAddOrderClientEmail.getText().trim().length() == 0)) {
+            JOptionPane.showMessageDialog(this, "Заполните все обязательные поля - (*)",
+                    "Ошибка", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        try {            
+        try {
             jSpinnerAddOrderCountDays.commitEdit();
+
         } catch (ParseException ex) {
-            Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Frame.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
         // Дата из интерфейса
         String formattedDate = dateFormat.format(jSpinnerAddOrderClientDateBirthday.getValue());
         Calendar calendar = Calendar.getInstance();
         try {
             calendar.setTime(dateFormat.parse(formattedDate));
+
         } catch (ParseException ex) {
-            Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Frame.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
 
         // Приводим к формату
@@ -2112,8 +2204,10 @@ public class Frame extends javax.swing.JFrame {
         Date date = null;
         try {
             date = dateFormat.parse(dateStr2);
+
         } catch (ParseException ex) {
-            Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Frame.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
 
         GregorianCalendar c = new GregorianCalendar();
@@ -2121,29 +2215,75 @@ public class Frame extends javax.swing.JFrame {
         XMLGregorianCalendar date2 = null;
         try {
             date2 = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
+
         } catch (DatatypeConfigurationException ex) {
-            Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Frame.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
-        Client client = new Client(
-                jTextFieldAddOrderClientSecondName.getText(),
-                jTextFieldAddOrderClientFirstName.getText(),
-                jTextFieldAddOrderClientMiddleName.getText(),
-                date2,
-                jTextAreaAddOrderClientPassportData.getText(),
-                jTextAreaAddOrderClientDriversLicense.getText(),
-                jTextFieldAddOrderClientNumberPhone.getText(),
-                jTextFieldAddOrderClientEmail.getText()
-        );
-        
+
         List info = new ArrayList<>();
         info.add(jComboBoxAddOrderCar.getSelectedItem().toString());
         info.add(jTextFieldAddOrderStartDate.getText());
         info.add(jTextFieldAddOrderEndDate.getText());
         info.add(Integer.parseInt(jTextFieldAddOrderTotalCost.getText()));
-        
 
-        searchCriteriaService.getSearchCriteriaServicePort().addOrder(info, client, true);
+        if (jComboBoxAddOrderClient.getSelectedIndex() != -1) {
+            String[] fullNameAndPhoneString = jComboBoxAddOrderClient.getSelectedItem().toString().split(", ");
+            List fullNameAndPhone = new ArrayList<>();
+            fullNameAndPhone.add(fullNameAndPhoneString[0]);
+            fullNameAndPhone.add(fullNameAndPhoneString[1]);
+            searchCriteriaService.getSearchCriteriaServicePort().addOrder(info, null, false, fullNameAndPhone);
+        } else {
+            Client client = new Client(
+                    jTextFieldAddOrderClientSecondName.getText(),
+                    jTextFieldAddOrderClientFirstName.getText(),
+                    jTextFieldAddOrderClientMiddleName.getText(),
+                    date2,
+                    jTextAreaAddOrderClientPassportData.getText(),
+                    jTextAreaAddOrderClientDriversLicense.getText(),
+                    jTextFieldAddOrderClientNumberPhone.getText(),
+                    jTextFieldAddOrderClientEmail.getText()
+            );
+            searchCriteriaService.getSearchCriteriaServicePort().addOrder(info, client, true, null);
+        }
+        
+        jDialogAddOrder.setVisible(false);
+        
+        JOptionPane.showMessageDialog(this, "Заказ успешно оформлен!",
+                    "Успешно!",
+                    JOptionPane.NO_OPTION);
+        
+        jButtonAvailableCarsUpdateTableActionPerformed(null);     
+        
     }//GEN-LAST:event_jButtonAddOrderActionPerformed
+
+    private void jButtonAddOrderClearClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddOrderClearClientActionPerformed
+
+        // Отменяем выбор в ClientComboBox
+        jComboBoxAddOrderClient.setSelectedIndex(-1);
+
+        // Поля ввода информации о клиенте делаем доступными
+        jTextFieldAddOrderClientSecondName.setEnabled(true);
+        jTextFieldAddOrderClientFirstName.setEnabled(true);
+        jTextFieldAddOrderClientMiddleName.setEnabled(true);
+        jSpinnerAddOrderClientDateBirthday.setEnabled(true);
+        jTextAreaAddOrderClientPassportData.setEnabled(true);
+        jTextAreaAddOrderClientDriversLicense.setEnabled(true);
+        jTextFieldAddOrderClientNumberPhone.setEnabled(true);
+        jTextFieldAddOrderClientEmail.setEnabled(true);
+
+        // Добавляем текст обязательного заполнения
+        jLabelInfoAboutFields.setText("* - поля, обязательные для заполнения");
+
+    }//GEN-LAST:event_jButtonAddOrderClearClientActionPerformed
+
+    private void jPanelOrdersComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelOrdersComponentShown
+        setDefaultFormSize();
+    }//GEN-LAST:event_jPanelOrdersComponentShown
+
+    private void jPanelAutoparkComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelAutoparkComponentShown
+        setDefaultFormSize();
+    }//GEN-LAST:event_jPanelAutoparkComponentShown
 
     private void OutputToTableCars(List listСars) throws ParseException {
         doClearTable();
@@ -2272,10 +2412,12 @@ public class Frame extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -2292,6 +2434,7 @@ public class Frame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAddCar;
     private javax.swing.JButton jButtonAddOrder;
+    private javax.swing.JButton jButtonAddOrderClearClient;
     private javax.swing.JButton jButtonAddOrderClose;
     private javax.swing.JButton jButtonAvailableCarsAddOrder;
     private javax.swing.JButton jButtonAvailableCarsClearSearchCriteries;
@@ -2343,6 +2486,7 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelAddOrderClientPassportData;
     private javax.swing.JLabel jLabelAddOrderClientSecondName;
     private javax.swing.JLabel jLabelAddOrderCountDays;
+    private javax.swing.JLabel jLabelAddOrderDateFormat;
     private javax.swing.JLabel jLabelAddOrderEndDate;
     private javax.swing.JLabel jLabelAddOrderRentalCost;
     private javax.swing.JLabel jLabelAddOrderStartDate;
@@ -2351,6 +2495,7 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelAvailableCarsSearchСriteriaFirst;
     private javax.swing.JLabel jLabelAvailableCarsSearchСriteriaSecond;
     private javax.swing.JLabel jLabelCarsInRentCount;
+    private javax.swing.JLabel jLabelInfoAboutFields;
     private javax.swing.JLabel jLabelListCarsCount;
     private javax.swing.JLabel jLabelListCarsSearchСriteriaFirst;
     private javax.swing.JLabel jLabelListCarsSearchСriteriaSecond;
@@ -2397,7 +2542,6 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldAddOrderClientNumberPhone;
     private javax.swing.JTextField jTextFieldAddOrderClientSecondName;
     private javax.swing.JTextField jTextFieldAddOrderEndDate;
-    private javax.swing.JTextField jTextFieldAddOrderPassportData;
     private javax.swing.JTextField jTextFieldAddOrderRentalCost;
     private javax.swing.JTextField jTextFieldAddOrderStartDate;
     private javax.swing.JTextField jTextFieldAddOrderTotalCost;
