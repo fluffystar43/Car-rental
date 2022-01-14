@@ -660,7 +660,7 @@ namespace client_application
             arrayClients = service.getListOfClients();
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "PDF Documents (*.pdf)|*.pdf";
-            sfd.FileName = "ListClientsCSharp.pdf";
+            sfd.FileName = "Список клиентов.pdf";
 
             if (sfd.ShowDialog() == DialogResult.OK) {
 
@@ -746,7 +746,7 @@ namespace client_application
         {
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Excel Documents (*.xlsx)|*.xlsx";
-            sfd.FileName = "ListClients.xlsx";
+            sfd.FileName = "Список клиентов.xlsx";
             if (sfd.ShowDialog() == DialogResult.OK)
             {                
                 try
